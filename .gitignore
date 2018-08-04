@@ -1,0 +1,7 @@
+# Python and Sphinx
+env/
+_build/
+__pychache__/
+.cache/
+
+

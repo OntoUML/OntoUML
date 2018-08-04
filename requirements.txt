@@ -1,0 +1,3 @@
+# Python dependencies
+# run: pip install -r requirements.txt
+Sphinx
