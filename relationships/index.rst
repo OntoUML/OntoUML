@@ -1,5 +1,5 @@
-Class stereotypes
-=================
+Relationship stereotypes
+========================
 
 .. toctree::
    :maxdepth: 1

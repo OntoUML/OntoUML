@@ -1,5 +1,5 @@
-SubCollectionOf
-===============
+SubQuantityOf
+=============
 
 .. include:: definition.rst
 
