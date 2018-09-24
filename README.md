@@ -25,4 +25,4 @@ TODO
 
 Making OntoUML documentation evolvable via Sphinx and custom extensions was support by FIT CTU in Prague.
 
-[![FIT CTU](https://fit.cvut.cz/sites/default/files/PR/information_technology.jpg | width=420)](https://fit.cvut.cz/en)
+[<img src="https://fit.cvut.cz/sites/default/files/PR/information_technology.jpg" width="420">](https://fit.cvut.cz/en)
