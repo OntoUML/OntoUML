@@ -1,0 +1,16 @@
+class_stereotype:
+  name: RoleMixin
+  parent: AntiRigidNonSortal
+  provides_identity: true
+  identity_principle: multiple
+  rigidity: semirigid
+  dependency: mandatory
+  supertypes:
+  - Mixin
+  - RoleMixin
+  subtypes:
+  - Role
+  - RoleMixin
+  forbidden_associations:
+  - Structuration
+  abstract: true

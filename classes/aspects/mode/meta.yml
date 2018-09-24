@@ -1,0 +1,23 @@
+class_stereotype:
+  name: Mode
+  parent: Aspect
+  provides_identity: ?
+  identity_principle: single
+  rigidity: rigid
+  dependency: mandatory
+  supertypes:
+  - Category
+  - Mixin
+  subtypes:
+  - Subkind
+  - Role
+  - Phase
+  - Mode
+  forbidden_associations:
+  - Structuration
+  - ComponentOf
+  - SubCollectionOf
+  - MemberOf
+  - SubQuantityOf
+  - Derivation
+  abstract: true

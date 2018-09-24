@@ -1,0 +1,19 @@
+class_stereotype:
+  name: Category
+  parent: RigidNonSortal
+  provides_identity: true
+  identity_principle: multiple
+  rigidity: rigid
+  dependency: optional
+  supertypes:
+  - Category
+  - Mixin
+  subtypes:
+  - Kind
+  - Subkind
+  - Collective
+  - Quantity
+  - Relator
+  forbidden_associations:
+  - Structuration
+  abstract: true

@@ -1,0 +1,23 @@
+class_stereotype:
+  name: Phase
+  parent: AntiRigidSortal
+  provides_identity: false
+  identity_principle: simple
+  rigidity: antirigid
+  dependency: optional
+  supertypes:
+  - Kind
+  - Subkind
+  - Collective
+  - Quantity
+  - Relator
+  - Quality
+  - Mode
+  - Phase
+  - Mixin
+  subtypes:
+  - Phase
+  - Role
+  forbidden_associations:
+  - Structuration
+  abstract: undefined
