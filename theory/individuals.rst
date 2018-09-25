@@ -1,3 +1,5 @@
+.. _individuals:
+
 Types and Individuals
 =====================
 

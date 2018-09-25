@@ -1,3 +1,5 @@
+.. _class-stereotypes:
+
 Class stereotypes
 =================
 

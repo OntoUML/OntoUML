@@ -14,6 +14,7 @@ Relationship stereotypes
    formal/index
    material/index
    mediation/index
+   characterization/index
    derivation/index
    structuration/index
 

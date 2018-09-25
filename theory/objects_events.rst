@@ -1,3 +1,5 @@
+.. _objects_events:
+
 Objects & Events
 ================
 
