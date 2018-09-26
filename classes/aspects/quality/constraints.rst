@@ -1,16 +1,13 @@
 Constraints
 -----------
 
-**C1:** A «:ref:`quality`» must always be connected, through a «:ref:`characterization`»
-to another type.
+**C1:** A «:ref:`quality`» must always be connected, through a «:ref:`characterization`» to another type.
 
 .. container:: figure
 
    |Quality application 1|
 
-**C2:** The multiplicity of the characterized end (opposite to the
-quality) must be exactly one. Therefore, the following examples are
-forbidden.
+**C2:** The multiplicity of the characterized end (opposite to the quality) must be exactly one. Therefore, the following examples are forbidden.
 
 .. container:: figure
 

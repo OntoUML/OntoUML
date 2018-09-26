@@ -7,15 +7,13 @@ Constraints
 
    |Kind forbidden 1|
 
-**C2:** A «:ref:`kind`» cannot have types that inherit :ref:`identity <identity>` («:ref:`subkind`»,
-«:ref:`role`» and «:ref:`phase`») as its direct or indirect super-type.
+**C2:** A «:ref:`kind`» cannot have types that inherit :ref:`identity <identity>` («:ref:`subkind`», «:ref:`role`» and «:ref:`phase`») as its direct or indirect super-type.
 
 .. container:: figure
 
    |Kind forbidden 2|
 
-**C3:** A «:ref:`kind`» cannot have types that aggregate individuals with
-:ref:`different identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
+**C3:** A «:ref:`kind`» cannot have types that aggregate individuals with :ref:`different identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
 
 **C4:** As a :ref:`rigid <rigidity>` type, a «:ref:`Kind`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`» and «:ref:`phase`») as its direct or indirect super-type.
 

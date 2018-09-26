@@ -1,15 +1,13 @@
 Constraints
 -----------
 
-**C1:** Every «:ref:`mode`» must be (directly or indirectly) connected to an
-association end of at least one «:ref:`characterization`» relation.
+**C1:** Every «:ref:`mode`» must be (directly or indirectly) connected to an association end of at least one «:ref:`characterization`» relation.
 
 .. container:: figure
 
    |Mode application 1|
 
-**C2:** The multiplicity of the characterized end (opposite to the «:ref:`mode`»)
-must be exactly one. Therefore, the following examples are forbidden.
+**C2:** The multiplicity of the characterized end (opposite to the «:ref:`mode`») must be exactly one. Therefore, the following examples are forbidden.
 
 .. container:: figure
 

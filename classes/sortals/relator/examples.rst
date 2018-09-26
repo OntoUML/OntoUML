@@ -1,30 +1,25 @@
 Examples
 --------
 
-**EX1:** Conceptual model about the Catholic Clergy (`see
-more <http://www.menthor.net/clergy.html>`__):
+**EX1:** Conceptual model about the Catholic Clergy (`see more <http://www.menthor.net/clergy.html>`__):
 
 .. container:: figure
 
    |Example Catholic Clergy|
 
-**EX2:** Fragment of a conceptual model representing the worldview of a
-possible parking lot management system (`see
-more <http://www.menthor.net/parking-lot.html>`__):
+**EX2:** Fragment of a conceptual model representing the worldview of a possible parking lot management system (`see more <http://www.menthor.net/parking-lot.html>`__):
 
 .. container:: figure
 
    |Example Parking Lot|
 
-**EX3:** UFO-S fragment focused on service offering (`see
-more <http://www.menthor.net/ufo-s.html>`__):
+**EX3:** UFO-S fragment focused on service offering (`see more <http://www.menthor.net/ufo-s.html>`__):
 
 .. container:: figure
 
    |Example UFO-S|
 
-**EX4:** Fragment of a conceptual model about the human genome (`see
-more <http://www.menthor.net/cshg.html>`__):
+**EX4:** Fragment of a conceptual model about the human genome (`see more <http://www.menthor.net/cshg.html>`__):
 
 .. container:: figure
 

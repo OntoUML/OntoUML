@@ -1,17 +1,12 @@
 Examples
 --------
 
-**EX1:**
+**EX1:** |Example Treatment|
 
-.. container:: figure
+For more examples see «:ref:`relator`», «:ref:`material`», and :ref:`relator-pattern`.
 
-   |Example Treatment|
+**Quoted from:**
 
-  For more examples see «:ref:`relator`»,
-«:ref:`material`», and :ref:`relator-pattern`.
-
-**Quoted from:** GUIZZARDI,
-Giancarlo. *Introduction to Ontological Engineering.* [presentation]
-Prague: Prague University of Economics, 2011.
+GUIZZARDI, Giancarlo. *Introduction to Ontological Engineering.* [presentation] Prague: Prague University of Economics, 2011.
 
 .. |Example Treatment| image:: _images/matder.png

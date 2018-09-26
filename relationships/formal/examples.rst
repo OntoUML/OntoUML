@@ -1,8 +1,7 @@
 Examples
 --------
 
-**EX1:** Fragment from OntoEmerge, an ontology about Emergency Plans
-(`see more <http://www.menthor.net/ontoemerge.html>`__):
+**EX1:** Fragment from OntoEmerge, an ontology about Emergency Plans (`see more <http://www.menthor.net/ontoemerge.html>`__):
 
 .. container:: figure
 

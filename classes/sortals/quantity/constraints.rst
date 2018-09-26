@@ -1,9 +1,7 @@
 Constraints
 -----------
 
-**C1:** A «:ref:`quantity`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`»,
-«:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its
-direct or indirect super-type.
+**C1:** A «:ref:`quantity`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
 
 .. container:: figure
 
@@ -15,8 +13,7 @@ direct or indirect super-type.
 
    |Quantity forbidden 2|
 
-**C3:** A «:ref:`quantity`» cannot have types that aggregate individuals with
-different :ref:`identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
+**C3:** A «:ref:`quantity`» cannot have types that aggregate individuals with different :ref:`identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
 
 .. container:: figure
 

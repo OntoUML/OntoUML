@@ -1,14 +1,12 @@
 Examples
 --------
 
-**EX1:** [caption id="attachment_658" align="alignnone"
-width="860"]\ |image0| MemberOf Relation[/caption] See also `Part-Whole
-Relation </ufo/wiki/part-whole-relation/>`__.
+**EX1:** |MemberOf Relation|
 
-**References:** GUIZZARDI,
-Giancarlo. *Ontological Foundations for Structural Conceptual Models.*
-Enschede: CTIT, Telematica Instituut, 2005. GUIZZARDI, Giancarlo.
-*Introduction to Ontological Engineering.* [presentation] Prague: Prague
-University of Economics, 2011.
+See also :ref:`part-whole`.
 
-.. |image0| image:: _images/memberOf.png
+**References:**
+
+GUIZZARDI, Giancarlo. *Ontological Foundations for Structural Conceptual Models.* Enschede: CTIT, Telematica Instituut, 2005. GUIZZARDI, Giancarlo. *Introduction to Ontological Engineering.* [presentation] Prague: Prague University of Economics, 2011.
+
+.. |MemberOf Relation| image:: _images/memberOf.png

@@ -1,15 +1,13 @@
 Examples
 --------
 
-**EX1:** Fragment of the OntoUML Org Ontology (O3) (`see
-more <http://www.menthor.net/o3.html>`__):
+**EX1:** Fragment of the OntoUML Org Ontology (O3) (`see more <http://www.menthor.net/o3.html>`__):
 
 .. container:: figure
 
    |Example O3|
 
-**EX2:** Fragment of a conceptual model about Brazilian Public Tenders
-(`see more <http://www.menthor.net/public-tenders.html>`__):
+**EX2:** Fragment of a conceptual model about Brazilian Public Tenders (`see more <http://www.menthor.net/public-tenders.html>`__):
 
 .. container:: figure
 

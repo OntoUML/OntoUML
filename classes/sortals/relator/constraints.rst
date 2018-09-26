@@ -1,24 +1,19 @@
 Constraints
 -----------
 
-**C1:** A «:ref:`relator`» must always be connected (directly or indirectly) to
-at least one relation stereotyped as «:ref:`mediation`»
+**C1:** A «:ref:`relator`» must always be connected (directly or indirectly) to at least one relation stereotyped as «:ref:`mediation`»
 
 .. container:: figure
 
    |Relator forbidden 1|
 
-**C2:** The sum of the minimum cardinalities of the opposite ends of the
-:ref:`mediations <mediation>` connected (directly or indirectly) to the «:ref:`relator`» must be
-greater or equal to 2.
+**C2:** The sum of the minimum cardinalities of the opposite ends of the :ref:`mediations <mediation>` connected (directly or indirectly) to the «:ref:`relator`» must be greater or equal to 2.
 
 .. container:: figure
 
    |Relator application 2|
 
-**C3:** A «:ref:`relator`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`»,
-«:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its
-direct or indirect super-type.
+**C3:** A «:ref:`relator`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
 
 .. container:: figure
 
@@ -30,8 +25,7 @@ direct or indirect super-type.
 
    |Relator forbidden 3|
 
-**C5:** A «:ref:`relator`» cannot have types that aggregate individuals with
-different :ref:`identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
+**C5:** A «:ref:`relator`» cannot have types that aggregate individuals with different :ref:`identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
 
 .. container:: figure
 
