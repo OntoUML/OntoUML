@@ -1,11 +1,11 @@
 Definition
 ----------
 
-The **«Quantity»** construct is used to represent **rigid** concepts
-that provide an **identity principle** for their instances. A «Quantity»
+The «:ref:`quantity`» construct is used to represent :ref:`rigid <rigidity>` concepts
+that provide an :ref:`identity principle <identity>` for their instances. A «:ref:`quantity`»
 represent uncountable things, like Water, Clay, or Beer. It represents a
 maximally topologically connected amount of matter. Quantities only have
-other quantities as parts (see the SubQuantityOf relation for more
+other quantities as parts (see the «:ref:`subQuantityOf`» relation for more
 details about members of collections). Here are some examples:
 
 .. container:: figure
@@ -24,15 +24,14 @@ again for each remaining part? We would have 4 piles of sand.
 
    |Tannin heap|
 
-As the other identity provider stereotypes (Kind, Collective, Relator
-and Mode), a Quality can be specialized by subkinds, phases and roles,
-as well as generalized by mixins and categories.
+As the other identity provider stereotypes («:ref:`kind`», «:ref:`collective`», «:ref:`relator`»
+and «:ref:`mode`»), a Quality can be specialized by :ref:`subkinds <subkind>`, :ref:`phases <phase>` and :ref:`roles <role>`, as well as generalized by :ref:`mixins <mixin>` and :ref:`categories <category>`.
 
 .. container:: figure
 
    |Quantity application 1|
 
-Be careful not to confuse Quantities and Qualities.
+Be careful not to confuse «:ref:`quantity`» and «:ref:`quality`».
 
 
 .. |Quantity examples| image:: _images/ontouml_quantity-examples.png

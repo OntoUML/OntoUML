@@ -1,7 +1,7 @@
 Constraints
 -----------
 
-**C1:** A Quality must always be connected, through a characterization
+**C1:** A «:ref:`quality`» must always be connected, through a «:ref:`characterization`»
 to another type.
 
 .. container:: figure
@@ -16,17 +16,13 @@ forbidden.
 
    |Quality forbidden 1|
 
-**C3:** Qualtities cannot have as ancestors the following types: «Kind»,
-«Quantiy», «Collective», «Subkind», «Role», «RoleMixin», «Phase»,
-«Relator», «Mode».
+**C3:** Qualtities cannot have as ancestors the following types: «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`subkind`», «:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`», «:ref:`relator`», «:ref:`mode`».
 
 .. container:: figure
 
    |Quality forbidden 2|
 
-**C4:** Qualtities cannot have as descendants the following types:
-«Kind», «Quantiy», «Collective», «RoleMixin», «Category», «Mixin»,
-«Relator», «Mode».
+**C4:** Qualtities cannot have as descendants the following types: «:ref:`kind`», «:ref:`quantiy`», «:ref:`collective`», «:ref:`rolemixin`», «:ref:`category`», «:ref:`mixin`», «:ref:`relator`», «:ref:`mode`».
 
 .. container:: figure
 

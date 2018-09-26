@@ -1,8 +1,8 @@
 Constraints
 -----------
 
-**R1:** A «Phase» must always have **exactly one identity provider**
-(«Kind», «Collective», «Quantity», «Relator», «Mode», «Quantity») as an
+**R1:** A «:ref:`phase`» must always have **exactly one identity provider**
+(«:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`», «:ref:`quantity`») as an
 ancestor (a direct or indirect super-type). Our examples above should be
 modelled as:
 
@@ -10,31 +10,30 @@ modelled as:
 
    |Phase application 1|
 
-**R2:** A «Phase» must always be part of a partition (a generalization
-set disjoint and complete). Modeling a Phase as in example below is
+**R2:** A «:ref:`phase`» must always be part of a partition (a generalization
+set disjoint and complete). Modeling a «:ref:`phase`» as in example below is
 forbidden:
 
 .. container:: figure
 
    |Phase forbidden 2|
 
-**R3:** A «Phase» cannot be a direct subtype of a «RoleMixin» or
-«Category».
+**R3:** A «:ref:`phase`» cannot be a direct subtype of a «:ref:`rolemixin`» or
+«:ref:`category`».
 
 .. container:: figure
 
    |Phase forbidden 3|
 
-**R4:** A «Phase» cannot be a super-type of a rigid type («Kind»,
-«Collective», «Quantity», «Relator», «Mode», «Quantity», «Subkind»,
-«Category»).
+**R4:** A «:ref:`phase`» cannot be a super-type of a :ref:`rigid <rigidity>` type («:ref:`kind`»,
+«:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`», «:ref:`quantity`», «:ref:`subkind`», «:ref:`category`»).
 
 .. container:: figure
 
    |Phase forbidden 1|
 
-**R4:** A «Phase» cannot be a super-type of a mixin type («Category»,
-«RoleMixin», «Mixin»).
+**R4:** A «:ref:`phase`» cannot be a super-type of a mixin type («:ref:`category`»,
+«:ref:`rolemixin`», «:ref:`mixin`»).
 
 .. container:: figure
 

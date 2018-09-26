@@ -1,12 +1,12 @@
 Common questions
 ----------------
 
-**Q1:** If a «Kind» is relationally independent, does that mean we
+**Q1:** If a «:ref:`kind`» is relationally independent, does that mean we
 cannot define relations for theses types?
 **A1:** No! When we say that a
-«Kind» is relationally independent, we mean that it does not necessarily
-require a relation to be defined, like a «Role» does. Here is an example
-in which a «Kind» has a dependency.
+«:ref:`kind`» is relationally independent, we mean that it does not necessarily
+require a relation to be defined, like a «:ref:`role`» does. Here is an example
+in which a «:ref:`kind`» has a :ref:`dependency <dependency>`.
 
 .. container:: figure
 

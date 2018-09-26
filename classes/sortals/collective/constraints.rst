@@ -1,31 +1,29 @@
 Constraints
 -----------
 
-**C1:** A «Collective» cannot have an identity provider («Kind»,
-«Collective», «Quantity», «Relator», «Mode» and «Quantity») as its
+**C1:** A «:ref:`collective`» cannot have an :ref:`identity <identity>` provider («:ref:`kind`»,
+«:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its
 direct or indirect super-type.
 
 .. container:: figure
 
    |Collective forbidden 1|
 
-**C2:** A «Collective» cannot have types that inherit identity
-(«Subkind», «Role» and «Phase») as its direct or indirect super-types.
+**C2:** A «:ref:`collective`» cannot have types that inherit :ref:`identity <identity>`
+(«:ref:`subkind`», «:ref:`role`» and «:ref:`phase`») as its direct or indirect super-types.
 
 .. container:: figure
 
    |Collective forbidden 2|
 
-**C3:** A «Collective» cannot have types that aggregate individuals with
-different identity principles («Category», «RoleMixin» and «Mixin») as
-its direct or indirect subtypes.
+**C3:** A «:ref:`collective`» cannot have types that aggregate individuals with
+:ref:`different identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
 
 .. container:: figure
 
    |Collective forbidden 3|
 
-**C4:** As a rigid type, a «Collective» cannot have any anti-rigid type
-(«Role», «RoleMixin» and «Phase») as its direct or indirect super-type.
+**C4:** As a :ref:`rigid <rigidity>` type, a «:ref:`collective`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`» and «:ref:`phase`») as its direct or indirect super-type.
 
 .. container:: figure
 

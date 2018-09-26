@@ -1,11 +1,11 @@
 Definition
 ----------
 
-A **«Quality»** is a particular type of intrinsic property which has a
-structured value. Qualities are things that are existentially dependent
-on the things they characterize, called their bearers. Types stereotyped
-as «Quality» are also **rigid**. OntoUML differentiates between three
-types of qualities:
+A «:ref:`quality`» is a particular type of intrinsic property which has a
+structured value. Qualities are things that are :ref:`existentially dependent <dependency>`
+on the things they characterize, called their **bearers**. Types stereotyped
+as «:ref:`quality`» are also :ref:`rigid <rigidity>`. OntoUML differentiates
+between three types of qualities:
 
 -  **Perceivable**, which capture qualities that could be measured by an
    agent with the appropriate instrument, like weight, height, color and

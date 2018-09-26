@@ -13,10 +13,11 @@ Examples
 
    |Example supervizor|
 
-For more examples see `Relator </ufo/wiki/relator/>`__,
-`Derivation </ufo/wiki/derivation/>`__,
-`Mediation </ufo/wiki/mediation/>`__, `Relator
-Pattern </ufo/wiki/relator-pattern/>`__. **Quoted from:** GUIZZARDI,
+For more examples see «:ref:`relator`»,
+«:ref:`derivation`»,
+«:ref:`mediation`», and «:ref:`relator-pattern`».
+
+**Quoted from:** GUIZZARDI,
 Giancarlo. *Ontological Foundations for Structural Conceptual Models.*
 Enschede: CTIT, Telematica Instituut, 2005. GUIZZARDI, Giancarlo.
 *Introduction to Ontological Engineering.* [presentation] Prague: Prague

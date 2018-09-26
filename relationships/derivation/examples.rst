@@ -7,9 +7,10 @@ Examples
 
    |Example Treatment|
 
-  For more examples see `Relator </ufo/wiki/relator/>`__,
-`Material </ufo/wiki/material/>`__, `Relator
-Pattern </ufo/wiki/relator-pattern/>`__. **Quoted from:** GUIZZARDI,
+  For more examples see «:ref:`relator`»,
+«:ref:`material`», and :ref:`relator-pattern`.
+
+**Quoted from:** GUIZZARDI,
 Giancarlo. *Introduction to Ontological Engineering.* [presentation]
 Prague: Prague University of Economics, 2011.
 

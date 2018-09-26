@@ -74,24 +74,24 @@ we can combine the different OntoUML constructs to design our conceptual
 models. Will talk about these constraints when we present the
 stereotypes usage. For now, just keep in mind that: Some types have the
 characteristic of providing identity principles for their instances.
-They are stereotype as: «Kind», «Collective», «Quantity», «Relator»,
-«Mode» and «Quantity». Here are some examples:
+They are stereotype as: «:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`»,
+«:ref:`mode`» and «:ref:`quantity`». Here are some examples:
 
 .. container:: figure
 
    |Identity providers|
 
 Some other types don't provide identity principle for their instances,
-but they all share a common one. They are stereotyped as: «Subkind»,
-«Role» and «Phase». Here are some examples:
+but they all share a common one. They are stereotyped as: «:ref:`subkind`»,
+«:ref:`role`» and «:ref:`phase`». Here are some examples:
 
 .. container:: figure
 
    |Inherited identity|
 
 Some other types don't provide identity and their instances follow
-different identity principles. They are stereotyped as: «RoleMixin»,
-«Mixin» and «Category». Here are some examples:
+different identity principles. They are stereotyped as: «:ref:`rolemixin`»,
+«:ref:`mixin`» and «:ref:`category`». Here are some examples:
 
 .. container:: figure
 

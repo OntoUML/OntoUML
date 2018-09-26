@@ -1,31 +1,31 @@
 Constraints
 -----------
 
-**C1:** A «Category» is always abstract. Notice that abstract classes
+**C1:** A «:ref:`category`» is always abstract. Notice that abstract classes
 are represented with an *italic* label.
 
 .. container:: figure
 
    |Category application 1|
 
-**C2:** A «Category» aggregate individuals that follow different
-identity principles, therefore it may not have as ancestor the following
-constructs: «Kind», «Quantity», «Collective», «Subkind», «Role»,
-«Phase», «Relator», «Mode», «Quality».
+**C2:** A «:ref:`category`» aggregate individuals that follow :ref:`different
+identity principles <identity>`, therefore it may not have as ancestor the following
+constructs: «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`subkind`», «:ref:`role`»,
+«:ref:`phase`», «:ref:`relator`», «:ref:`mode`», «:ref:`quality`».
 
 .. container:: figure
 
    |Category forbidden 1|
 
-**C3:** A «Category» is a rigid construct, therefore it cannot have as
-ancestor an anti-rigid type, as: «Role», «RoleMixin», «Phase».
+**C3:** A «:ref:`category`» is a :ref:`rigid <rigidity>` construct, therefore it cannot have as
+ancestor an :ref:`anti-rigid <rigidity>` type, as: «:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`».
 
 .. container:: figure
 
    |Category forbidden 2|
 
 **C4:** Categories cannot have as descendants the following types:
-«Mixin», «Role», «Phase».
+«:ref:`mixin`», «:ref:`role`», «:ref:`phase`».
 
 .. container:: figure
 

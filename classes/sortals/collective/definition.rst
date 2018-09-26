@@ -1,11 +1,11 @@
 Definition
 ----------
 
-The **«Collective»** construct is used to represent **rigid** concepts
-that provide an **identity principle** for their instances. The main
-characteristic of a «Collective» is that it has an homogenous internal
+The «:ref:`collective`» construct is used to represent :ref:`rigid <rigidity>` concepts
+that provide an :ref:`identity principle <identity>` for their instances. The main
+characteristic of a «:ref:`collective`» is that it has an homogenous internal
 structure, i.e., all parts are perceived in the same way by the whole
-(see the MemberOf relation for more details about members of
+(see the «:ref:`memberOf`» relation for more details about members of
 collections).
 
 .. container:: figure
@@ -29,9 +29,8 @@ would say that a family is a functional complex.
 
    |Family|
 
-As the other identity provider stereotypes (Kind, Quality, Relator and
-Mode), a Collective can be specialized by subkinds, phases and roles, as
-well as generalized by mixins and categories.
+As the other identity provider stereotypes («:ref:`kind`», «:ref:`quality`», «:ref:`relator`» and
+«:ref:`mode`»), a «:ref:`collective`» can be specialized by :ref:`subkinds <subkind>`, :ref:`phases <phase>` and :ref:`roles <role>`, as well as generalized by :ref:`mixins <mixin>` and :ref:`categories <category>`.
 
 .. container:: figure
 

@@ -1,23 +1,23 @@
 Definition
 ----------
 
-A **«RoleMixin»** is the equivalent of «Role» for types that aggregate
-instances with **different identity principles**. A class stereotyped as
-«RoleMixin» is also an **anti-rigid** type whose instantiation depends
-on a **relational** property. Here are some examples:
+A «:ref:`rolemixin`» is the equivalent of «:ref:`role`» for types that aggregate
+instances with :ref:`different identity principles <identity>`. A class stereotyped as
+«:ref:`rolemixin`» is also an :ref:`anti-rigid <rigidity>` type whose instantiation :ref:`depends
+on a relational property <dependency>`. Here are some examples:
 
 .. container:: figure
 
    |RoleMixin examples|
 
 RoleMixins usually occur in one of the two patterns: **Pattern 1:**
-RoleMixin defined by roles
+«:ref:`rolemixin`» defined by roles
 
 .. container:: figure
 
    |RoleMixin application 1|
 
-**Pattern 2:** RoleMixin as a role of a Category
+**Pattern 2:** «:ref:`rolemixin`» as a role of a «:ref:`category`»
 
 .. container:: figure
 

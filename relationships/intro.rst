@@ -1,3 +1,5 @@
+.. _relations:
+
 Introduction
 ============
 

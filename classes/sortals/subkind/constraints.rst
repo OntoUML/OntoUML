@@ -1,26 +1,24 @@
 Constraints
 -----------
 
-**R1:** A «Subkind» must **always** have exactly one identity provider
-(«Kind», «Collective», «Quantity», «Relator», «Mode», «Quantity») as an
-ancestor (a direct or indirect super-type). Therefore, our examples in
+**R1:** A «:ref:`subkind`» must **always** have exactly one :ref:`identity provider <identity>`
+(«:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`», «:ref:`quantity`») as an ancestor (a direct or indirect super-type). Therefore, our examples in
 the first figure should be modelled as:
 
 .. container:: figure
 
    |Subkind application 1|
 
-**R2:** Because it is a rigid type, a «Subkind» cannot have an
-anti-rigid type («Role», «Phase», «RoleMixin») as an ancestor.
+**R2:** Because it is a :ref:`rigid <rigidity>` type, a «:ref:`subkind`» cannot have an
+:ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`phase`», «:ref:`rolemixin`») as an ancestor.
 Therefore, the following fragments would not be allowed:
 
 .. container:: figure
 
    |Subkind forbidden 1|
 
-**R3:** Since every instance of a «Subkind» follows the same identity
-principle, a «Subkind» cannot have an mixin type («Category», «Mixin»,
-«RoleMixin») as a descendant, i.e., a direct or indirect subtype.
+**R3:** Since every instance of a «:ref:`subkind`» follows the same :ref:`identity
+principle <identity>`, a «:ref:`subkind`» cannot have an mixin type («:ref:`category`», «:ref:`mixin`», «:ref:`rolemixin`») as a descendant, i.e., a direct or indirect subtype.
 Fragments like the ones below are not allowed:
 
 .. container:: figure

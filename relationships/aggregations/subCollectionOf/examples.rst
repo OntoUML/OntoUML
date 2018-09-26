@@ -2,10 +2,13 @@ Examples
 --------
 
 **EX1:** [caption id="attachment_646" align="alignnone"
-width="860"]\ |image0| SubcollectionOf Relation[/caption] See also
+width="860"]\ |image0| SubcollectionOf Relation[/caption]
 
--  `Part-Whole Relation </ufo/wiki/part-whole-relation/>`__
--  `MemberOf Relation </ufo/wiki/part-whole-relation/memberof/>`__
+
+See also
+
+-  :ref:`part-whole`
+-  «:ref:`memberOf`»
 
 **Quoted from:** GUIZZARDI, Giancarlo. *Ontological Foundations for
 Structural Conceptual Models.* Enschede: CTIT, Telematica Instituut,

@@ -1,27 +1,23 @@
 Constraints
 -----------
 
-**C1:** A «Kind» cannot have an identity provider («Kind», «Collective»,
-«Quantity», «Relator», «Mode» and «Quantity») as its direct or indirect
-super-type.
+**C1:** A «:ref:`kind`» cannot have an :ref:`identity <identity>` provider («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
 
 .. container:: figure
 
    |Kind forbidden 1|
 
-**C2:** A «Kind» cannot have types that inherit identity («Subkind»,
-«Role» and «Phase») as its direct or indirect super-type.
+**C2:** A «:ref:`kind`» cannot have types that inherit :ref:`identity <identity>` («:ref:`subkind`»,
+«:ref:`role`» and «:ref:`phase`») as its direct or indirect super-type.
 
 .. container:: figure
 
    |Kind forbidden 2|
 
-**C3:** A «Kind» cannot have types that aggregate individuals with
-different identity principles («Category», «RoleMixin» and «Mixin») as
-its direct or indirect subtypes.
+**C3:** A «:ref:`kind`» cannot have types that aggregate individuals with
+:ref:`different identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
 
-**C4:** As a rigid type, a «Kind» cannot have any anti-rigid type
-(«Role», «RoleMixin» and «Phase») as its direct or indirect super-type.
+**C4:** As a :ref:`rigid <rigidity>` type, a «:ref:`Kind`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`» and «:ref:`phase`») as its direct or indirect super-type.
 
 
 .. |Kind forbidden 1| image:: _images/ontouml_kind-forbidden-1.png
