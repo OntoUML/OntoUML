@@ -11,6 +11,12 @@ OntoUML specification
    relationships/index
    patterns/index
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Meta
+
+   contributing
+
 
 
 Indices and tables
