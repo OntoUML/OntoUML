@@ -3,8 +3,9 @@ OntoUML specification
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
 
+   intro/index
    theory/index
    classes/index
    relationships/index
