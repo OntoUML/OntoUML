@@ -19,7 +19,7 @@ Constraints
 
    |Quality forbidden 2|
 
-**C4:** Qualtities cannot have as descendants the following types: «:ref:`kind`», «:ref:`quantiy`», «:ref:`collective`», «:ref:`rolemixin`», «:ref:`category`», «:ref:`mixin`», «:ref:`relator`», «:ref:`mode`».
+**C4:** Qualtities cannot have as descendants the following types: «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`rolemixin`», «:ref:`category`», «:ref:`mixin`», «:ref:`relator`», «:ref:`mode`».
 
 .. container:: figure
 
