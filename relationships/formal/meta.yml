@@ -1,0 +1,18 @@
+relationship_stereotype:
+  name: formal
+  directed: false
+  source_end:
+    allowed: *
+    min: 0
+    max: *
+    readOnly: undefined
+  target_end:
+    allowed: *
+    min: 0
+    max: *
+    readOnly: undefined
+  binary_properties:
+    reflexivity: undefined
+    transitivity: undefined
+    symmetry: undefined
+    cyclicity: undefined

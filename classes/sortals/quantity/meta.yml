@@ -1,0 +1,20 @@
+class_stereotype:
+  name: Quantity
+  parent: RigidSortal
+  provides_identity: true
+  identity_principle: simple
+  rigidity: rigid
+  dependency: optional
+  supertypes:
+  - Category
+  - Mixin
+  subtypes:
+  - Subkind
+  - Phase
+  - Role
+  forbidden_associations:
+  - ComponentOf
+  - Derivation
+  - Structuration
+  - SubCollectionOf
+  abstract: undefined

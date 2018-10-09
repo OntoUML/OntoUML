@@ -1,0 +1,21 @@
+class_stereotype:
+  name: Quality
+  parent: Aspect
+  provides_identity: ?
+  identity_principle: single
+  rigidity: rigid
+  dependency: mandatory
+  supertypes:
+  - Category
+  - Mixin
+  subtypes:
+  - Subkind
+  - Role
+  - Phase
+  forbidden_associations:
+  - ComponentOf
+  - SubCollectionOf
+  - MemberOf
+  - SubQuantityOf
+  - Derivation
+  abstract: true

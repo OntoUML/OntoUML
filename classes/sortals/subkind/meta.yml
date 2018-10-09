@@ -1,0 +1,24 @@
+class_stereotype:
+  name: Subkind
+  parent: RigidSortal
+  provides_identity: false
+  identity_principle: simple
+  rigidity: rigid
+  dependency: optional
+  supertypes:
+  - Kind
+  - Subkind
+  - Collective
+  - Quantity
+  - Relator
+  - Quality
+  - Mode
+  - Category
+  - Mixin
+  subtypes:
+  - Subkind
+  - Phase
+  - Role
+  forbidden_associations:
+  - Structuration
+  abstract: undefined

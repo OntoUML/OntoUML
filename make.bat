@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=OntoUMLspecification
+set SPHINXPROJ=OntoUML-Specification
 
 if "%1" == "" goto help
 

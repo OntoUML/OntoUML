@@ -1,0 +1,18 @@
+relationship_stereotype:
+  name: material
+  directed: false
+  source_end:
+    allowed: *
+    min: 1
+    max: *
+    readOnly: undefined
+  target_end:
+    allowed: *
+    min: 1
+    max: *
+    readOnly: undefined
+  binary_properties:
+    reflexivity: undefined
+    transitivity: false
+    symmetry: undefined
+    cyclicity: undefined

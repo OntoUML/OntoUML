@@ -1,0 +1,18 @@
+aggregation_stereotype:
+  name: componentOf
+  directed: true
+  source_end:
+    allowed: *
+    min: 1
+    max: *
+    readOnly: undefined
+  target_end:
+    allowed: *
+    min: 0
+    max: *
+    readOnly: undefined
+  binary_properties:
+    reflexivity: false
+    transitivity: false
+    symmetry: false
+    cyclicity: false

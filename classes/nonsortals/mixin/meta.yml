@@ -1,0 +1,23 @@
+class_stereotype:
+  name: Mixin
+  parent: SemiRigidNonSortal
+  provides_identity: true
+  identity_principle: multiple
+  rigidity: semirigid
+  dependency: optional
+  supertypes:
+  - Mixin
+  subtypes:
+  - Subkind
+  - Kind
+  - Collective
+  - Quantity
+  - Category
+  - Mixin
+  - Role
+  - Phase
+  - RoleMixin
+  - Relator
+  forbidden_associations:
+  - Structuration
+  abstract: true

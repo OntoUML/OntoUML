@@ -1,0 +1,20 @@
+class_stereotype:
+  name: Relator
+  parent: RigidSortal
+  provides_identity: true
+  identity_principle: simple
+  rigidity: rigid
+  dependency: mandatory
+  supertypes:
+  - Category
+  - Mixin
+  subtypes:
+  - Subkind
+  - Phase
+  - Role
+  forbidden_associations:
+  - ComponentOf
+  - Structuration
+  - SubCollectionOf
+  - SubQuantityOf
+  abstract: undefined

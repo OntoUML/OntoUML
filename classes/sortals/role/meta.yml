@@ -1,0 +1,23 @@
+class_stereotype:
+  name: Role
+  parent: AntiRigidSortal
+  provides_identity: false
+  identity_principle: simple
+  rigidity: antirigid
+  dependency: mandatory
+  supertypes:
+  - Kind
+  - Subkind
+  - Collective
+  - Quantity
+  - Relator
+  - Quality
+  - Mode
+  - Role
+  - RoleMixin
+  - Mixin
+  subtypes:
+  - Role
+  forbidden_associations:
+  - Structuration
+  abstract: undefined

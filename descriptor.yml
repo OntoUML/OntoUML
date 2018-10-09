@@ -1,0 +1,23 @@
+name: OntoUML specification
+subconcerns:
+  - name: Introduction
+    location: intro
+  - name: Theoretical foundations
+    location: theory
+  - name: Class stereotypes
+    location: class
+  - name: Relationship stereotypes
+    location: relationship
+  - name: Patterns
+    location: patterns
+cross-cutting:
+  - name: Definition
+    location: definition.rst
+  - name: Constraints
+    location: constraints.rst
+  - name: Common questions
+    location: faq.rst
+  - name: Examples
+    location: examples.rst
+  - name: Metamodel fragment
+    location: meta.yml

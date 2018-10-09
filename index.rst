@@ -1,15 +1,27 @@
-.. OntoUML specification documentation master file, created by
-   sphinx-quickstart on Sat Aug  4 21:08:50 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+OntoUML specification
+=====================
 
-Welcome to OntoUML specification's documentation!
-=================================================
+Welcome to the documentation of :ref:`ontouml` ontology-driven conceptual modelling language based on upper ontology :ref:`ufo`. We welcome any form of :ref:`contribution <contributing>` and questions that will make this documentation better as it is community-driven hosted on `github.com`_.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
 
+   intro/index
+   theory/index
+   classes/index
+   relationships/index
+   patterns/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Meta
+
+   contributing
+   todo
+
+
+.. _github.com: https://github.com/OntoUML/OntoUML
 
 
 Indices and tables

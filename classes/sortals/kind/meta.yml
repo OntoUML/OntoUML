@@ -1,0 +1,20 @@
+class_stereotype:
+  name: Kind
+  parent: RigidSortal
+  provides_identity: true
+  identity_principle: simple
+  rigidity: rigid
+  dependency: optional
+  supertypes:
+  - Category
+  - Mixin
+  subtypes:
+  - Subkind
+  - Phase
+  - Role
+  forbidden_associations:
+  - Derivation
+  - Structuration
+  - SubCollectionOf
+  - SubQuantityOf
+  abstract: undefined
