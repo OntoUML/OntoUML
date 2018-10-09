@@ -1,6 +1,7 @@
 Examples
 --------
 
+.. _formal-examples-ex1:
 **EX1:** Fragment from OntoEmerge, an ontology about Emergency Plans (`see more <http://www.menthor.net/ontoemerge.html>`__):
 
 .. container:: figure

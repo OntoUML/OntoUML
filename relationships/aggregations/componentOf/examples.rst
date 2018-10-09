@@ -1,6 +1,7 @@
 Examples
 --------
 
+.. _componentOf-examples-ex1:
 **EX1:** |Functional Complex|
 
 See also :ref:`part-whole`.

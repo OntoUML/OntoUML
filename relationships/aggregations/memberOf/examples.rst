@@ -1,6 +1,7 @@
 Examples
 --------
 
+.. _memberOf-examples-ex1:
 **EX1:** |MemberOf Relation|
 
 See also :ref:`part-whole`.

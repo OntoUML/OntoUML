@@ -1,6 +1,7 @@
 Examples
 --------
 
+.. _role-examples-ex1:
 **EX1:** Conceptual model about roles in the Catholic clergy (`see
 more <http://www.menthor.net/clergy.html>`__):
 
@@ -8,6 +9,7 @@ more <http://www.menthor.net/clergy.html>`__):
 
    |Example Catholic Clergy|
 
+.. _role-examples-ex2:
 **EX2:** Fragment from an ontological analysis of a Human Genome scheme
 (`see more <http://www.menthor.net/normative-acts.html>`__):
 
@@ -20,6 +22,7 @@ more <http://www.menthor.net/clergy.html>`__):
    **Errata:** No material derivation, bad material multiplicity, bad
    memberOf multiplicity
 
+.. _role-examples-ex3:
 **EX3:** Fragment of the OntoUML Org Ontology (O3) (`see
 more <http://www.menthor.net/o3.html>`__):
 

@@ -1,13 +1,15 @@
 Examples
 --------
 
+.. _material-examples-ex1:
 **EX1:**
 
 .. container:: figure
 
    |Example marriage|
 
-  **EX2:**
+.. _material-examples-ex2:
+**EX2:**
 
 .. container:: figure
 

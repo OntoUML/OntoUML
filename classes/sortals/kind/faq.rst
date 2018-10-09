@@ -1,8 +1,10 @@
 Common questions
 ----------------
 
+.. _kind-faq-q1:
 **Q1:** If a «:ref:`kind`» is relationally independent, does that mean we cannot define relations for theses types?
 
+.. _kind-faq-a1:
 **A1:** No! When we say that a «:ref:`kind`» is relationally independent, we mean that it does not necessarily require a relation to be defined, like a «:ref:`role`» does. Here is an example in which a «:ref:`kind`» has a :ref:`dependency <dependency>`.
 
 .. container:: figure

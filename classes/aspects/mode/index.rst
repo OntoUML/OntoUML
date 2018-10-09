@@ -6,11 +6,11 @@ Mode
 .. _mode-definition:
 .. include:: definition.rst
 
-.. _mode-constraints
+.. _mode-constraints:
 .. include:: constraints.rst
 
-.. _mode-faq
+.. _mode-faq:
 .. include:: faq.rst
 
-.. _mode-examples
+.. _mode-examples:
 .. include:: examples.rst

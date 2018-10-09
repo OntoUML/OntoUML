@@ -1,6 +1,7 @@
 Examples
 --------
 
+.. _mediation-examples-ex1:
 **EX1:**
 
 .. container:: figure
