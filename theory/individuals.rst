@@ -45,7 +45,10 @@ We represent generalizations are lines with arrow heads on the end connected to 
 
 When we build a model in OntoUML we are formally defining types by specifying the characteristics they impose on their instances.
 
-**IMPORTANT**: OntoUML *ONLY* supports the specification of *TYPES*. Therefore, you *CANNOT* specify an *INDIVIDUAL* in an OntoUML model. Making an analogy to regular UML, you can create Class Diagrams, but there is no Object diagram.
+.. warning::
+
+   OntoUML *ONLY* supports the specification of *TYPES*. Therefore, you *CANNOT* specify an *INDIVIDUAL* in an OntoUML model. Making an analogy to regular UML, you can create Class Diagrams, but there is no Object diagram.
+
 
 .. |Examples of types| image:: _images/ontouml_types-examples.png
 .. |Generalization| image:: _images/ontouml_generalization.png
