@@ -3,6 +3,9 @@
 Category
 ========
 
+.. _category-stereotype:
+.. stereotype:: meta.yml
+
 .. _category-definition:
 .. include:: definition.rst
 

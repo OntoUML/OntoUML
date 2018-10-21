@@ -3,6 +3,9 @@
 Quantity
 ========
 
+.. _quantity-stereotype:
+.. stereotype:: meta.yml
+
 .. _quantity-definition:
 .. include:: definition.rst
 

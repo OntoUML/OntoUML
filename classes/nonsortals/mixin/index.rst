@@ -3,6 +3,9 @@
 Mixin
 =====
 
+.. _mixin-stereotype:
+.. stereotype:: meta.yml
+
 .. _mixin-definition:
 .. include:: definition.rst
 

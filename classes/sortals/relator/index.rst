@@ -3,6 +3,9 @@
 Relator
 =======
 
+.. _relator-stereotype:
+.. stereotype:: meta.yml
+
 .. _relator-definition:
 .. include:: definition.rst
 

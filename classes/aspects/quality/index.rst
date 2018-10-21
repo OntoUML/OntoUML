@@ -3,6 +3,9 @@
 Quality
 =======
 
+.. _quality-stereotype:
+.. stereotype:: meta.yml
+
 .. _quality-definition:
 .. include:: definition.rst
 

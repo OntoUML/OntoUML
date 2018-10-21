@@ -3,6 +3,9 @@
 Kind
 ====
 
+.. _kind-stereotype:
+.. stereotype:: meta.yml
+
 .. _kind-definition:
 .. include:: definition.rst
 

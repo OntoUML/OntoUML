@@ -3,6 +3,9 @@
 Role
 ====
 
+.. _role-stereotype:
+.. stereotype:: meta.yml
+
 .. _role-definition:
 .. include:: definition.rst
 

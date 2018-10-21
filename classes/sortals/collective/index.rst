@@ -3,6 +3,9 @@
 Collective
 ==========
 
+.. _collective-stereotype:
+.. stereotype:: meta.yml
+
 .. _collective-definition:
 .. include:: definition.rst
 
