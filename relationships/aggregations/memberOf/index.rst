@@ -3,6 +3,9 @@
 MemberOf
 ========
 
+.. _memberOf-stereotype:
+.. stereotype:: meta.yml
+
 .. _memberOf-definition:
 .. include:: definition.rst
 

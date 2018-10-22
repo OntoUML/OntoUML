@@ -3,6 +3,9 @@
 Structuration
 =============
 
+.. _structuration-stereotype:
+.. stereotype:: meta.yml
+
 .. _structuration-definition:
 .. include:: definition.rst
 

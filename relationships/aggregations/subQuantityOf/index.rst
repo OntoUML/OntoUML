@@ -3,6 +3,9 @@
 SubQuantityOf
 =============
 
+.. _subQuantityOf-stereotype:
+.. stereotype:: meta.yml
+
 .. _subQuantityOf-definition:
 .. include:: definition.rst
 

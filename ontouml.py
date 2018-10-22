@@ -3,6 +3,7 @@ from docutils.parsers.rst import Directive, directives
 import sphinx
 import os
 import yaml
+from sphinx.util import logging
 
 
 def add_df_item(root, term, *contents):
@@ -20,7 +21,6 @@ def yes_no(b):
 # TODO: make cross linking by default
 def make_class_stereotype(data):
     x = nodes.definition_list()
-
     add_df_item(x, 'Category', nodes.paragraph(text=data['parent']))
     add_df_item(x, 'Provides identity', nodes.paragraph(text=yes_no(data['provides_identity'])))
     add_df_item(x, 'Identity principle', nodes.paragraph(text=data['identity_principle']))
@@ -33,12 +33,34 @@ def make_class_stereotype(data):
     return x
 
 
+def make_relationship_end(data):
+    x = nodes.definition_list()
+    if data['allowed'] != '*':
+        add_df_item(x, 'Allowed', nodes.paragraph(text=', '.join(data['allowed'])))
+    low = data['min']
+    high = data['max']
+    add_df_item(x, 'Multiplicity', nodes.paragraph(text=f'{low} - {high}'))
+    if data['readOnly'] != 'undefined':
+        add_df_item(x, '{readOnly}', nodes.paragraph(text=data['readOnly']))
+    return x
+
+
+def make_binary_properties(data):
+    x = nodes.definition_list()
+    for key, value in data.items():
+        if value == 'undefined':
+            continue
+        add_df_item(x, key.title(), nodes.paragraph(text=yes_no(value)))
+    return x
+
+
 def make_relationship_stereotype(data):
-    ... # TODO
-
-
-def make_aggregation_stereotype(data):
-    ... # TODO
+    x = nodes.definition_list()
+    add_df_item(x, 'Directed', nodes.paragraph(text=yes_no(data['directed'])))
+    add_df_item(x, 'Source end', make_relationship_end(data['source_end']))
+    add_df_item(x, 'Target end', make_relationship_end(data['target_end']))
+    add_df_item(x, 'Binary properties', make_binary_properties(data['binary_properties']))
+    return x
 
 
 class StereotypeDirective(Directive):
@@ -51,6 +73,7 @@ class StereotypeDirective(Directive):
 
     def run(self):
         env = self.state.document.settings.env
+        logger = logging.getLogger(__name__)
 
         doc_folder = env.srcdir
         this_folder = os.path.split(os.path.relpath(self.state.document.current_source, doc_folder))[0]
@@ -60,8 +83,8 @@ class StereotypeDirective(Directive):
             with open(file) as f:
                 data = yaml.load(f)
         except:
-            # TODO: log error while reading file
-            data = {}
+            logger.warning(f'Could not read file {file}')
+            return [nodes.warning(nodes.paragraph(text='Unable to process file!'))]
 
         result = []
         if 'class_stereotype' in data:
@@ -69,9 +92,9 @@ class StereotypeDirective(Directive):
         elif 'relationship_stereotype' in data:
             result.append(make_relationship_stereotype(data['relationship_stereotype']))
         elif 'aggregation_stereotype' in data:
-            result.append(make_aggregation_stereotype(data['aggregation_stereotype']))
+            result.append(make_relationship_stereotype(data['aggregation_stereotype']))
         else:
-            ...  # TODO: log problem
+            logger.warning(f'Unknown entity in {file}')
         return result
 
 

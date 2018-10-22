@@ -2,14 +2,14 @@ aggregation_stereotype:
   name: componentOf
   directed: true
   source_end:
-    allowed: *
+    allowed: "*"
     min: 1
-    max: *
+    max: "*"
     readOnly: undefined
   target_end:
-    allowed: *
+    allowed: "*"
     min: 0
-    max: *
+    max: "*"
     readOnly: undefined
   binary_properties:
     reflexivity: false

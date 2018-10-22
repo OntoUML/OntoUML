@@ -3,6 +3,9 @@
 ComponentOf
 ===========
 
+.. _componentOf-stereotype:
+.. stereotype:: meta.yml
+
 .. _componentOf-definition:
 .. include:: definition.rst
 

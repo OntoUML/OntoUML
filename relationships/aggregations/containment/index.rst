@@ -3,6 +3,9 @@
 Containment
 ===========
 
+.. _containment-stereotype:
+.. stereotype:: meta.yml
+
 .. _containment-definition:
 .. include:: definition.rst
 

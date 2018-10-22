@@ -2,14 +2,14 @@ relationship_stereotype:
   name: formal
   directed: false
   source_end:
-    allowed: *
+    allowed: "*"
     min: 0
-    max: *
+    max: "*"
     readOnly: undefined
   target_end:
-    allowed: *
+    allowed: "*"
     min: 0
-    max: *
+    max: "*"
     readOnly: undefined
   binary_properties:
     reflexivity: undefined

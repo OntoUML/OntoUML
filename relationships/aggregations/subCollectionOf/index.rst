@@ -3,6 +3,9 @@
 SubCollectionOf
 ===============
 
+.. _subCollectionOf-stereotype:
+.. stereotype:: meta.yml
+
 .. _subCollectionOf-definition:
 .. include:: definition.rst
 

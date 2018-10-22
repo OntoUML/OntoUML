@@ -3,6 +3,9 @@
 Characterization
 ================
 
+.. _characterization-stereotype:
+.. stereotype:: meta.yml
+
 .. _characterization-definition:
 .. include:: definition.rst
 
