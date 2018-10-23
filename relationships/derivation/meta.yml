@@ -2,12 +2,14 @@ relationship_stereotype:
   name: derivation
   directed: true
   source_end:
-    allowed: Relator
+    allowed:
+    - Relator
     min: 1
     max: 1
     readOnly: undefined
   target_end:
-    allowed: material
+    allowed:
+    - material
     min: 1
     max: 1
     readOnly: undefined

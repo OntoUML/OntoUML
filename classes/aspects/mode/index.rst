@@ -3,6 +3,9 @@
 Mode
 ====
 
+.. _mode-stereotype:
+.. stereotype:: meta.yml
+
 .. _mode-definition:
 .. include:: definition.rst
 

@@ -3,6 +3,9 @@
 Derivation
 ==========
 
+.. _derivation-stereotype:
+.. stereotype:: meta.yml
+
 .. _derivation-definition:
 .. include:: definition.rst
 

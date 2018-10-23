@@ -3,6 +3,9 @@
 Material
 ========
 
+.. _material-stereotype:
+.. stereotype:: meta.yml
+
 .. _material-definition:
 .. include:: definition.rst
 

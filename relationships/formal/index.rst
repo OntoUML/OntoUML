@@ -3,6 +3,9 @@
 Formal
 ======
 
+.. _formal-stereotype:
+.. stereotype:: meta.yml
+
 .. _formal-definition:
 .. include:: definition.rst
 

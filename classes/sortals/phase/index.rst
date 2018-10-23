@@ -3,6 +3,9 @@
 Phase
 =====
 
+.. _phase-stereotype:
+.. stereotype:: meta.yml
+
 .. _phase-definition:
 .. include:: definition.rst
 

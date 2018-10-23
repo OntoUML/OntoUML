@@ -3,6 +3,9 @@
 Mediation
 =========
 
+.. _mediation-stereotype:
+.. stereotype:: meta.yml
+
 .. _mediation-definition:
 .. include:: definition.rst
 

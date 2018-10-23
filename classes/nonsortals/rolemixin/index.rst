@@ -3,6 +3,9 @@
 RoleMixin
 =========
 
+.. _rolemixin-stereotype:
+.. stereotype:: meta.yml
+
 .. _rolemixin-definition:
 .. include:: definition.rst
 

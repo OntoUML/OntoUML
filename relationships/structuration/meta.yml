@@ -5,7 +5,7 @@ relationship_stereotype:
     allowed:
     - Quality
     min: 0
-    max: *
+    max: "*"
     readOnly: undefined
   target_end:
     allowed:

@@ -3,6 +3,9 @@
 Subkind
 =======
 
+.. _subkind-stereotype:
+.. stereotype:: meta.yml
+
 .. _subkind-definition:
 .. include:: definition.rst
 
