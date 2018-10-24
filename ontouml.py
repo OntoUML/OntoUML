@@ -39,7 +39,7 @@ class StereotypeDirective(Directive):
             with open(file) as f:
                 data = yaml.load(f)
         except:
-            logger.warning(f'Could not read file {file}')
+            logger.warning('Could not read file {}'.format(file))
             return [nodes.warning(nodes.paragraph(text='Unable to process file!'))]
 
         result = []
@@ -50,13 +50,13 @@ class StereotypeDirective(Directive):
         elif 'aggregation_stereotype' in data:
             result.append(self.make_relationship_stereotype(data['aggregation_stereotype']))
         else:
-            logger.warning(f'Unknown entity in {file}')
+            logger.warning('Unknown entity in {}'.format(file))
         return result
 
     def ref(self, label, title=None):
         title = title or label
         label = label[0].lower() + label[1:]
-        return f':ref:`{title} <{label}>`'
+        return ':ref:`{} <{}>`'.format(title, label)
 
     def make_ref(self, label, title=None):
         return self.parse(self.ref(label, title))
@@ -85,7 +85,7 @@ class StereotypeDirective(Directive):
             add_df_item(x, 'Allowed', self.parse(', '.join(self.ref(x) for x in data['allowed'])))
         low = data['min']
         high = data['max']
-        add_df_item(x, 'Multiplicity', nodes.paragraph(text=f'{low} - {high}'))
+        add_df_item(x, 'Multiplicity', nodes.paragraph(text='{} - {}'.format(low, high)))
         if data['readOnly'] != 'undefined':
             add_df_item(x, '{readOnly}', nodes.paragraph(text=data['readOnly']))
         return x
