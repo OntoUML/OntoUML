@@ -19,7 +19,7 @@ make html
 
 ## Contributing
 
-TODO
+You are free to contribute in a standard way for GitHub - via discussions in [issues](https://guides.github.com/features/issues/) and by proposing changes in [pull requests](https://help.github.com/categories/collaborating-with-issues-and-pull-requests/). For more, read provided [contributing guidelines](contributing.rst).
 
 ## Acknowledgements
 
