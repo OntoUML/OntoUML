@@ -1,7 +1,7 @@
 class_stereotype:
   name: Category
   parent: RigidNonSortal
-  provides_identity: true
+  provides_identity: false
   identity_principle: multiple
   rigidity: rigid
   dependency: optional

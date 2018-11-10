@@ -1,9 +1,9 @@
 class_stereotype:
   name: RoleMixin
   parent: AntiRigidNonSortal
-  provides_identity: true
+  provides_identity: false
   identity_principle: multiple
-  rigidity: semirigid
+  rigidity: antirigid
   dependency: mandatory
   supertypes:
   - Mixin
