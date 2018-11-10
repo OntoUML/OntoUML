@@ -15,6 +15,6 @@ aggregation_stereotype:
     readOnly: undefined
   binary_properties:
     reflexivity: false
-    transitivity: false
+    transitivity: true
     symmetry: false
     cyclicity: false
