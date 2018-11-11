@@ -14,6 +14,7 @@ class_stereotype:
   - Collective
   - Quantity
   - Relator
+  - Category
   forbidden_associations:
   - Structuration
   abstract: true
