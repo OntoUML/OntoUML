@@ -11,8 +11,6 @@ class_stereotype:
   - Collective
   - Quantity
   - Relator
-  - Quality
-  - Mode
   - Role
   - RoleMixin
   - Mixin
