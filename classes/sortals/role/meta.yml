@@ -9,6 +9,7 @@ class_stereotype:
   - Kind
   - Subkind
   - Collective
+  - Phase
   - Quantity
   - Relator
   - Role
