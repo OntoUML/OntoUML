@@ -12,6 +12,7 @@ class_stereotype:
   - Quantity
   - Relator
   - Phase
+  - Role
   - Mixin
   subtypes:
   - Phase
