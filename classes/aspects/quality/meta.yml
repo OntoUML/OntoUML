@@ -1,7 +1,7 @@
 class_stereotype:
   name: Quality
   parent: Aspect
-  provides_identity: ?
+  provides_identity: true
   identity_principle: single
   rigidity: rigid
   dependency: mandatory
