@@ -10,7 +10,6 @@
         - relationships/formal/
         - relationships/material/
         - relationships/mediation/
-        - relationships/structuration/
     class_specification_paths:
         - classes/sortals/kind/
         - classes/sortals/subkind/
