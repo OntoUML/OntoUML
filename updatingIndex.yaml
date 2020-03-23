@@ -1,0 +1,26 @@
+﻿verifications:
+    relationship_specification_paths:
+        - relationships/aggregations/componentOf/
+        - relationships/aggregations/containment/
+        - relationships/aggregations/memberOf/
+        - relationships/aggregations/subCollectionOf/
+        - relationships/aggregations/subQuantityOf/
+        - relationships/characterization/
+        - relationships/derivation/
+        - relationships/formal/
+        - relationships/material/
+        - relationships/mediation/
+        - relationships/structuration/
+    class_specification_paths:
+        - classes/sortals/kind/
+        - classes/sortals/subkind/
+        - classes/sortals/collective/
+        - classes/sortals/phase/
+        - classes/sortals/quantity/
+        - classes/sortals/relator/
+        - classes/sortals/role/
+        - classes/aspects/mode/
+        - classes/aspects/quality/
+        - classes/nonsortals/category/
+        - classes/nonsortals/mixin/
+        - classes/nonsortals/rolemixin/
