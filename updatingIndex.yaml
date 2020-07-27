@@ -1,4 +1,4 @@
-﻿verifications:
+verifications:
     relationship_specification_paths:
         - relationships/aggregations/componentOf/
         - relationships/aggregations/containment/
@@ -23,3 +23,50 @@
         - classes/nonsortals/category/
         - classes/nonsortals/mixin/
         - classes/nonsortals/rolemixin/
+documentationReferences:
+    classes:
+        Category:
+            https://ontouml.readthedocs.io/en/latest/classes/nonsortals/category/index.html
+        Collective:
+            https://ontouml.readthedocs.io/en/latest/classes/sortals/collective/index.html
+        Kind:
+            https://ontouml.readthedocs.io/en/latest/classes/sortals/kind/index.html
+        Mixin:
+            https://ontouml.readthedocs.io/en/latest/classes/nonsortals/mixin/index.html
+        Mode:
+            https://ontouml.readthedocs.io/en/latest/classes/aspects/mode/index.html
+        Phase:
+            https://ontouml.readthedocs.io/en/latest/classes/sortals/phase/index.html
+        Quality:
+            https://ontouml.readthedocs.io/en/latest/classes/aspects/quality/index.html
+        Quantity:
+            https://ontouml.readthedocs.io/en/latest/classes/sortals/quantity/index.html
+        Realtor:
+            https://ontouml.readthedocs.io/en/latest/classes/sortals/relator/index.html
+        Role:
+            https://ontouml.readthedocs.io/en/latest/classes/sortals/role/index.html
+        Rolemixin:
+            https://ontouml.readthedocs.io/en/latest/classes/nonsortals/rolemixin/index.html
+        Subkind:
+            https://ontouml.readthedocs.io/en/latest/classes/sortals/subkind/index.html
+    relationships:
+        Characterization:
+            https://ontouml.readthedocs.io/en/latest/relationships/characterization/index.html
+        ComponentOf:
+            https://ontouml.readthedocs.io/en/latest/relationships/aggregations/componentOf/index.html
+        Containment:
+            https://ontouml.readthedocs.io/en/latest/relationships/aggregations/containment/index.html
+        Derivation:
+            https://ontouml.readthedocs.io/en/latest/relationships/derivation/index.html
+        Formal:
+            https://ontouml.readthedocs.io/en/latest/relationships/formal/index.html
+        Material:
+            https://ontouml.readthedocs.io/en/latest/relationships/material/index.html
+        Mediation:
+            https://ontouml.readthedocs.io/en/latest/relationships/mediation/index.html
+        MemberOf:
+            https://ontouml.readthedocs.io/en/latest/relationships/aggregations/memberOf/index.html
+        SubCollectionOf:
+            https://ontouml.readthedocs.io/en/latest/relationships/aggregations/subCollectionOf/index.html
+        SubQuantityOf:
+            https://ontouml.readthedocs.io/en/latest/relationships/aggregations/subQuantityOf/index.html
