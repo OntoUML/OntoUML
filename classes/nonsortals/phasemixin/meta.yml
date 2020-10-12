@@ -1,0 +1,16 @@
+class_stereotype:
+  name: PhaseMixin
+  parent: AntiRigidNonSortal
+  provides_identity: false
+  identity_principle: multiple
+  rigidity: antirigid
+  dependency: mandatory
+  supertypes:
+  - Mixin
+  - PhaseMixin
+  subtypes:
+  - Phase
+  - PhaseMixin
+  forbidden_associations:
+  - Structuration
+  abstract: true

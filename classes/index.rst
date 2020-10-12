@@ -20,6 +20,7 @@ Class stereotypes
    :caption: NonSortals:
 
    nonsortals/category/index
+   nonsortals/phasemixin/index
    nonsortals/rolemixin/index
    nonsortals/mixin/index
 
