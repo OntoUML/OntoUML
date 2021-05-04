@@ -11,6 +11,7 @@ Welcome to the documentation of :ref:`ontouml` ontology-driven conceptual modell
    theory/index
    classes/index
    relationships/index
+   anti-patterns/index
    patterns/index
 
 .. toctree::
