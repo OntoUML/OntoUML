@@ -3,7 +3,7 @@
 Types and Individuals
 =====================
 
-OntoUML is built upon the fundamental distinction between **Types** and **Individuals**. And that is because we like classify things.
+OntoUML is built upon the fundamental distinction between **Types** and **Individuals**. And that is because we like classifying things.
 
 **Types** are abstract *things* we create to help us perceive and classify the world around us. These *things* work as bundles of characteristics we can expect to encounter in other particular *things* - the **individuals**.
 
@@ -27,7 +27,7 @@ Now, let's see some other examples of types and individuals them:
 -  **Operating System**: Windows, OS X, Ubuntu
 -  **Company**: Apple, Samsung, Microsoft, Facebook, Nokia
 
-If you pay close attention on the list, you will see that we included Messi's name as an instance of Person and Football Player. And that is fine! In fact, it very common that an individual simultaneously instantiates many types. Me, for example, besides being a Person, I'm a Software Developer, a Brazilian, an Adult and a Man.
+If you pay close attention to the list, you will see that we've included Messi's name as an instance of Person and Football Player. And that is fine! In fact, it very common that an individual simultaneously instantiates many types. Me, for example, besides being a Person, I'm a Software Developer, a Brazilian, an Adult and a Man.
 
 Whenever we refer to the term **extension of a type**, we mean every individual that instantiates that type in a particular instant of time. As an example, let's assume that the type Web Browser. Last year, we could say that its extension contained 5 individuals: Chrome, Internet Explorer, Safari, Firefox, Opera. This year, however, after Microsoft Edge's release, the extension of Browser grew by 1.
 
