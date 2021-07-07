@@ -19,6 +19,7 @@ This list of anti-patterns was created to help modellers to avoid creating model
    MixRig/index
    MultDep/index
    PartOver/index
+   RelComp/index
    RelOver/index
    RelRig/index
    RelSpec/index
