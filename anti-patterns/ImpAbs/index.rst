@@ -10,7 +10,7 @@ Type
 	Logical; Scope
 
 Feature
-Association
+	Association
 	
 Description
 	A given association R characterizes an ImpAbs occurrence if at least one of the following holds: (i) R’s source end upper bound multiplicity is equal or greater than 2 and the Class connected to it has 2 or more subtypes; (ii) R’s target end upper bound multiplicity is equal or greater than 2 and the Class connected to it has 2 or more subtypes.
