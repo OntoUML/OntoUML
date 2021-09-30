@@ -13,6 +13,8 @@ class_stereotype:
   - Relator
   - Category
   - Mixin
+  - Mode
+  - Quality
   subtypes:
   - Subkind
   - Phase
