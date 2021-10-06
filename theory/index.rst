@@ -8,5 +8,3 @@ Theory
    individuals
    identity
    rigidity
-   dependency
-   objects_events
