@@ -19,7 +19,6 @@ Welcome to the documentation of :ref:`ontouml` ontology-driven conceptual modell
    :caption: Meta
 
    contributing
-   todo
 
 
 .. _github.com: https://github.com/OntoUML/OntoUML

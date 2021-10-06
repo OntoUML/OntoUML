@@ -1,6 +1,4 @@
 Examples
 --------
 
-.. todo::
-
-   To be added ...
+*No examples yet...*
