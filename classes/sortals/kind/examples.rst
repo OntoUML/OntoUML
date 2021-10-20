@@ -2,14 +2,14 @@ Examples
 --------
 
 .. _kind-examples-ex1:
-**EX1:** Fragment from the Configuration Management Task Ontology (`see more <http://www.menthor.net/cmto.html>`__):
+**EX1:** Fragment from the Configuration Management Task Ontology (`see more <http://web.archive.org/web/20171008151908/http://www.menthor.net/cmto.html>`__):
 
 .. container:: figure
 
    |Example MTO|
 
 .. _kind-examples-ex2:
-**EX2:** Fragment from the OntoUML Org Ontology (O3) (`see more <http://www.menthor.net/o3.html>`__):
+**EX2:** Fragment from the OntoUML Org Ontology (O3) (`see more <http://web.archive.org/web/20171008152055/http://www.menthor.net/o3.html>`__):
 
 .. container:: figure
 

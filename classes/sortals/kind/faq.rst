@@ -11,6 +11,6 @@ Common questions
 
    |Example O1|
 
-This example was extracted from the Software Requirements Reference Ontology (SRRO). Click `here <http://www.menthor.net/srro.html>`__ to take a look at it.
+This example was extracted from the Software Requirements Reference Ontology (SRRO). Click `here <http://web.archive.org/web/20171008152212/http://www.menthor.net/srro.html>`__ to take a look at it.
 
 .. |Example O1| image:: _images/ontouml_kind_example_o1.png

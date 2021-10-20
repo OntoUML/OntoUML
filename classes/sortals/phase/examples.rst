@@ -2,7 +2,7 @@ Examples
 --------
 
 .. _phase-examples-ex1:
-**EX1:** Conceptual model about Brazilian Universities (`see more <http://www.menthor.net/university.html>`__):
+**EX1:** Conceptual model about Brazilian Universities (`see more <http://web.archive.org/web/20171007171848/http://www.menthor.net/university.html>`__):
 
 .. container:: figure
 
