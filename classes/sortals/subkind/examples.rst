@@ -10,7 +10,7 @@ Examples
 
 .. _subkind-examples-ex2:
 **EX2:** Fragment from the Normative Acts Ontology (`see
-more <http://www.menthor.net/normative-acts.html>`__):
+more <http://web.archive.org/web/20171007171607/http://www.menthor.net/normative-acts.html>`__):
 
 .. container:: figure
 
@@ -18,7 +18,7 @@ more <http://www.menthor.net/normative-acts.html>`__):
 
 .. _subkind-examples-ex3:
 **EX3:** Fragment of a conceptual model about Brazilian Universities
-(`see more <http://www.menthor.net/university.html>`__):
+(`see more <http://web.archive.org/web/20171007171848/http://www.menthor.net/university.html>`__):
 
 .. container:: figure
 
