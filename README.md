@@ -24,5 +24,3 @@ You are free to contribute in a standard way for GitHub - via discussions in [is
 ## Acknowledgements
 
 Making OntoUML documentation evolvable via Sphinx and custom extensions was support by FIT CTU in Prague.
-
-[<img src="https://fit.cvut.cz/sites/default/files/PR/information_technology.jpg" width="420">](https://fit.cvut.cz/en)
