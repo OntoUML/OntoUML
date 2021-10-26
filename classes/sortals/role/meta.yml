@@ -17,6 +17,7 @@ class_stereotype:
   - Mixin
   subtypes:
   - Role
+  - Phase
   forbidden_associations:
   - Structuration
   abstract: undefined
