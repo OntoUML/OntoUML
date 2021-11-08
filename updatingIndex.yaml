@@ -23,6 +23,7 @@ verifications:
         - classes/nonsortals/category/
         - classes/nonsortals/mixin/
         - classes/nonsortals/rolemixin/
+        - classes/nonsortals/phasemixin/
 documentationReferences:
     classes:
         Category:
