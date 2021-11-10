@@ -18,6 +18,8 @@ class_stereotype:
   - Phase
   - RoleMixin
   - Relator
+  - Quality
+  - Mode
   forbidden_associations:
   - Structuration
   abstract: true
