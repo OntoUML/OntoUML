@@ -14,6 +14,7 @@ class_stereotype:
   - Phase
   - Role
   - Mixin
+  - PhaseMixin
   subtypes:
   - Phase
   - Role
