@@ -17,6 +17,7 @@ class_stereotype:
   - Role
   - Phase
   - RoleMixin
+  - PhaseMixin
   - Relator
   - Quality
   - Mode
