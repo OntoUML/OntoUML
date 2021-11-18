@@ -15,9 +15,10 @@ class_stereotype:
   - Role
   - RoleMixin
   - Mixin
+  - Mode
+  - Quality
   subtypes:
   - Role
-  - Phase
   forbidden_associations:
   - Structuration
   abstract: undefined
