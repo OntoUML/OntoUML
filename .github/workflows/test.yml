@@ -1,0 +1,42 @@
+name: Sphinx Docs
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Test build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        format:
+          - html
+          - epub
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r docs/requirements.txt
+
+    - name: Build Sphinx docs
+      run: |
+        sphinx-build -M ${{ matrix.format }} "docs" "docs/_build" -w log.txt
+        WARNINGS=$(grep -o ': WARNING: ' log.txt | wc -l)
+        if [ $WARNINGS -gt "0" ]; then
+          echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+          echo "!! $WARNINGS WARNINGS DETECTED:"
+          cat log.txt
+          echo "!! $WARNINGS WARNINGS DETECTED (see above)"
+          echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+          exit 1
+        fi

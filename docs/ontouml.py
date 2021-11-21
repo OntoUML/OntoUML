@@ -1,3 +1,6 @@
+# Sphinx extension for OntoUML stereotype tables
+#
+# Made by: Marek Suchánek (github.com/MarekSuchanek)
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 import sphinx

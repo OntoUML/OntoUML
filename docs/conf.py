@@ -19,9 +19,9 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'OntoUML specification'
-copyright = '2018, Marek Suchánek'
-author = 'Marek Suchánek'
+project = 'OntoUML Specification'
+copyright = '2021, OntoUML Team'
+author = 'OntoUML Team (github.com/OntoUML)'
 
 # The short X.Y version
 version = ''
@@ -61,7 +61,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -132,8 +132,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'OntoUMLspecification.tex', 'OntoUML specification Documentation',
-     'Marek Suchánek', 'manual'),
+    (master_doc, 'OntoUMLspecification.tex', 'OntoUML Specification',
+     'OntoUML Team', 'manual'),
 ]
 
 

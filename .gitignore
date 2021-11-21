@@ -1,7 +1,7 @@
 # Python and Sphinx
 env/
 _build/
-__pychache__/
+__pycache__/
 .cache/
-
+.vscode/
 
