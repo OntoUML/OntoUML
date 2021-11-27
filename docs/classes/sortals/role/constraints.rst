@@ -2,6 +2,7 @@ Constraints
 -----------
 
 .. _role-constraints-c1:
+
 **C1:** A «:ref:`role`» must always have **exactly one** :ref:`identity provider <identity>`
 («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`», «:ref:`quantity`») as an ancestor (a direct or indirect super-type). To model our list of roles
 presented above, we should given them :ref:`identity providers <identity>`:
@@ -10,23 +11,28 @@ presented above, we should given them :ref:`identity providers <identity>`:
 
    |Role application 1|
 
+
 .. _role-constraints-c2:
+
 **C2:** Every «:ref:`role`» must be connected, directly or indirectly, to a
-«:ref:`mediation`» relation, since it is a :ref:`relationally dependent <dependency>` construct.
+«:ref:`mediation`» relation, since it is a relationally dependent construct.
 Continuing our example above, we should do the following:
 
 .. container:: figure
 
    |Role application 2|
 
-Remember that you can't defined a :ref:`relational dependency <dependency>` with a minimum
+
+Remember that you can't defined a relational dependency with a minimum
 cardinality of zero. Therefore, the fragment below is wrong!
 
 .. container:: figure
 
    |Role forbidden 1|
 
+
 .. _role-constraints-c3:
+
 **C3:** A «:ref:`role`» cannot be a supertype of a rigid type («:ref:`kind`»,
 «:ref:`subkind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`category`»).
 
@@ -34,13 +40,16 @@ cardinality of zero. Therefore, the fragment below is wrong!
 
    |Role forbidden 2|
 
+
 .. _role-constraints-c4:
+
 **C4:** A «:ref:`role`» cannot be a supertype of a mixin types («:ref:`category`»,
 «:ref:`rolemixin`», «:ref:`mixin`»).
 
 .. container:: figure
 
    |Role forbidden 3|
+
 
 .. |Role application 1| image:: _images/ontouml_role-application-1.png
 .. |Role application 2| image:: _images/ontouml_role-application-2.png

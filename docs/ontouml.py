@@ -40,9 +40,9 @@ class StereotypeDirective(Directive):
 
         try:
             with open(file) as f:
-                data = yaml.load(f)
-        except:
-            logger.warning('Could not read file {}'.format(file))
+                data = yaml.load(f, Loader=yaml.FullLoader)
+        except Exception as e:
+            logger.warning(f'Could not read file {file}: {str(e)}')
             return [nodes.warning(nodes.paragraph(text='Unable to process file!'))]
 
         result = []
@@ -75,7 +75,7 @@ class StereotypeDirective(Directive):
         add_df_item(x, 'Provides identity', self.make_ref('identity', yes_no(data['provides_identity'])))
         add_df_item(x, 'Identity principle', self.make_ref('identity', data['identity_principle']))
         add_df_item(x, 'Rigidity', self.make_ref('rigidity', data['rigidity']))
-        add_df_item(x, 'Dependency', self.make_ref('dependency', data['dependency']))
+        add_df_item(x, 'Dependency', nodes.paragraph(text=data['dependency']))
         add_df_item(x, 'Allowed supertypes', self.parse(', '.join(self.ref(x) for x in data['supertypes'])))
         add_df_item(x, 'Allowed subtypes', self.parse(', '.join(self.ref(x) for x in data['subtypes'])))
         add_df_item(x, 'Forbidden associations', self.parse(', '.join(self.ref(x) for x in data['forbidden_associations'])))

@@ -2,6 +2,7 @@ Examples
 --------
 
 .. _subCollectionOf-examples-ex1:
+
 **EX1:** |SubCollectionOf Relation|
 
 See also

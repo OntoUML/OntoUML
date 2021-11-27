@@ -42,5 +42,5 @@ Refactoring Plans
 Prince Sales, Tiago. (2014). Ontology Validation for Managers.
 		
 .. |Examples| image:: examples.png
-.. |RefactoringPlanA| image:: refactoring_plan_A.png
+.. |RefactoringPlanA| image:: refactoring_plan_a.png
 .. |RefactoringPlanB| image:: refactoring_plan_b.png

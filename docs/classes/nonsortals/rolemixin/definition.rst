@@ -1,7 +1,7 @@
 Definition
 ----------
 
-A «:ref:`rolemixin`» is the equivalent of «:ref:`role`» for types that aggregate instances with :ref:`different identity principles <identity>`. A class stereotyped as «:ref:`rolemixin`» is also an :ref:`anti-rigid <rigidity>` type whose instantiation :ref:`depends on a relational property <dependency>`. Here are some examples:
+A «:ref:`rolemixin`» is the equivalent of «:ref:`role`» for types that aggregate instances with :ref:`different identity principles <identity>`. A class stereotyped as «:ref:`rolemixin`» is also an :ref:`anti-rigid <rigidity>` type whose instantiation depends on a relational property. Here are some examples:
 
 .. container:: figure
 

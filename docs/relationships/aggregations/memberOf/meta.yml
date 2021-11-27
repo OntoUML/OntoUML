@@ -8,9 +8,7 @@ aggregation_stereotype:
     max: "*"
     readOnly: undefined
   target_end:
-    allowed:
-    - Collective
-    - Functional complex
+    allowed: "*"
     min: 1
     max: "*"
     readOnly: undefined

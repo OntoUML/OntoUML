@@ -2,6 +2,7 @@ Examples
 --------
 
 .. _derivation-examples-ex1:
+
 **EX1:** |Example Treatment|
 
 For more examples see «:ref:`relator`», «:ref:`material`», and :ref:`relator-pattern`.

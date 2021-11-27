@@ -1,19 +1,19 @@
 .. _phasemixin:
 
 PhaseMixin
-=========
+==========
 
-.. __phasemixin-stereotype:
+.. _phasemixin-stereotype:
 .. stereotype:: meta.yml
 
-.. __phasemixin-definition:
+.. _phasemixin-definition:
 .. include:: definition.rst
 
-.. __phasemixin-contraints:
+.. _phasemixin-contraints:
 .. include:: constraints.rst
 
-.. __phasemixin-faq:
+.. _phasemixin-faq:
 .. include:: faq.rst
 
-.. __phasemixin-examples:
+.. _phasemixin-examples:
 .. include:: examples.rst

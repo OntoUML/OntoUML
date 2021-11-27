@@ -1,7 +1,7 @@
 Definition
 ----------
 
-The «:ref:`relator`» construct is used to represent **truth-makers** of :ref:`material relations <material>`, i.e., the "things" that must exist in order for two or more individuals to be connected by :ref:`material relations <material>`. Because of this nature, relators are always :ref:`dependent <dependency>` on other individuals to exist. Here are some examples of concepts classified as relators:
+The «:ref:`relator`» construct is used to represent **truth-makers** of :ref:`material relations <material>`, i.e., the "things" that must exist in order for two or more individuals to be connected by :ref:`material relations <material>`. Because of this nature, relators are always dependent on other individuals to exist. Here are some examples of concepts classified as relators:
 
 .. container:: figure
 

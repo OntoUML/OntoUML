@@ -2,17 +2,22 @@ Examples
 --------
 
 .. _subQuantityOf-examples-ex1:
+
 **EX1:** |Typical Subquantity|
 
+
 .. _subQuantityOf-examples-ex2:
+
 **EX2:** |Another Example of Subquantity|
 
+
 .. _subQuantityOf-examples-ex3:
+
 **EX3:** |Examples of Subquantity|
 
 See also
 
--  :ref:`part-whole
+-  :ref:`part-whole`
 -  «:ref:`containment`»
 
 **References:**

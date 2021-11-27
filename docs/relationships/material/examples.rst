@@ -2,18 +2,22 @@ Examples
 --------
 
 .. _material-examples-ex1:
+
 **EX1:**
 
 .. container:: figure
 
    |Example marriage|
 
+
 .. _material-examples-ex2:
+
 **EX2:**
 
 .. container:: figure
 
    |Example supervizor|
+
 
 For more examples see «:ref:`relator`», «:ref:`derivation`», «:ref:`mediation`», and «:ref:`relator-pattern`».
 

@@ -2,12 +2,17 @@ Examples
 --------
 
 .. _containment-examples-ex1:
+
 **EX1:** |Typical Containment|
 
+
 .. _containment-examples-ex2:
+
 **EX2:** |Another Example of Containment|
 
+
 .. _containment-examples-ex3:
+
 **EX3:** |Examples of Containment|
 
 
