@@ -1,6 +1,5 @@
 # OntoUML
 
-[![Build Status](https://travis-ci.org/OntoUML/OntoUML.svg?branch=master)](https://travis-ci.org/OntoUML/OntoUML)
 [![Documentation Status](https://readthedocs.org/projects/ontouml/badge/?version=latest)](https://ontouml.readthedocs.io/en/latest/?badge=latest)
 [![LICENSE](https://img.shields.io/github/license/OntoUML/OntoUML.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/OntoUML/OntoUML.svg)](https://github.com/OntoUML/OntoUML/issues)
@@ -19,7 +18,7 @@ make html
 
 ## Contributing
 
-You are free to contribute in a standard way for GitHub - via discussions in [issues](https://guides.github.com/features/issues/) and by proposing changes in [pull requests](https://help.github.com/categories/collaborating-with-issues-and-pull-requests/). For more, read provided [contributing guidelines](contributing.rst).
+You are free to contribute in a standard way for GitHub - via discussions in [issues](https://guides.github.com/features/issues/) and by proposing changes in [pull requests](https://help.github.com/categories/collaborating-with-issues-and-pull-requests/). For more, read provided [contributing guidelines](CONTRIBUTING.md).
 
 ## Acknowledgements
 

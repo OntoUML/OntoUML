@@ -1,0 +1,19 @@
+aggregation_stereotype:
+  name: memberOf
+  directed: true
+  source_end:
+    allowed:
+    - Collective
+    min: 1
+    max: "*"
+    readOnly: undefined
+  target_end:
+    allowed: "*"
+    min: 1
+    max: "*"
+    readOnly: undefined
+  binary_properties:
+    reflexivity: false
+    transitivity: false
+    symmetry: false
+    cyclicity: false

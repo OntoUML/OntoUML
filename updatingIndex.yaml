@@ -1,29 +1,29 @@
 verifications:
     relationship_specification_paths:
-        - relationships/aggregations/componentOf/
-        - relationships/aggregations/containment/
-        - relationships/aggregations/memberOf/
-        - relationships/aggregations/subCollectionOf/
-        - relationships/aggregations/subQuantityOf/
-        - relationships/characterization/
-        - relationships/derivation/
-        - relationships/formal/
-        - relationships/material/
-        - relationships/mediation/
+        - docs/relationships/aggregations/componentOf/
+        - docs/relationships/aggregations/containment/
+        - docs/relationships/aggregations/memberOf/
+        - docs/relationships/aggregations/subCollectionOf/
+        - docs/relationships/aggregations/subQuantityOf/
+        - docs/relationships/characterization/
+        - docs/relationships/derivation/
+        - docs/relationships/formal/
+        - docs/relationships/material/
+        - docs/relationships/mediation/
     class_specification_paths:
-        - classes/sortals/kind/
-        - classes/sortals/subkind/
-        - classes/sortals/collective/
-        - classes/sortals/phase/
-        - classes/sortals/quantity/
-        - classes/sortals/relator/
-        - classes/sortals/role/
-        - classes/aspects/mode/
-        - classes/aspects/quality/
-        - classes/nonsortals/category/
-        - classes/nonsortals/mixin/
-        - classes/nonsortals/rolemixin/
-        - classes/nonsortals/phasemixin/
+        - docs/classes/sortals/kind/
+        - docs/classes/sortals/subkind/
+        - docs/classes/sortals/collective/
+        - docs/classes/sortals/phase/
+        - docs/classes/sortals/quantity/
+        - docs/classes/sortals/relator/
+        - docs/classes/sortals/role/
+        - docs/classes/aspects/mode/
+        - docs/classes/aspects/quality/
+        - docs/classes/nonsortals/category/
+        - docs/classes/nonsortals/mixin/
+        - docs/classes/nonsortals/rolemixin/
+        - docs/classes/nonsortals/phasemixin/
 documentationReferences:
     classes:
         Category:

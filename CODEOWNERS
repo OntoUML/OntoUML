@@ -1,0 +1,16 @@
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Everything related to the documentation content
+*                     @OntoUML/ontouml-docs-maintainers
+
+
+# Repository "DevOps"
+.gitignore            @MarekSuchanek
+CODEOWNERS            @MarekSuchanek
+.github/*             @MarekSuchanek
+*.py                  @MarekSuchanek
+requirements.txt      @MarekSuchanek
+
+
+# OpenPonk stuff
+updatingIndex.yaml    @OntoUML/openponk-developers
