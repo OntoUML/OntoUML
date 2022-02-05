@@ -14,7 +14,6 @@ class_stereotype:
   - Role
   forbidden_associations:
   - Derivation
-  - Structuration
   - SubCollectionOf
   - SubQuantityOf
   abstract: undefined

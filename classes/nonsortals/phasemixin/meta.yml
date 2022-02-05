@@ -11,6 +11,4 @@ class_stereotype:
   subtypes:
   - Phase
   - PhaseMixin
-  forbidden_associations:
-  - Structuration
   abstract: true

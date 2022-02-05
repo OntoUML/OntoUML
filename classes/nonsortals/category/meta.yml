@@ -17,6 +17,4 @@ class_stereotype:
   - Category
   - Mode
   - Quality
-  forbidden_associations:
-  - Structuration
   abstract: true
