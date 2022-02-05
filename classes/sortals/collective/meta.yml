@@ -4,7 +4,7 @@ class_stereotype:
   provides_identity: true
   identity_principle: simple
   rigidity: rigid
-  dependency: optional
+  dependency: mandatory
   supertypes:
   - Category
   - Mixin
