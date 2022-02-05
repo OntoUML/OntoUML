@@ -16,7 +16,6 @@ Relationship stereotypes
    mediation/index
    characterization/index
    derivation/index
-   structuration/index
 
 
 .. toctree::
