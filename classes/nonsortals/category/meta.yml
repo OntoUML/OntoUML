@@ -17,6 +17,7 @@ class_stereotype:
   - Category
   - Mode
   - Quality
+  - RoleMixin
   forbidden_associations:
   - Structuration
   abstract: true
