@@ -8,6 +8,7 @@ class_stereotype:
   supertypes:
   - Mixin
   - RoleMixin
+  - Category
   subtypes:
   - Role
   - RoleMixin
