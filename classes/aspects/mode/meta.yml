@@ -13,7 +13,6 @@ class_stereotype:
   - Role
   - Phase
   forbidden_associations:
-  - Structuration
   - ComponentOf
   - SubCollectionOf
   - MemberOf

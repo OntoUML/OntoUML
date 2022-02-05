@@ -21,6 +21,4 @@ class_stereotype:
   - Relator
   - Quality
   - Mode
-  forbidden_associations:
-  - Structuration
   abstract: true

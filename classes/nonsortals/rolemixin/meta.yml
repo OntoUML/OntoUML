@@ -11,6 +11,4 @@ class_stereotype:
   subtypes:
   - Role
   - RoleMixin
-  forbidden_associations:
-  - Structuration
   abstract: true

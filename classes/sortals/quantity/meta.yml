@@ -15,6 +15,5 @@ class_stereotype:
   forbidden_associations:
   - ComponentOf
   - Derivation
-  - Structuration
   - SubCollectionOf
   abstract: undefined

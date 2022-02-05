@@ -19,6 +19,4 @@ class_stereotype:
   - Subkind
   - Phase
   - Role
-  forbidden_associations:
-  - Structuration
   abstract: undefined
