@@ -7,20 +7,23 @@ class_stereotype:
   dependency: optional
   supertypes:
   - Mixin
-  subtypes:
-  - Subkind
-  - Kind
-  - Collective
-  - Quantity
   - Category
-  - Mixin
-  - Role
-  - Phase
-  - RoleMixin
-  - PhaseMixin
-  - Relator
-  - Quality
-  - Mode
+  subtypes:
+	- Category
+	- Collective
+	- Kind
+	- Mixin
+	- Mode
+	- Phase
+	- Phase
+	- PhaseMixin
+	- Quality
+	- Quantity
+	- Relator
+	- Role
+	- Role
+	- RoleMixin
+	- Subkind
   forbidden_associations:
   - Structuration
   abstract: true
