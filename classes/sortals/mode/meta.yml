@@ -1,6 +1,6 @@
 class_stereotype:
   name: Mode
-  parent: Aspect
+  parent: RigidSortal
   provides_identity: true
   identity_principle: single
   rigidity: rigid
