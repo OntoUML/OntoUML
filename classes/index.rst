@@ -14,6 +14,8 @@ Class stereotypes
    sortals/collective/index
    sortals/quantity/index
    sortals/relator/index
+   sortals/mode/index
+   sortals/quality/index
 
 .. toctree::
    :maxdepth: 1
@@ -22,11 +24,4 @@ Class stereotypes
    nonsortals/category/index
    nonsortals/phasemixin/index
    nonsortals/rolemixin/index
-   nonsortals/mixin/index
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Aspects:
-
-   aspects/mode/index
-   aspects/quality/index
+   nonsortals/mixin/index  
