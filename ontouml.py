@@ -68,7 +68,7 @@ class StereotypeDirective(Directive):
 
     def make_class_stereotype(self, data):
         x = nodes.definition_list()
-        add_df_item(x, 'Category', nodes.paragraph(text=data['parent']))
+        add_df_item(x, 'Ontological nature', nodes.paragraph(text=data['parent'])) # can be (Endurant | Endurant/Aspect | Endurant/Object | Event | Situation)
         add_df_item(x, 'Provides identity', self.make_ref('identity', yes_no(data['provides_identity'])))
         add_df_item(x, 'Identity principle', self.make_ref('identity', data['identity_principle']))
         add_df_item(x, 'Rigidity', self.make_ref('rigidity', data['rigidity']))

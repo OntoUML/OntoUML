@@ -1,6 +1,6 @@
 class_stereotype:
   name: Quality
-  parent: RigidSortal
+  parent: Endurant/Aspect
   provides_identity: true
   identity_principle: single
   rigidity: rigid

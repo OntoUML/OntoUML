@@ -1,6 +1,6 @@
 class_stereotype:
   name: RoleMixin
-  parent: AntiRigidNonSortal
+  parent: Endurant
   provides_identity: false
   identity_principle: multiple
   rigidity: antirigid
