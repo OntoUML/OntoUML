@@ -2,7 +2,7 @@ class_stereotype:
   name: Collective
   parent: RigidSortal
   provides_identity: true
-  identity_principle: simple
+  identity_principle: single
   rigidity: rigid
   dependency: optional
   supertypes:

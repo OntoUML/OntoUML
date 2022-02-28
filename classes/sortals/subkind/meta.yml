@@ -2,7 +2,7 @@ class_stereotype:
   name: Subkind
   parent: RigidSortal
   provides_identity: false
-  identity_principle: simple
+  identity_principle: single
   rigidity: rigid
   dependency: optional
   supertypes:
