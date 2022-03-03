@@ -6,11 +6,15 @@ class_stereotype:
   rigidity: antirigid
   dependency: mandatory
   supertypes:
-  - Mixin
-  - PhaseMixin
+	- Category
+	- Mixin
+	- PhaseMixin
+	- RoleMixin
   subtypes:
-  - Phase
-  - PhaseMixin
+	- Phase
+	- PhaseMixin
+	- Role
+	- RoleMixin
   forbidden_associations:
   - Structuration
   abstract: true

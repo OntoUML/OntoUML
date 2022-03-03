@@ -22,15 +22,7 @@ Constraints
 
    |Category forbidden 2|
 
-.. _category-constraints-c4:
-**C4:** Categories cannot have as descendants the following types: «:ref:`mixin`», «:ref:`role`», «:ref:`phase`».
-
-.. container:: figure
-
-   |Category forbidden 3|
-
 
 .. |Category application 1| image:: _images/ontouml_category-application-1.png
 .. |Category forbidden 1| image:: _images/ontouml_category-forbidden-1.png
 .. |Category forbidden 2| image:: _images/ontouml_category-forbidden-3.png
-.. |Category forbidden 3| image:: _images/ontouml_category-forbidden-2.png

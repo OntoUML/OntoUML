@@ -9,14 +9,19 @@ class_stereotype:
   - Category
   - Mixin
   subtypes:
-  - Kind
-  - Subkind
+  - Category
   - Collective
+  - Kind
+  - Mixin
+  - Mode
+  - Phase
+  - PhaseMixin
+  - Quality
   - Quantity
   - Relator
-  - Category
-  - Mode
-  - Quality
+  - Role
+  - RoleMixin
+  - Subkind
   forbidden_associations:
   - Structuration
   abstract: true
