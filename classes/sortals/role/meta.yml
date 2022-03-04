@@ -18,6 +18,7 @@ class_stereotype:
   - Mode
   - Quality
   subtypes:
+  - Phase  
   - Role
   forbidden_associations:
   - Structuration
