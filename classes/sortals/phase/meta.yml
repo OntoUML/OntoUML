@@ -16,6 +16,7 @@ class_stereotype:
   - PhaseMixin
   - Mode
   - Quality
+  - Category
   subtypes:
   - Phase
   - Role
