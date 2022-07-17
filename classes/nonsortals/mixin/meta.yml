@@ -7,6 +7,7 @@ class_stereotype:
   dependency: optional
   supertypes:
   - Mixin
+  - Category
   subtypes:
   - Subkind
   - Kind
