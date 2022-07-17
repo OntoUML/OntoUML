@@ -17,6 +17,11 @@ class_stereotype:
   - Category
   - Mode
   - Quality
+  - Role
+  - Phase
+  - RoleMixin
+  - PhaseMixin
+  - Mixin
   forbidden_associations:
   - Structuration
   abstract: true
