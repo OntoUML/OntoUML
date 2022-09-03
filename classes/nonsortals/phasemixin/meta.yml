@@ -8,9 +8,12 @@ class_stereotype:
   supertypes:
   - Mixin
   - PhaseMixin
+  - Category
   subtypes:
   - Phase
   - PhaseMixin
+  - Role
+  - RoleMixin
   forbidden_associations:
   - Structuration
   abstract: true
