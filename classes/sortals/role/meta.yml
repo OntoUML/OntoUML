@@ -17,6 +17,8 @@ class_stereotype:
   - Mixin
   - Mode
   - Quality
+  - Category
+  - PhaseMixin
   subtypes:
   - Role
   forbidden_associations:
