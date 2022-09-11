@@ -13,7 +13,7 @@ An easy way to decide whether a concept is a quantity or not, as yourself this: 
 
    |Tannin heap|
 
-As the other identity provider stereotypes («:ref:`kind`», «:ref:`collective`», «:ref:`relator`» and «:ref:`mode`»), a Quality can be specialized by :ref:`subkinds <subkind>`, :ref:`phases <phase>` and :ref:`roles <role>`, as well as generalized by :ref:`mixins <mixin>` and :ref:`categories <category>`.
+As the other identity provider stereotypes («:ref:`kind`», «:ref:`collective`», «:ref:`relator`», «:ref:`quality`» and «:ref:`mode`»), a Quantity can be specialized by :ref:`subkinds <subkind>`, :ref:`phases <phase>` and :ref:`roles <role>`, as well as generalized by :ref:`mixins <mixin>` and :ref:`categories <category>`.
 
 .. container:: figure
 
