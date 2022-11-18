@@ -3,7 +3,7 @@ aggregation_stereotype:
   directed: true
   source_end:
     allowed:
-    - Collective
+    - Sortal
     min: 1
     max: "*"
     readOnly: undefined
