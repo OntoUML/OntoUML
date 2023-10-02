@@ -12,7 +12,7 @@ presented above, we should given them :ref:`identity providers <identity>`:
 
 .. _role-constraints-c2:
 **C2:** Every «:ref:`role`» must be connected, directly or indirectly, to a
-«:ref:`mediation`» relation, since it is a :ref:`relationally dependent <dependency>` construct.
+relation stereotyped as «:ref:`mediation`», «:ref:`material`», «:ref:`componentOf`», «:ref:`memberOf`» or «:ref:`subCollectionOf`», since it is a :ref:`relationally dependent <dependency>` construct.
 Continuing our example above, we should do the following:
 
 .. container:: figure
