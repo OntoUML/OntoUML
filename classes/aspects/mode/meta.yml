@@ -19,4 +19,4 @@ class_stereotype:
   - MemberOf
   - SubQuantityOf
   - Derivation
-  abstract: true
+  abstract: undefined
