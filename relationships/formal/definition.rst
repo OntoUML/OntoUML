@@ -1,7 +1,7 @@
 Definition
 ----------
 
-The name «:ref:`formal`» is short for :ref:`Domain Comparative Formal Relation <relations>`. This construct is used to represent relations that can be reduced to the comparison of the quality values that characterize the related individuals, like heavier-then, younger-then or cheaper-then. Here are some examples in OntoUML:
+The name «:ref:`formal`» is short for :ref:`Domain Comparative Formal Relation <relations>`. This construct is used to represent relations that can be reduced to the comparison of the quality values that characterize the related individuals, like heavier-than, younger-than or cheaper-than. Here are some examples in OntoUML:
 
 .. container:: figure
 
