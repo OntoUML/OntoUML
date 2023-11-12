@@ -2,7 +2,7 @@ class_stereotype:
   name: Phase
   parent: AntiRigidSortal
   provides_identity: false
-  identity_principle: simple
+  identity_principle: single
   rigidity: antirigid
   dependency: optional
   supertypes:
