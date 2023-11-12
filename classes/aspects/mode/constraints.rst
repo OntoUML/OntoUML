@@ -16,14 +16,14 @@ Constraints
    |Mode forbidden 3|
 
 .. _mode-constraints-c3:
-**C3:** Modes cannot have as ancestors the following types: «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`subkind`», «:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`», «:ref:`relator`», «:ref:`quality`».
+**C3:** Modes cannot have as ancestors the following types: «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`subkind`», «:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`», «:ref:`relator`», «:ref:`quality`», «:ref:`mode`».
 
 .. container:: figure
 
    |Mode forbidden 2|
 
 .. _mode-constraints-c4:
-**C4:** Modes cannot have as descendants the following types: «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`rolemixin`», «:ref:`category`», «:ref:`mixin`», «:ref:`relator`», «:ref:`quality`».
+**C4:** Modes cannot have as descendants the following types: «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`rolemixin`», «:ref:`category`», «:ref:`mixin`», «:ref:`relator`», «:ref:`quality`», «:ref:`mode`».
 
 .. container:: figure
 
