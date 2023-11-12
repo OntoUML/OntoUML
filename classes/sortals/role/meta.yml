@@ -1,6 +1,6 @@
 class_stereotype:
   name: Role
-  parent: AntiRigidSortal
+  parent: Endurant
   provides_identity: false
   identity_principle: simple
   rigidity: antirigid

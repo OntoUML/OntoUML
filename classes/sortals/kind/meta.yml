@@ -1,6 +1,6 @@
 class_stereotype:
   name: Kind
-  parent: RigidSortal
+  parent: Endurant/Object
   provides_identity: true
   identity_principle: simple
   rigidity: rigid

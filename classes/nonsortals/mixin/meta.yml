@@ -1,6 +1,6 @@
 class_stereotype:
   name: Mixin
-  parent: SemiRigidNonSortal
+  parent: Endurant
   provides_identity: false
   identity_principle: multiple
   rigidity: semirigid

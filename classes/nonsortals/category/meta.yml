@@ -1,6 +1,6 @@
 class_stereotype:
   name: Category
-  parent: RigidNonSortal
+  parent: Endurant
   provides_identity: false
   identity_principle: multiple
   rigidity: rigid

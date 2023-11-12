@@ -18,8 +18,8 @@ verifications:
         - classes/sortals/quantity/
         - classes/sortals/relator/
         - classes/sortals/role/
-        - classes/aspects/mode/
-        - classes/aspects/quality/
+        - classes/sortals/mode/
+        - classes/sortals/quality/
         - classes/nonsortals/category/
         - classes/nonsortals/mixin/
         - classes/nonsortals/rolemixin/
@@ -35,13 +35,13 @@ documentationReferences:
         Mixin:
             https://ontouml.readthedocs.io/en/latest/classes/nonsortals/mixin/index.html
         Mode:
-            https://ontouml.readthedocs.io/en/latest/classes/aspects/mode/index.html
+            https://ontouml.readthedocs.io/en/latest/classes/sortals/mode/index.html
         Phase:
             https://ontouml.readthedocs.io/en/latest/classes/sortals/phase/index.html
         PhaseMixin:
             https://ontouml.readthedocs.io/en/latest/classes/nonsortals/phasemixin/index.html
         Quality:
-            https://ontouml.readthedocs.io/en/latest/classes/aspects/quality/index.html
+            https://ontouml.readthedocs.io/en/latest/classes/sortals/quality/index.html
         Quantity:
             https://ontouml.readthedocs.io/en/latest/classes/sortals/quantity/index.html
         Realtor:
