@@ -29,7 +29,7 @@ Now, let's see some other examples of types and individuals them:
 
 If you pay close attention to the list, you will see that we've included Messi's name as an instance of Person and Football Player. And that is fine! In fact, it very common that an individual simultaneously instantiates many types. Me, for example, besides being a Person, I'm a Software Developer, a Brazilian, an Adult and a Man.
 
-Whenever we refer to the term **extension of a type**, we mean every individual that instantiates that type in a particular instant of time. As an example, let's assume that the type Web Browser. Last year, we could say that its extension contained 5 individuals: Chrome, Internet Explorer, Safari, Firefox, Opera. This year, however, after Microsoft Edge's release, the extension of Browser grew by 1.
+Whenever we refer to the term **extension of a type**, we mean every individual that instantiates that type in a particular instant of time. As an example, let's assume that the type Web Browser exist. Last year, we could say that its extension contained 5 individuals: Chrome, Internet Explorer, Safari, Firefox, Opera. This year, however, after Microsoft Edge's release, the extension of Browser grew by 1.
 
 Whenever the extension of a type is always included in the extension of another type, we say that the former is a subtype of the latter. To represent this constraint in OntoUML models, we use the **generalization** (some people call it **specialization** instead) relation. We find countless examples of type specializations:
 
@@ -37,7 +37,7 @@ Whenever the extension of a type is always included in the extension of another 
 -  Table, Mouse and Ball are subtypes of Object
 -  Fridge, Stove and Microwave are subtypes of Appliance
 
-We represent generalizations are lines with arrow heads on the end connected to the super-type, as shown in the figure below:
+We represent generalizations as lines with arrow heads on the end connected to the super-type, as shown in the figure below:
 
 .. container:: figure
 
