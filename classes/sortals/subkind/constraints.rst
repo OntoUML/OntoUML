@@ -12,7 +12,7 @@ the first figure should be modelled as:
 
 .. _subkind-constraints-c2:
 **C2:** Because it is a :ref:`rigid <rigidity>` type, a «:ref:`subkind`» cannot have an
-:ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`phase`», «:ref:`rolemixin`») as an ancestor.
+:ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`phase`», «:ref:`rolemixin`» and «:ref:`phasemixin`») as an ancestor.
 Therefore, the following fragments would not be allowed:
 
 .. container:: figure
@@ -21,7 +21,7 @@ Therefore, the following fragments would not be allowed:
 
 .. _subkind-constraints-c3:
 **C3:** Since every instance of a «:ref:`subkind`» follows the same :ref:`identity
-principle <identity>`, a «:ref:`subkind`» cannot have an mixin type («:ref:`category`», «:ref:`mixin`», «:ref:`rolemixin`») as a descendant, i.e., a direct or indirect subtype.
+principle <identity>`, a «:ref:`subkind`» cannot have an :ref:`non-sortal type <identity>` («:ref:`category`», «:ref:`mixin`», «:ref:`rolemixin`» and «:ref:`phasemixin`») as a descendant, i.e., a direct or indirect subtype.
 Fragments like the ones below are not allowed:
 
 .. container:: figure
