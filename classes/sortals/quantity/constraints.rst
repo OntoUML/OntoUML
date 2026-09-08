@@ -16,14 +16,14 @@ Constraints
    |Quantity forbidden 2|
 
 .. _quantity-constraints-c3:
-**C3:** A «:ref:`quantity`» cannot have types that aggregate individuals with different :ref:`identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
+**C3:** A «:ref:`quantity`» cannot have types that aggregate individuals with different :ref:`identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`», «:ref:`phasemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
 
 .. container:: figure
 
    |Quantity forbidden 3|
 
 .. _quantity-constraints-c4:
-**C4:** As a :ref:`rigid <rigidity>` type, a «:ref:`quantity`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`» and «:ref:`phase`») as its direct or indirect super-type.
+**C4:** As a :ref:`rigid <rigidity>` type, a «:ref:`quantity`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`» and «:ref:`phasemixin`») as its direct or indirect super-type.
 
 .. container:: figure
 
