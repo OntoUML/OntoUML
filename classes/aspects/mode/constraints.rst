@@ -33,7 +33,7 @@ Constraints
 **C5:** A «:ref:`mode`» cannot have types that aggregate individuals with :ref:`different identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`», «:ref:`phasemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
 
 .. _mode-constraints-c6:
-**C6:** As a :ref:`rigid <rigidity>` type, a «:ref:`Kind`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`» and «:ref:`phasemixin`») as its direct or indirect super-type.
+**C6:** As a :ref:`rigid <rigidity>` type, a «:ref:`mode`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`» and «:ref:`phasemixin`») as its direct or indirect super-type.
 
 .. |Mode application 1| image:: _images/ontouml_mode-application-1.png
 .. |Mode forbidden 3| image:: _images/ontouml_mode-forbidden-3.png
