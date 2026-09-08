@@ -16,7 +16,7 @@ Constraints
    |Phase forbidden 2|
 
 .. _phase-constraints-c3:
-**C3:** A «:ref:`phase`» cannot be a direct subtype of a «:ref:`rolemixin`» or «:ref:`category`».
+**C3:** A «:ref:`phase`» cannot be a direct subtype of a «:ref:`role`» or «:ref:`rolemixin`».
 
 .. container:: figure
 
@@ -30,7 +30,7 @@ Constraints
    |Phase forbidden 1|
 
 .. _phase-constraints-c5:
-**C5:** A «:ref:`phase`» cannot be a super-type of a mixin type («:ref:`category`», «:ref:`rolemixin`», «:ref:`mixin`»).
+**C5:** A «:ref:`phase`» cannot be a super-type of a :ref:`non-sortal <identity>` type («:ref:`category`», «:ref:`rolemixin`», «:ref:`phasemixin`» and «:ref:`mixin`»).
 
 .. container:: figure
 
