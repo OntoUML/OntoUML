@@ -1,7 +1,7 @@
 Definition
 ----------
 
-A «:ref:`category`» is a :ref:`rigid <rigidity>` mixin that does not require a dependency to be specified. It is used to aggregate essential properties to individuals which following :ref:`different identity principles <identity>`. Let's see some examples:
+A «:ref:`category`» is a :ref:`rigid <rigidity>` :ref:`non-sortal <identity>` that does not require a dependency to be specified. It is used to aggregate essential properties to individuals which following :ref:`different identity principles <identity>`. Let's see some examples:
 
 .. container:: figure
 
