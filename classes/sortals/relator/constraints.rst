@@ -30,14 +30,14 @@ Constraints
    |Relator forbidden 3|
 
 .. _relator-constraints-c5:
-**C5:** A «:ref:`relator`» cannot have types that aggregate individuals with different :ref:`identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
+**C5:** A «:ref:`relator`» cannot have types that aggregate individuals with different :ref:`identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`», «:ref:`phasemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
 
 .. container:: figure
 
    |Relator forbidden 5|
 
 .. _relator-constraints-c6:
-**C6:** As a :ref:`rigid <rigidity>` type, a «:ref:`relator`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`» and «:ref:`phase`») as its direct or indirect super-type.
+**C6:** As a :ref:`rigid <rigidity>` type, a «:ref:`relator`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`» and «:ref:`phasemixin`») as its direct or indirect super-type.
 
 .. container:: figure
 

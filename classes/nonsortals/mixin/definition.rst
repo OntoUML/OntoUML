@@ -1,7 +1,7 @@
 Definition
 ----------
 
-A «:ref:`mixin`» is a semi-rigid type, i.e., it "behaves" as a :ref:`rigid <rigidity>` type for some individuals and as an :ref:`anti-rigid <rigidity>` one for others (it's the only stereotype with such feature in OntoUML). As the «:ref:`category`» and the «:ref:`rolemixin`», the «:ref:`mixin`» meta-class characterizes individuals that follow :ref:`different identity principles <identity>`. Here are some examples of types that could be classified as «:ref:`mixin`»:
+A «:ref:`mixin`» is a semi-rigid type, i.e., it "behaves" as a :ref:`rigid <rigidity>` type for some individuals and as an :ref:`anti-rigid <rigidity>` one for others (it's the only stereotype with such feature in OntoUML). As the «:ref:`category`», «:ref:`rolemixin`» and the «:ref:`phasemixin`», the «:ref:`mixin`» meta-class characterizes individuals that follow :ref:`different identity principles <identity>`. Here are some examples of types that could be classified as «:ref:`mixin`»:
 
 .. container:: figure
 
