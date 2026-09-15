@@ -1,6 +1,5 @@
 # OntoUML
 
-[![Build Status](https://travis-ci.org/OntoUML/OntoUML.svg?branch=master)](https://travis-ci.org/OntoUML/OntoUML)
 [![Documentation Status](https://readthedocs.org/projects/ontouml/badge/?version=latest)](https://ontouml.readthedocs.io/en/latest/?badge=latest)
 [![LICENSE](https://img.shields.io/github/license/OntoUML/OntoUML.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/OntoUML/OntoUML.svg)](https://github.com/OntoUML/OntoUML/issues)

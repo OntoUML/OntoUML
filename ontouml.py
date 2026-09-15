@@ -37,7 +37,7 @@ class StereotypeDirective(Directive):
 
         try:
             with open(file) as f:
-                data = yaml.load(f)
+                data = yaml.safe_load(f)
         except:
             logger.warning('Could not read file {}'.format(file))
             return [nodes.warning(nodes.paragraph(text='Unable to process file!'))]
