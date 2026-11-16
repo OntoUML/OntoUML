@@ -1,7 +1,10 @@
 .. _componentOf:
+.. _componenthood:
 
-ComponentOf
-===========
+Componenthood
+=============
+
+Previously documented as «componentOf». The current stereotype is «componenthood».
 
 .. _componentOf-stereotype:
 .. stereotype:: meta.yml

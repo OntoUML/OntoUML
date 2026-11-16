@@ -1,0 +1,176 @@
+\ProvidesPackage{omg_rfp}
+%% Template for Object Management Group (OMG) Request for Proposal (RFP) documents
+
+\usepackage{omg}
+
+% %%% Adjust geometry
+% %% Fine tuning of margins
+% \setlength{\myparindent}{0.5in}
+% % start with equal margins
+% \setlength{\margins}{1.25in}
+% % left = 1.25in + \myparindent
+% \setlength{\newleft}{\margins}
+% \addtolength{\newleft}{1\myparindent}
+% \geometry{left=1\newleft, right=\margins, marginpar=1in}
+
+% %%% Adjust geometry
+% %% Fine tuning of margins
+% \setlength{\myparindent}{0.5in}
+% % start with equal margins
+% \setlength{\margins}{1.25in}
+% % left = 1.25in + \myparindent
+% \setlength{\newleft}{\margins}
+% \addtolength{\newleft}{1\myparindent}
+% \geometry{left=1\newleft, right=\margins, marginpar=1in}
+
+% %% New title page format
+% \makeatletter
+% \def\@maketitle{%
+% %   \newpage
+%   \null
+%   \vskip 1em%
+%   \begin{adjustwidth}{-\myparindent}{}
+%   \begin{center}%
+%   \let \footnote \thanks
+%     {\huge \textbf{Object Management Group} \par}%
+%     \vskip 1.5em%
+%     {\normalsize 109 Highland Avenue\\
+%             Needham, MA 02494\\
+%             USA\\ 
+%             \vskip 1em
+%             Telephone: +1-781-444-0404\\
+%             Facsimile: +1-781-444-0320\\
+%             \href{mailto:rfp@omg.org}{rfp@omg.org}
+%     }
+%     \vskip 1.5em%
+%     \title{\specname\ (\specacro)}
+%     {\LARGE \textbf{\@title} \\}
+%     {\LARGE \textbf{Request For Proposal} \par}
+%     \vskip 1.25em%
+%     {\normalsize OMG Document: \docnum \par}
+%     \vskip 0.75em%
+%     {\normalsize Letters of Intent due: \loidue \\}
+%     {\normalsize Submissions due: \subdue \par}
+%     %{\large \@date}%
+%   \end{center}%
+%   \end{adjustwidth}
+%   \par
+%   \vskip 0.5em%
+% }
+% \makeatother
+
+% %% Sets text on left of footer
+% \setvalue{\leftfooter}{OMG RFP}
+
+%%% new format
+
+%%% Page layout
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\medskipamount}
+
+%%% Headers/Footers
+% Top right header has section title
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+\fancyhf{}
+\fancyhead[LO,LE]{\sf\footnotesize{\leftmark}}
+\fancyhead[RO,RE]{\sf\footnotesize{\rightmark}}
+\fancyfoot[LO,LE]{\sf\footnotesize{\title}}
+\fancyfoot[CE,CO]{\thepage}
+\fancyfoot[RE,RO]{\sf\footnotesize{OMG Document \docnum}}
+\renewcommand{\headrulewidth}{0pt}
+
+% Is this done redundantly just to be sure?
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[LO,LE]{\sf\footnotesize{\leftmark}}
+  \fancyhead[RO,RE]{\sf\footnotesize{\rightmark}}
+  \fancyfoot[LO,LE]{\sf\footnotesize{\title}}
+  \fancyfoot[CE,CO]{\thepage}
+  \fancyfoot[RE,RO]{\sf\footnotesize{OMG Document \docnum}}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% TITLE PAGE DEF
+\makeatletter
+\renewcommand\maketitle{%
+    \begin{titlepage}
+      % \let \footnote \thanks
+      \vspace{-2cm}
+      {\hbox to \textwidth{ \hfill\sffamily \subdate}}
+      \begin{adjustwidth}{-\myparindent}{}
+      \begin{center}%
+        {\huge \textbf{Object Management Group} \par}%
+        \vskip 1.5em%
+        {\normalsize 109 Highland Avenue\\
+                Needham, MA 02494\\
+                USA\\ 
+                \vskip 1em
+                Telephone: +1-781-444-0404\\
+                Facsimile: +1-781-444-0320\\
+                \href{mailto:rfp@omg.org}{rfp@omg.org}
+        }\\[1cm]
+        {\Huge\sffamily \title}\\
+        {\Huge Request for Proposal}
+        % {\large\sffamily \subtitle}\\[1cm]
+        % {\large\sffamily Version \version}\\[\bigskipamount]
+        \hrule height 1.5pt
+        %\smallskip
+        \sffamily\begin{tabbing}
+          OMG Document Number:\quad \= \docnum\quad \= (this document, errata applied)\\[\bigskipamount]
+        \end{tabbing}
+        \vskip 0.75em%
+        {\normalsize Letters of Intent due: \loidue \\}
+        {\normalsize Submissions due: \subdue \par}
+      \end{center}%
+      \end{adjustwidth}
+      \vfill
+    \end{titlepage}
+}
+\makeatother
+\titlecontents{requirement}[0pt]{}{}{}{}
+
+%%% Copyright block tools
+\newcommand{\Copyright}{Copyright\ \ \copyright\,\the\year,}
+\newcommand{\copyrightomg}{\Copyright\ \ Object Management Group, Inc.}
+% Do not remove the explicit newline here, \\, \newline, and \linebreak all
+% cause a 'No line here to end' error.
+\newcommand{\copyrighthelper}[1]{\Copyright\ \ #1\\}
+\newcommand{\copyrights}{\forlistloop{\copyrighthelper}{\authornames}\copyrightomg}
+
+%%% hyperref setup
+\hypersetup{bookmarksnumbered=true}
+
+%%% Counter initialization
+\setcounter{chapter}{1}
+\addtocounter{chapter}{-1}
+\setcounter{part}{1}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{3}
+
+%%% Appendix -> Annex
+\renewcommand\appendixname{Annex}
+
+%%% Bibliographies
+\usepackage[style=alphabetic]{biblatex}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\DeclareBibliographyCategory{normative}
+\renewcommand*{\bibfont}{\fontfamily{ptm}\selectfont}
+% \bibliographystyle{abbrv}
+
+\addbibresource{omg.bib}
+\addbibresource{w3.bib}
+\addbibresource{iso.bib}
+
+\DeclareLabelalphaTemplate{
+   \labelelement{
+     \field[final]{shorthand}
+   }
+   \labelelement{
+     \field[final]{author}
+   }
+   \labelelement{
+     \field{version}
+   }
+}

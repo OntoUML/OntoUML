@@ -4,7 +4,9 @@
 [![LICENSE](https://img.shields.io/github/license/OntoUML/OntoUML.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/OntoUML/OntoUML.svg)](https://github.com/OntoUML/OntoUML/issues)
 
-Evolvable OntoUML specification
+Evolvable OntoUML specification.
+
+The documentation describes OntoUML as a UML profile for ontology-driven conceptual modeling: endurant, event, situation, and multi-level stereotypes, together with the Tonto tooling used to write and visualize models.
 
 ## Usage
 

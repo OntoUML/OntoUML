@@ -1,0 +1,67 @@
+\chapter{OntoUML Profile Architecture}
+\label{ch:profile-architecture}
+
+OntoUML is specified as a UML profile for conceptual models expressed with UML class diagrams. The profile reuses UML metaclasses for the diagram's structural elements and extends selected elements with OntoUML stereotypes, meta-properties, and well-formedness constraints. The semantics of these extensions are detailed in Chapters 10--13: endurant modeling, event modeling, situation modeling, and multi-level modeling, respectively.
+
+The profile assigns ontological meaning to model elements; it does not change the underlying UML metaclasses. A stereotype refines how a UML element is interpreted and constrains its admissible use. Profile applications therefore retain their UML structure while making OntoUML commitments explicit. The constraints in this specification define the well-formedness conditions for the constructs described here.
+
+\section{Profile Packages}
+\label{sec:profile-packages}
+
+The profile is organized according to the modeling concerns covered by the specification. Its elements are described in four complementary areas:
+
+\begin{itemize}
+    \item \textbf{Endurant modeling:} shared class meta-properties and the stereotypes and associations used to model endurants, their aspects, and their structural relations (Chapter 10).
+    \item \textbf{Event modeling:} stereotypes for event types, historical roles, event relations, and temporal properties (Chapter 11).
+    \item \textbf{Situation modeling:} stereotypes for situations and for their relations to events and participating entities (Chapter 12).
+    \item \textbf{Multi-level modeling:} extensions for types that classify other types, including order and powertype semantics (Chapter 13).
+\end{itemize}
+
+These groupings describe the profile's logical organization and the scope of its extensions. % A model may use UML packages as needed to organize its domain vocabulary; package membership does not alter the ontological meaning of a class, association, or property.
+
+\section{Reused Elements from UML}
+\label{sec:profile-reused-uml-elements}
+
+OntoUML reuses the following UML elements as the structural basis of its class-diagram notation. Unless an OntoUML stereotype or constraint applies, each element retains its UML meaning.
+
+\subsection{Class}
+
+A UML \texttt{Class} represents a type in an OntoUML conceptual model. OntoUML stereotypes refine the interpretation of classes, for example as kinds, roles, events, situations, or higher-order types. The \texttt{restrictedTo}, \texttt{order}, and \texttt{isPowertype} meta-properties provide further information for applicable classes. A class is not an individual in the modeled domain; it classifies individuals or, in multi-level models, other types.
+
+\subsection{Generalization}
+
+A UML \texttt{Generalization} represents specialization between a specific class and a more general class. It expresses that instances of the specific class are also instances of the general class, subject to the constraints imposed by their OntoUML stereotypes. The profile permits multiple generalizations where the ontological constraints are satisfied. A number of rules are provided to rule out ontologically inconsistent application of generalization.
+
+\subsection{GeneralizationSet}
+
+A UML \texttt{GeneralizationSet} groups generalizations that share a general classifier and records whether the specializations are disjoint and/or complete. OntoUML constraints use these properties for structures such as phase partitions; multi-level modeling also defines how generalization sets interact with powertypes. 
+
+\subsection{Association}
+
+A UML \texttt{Association} represents a relationship type among the types at its ends. OntoUML association stereotypes refine this element to express ontological relations such as mediation, characterization, participation, parthood, triggering, and high-order type instantiation. The profile's constraints specify admissible end types and, where applicable, the interpretation of the association's direction and multiplicities.
+
+% N-ary associations can make cardinality constraints difficult to interpret and are a frequent source of misunderstanding. Modelers should use them only when their semantics are documented clearly and their constraints are explicit. In many cases, the specification recommends reifying a relation as a \hyperref[stereotype:relator]{«relator»} class and connecting it to its relata with «mediation» associations.
+
+\subsection{Property}
+
+A UML \texttt{Property} represents either an attribute owned by a class or an end of an association. Its type and multiplicity describe the values or related instances permitted by the model. OntoUML applies property stereotypes where needed, including «begin» and «end» for temporal boundary values and «addOnly» for a property with the corresponding update restriction. Association-end properties continue to participate in the semantics and constraints of their owning association.
+
+\subsection{Derivation}
+
+A UML \texttt{Derivation} represents a derivation dependency between model elements. In OntoUML, it can document that a derived association follows from a modeled truthmaker \cite{guizzardi2024explanation,guarino2015we} or other source element, such as a material relation derived from a relator and its mediations, or a comparative relation derived from qualities. A derivation records this dependency in the model; the domain-specific semantics and any derivation rule must be supplied by the model and the applicable OntoUML specification constraints.
+
+\subsection{Package}
+
+A UML \texttt{Package} groups model elements and provides a namespace for organizing a model. Packages can be used to structure an OntoUML model, but package boundaries alone do not establish specialization, dependence, parthood, or any other domain relation. The logical groupings used to describe the OntoUML profile likewise do not prescribe a package layout for every user model.
+
+\subsection{Comment}
+
+A UML \texttt{Comment} attaches explanatory text to one or more model elements. Comments can record assumptions, contextual definitions, or details needed to understand a model, including the intended semantics of relations whose constraints are not fully captured by the diagram. A comment documents the model; it does not by itself impose a machine-checkable constraint or change an element's ontological interpretation.
+
+\section{Outside the scope of OntoUML}
+
+OntoUML is defined for the UML class-modeling elements described in this chapter. It does not define OntoUML-specific semantics or constraints for UML operations, operation behaviors, or the behavioral and interaction elements used in other UML diagram types. In particular, the event and situation constructs specified in this profile describe domain types and relations; they do not prescribe executable behavior, algorithms, workflows, or a runtime model.
+
+The profile also does not define a modeling process for discovering or validating a domain model, nor does it standardize the Unified Foundational Ontology (UFO) on which its distinctions are based (which is the object of ISO/IEC 21838-5\footnote{\url{ https://www.iso.org/standard/89915.html}}). It specifies the OntoUML extensions and their well-formedness constraints, while leaving the choice of modeling method and the interpretation of UFO itself to their respective sources.
+
+Finally, OntoUML does not prescribe how a conceptual model is implemented or transformed into a software design, database schema, or another modeling or ontology language. It does not require a particular tool architecture, user interface, or implementation technology. These concerns may be addressed by tools and methods that use OntoUML, but are outside the scope of this profile specification.

@@ -3,7 +3,7 @@ Constraints
 
 .. _role-constraints-c1:
 **C1:** A «:ref:`role`» must always have **exactly one** :ref:`identity provider <identity>`
-(«:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`», «:ref:`quantity`») as an ancestor (a direct or indirect super-type). To model our list of roles
+(«:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`quality`», «:ref:`intrinsicMode`», «:ref:`extrinsicMode`», «:ref:`situation`», or «:ref:`type`») as an ancestor (a direct or indirect super-type). A role cannot specialize an :ref:`event`. To model our list of roles
 presented above, we should given them :ref:`identity providers <identity>`:
 
 .. container:: figure

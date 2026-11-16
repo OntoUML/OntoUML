@@ -1,6 +1,21 @@
 Definition
 ----------
 
+«:ref:`subCollection <subCollectionOf>`» is a :ref:`parthood` relation between two collectives. It further structures the whole, and it is transitive. A member of a sub-collective is a member of the super-collective.
+
+An English-speaking segment is a sub-collective of a group of visitors, and so is a Dutch-speaking segment. The northern part of the Black Forest is a sub-collective of the Black Forest. The underage children of John are a sub-collective of the children of John.
+
+.. figure:: /specification-figures/subcollection.svg
+   :alt: An English-speaking segment as a sub-collective of a visitor group
+   :width: 90%
+   :align: center
+
+   Associations categorized as «subCollection».
+
+Both ends are classes restricted exactly to ``{collective}``.
+
+The discussion below uses the earlier name «subCollectionOf».
+
 «:ref:`subCollectionOf`» is a parthood relation between two collectives. Examples include:
 
 A. the north part of the Black Forest is part of the Black Forest;

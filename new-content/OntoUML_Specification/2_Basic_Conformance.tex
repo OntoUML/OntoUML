@@ -1,0 +1,17 @@
+This specification defines a single conformance class for software tools and other software implementations of the OntoUML profile. It does not define conformance classes for individual OntoUML models or a partial-conformance level.
+
+A software tool or other software implementation conforms to this specification if it satisfies all the following requirements:
+
+\begin{enumerate}
+  \item \textbf{UML foundation.} It supports the UML 2.5.1 meta classes and profile-extension mechanisms required for the OntoUML profile, and interprets them consistently with the UML specification.
+
+  \item \textbf{Complete profile.} It implements all profile elements defined in the normative clauses of this specification, including all OntoUML stereotypes, their extensions to UML metaclasses, stereotype properties, applicable default values, generalizations, and other required profile definitions.
+
+  \item \textbf{Profile application.} It supports the representation and interpretation of applications of OntoUML stereotypes to applicable UML model elements, including the values of their properties, in accordance with this specification.
+
+  \item \textbf{Constraint validation.} It provides a means to determine whether OntoUML stereotype applications satisfy all applicable normative constraints specified in this document and to identify violations of those constraints. Constraints expressed using the Object Constraint Language (OCL) may be evaluated using OCL or an equivalent implementation that preserves their specified meaning.
+\end{enumerate}
+
+Conformance requires satisfaction of all applicable requirements above. Providing only a subset of the OntoUML stereotypes, or providing the stereotypes without the applicable normative constraints, is insufficient for a claim of conformance.
+
+A claim of conformance shall identify the version of this specification to which conformance is claimed. A tool or implementation may provide additional capabilities, provided that these do not alter the meaning or permitted application of the OntoUML profile as defined here.

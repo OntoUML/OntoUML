@@ -1,0 +1,577 @@
+\chapter{Profile Elements for Modeling Events}
+
+\section{Historical Semantics}
+
+%\textbf{TODO:} Explain here that by using events in a model, one must commit to a growing-block semantics. 
+
+Events exist only in the past \cite{guizzardi2016ontological,events_as_entities_in_ontology_driven_conceptual_modeling_2019}. Alleged references to future events are either references to beliefs about events of a given type happening in the future (e.g., the belief that it will rain tomorrow), or commitments to perform events of a given type in the future (e.g., a medical appointment tomorrow).
+
+Events are also existentially dependent entities, since they are both: manifestations of specific potentialities of endurants (e.g., a song is a manifestation of someone's capacity to sing; a flight is the manifestation of an entity's capacity to fly; an electric current is the manifestation of a conductor's disposition to conduct electricity); changes happening to specific endurants (e.g., singing is a set of changes happening to vocal cords; moving is a series of changes to an entity's spatial location). 
+
+Putting these two aspects together: whenever a particular event instantiates a type in a model, then not only is that event in the past (by definition) but also the entities it depends on must exist in that same past. Hence, the representation of events in a model requires the model to be interpreted with a historical semantics with a growing-block view of time \cite{guizzardi2016ontological,diekemper2014existence}, i.e., the relevant past continues to exist as new events and their participants are added to it. 
+
+\section{Class Stereotypes}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{img/Event Classes.svg}
+    \caption{Fragment of the OntoUML Profile that defines class stereotypes for modeling events.}
+    \label{fig:event-classes-profile}
+\end{figure}
+
+\subsection{«event»}
+\label{stereotype:event}
+
+A class stereotyped as «event» is an \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} whose instances are events, i.e., individuals that unfold in time by accumulating temporal parts, are manifestations of aspects, and exist only once they have occurred.
+
+Events are immutable: they cannot change in any way since they necessarily belong to the past. Any apparent change in an event is a variation across its temporal parts rather than a change in the event itself. 
+
+In the philosophical literature, events are also commonly referred to as perdurants or occurrents.
+
+Examples of «event» classes include \textit{Soccer Match}, \textit{Act of Composition}, \textit{Presidential Election}, \textit{Birth}, and \textit{Death}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/event.svg}
+    \caption{Examples of classes categorized as «event».}
+    \label{fig:event-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+An «event» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+An «event» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:eventRestrictedToEvent}
+A class decorated as «event» must have its ontological nature restricted to event.
+
+\begin{lstlisting}[language=OCL]
+context event 
+inv eventRestrictedToEvent:
+    self.base_Class.restrictedTo = Set{OntologicalNature::EVENT}
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«historicalRole»}
+\label{stereotype:historicalRole}
+
+A class stereotyped as «historicalRole» is an \hyperref[stereotype:antiRigidSortal]{\textit{AntiRigidSortal}} type that specializes a unique \hyperref[stereotype:ultimateSortal]{\textit{UltimateSortal}} and classifies entities contingently in virtue of their participation in an event.
+
+Unlike an ordinary \hyperref[stereotype:role]{«role»}, which classifies an individual only while a relational condition currently holds, a historical role is grounded in a past event and is therefore retained permanently once acquired: having participated in an event of the relevant type, an individual instantiates the historical role thereafter. For example, a \textit{Person} is a \textit{Hired Soccer Player} (a «role») only while employed by a club, but remains a \textit{Soccer Match Player} (a «historicalRole») ever after having played in a match. Other examples include \textit{Composer}, classifying a person who has participated in an \textit{Act of Composition}, and \textit{Tested Code}, classifying code that has participated in a \textit{Test Execution}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/historicalRole.svg}
+    \caption{Examples of classes categorized as «historicalRole».}
+    \label{fig:historicalRole-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «historicalRole» class can specialize classes decorated with any of: 
+\hyperref[stereotype:kind]{«kind»}, \hyperref[stereotype:collective]{«collective»}, \hyperref[stereotype:quantity]{«quantity»}, \hyperref[stereotype:relator]{«relator»}, \hyperref[stereotype:mode]{«mode»}, \hyperref[stereotype:quality]{«quality»}, \hyperref[stereotype:situation]{«situation»}, \hyperref[stereotype:type]{«type»}, \hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}, \hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}, \hyperref[stereotype:roleMixin]{«roleMixin»}, \hyperref[stereotype:historicalRoleMixin]{«historicalRoleMixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «historicalRole» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}.
+
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:historicalRoleMustParticipateInEvent}
+
+A class decorated as «historicalRole» must be connected, through a \hyperref[stereotype:participation]{«participation»} association, to a class whose extension may include events, with a minimum cardinality of one at the event end --- reflecting that an instance of the historical role has mandatorily participated in an event of that type.
+
+\begin{lstlisting}[language=OCL]
+context historicalRole 
+inv historicalRoleMustParticipateInEvent:
+    Participation.allInstances()->exists(p |
+        p.base_Association.memberEnd
+         ->exists(end | end.type = self.base_Class)
+        and
+        p.base_Association.memberEnd
+         ->exists(end |
+            end.type <> self.base_Class
+            and end.type.oclIsKindOf(Class)
+            and end.type.oclAsType(Class).mayClassifyEvents()
+            and end.lower >= 1)
+    )
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«historicalRoleMixin»}
+\label{stereotype:historicalRoleMixin}
+
+A class stereotyped as «historicalRoleMixin» is an \hyperref[stereotype:antiRigidNonSortal]{\textit{AntiRigidNonSortal}} that classifies entities contingently in virtue of their participation in a past event.
+
+A historicalRoleMixin stands to \hyperref[stereotype:historicalRole]{«historicalRole»} as \hyperref[stereotype:roleMixin]{«roleMixin»} stands to \hyperref[stereotype:role]{«role»}: it carries the same past-event-grounded classification, retained once acquired, but applies to entities that follow different principles of identity. 
+
+Examples include \textit{Disaster Casualty}, which may classify the persons, buildings, and vehicles harmed in a \textit{Natural Disaster}, and \textit{Auctioned Item}, which may classify the paintings, properties, and vehicles sold in an \textit{Auction}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/historicalRoleMixin.svg}
+    \caption{Examples of classes categorized as «historicalRoleMixin».}
+    \label{fig:historicalRoleMixin-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «historicalRoleMixin» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}, \hyperref[stereotype:roleMixin]{«roleMixin»}, \hyperref[stereotype:historicalRoleMixin]{«historicalRoleMixin»}, \hyperref[stereotype:phaseMixin]{«phaseMixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «historicalRoleMixin» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:roleMixin]{«roleMixin»}, \hyperref[stereotype:historicalRoleMixin]{«historicalRoleMixin»}.
+
+% \subsubsection{Constraints}
+
+% \begin{constraint}
+% \label{constraint:historicalRoleMixinMustParticipateInEvent}
+
+% A class decorated as «historicalRoleMixin» must be connected...
+
+% -- placeholder
+
+% \begin{lstlisting}[language=OCL]
+% context historicalRole 
+% inv historicalRoleMixinMustParticipateInEvent: ...
+% \end{lstlisting}
+% \end{constraint}
+
+\section{Association Stereotypes}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{img/Event Associations.svg}
+    \caption{Fragment of the OntoUML Profile that defines association stereotypes for modeling endurants}
+    \label{fig:event-associations-profile}
+\end{figure}
+
+\subsection{«historicalDependence»}
+\label{stereotype:historicalDependence}
+
+An association stereotyped as «historicalDependence» is one whose instances hold between two concrete individuals, a depender and a dependee, such that the depender could not have existed or occurred without the prior existence or occurrence of the dependee.
+
+Historical dependencies can hold between endurants, between events, or between endurants and events. For example, \textit{bornIn}, which holds between a person and a place; \textit{descendsFrom}, which holds between a descendant and an ancestor; \textit{createdBy}, which holds between an artifact and its creator; \textit{causedBy}, which can hold between a goal and a kick, or between a birth and a conception (all events).
+
+Participation, creation, and termination are specific types of historical dependence. 
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=\linewidth]{img/events/historicalDependence.svg}
+    \caption{Examples of associations categorized as «historicalDependence».}
+    \label{fig:historicalDependence-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Dependent End:} The type of the dependent end of an «historicalDependence» must be a class that can only be instantiated by either endurants or events, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of \hyperref[par:endurant-nature]{endurant natures} set or \texttt{\{EVENT\}}.
+    \item \textbf{Dependee End:} The type of the dependee end of an «historicalDependence» must be a class that can only be instantiated by either endurants or events, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of \hyperref[par:endurant-nature]{endurant natures} set or \texttt{\{EVENT\}}.
+\end{itemize}
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:historicalDependenceEventDependentRequiresEventDependee}
+An association stereotyped as «historicalDependence» whose dependent end is connected to an OntoUML class that has \texttt{restrictedTo} set to \texttt{\{EVENT\}} must have its dependee end connected to an OntoUML class that has \texttt{restrictedTo} set to \texttt{\{EVENT\}}.
+
+% TODO: generated, not tested
+% \begin{lstlisting}[language=OCL]
+% context historicalDependence
+% inv historicalDependenceEventDependentRequiresEventDependee:
+%     let d : Type = self.memberEnd->at(1).type in
+%     let e : Type = self.memberEnd->at(2).type in
+%     self.memberEnd->size() = 2
+%     and d.oclIsKindOf(OntoUMLClass)
+%     and e.oclIsKindOf(OntoUMLClass)
+%     and
+%     (
+%         d.oclAsType(OntoUMLClass).restrictedTo->asSet() = Set{OntologicalNature::EVENT}
+%         implies
+%         e.oclAsType(OntoUMLClass).restrictedTo->asSet() = Set{OntologicalNature::EVENT}
+%     )
+% \end{lstlisting}
+\end{constraint}
+
+\subsection{«participation»}
+\label{stereotype:participation}
+
+An association stereotyped as «participation» is an \hyperref[stereotype:existential-dependence]{existential dependence} whose instances connect an event to an object. The event is a manifestation of an aspect inhering in the object, or is composed of such manifestations.
+
+Examples include \textit{Brutus} participating in \textit{Caesar's Assassination}, a \textit{Person} participating in an \textit{Act of Composition} while playing the role of composer, and a \textit{Soccer Player} (or a \textit{Referee}) participating in a \textit{Soccer Match}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/participation.svg}
+    \caption{Examples of associations categorized as «participation».}
+    \label{fig:participation-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Event End:} The type of the event end of a «participation» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+    \item \textbf{Participant End:} The type of the participant end of a «participation» must be a class that can only be instantiated by endurants, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:object-nature]{object natures}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% \begin{constraint}
+% \label{} 
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+% \end{constraint}
+
+\subsection{«creation»}
+\label{stereotype:creation}
+
+An association stereotyped as «creation» is a \hyperref[stereotype:participation]{«participation»} whose instances connect an event to an endurant that begins to exist because of the event's occurrence.
+
+Examples include a \textit{Song} created in a \textit{Music Composition}, a \textit{Person} created by a \textit{Birth}, and a \textit{Book} created by a \textit{Writing} event.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/creation.svg}
+    \caption{Examples of associations categorized as «creation».}
+    \label{fig:creation-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Event End:} The type of the event end of a «creation» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+    \item \textbf{Created End:} The type of the created end of a «creation» must be a class that can only be instantiated by endurants, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:endurant-nature]{endurant natures}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% \begin{constraint}
+% \label{} 
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+% \end{constraint}
+
+\subsection{«termination»}
+\label{stereotype:termination}
+
+An association stereotyped as «termination» is a \hyperref[stereotype:participation]{«participation»} whose instances connect an event to an endurant, such that the endurant ceases to exist because of the occurrence of the event.
+
+Under the historical semantics adopted for events in this module of the profile, a terminated endurant is not removed from the universe of discourse; rather, it ceases to exist in the present, and the event marks its transition into a phase capturing its post-termination state, as when a \textit{Legislation Repeal} terminates a \textit{Piece of Legislation}, which thereafter instantiates the phase \textit{Repealed Piece of Legislation}.
+
+% FLAG: In Almeida et al. (2019) the terminated end is specifically a class
+% stereotyped <phase> (the post-state the endurant enters). Below the end is
+% constrained only by ontological nature, for consistency with the other
+% participation ends; if you want to enforce the phase requirement, add it as
+% an extra constraint (terminated end must be stereotyped <phase>).
+
+Additional examples include a \textit{Divorce} terminating a \textit{Marriage} and a \textit{Death} terminating a \textit{Person}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/termination.svg}
+    \caption{Examples of associations categorized as «termination».}
+    \label{fig:termination-example}
+\end{figure}
+
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Event End:} The type of the event end of a «termination» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+    \item \textbf{Terminated End:} The type of the terminated end of a «termination» must be a class that can only be instantiated by endurants, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:endurant-nature]{endurant natures}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% \begin{constraint}
+% \label{}
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+% \end{constraint}
+
+\subsection{«manifestation»}
+\label{stereotype:manifestation}
+
+An association stereotyped as «manifestation» is one whose instances connect an aspect to an event, such that the event materializes the potentiality represented by that aspect, i.e., the dispositional dimension of that aspect.
+
+
+Examples include \textit{Electrical Conductivity} manifested in a \textit{Current Flow}, \textit{Fragility} manifested in a \textit{Breaking}, and a \textit{Skill} manifested in a \textit{Performance}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/manifestation.svg}
+    \caption{Examples of associations categorized as «manifestation».}
+    \label{fig:manifestation-example}
+\end{figure}
+
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Manifested End:} The type of the manifested end of a «manifestation» must be a class that can only be instantiated by modes, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of \texttt{\{INTRINSIC\_MODE, EXTRINSIC\_MODE\}}.
+    \item \textbf{Event End:} The type of the event end of a «manifestation» must be a class that can only be instantiated by events, i.e., a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% \begin{constraint}
+% \label{} 
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+% \end{constraint}
+
+\subsection{«change»}
+\label{stereotype:change}
+ 
+An association stereotyped as «change» is a \hyperref[stereotype:participation]{«participation»} whose instances connect an event to an endurant that changes because of the event's occurrence, i.e., an endurant that acquires or loses properties as a result of the event.
+ 
+Unlike a \hyperref[stereotype:creation]{«creation»} or a \hyperref[stereotype:termination]{«termination»}, which mark the boundaries of an endurant's existence, a «change» presupposes that the changed endurant exists both before and after the event. The event marks the endurant's transition between states, which may be captured as a change in the values of its attributes, in the aspects that inhere in it, or in the phases it instantiates, as when a \textit{Promotion} changes an \textit{Employee}, who thereafter instantiates the phase \textit{Senior Employee}.
+ 
+Additional examples include a \textit{Repainting} changing the color of a \textit{Car}, a \textit{Legislation Amendment} changing a \textit{Piece of Legislation}, and a \textit{Medical Treatment} changing a \textit{Patient}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/change.svg}
+    \caption{Examples of associations categorized as «change».}
+    \label{fig:change-example}
+\end{figure}
+ 
+\subsubsection{Allowed Ends}
+ 
+\begin{itemize}
+    \item \textbf{Event End:} The type of the event end of a «change» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+    \item \textbf{Changed End:} The type of the changed end of a «change» must be a class that can only be instantiated by endurants, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:endurant-nature]{endurant natures}.
+\end{itemize}
+ 
+% \subsubsection{Constraints}
+ 
+% \begin{constraint}
+% \label{} 
+% Placeholder text
+ 
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+% \end{constraint}
+
+\subsection{«structural»}
+\label{stereotype:structural}
+
+An association stereotyped as «structural» is a \hyperref[stereotype:parthood]{parthood association} whose instances connect an event (the part) to a larger event (the whole) to whose very definition that part belongs, i.e., a structure-dependent part of the whole.
+
+Examples include a \textit{Goal} as a structural part of a \textit{Soccer Match}, a \textit{Soccer Match} as a structural part of a \textit{Soccer Championship}, and a \textit{Test Execution} as a structural part of a \textit{Testing Process}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/structural.svg}
+    \caption{Examples of associations categorized as «structural».}
+    \label{fig:structural-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Part End:} The type of the part end of a «structural» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+    \item \textbf{Whole End:} The type of the whole end of a «structural» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% \begin{constraint}
+% \label{} 
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+% \end{constraint}
+
+\subsection{«temporal»}
+\label{stereotype:temporal}
+
+An association stereotyped as «temporal» is a \hyperref[stereotype:parthood]{parthood} whose instances connect an event (the part) to a larger event (the whole) of which it is a temporal segment, projected out of the whole by an external temporal frame of reference and maximal with respect to the time interval under consideration.
+
+Examples include the \textit{First Half} as a temporal part of a \textit{Soccer Match}, a \textit{Morning Session} as a temporal part of a \textit{Conference}, and the \textit{Afternoon Segment} as a temporal part of a \textit{Meeting}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/temporal.svg}
+    \caption{Examples of associations categorized as «temporal».}
+    \label{fig:temporal-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Segment End:} The type of the segment end of a «temporal» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+    \item \textbf{Whole End:} The type of the whole end of a «temporal» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% \begin{constraint}
+% \label{} 
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+% \end{constraint}
+
+\subsection{«participational»}
+\label{stereotype:participational}
+
+An association stereotyped as «participational» is a \hyperref[stereotype:parthood]{parthood} whose instances connect two events, a part and a whole, such that the part is maximal with respect to its exclusive dependence on a single endurant. Thus, there is no other part of the event that is exclusively dependent on the same endurant.
+
+Examples include a \textit{Player Participation} as a participational part of a \textit{Soccer Match}, a \textit{Composer Participation} as a participational part of an \textit{Act of Composition}, and \textit{John's Participation} as a participational part of a \textit{Meeting}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/events/participational.svg}
+    \caption{Examples of associations categorized as «participational».}
+    \label{fig:participational-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Portion End:} The type of the portion end of a «participational» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+    \item \textbf{Whole End:} The type of the whole end of a «participational» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% \begin{constraint}
+% \label{} 
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+% \end{constraint}
+
+\section{Property Stereotypes}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/Event Properties.svg}
+    % \includesvg[width=1\linewidth]{img/Situation Classes.svg}
+    \caption{Fragment of the OntoUML Profile that defines property stereotypes for modeling events.}
+    \label{fig:event-properties-profile}
+\end{figure}
+
+\subsection{«begin»}
+\label{stereotype:begin}
+ 
+A property stereotyped as «begin» is one whose value, on each concrete individual in the extension of its owning class, is the instant at which that individual begins to exist: for an endurant, when it comes into existence; for an event, when it starts to occur; for a situation, when it begins to obtain.
+ 
+The attribute's datatype is application-dependent and reflects the temporal granularity required by the model. Begin points are immutable. When an individual's existence is instantaneous, as for punctual events, a single attribute may be stereotyped with both «begin» and \hyperref[stereotype:end]{«end»}.
+ 
+Examples include a \texttt{kickOff} attribute of \textit{Soccer Match}, a \texttt{dateOfBirth} attribute of \textit{Person}, and an \texttt{instant} attribute of an instantaneous \textit{Payment} stereotyped with both «begin» and «end».
+ 
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{beginOwnedByConcreteIndividualClass}
+A property decorated as «begin» must be owned by a class that can only be instantiated by concrete individuals, i.e., a class whose \texttt{restrictedTo} is a non-empty set excluding \texttt{TYPE} and \texttt{ABSTRACT}.
+ 
+\begin{lstlisting}[language=OCL]
+context begin
+inv beginOwnedByConcreteIndividualClass:
+    self.base_Property.owner.oclIsKindOf(Class)
+    and self.base_Property.owner.oclAsType(Class)
+            .extension_OntoUMLClass.restrictedTo->notEmpty()
+    and self.base_Property.owner.oclAsType(Class)
+            .extension_OntoUMLClass.restrictedTo
+            ->excludesAll(Set{OntologicalNature::TYPE,
+                              OntologicalNature::ABSTRACT})
+\end{lstlisting}
+\end{constraint}
+ 
+\begin{constraint}
+\label{beginIsReadOnly}
+A property decorated as «begin» must be read-only.
+ 
+\begin{lstlisting}[language=OCL]
+context begin
+inv beginIsReadOnly:
+    self.base_Property.isReadOnly = true
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{beginValuedInADatatype}
+A property decorated as «begin» must be typed by a datatype representing a temporal value space.
+ 
+\begin{lstlisting}[language=OCL]
+context begin
+inv beginValuedInADatatype:
+    self.base_Property.type.oclIsKindOf(DataType)
+\end{lstlisting}
+\end{constraint}
+ 
+\subsection{«end»}
+\label{stereotype:end}
+ 
+A property stereotyped as «end» is one whose value, on each concrete individual in the extension of its owning class, is the instant at which that individual ceases to exist: for an endurant, when it ceases to exist; for an event, when it finishes occurring; for a situation, when it ceases to obtain.
+ 
+An end point cannot precede the corresponding begin point and, once acquired, is immutable. A currently existing endurant has no end point yet, so an «end» attribute on an endurant class should have a lower-bound multiplicity of zero. An attribute stereotyped with both \hyperref[stereotype:begin]{«begin»} and «end» represents individuals whose begin and end points coincide.
+ 
+Examples include a \texttt{finalWhistle} attribute of \textit{Soccer Match}, a \texttt{dateOfDeath} attribute of \textit{Person}, and the \texttt{instant} attribute of an instantaneous \textit{Payment} stereotyped with both «begin» and «end».
+ 
+ 
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{endOwnedByConcreteIndividualClass}
+A property decorated as «end» must be owned by a class that can only be instantiated by concrete individuals, i.e., a class whose \texttt{restrictedTo} is a non-empty set excluding \texttt{TYPE} and \texttt{ABSTRACT}.
+ 
+\begin{lstlisting}[language=OCL]
+context end
+inv endOwnedByConcreteIndividualClass:
+    self.base_Property.owner.oclIsKindOf(Class)
+    and self.base_Property.owner.oclAsType(Class)
+            .extension_OntoUMLClass.restrictedTo->notEmpty()
+    and self.base_Property.owner.oclAsType(Class)
+            .extension_OntoUMLClass.restrictedTo
+            ->excludesAll(Set{OntologicalNature::TYPE,
+                              OntologicalNature::ABSTRACT})
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{endValuedInADatatype}
+A property decorated as «end» must be typed by a datatype representing a temporal value space.
+ 
+\begin{lstlisting}[language=OCL]
+context end
+inv endValuedInADatatype:
+    self.base_Property.type.oclIsKindOf(DataType)
+\end{lstlisting}
+\end{constraint}
+

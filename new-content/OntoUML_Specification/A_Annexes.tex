@@ -1,0 +1,173 @@
+\appendix 
+
+% Annex: Recommended Color Scheme (informative)
+% Place after \appendix (e.g. in A_Annexes.tex). Requires in the preamble:
+%   \usepackage[table]{xcolor}
+%   \usepackage{algorithm}
+%   \usepackage{algpseudocode}
+
+\definecolor{ouPink}{RGB}{255,153,163}
+\definecolor{ouLightPink}{RGB}{255,218,221}
+\definecolor{ouBlue}{RGB}{112,215,255}
+\definecolor{ouLightBlue}{RGB}{192,237,255}
+\definecolor{ouGreen}{RGB}{153,255,153}
+\definecolor{ouLightGreen}{RGB}{211,255,211}
+\definecolor{ouYellow}{RGB}{252,252,212}
+\definecolor{ouOrange}{RGB}{252,224,192}
+\definecolor{ouPurple}{RGB}{211,211,252}
+\definecolor{ouWhite}{RGB}{255,255,255}
+\definecolor{ouGrey}{RGB}{224,224,224}
+
+\newcommand{\swatch}[1]{\fcolorbox{black}{#1}{\rule{0pt}{6pt}\rule{12pt}{0pt}}}
+
+\chapter{Color Scheme}\label{annex:colorScheme}
+
+OntoUML diagrams may adopt a color scheme in which the fill color of a class shape signals the ontological nature of the instances of that class. The scheme is a notational recommendation only: it adds no semantics to a model, and a diagram that does not follow it remains a conforming OntoUML diagram.
+
+The color of a class is derived from its stereotype and from its \texttt{restrictedTo} tagged value. Each literal of the \texttt{OntologicalNature} enumeration is assigned a color, as listed in Table~\ref{tab:colorScheme}:
+
+\begin{itemize}
+  \item natures of substantials (\texttt{FUNCTIONAL\_COMPLEX}, \texttt{COLLECTIVE}, \texttt{QUANTITY}) share pink;
+  \item natures of intrinsic aspects (\texttt{INTRINSIC\_MODE}, \texttt{QUALITY}) share blue;
+  \item natures of extrinsic aspects (\texttt{EXTRINSIC\_MODE}, \texttt{RELATOR}) share green;
+  \item \texttt{EVENT} is yellow;
+  \item \texttt{SITUATION} is orange;
+  \item \texttt{TYPE} is purple;
+  \item \texttt{ABSTRACT} is white.
+\end{itemize}
+
+Every color comes in two tones: the main tone paints classes decorated with an ultimate sortal stereotype, and a lighter tone paints every other class, so that a kind stands out from its subkinds, roles, phases and the non-sortals that classify its instances.
+
+Grey is reserved for classes whose nature the scheme cannot single out. A class is grey when its \texttt{restrictedTo} is empty, or when its \texttt{restrictedTo} contains natures assigned to different colors. A class whose natures share a color takes that color: a «category» restricted to \texttt{FUNCTIONAL\_COMPLEX} and \texttt{COLLECTIVE} is light pink, whereas a «mixin» restricted to \texttt{FUNCTIONAL\_COMPLEX} and \texttt{RELATOR} is grey. Classes without an OntoUML class stereotype are outside the scheme and keep whatever fill they have.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Fill colors of OntoUML classes by ontological nature.}
+  \label{tab:colorScheme}
+  \begin{tabular}{l l l l l}
+    \hline
+    \textbf{Nature} & \multicolumn{2}{l}{\textbf{Ultimate sortals}} & \multicolumn{2}{l}{\textbf{Other classes}} \\
+    & \textbf{RGB} & \textbf{Hex} & \textbf{RGB} & \textbf{Hex} \\
+    \hline
+    \texttt{FUNCTIONAL\_COMPLEX} & \swatch{ouPink} (255, 153, 163) & \texttt{\#FF99A3} & \swatch{ouLightPink} (255, 218, 221) & \texttt{\#FFDADD} \\
+    \texttt{COLLECTIVE}          & \swatch{ouPink} (255, 153, 163) & \texttt{\#FF99A3} & \swatch{ouLightPink} (255, 218, 221) & \texttt{\#FFDADD} \\
+    \texttt{QUANTITY}            & \swatch{ouPink} (255, 153, 163) & \texttt{\#FF99A3} & \swatch{ouLightPink} (255, 218, 221) & \texttt{\#FFDADD} \\
+    \texttt{INTRINSIC\_MODE}     & \swatch{ouBlue} (112, 215, 255) & \texttt{\#70D7FF} & \swatch{ouLightBlue} (192, 237, 255) & \texttt{\#C0EDFF} \\
+    \texttt{QUALITY}             & \swatch{ouBlue} (112, 215, 255) & \texttt{\#70D7FF} & \swatch{ouLightBlue} (192, 237, 255) & \texttt{\#C0EDFF} \\
+    \texttt{EXTRINSIC\_MODE}     & \swatch{ouGreen} (153, 255, 153) & \texttt{\#99FF99} & \swatch{ouLightGreen} (211, 255, 211) & \texttt{\#D3FFD3} \\
+    \texttt{RELATOR}             & \swatch{ouGreen} (153, 255, 153) & \texttt{\#99FF99} & \swatch{ouLightGreen} (211, 255, 211) & \texttt{\#D3FFD3} \\
+    \texttt{EVENT}               & \swatch{ouYellow} (252, 252, 212) & \texttt{\#FCFCD4} & \swatch{ouYellow} (252, 252, 212) & \texttt{\#FCFCD4} \\
+    \texttt{SITUATION}           & \swatch{ouOrange} (252, 224, 192) & \texttt{\#FCE0C0} & \swatch{ouOrange} (252, 224, 192) & \texttt{\#FCE0C0} \\
+    \texttt{TYPE}                & \swatch{ouPurple} (211, 211, 252) & \texttt{\#D3D3FC} & \swatch{ouPurple} (211, 211, 252) & \texttt{\#D3D3FC} \\
+    \texttt{ABSTRACT}            & \swatch{ouWhite} (255, 255, 255) & \texttt{\#FFFFFF} & \swatch{ouWhite} (255, 255, 255) & \texttt{\#FFFFFF} \\
+    \hline
+    \multicolumn{5}{l}{Empty or mixed \texttt{restrictedTo}: \swatch{ouGrey} (224, 224, 224), \texttt{\#E0E0E0}} \\
+    \hline
+  \end{tabular}
+\end{table}
+
+Algorithm~\ref{alg:colorScheme} computes the fill color of a class. \textsc{Main} maps each nature to its main tone and \textsc{Light} maps it to its lighter tone. A tool that implements the scheme applies \textsc{Paint} to a class whenever its stereotype or its \texttt{restrictedTo} changes, and to each shape added to a diagram, so that every shape of a class carries the same fill.
+
+\begin{algorithm}[htbp]
+  \caption{Fill color of an OntoUML class.}
+  \label{alg:colorScheme}
+  \begin{algorithmic}[1]
+    \Statex $\textsc{Main} : \mathit{OntologicalNature} \to \mathit{Color}$
+    \Statex \hspace{\algorithmicindent}\texttt{FUNCTIONAL\_COMPLEX}, \texttt{COLLECTIVE}, \texttt{QUANTITY} $\mapsto$ \textsc{Pink}
+    \Statex \hspace{\algorithmicindent}\texttt{INTRINSIC\_MODE}, \texttt{QUALITY} $\mapsto$ \textsc{Blue}
+    \Statex \hspace{\algorithmicindent}\texttt{EXTRINSIC\_MODE}, \texttt{RELATOR} $\mapsto$ \textsc{Green}
+    \Statex \hspace{\algorithmicindent}\texttt{EVENT} $\mapsto$ \textsc{Yellow}, \texttt{SITUATION} $\mapsto$ \textsc{Orange}, \texttt{TYPE} $\mapsto$ \textsc{Purple}, \texttt{ABSTRACT} $\mapsto$ \textsc{White}
+    \Statex
+    \Statex $\textsc{Light} : \mathit{OntologicalNature} \to \mathit{Color}$
+    \Statex \hspace{\algorithmicindent}\texttt{FUNCTIONAL\_COMPLEX}, \texttt{COLLECTIVE}, \texttt{QUANTITY} $\mapsto$ \textsc{LightPink}
+    \Statex \hspace{\algorithmicindent}\texttt{INTRINSIC\_MODE}, \texttt{QUALITY} $\mapsto$ \textsc{LightBlue}
+    \Statex \hspace{\algorithmicindent}\texttt{EXTRINSIC\_MODE}, \texttt{RELATOR} $\mapsto$ \textsc{LightGreen}
+    \Statex \hspace{\algorithmicindent}\texttt{EVENT} $\mapsto$ \textsc{Yellow}, \texttt{SITUATION} $\mapsto$ \textsc{Orange}, \texttt{TYPE} $\mapsto$ \textsc{Purple}, \texttt{ABSTRACT} $\mapsto$ \textsc{White}
+    \Statex
+    \Function{FillColor}{$c$}
+      \If{$c$ has no OntoUML class stereotype}
+        \State \Return $\bot$ \Comment{$c$ is left unpainted}
+      \EndIf
+      \State $N \gets c.\mathit{restrictedTo}$
+      \If{$N = \emptyset$}
+        \State \Return \textsc{Grey}
+      \EndIf
+      \If{the stereotype of $c$ is an ultimate sortal}
+        \State $\mathit{tone} \gets \textsc{Main}$
+      \Else
+        \State $\mathit{tone} \gets \textsc{Light}$
+      \EndIf
+      \State $C \gets \{\, \mathit{tone}(n) \mid n \in N \,\}$ \Comment{colors of all natures of $c$}
+      \If{$|C| = 1$}
+        \State \Return the single element of $C$ \Comment{all natures share one color}
+      \Else
+        \State \Return \textsc{Grey} \Comment{natures disagree on color}
+      \EndIf
+    \EndFunction
+    \Statex
+    \Procedure{Paint}{$c$}
+      \State $\mathit{color} \gets \Call{FillColor}{c}$
+      \If{$\mathit{color} \neq \bot$}
+        \ForAll{shapes $s$ of $c$ in all diagrams}
+          \State $s.\mathit{fillColor} \gets \mathit{color}$
+        \EndFor
+      \EndIf
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+
+\chapter{OCL Library}
+
+\begin{lstlisting}[language=OCL]
+context OntoUMLClass
+def: mayClassifyEvents() : Boolean =
+    self.restrictedTo->includes(OntologicalNature::EVENT)
+
+
+-- Checks explicit OntoUML class stereotypes
+context Class
+def: isEndurantClass() : Boolean =
+    self.hasStereotype('kind')
+    or self.hasStereotype('collective')
+    or self.hasStereotype('quantity')
+    or self.hasStereotype('relator')
+    or self.hasStereotype('mode')
+    or self.hasStereotype('quality')
+
+
+-- Checks explicit high-order type stereotype
+context Class
+def: isHighOrderType() : Boolean =
+    self.hasStereotype('type')
+
+
+-- Generic stereotype-name helper
+context Class
+def: hasStereotype(stereotypeName : String) : Boolean =
+    self.getAppliedStereotypes()->exists(s | s.name = stereotypeName)
+
+
+-- Checks whether restrictedTo is a non-empty subset of endurant natures
+context Class
+def: hasOnlyEndurantNature() : Boolean =
+    self.restrictedTo->notEmpty()
+    and Set{
+        OntologicalNature::FUNCTIONAL_COMPLEX,
+        OntologicalNature::COLLECTIVE,
+        OntologicalNature::QUANTITY,
+        OntologicalNature::RELATOR,
+        OntologicalNature::INTRINSIC_MODE,
+        OntologicalNature::EXTRINSIC_MODE,
+        OntologicalNature::QUALITY
+    }->includesAll(self.restrictedTo)
+
+
+-- Checks whether restrictedTo is exactly restricted to TYPE
+context Class
+def: hasOnlyTypeNature() : Boolean =
+    self.restrictedTo->notEmpty()
+    and Set{ OntologicalNature::TYPE }->includesAll(self.restrictedTo)
+
+    
+\end{lstlisting}

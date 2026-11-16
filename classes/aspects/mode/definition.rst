@@ -1,10 +1,20 @@
 Definition
 ----------
 
-A «:ref:`mode`» is a particular type of intrinsic property that has no structured value. Like :ref:`qualities <quality>`, modes are also individuals that :ref:`existentially depend <dependency>` on their **bearers**. Types stereotyped as «:ref:`mode`» are also :ref:`rigid <rigidity>`. You can find some examples of modes below:
+A mode is an aspect that inheres in a bearer and has no structured value of its own. Modes are individuals that :ref:`existentially depend <dependency>` on their bearers, and the types that classify them are :ref:`rigid <rigidity>`.
 
-.. container:: figure
+In the current profile, model an intrinsic mode as «:ref:`intrinsicMode`» and an externally dependent mode as «:ref:`extrinsicMode`».
 
-   |Mode examples|
+.. figure:: /specification-figures/intrinsic-mode.svg
+   :alt: Examples of intrinsic modes
+   :width: 70%
+   :align: center
 
-.. |Mode examples| image:: _images/ontouml_mode-examples.png
+   Intrinsic modes.
+
+.. figure:: /specification-figures/extrinsic-mode.svg
+   :alt: Examples of extrinsic modes
+   :width: 70%
+   :align: center
+
+   Extrinsic modes.

@@ -1,0 +1,170 @@
+\chapter{Profile Elements for Modeling Situations}
+\label{chapter:profileElementsForModelingSituations}
+
+\section{Class Stereotypes}
+\label{section:situationClassStereotypes}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{img/Situation Classes.svg}
+    \caption{Fragment of the OntoUML Profile that defines class stereotypes for modeling situations.}
+    \label{fig:situation-classes-profile}
+\end{figure}
+
+\subsection{«situation»}
+\label{stereotype:situation}
+
+A class stereotyped as «situation» is a \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} whose instances are particular configurations of a part of reality which can be understood as a whole and in which entities stand in relations. 
+
+Situations are the entities that trigger events and that events bring about: a situation activates the dispositions whose manifestation is an event, and the occurrence of an event results in a new situation. 
+
+Examples of «situation» include the class \textit{Hazardous Gas Concentration}, whose instances are configurations in which the concentration of a flammable gas in an enclosed space exceeds a safety threshold, potentially triggering an \textit{Explosion} event; \textit{Checkmate}, whose instances are board configurations in which a king stands in an attacked position from which no legal move can remove it; \textit{Loan Default}, whose instances are configurations in which a borrower has failed to meet a payment obligation towards a lender by its due date, triggering events such as \textit{Contract Termination} or \textit{Collateral Seizure}; and \textit{Quorum Met}, whose instances are configurations in which the number of members present in an assembly meets the minimum required for deliberation, enabling \textit{Voting} events to occur.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=\linewidth]{img/situations/situation.svg}
+    \caption{Examples of classes categorized as «situation».}
+    \label{fig:situation-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «situation» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «situation» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:phase]{«phase»}.
+
+\subsubsection{Constraints}
+
+The following invariants apply to classes stereotyped as «situation»: 
+
+\begin{constraint}
+\label{constraint:situationRestrictedToSituation}
+A class decorated as «situation» must have its ontological nature restricted to situation.
+\begin{lstlisting}[language=OCL]
+context situation
+inv situationRestrictedToSituation:
+    self.base_Class.restrictedTo = Set{OntologicalNature::SITUATION}
+\end{lstlisting}
+\end{constraint}
+ 
+\section{Association Stereotypes}
+\label{section:situationAssociationStereotypes}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=0.4\linewidth]{img/Situation Associations.svg}
+    \caption{Fragment of the OntoUML Profile that defines association stereotypes for modeling situations.}
+    \label{fig:situation-associations-profile}
+\end{figure}
+
+\subsection{«triggering»}
+\label{stereotype:triggering}
+
+An association stereotyped as «triggering» is one whose instances connect a situation to an event that is the \hyperref[stereotype:manifestation]{manifestation} of dispositions activated by that situation. 
+
+Strictly speaking, the situation that triggers an event is the maximal situation satisfying all the conditions that are jointly necessary and sufficient for the activation of the dispositions the event manifests. In a «triggering» association, however, the situation type may be one whose instances capture only the domain-relevant portion of these conditions; each such situation is understood as an (improper) part of the maximal situation that triggers the event.
+
+Examples include a \textit{Hazardous Gas Concentration} triggering an \textit{Explosion}, which manifests the flammability of the gas; a \textit{Loan Default} triggering a \textit{Collateral Seizure}, which manifests the legal power the loan contract confers on the lender; and a \textit{Checkmate} triggering the \textit{Match Ending}, which manifests normative dispositions grounded in the rules of chess.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/situations/triggering.svg}
+    \caption{Examples of associations categorized as «triggering».}
+    \label{fig:triggering-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Situation End:} The type of the situation end of a «triggering» must be a class that can only be instantiated by situations, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{SITUATION\}}.
+    \item \textbf{Event End:} The type of the event end of a «triggering» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+
+\subsection{«bringingAbout»}
+\label{stereotype:bringingAbout}
+
+An association stereotyped as «bringingAbout» is one whose instances connect an event to a situation that, as an effect of the event's occurrence, begins to obtain at the instant the event ends. 
+
+As with \hyperref[stereotype:triggering]{«triggering»}, the situation an event brings about is, strictly speaking, maximal --- it embodies all the effects of the event's occurrence --- but a «bringingAbout» association may connect an event type to a situation type whose instances capture only the domain-relevant effects, each understood as an (improper) part of that maximal situation.
+
+Examples include a \textit{Gas Leak} bringing about a \textit{Hazardous Gas Concentration}, which may in turn trigger an \textit{Explosion}; a \textit{Final Loan Payment} bringing about a \textit{Settled Debt}; and a \textit{Checkmating Move} bringing about a \textit{Checkmate}.
+
+Together, \hyperref[stereotype:triggering]{«triggering»} and «bringingAbout» ground causation between events: an event causes another when it brings about a situation that triggers the latter. Chains of these associations thereby represent causal chains, which in turn ground \hyperref[stereotype:historicalDependence]{historical dependence} between events.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/situations/bringingAbout.svg}
+    \caption{Examples of associations categorized as «bringingAbout».}
+    \label{fig:bringingAbout-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Event End:} The type of the event end of a «bringingAbout» must be a class that can only be instantiated by events, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EVENT\}}.
+    \item \textbf{Situation End:} The type of the situation end of a «bringingAbout» must be a class that can only be instantiated by situations, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{SITUATION\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+
+
+\subsection{«presence»}
+\label{stereotype:presence}
+
+% =====================================================================
+% FLAG -- INFERRED DEFINITION.
+% <presence> is NOT defined in any of the references provided for this project
+% (exhaustively checked across the events paper, the relations paper, the types
+% papers, the UFO 2021 catalogue, gUFO material, and the 2005 thesis). The draft
+% below is inferred from the UFO account of situations as configurations (states
+% of affairs) comprehending endurants together with their moments at a time.
+% Please confirm the intended semantics and direction.
+% =====================================================================
+
+An association stereotyped as «presence» is one whose instances connect a situation to an entity that stands in a relation exemplified in the situation.
+% the configuration of entities the situation comprehends.
+
+Examples of «presence» include the association between \textit{Hazardous Gas Concentration} and \textit{Flammable Gas}, whose instances connect a hazardous concentration situation to the portion of gas whose concentration in the enclosed space exceeds the safety threshold; the association between \textit{Checkmate} and \textit{King}, whose instances connect a checkmate situation to the king that stands in an attacked position from which no legal move can remove it; the association between \textit{Loan Default} and \textit{Loan}, whose instances connect a default situation to the loan whose payment obligation the borrower has failed to meet by its due date; and the association between \textit{Quorum Met} and \textit{Assembly Member}, whose instances connect a quorum situation to each member whose presence counts towards the minimum required for deliberation.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/situations/presence.svg}
+    \caption{Examples of associations categorized as «presence».}
+    \label{fig:presence-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Situation End:} The type of the situation end of a «presence» must be a class that can only be instantiated by situations, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{SITUATION\}}.
+    \item \textbf{Entity End:} The type of the entity end of a «presence» can be any class.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+

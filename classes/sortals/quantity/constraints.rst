@@ -2,14 +2,14 @@ Constraints
 -----------
 
 .. _quantity-constraints-c1:
-**C1:** A «:ref:`quantity`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
+**C1:** A «:ref:`quantity`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`quality`», «:ref:`intrinsicMode`», «:ref:`extrinsicMode`», «:ref:`event`», «:ref:`situation`», and «:ref:`type`») as its direct or indirect super-type.
 
 .. container:: figure
 
    |Quantity forbidden 1|
 
 .. _quantity-constraints-c2:
-**C2:** A «:ref:`quantity`» cannot have types that inherit :ref:`identity <identity>` («:ref:`subkind`», «:ref:`role`» and «:ref:`phase`») as its direct or indirect super-types.
+**C2:** A «:ref:`quantity`» cannot have types that inherit :ref:`identity <identity>` («:ref:`subkind`», «:ref:`role`», «:ref:`historicalRole`», and «:ref:`phase`») as its direct or indirect super-types.
 
 .. container:: figure
 
@@ -23,7 +23,7 @@ Constraints
    |Quantity forbidden 3|
 
 .. _quantity-constraints-c4:
-**C4:** As a :ref:`rigid <rigidity>` type, a «:ref:`quantity`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`» and «:ref:`phasemixin`») as its direct or indirect super-type.
+**C4:** As a :ref:`rigid <rigidity>` type, a «:ref:`quantity`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`historicalRole`», «:ref:`phase`», «:ref:`rolemixin`», «:ref:`historicalRoleMixin`», and «:ref:`phasemixin`») as its direct or indirect super-type.
 
 .. container:: figure
 

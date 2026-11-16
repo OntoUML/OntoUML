@@ -16,11 +16,13 @@ UML distinguishes between aggregation and composition only. OntoUML distinguishe
    -  mandatory whole w.r.t. the part
    -  mandatory non-rigid type (e.g. role, phase, mixin)
 
-OntoUML also distinguishes among various types of wholes and their parts
+The current profile distinguishes parthood by the kind of whole. See :ref:`parthood`.
 
--  **functional whole** (and :ref:`componentOf` relation)
--  :ref:`collective` (and :ref:`subCollectionOf` and :ref:`memberOf` relations)
--  :ref:`quantity` (and :ref:`containment` and :ref:`subQuantityOf` relations)
+-  **Functional complexes** use :ref:`componenthood <componentOf>`.
+-  **Collectives** use :ref:`membership <memberOf>` and :ref:`subCollection <subCollectionOf>`.
+-  **Quantities** use :ref:`subQuantity <subQuantityOf>`.
+
+:ref:`Constitution <constitution>` is a separate relation. «containment» is not a stereotype of the current profile. The examples below keep the earlier account of shareability, essential parts, and immutable parts. Those distinctions are not yet stereotype properties.
 
 .. _part-whole-examples:
 

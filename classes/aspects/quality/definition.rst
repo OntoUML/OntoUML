@@ -1,32 +1,25 @@
 Definition
 ----------
 
-A «:ref:`quality`» is a particular type of intrinsic property which has a
-structured value. Qualities are things that are :ref:`existentially dependent <dependency>`
-on the things they characterize, called their **bearers**. Types stereotyped
-as «:ref:`quality`» are also :ref:`rigid <rigidity>`. OntoUML differentiates
-between three types of qualities:
+A «:ref:`quality`» is a :ref:`first-order ultimate sortal <ultimate-sortal>` whose instances are aspects that inhere in a bearer and are measurable by projection into a quality structure.
 
--  **Perceivable**, which capture qualities that could be measured by an
-   agent with the appropriate instrument, like weight, height, color and
-   speed.
--  **Non-Perceivable**, which represent properties which cannot be
-   directly measured by an instrument, like currency.
--  **Nominal**, which are used to make reference to an individual, like
-   one's name, a book's ISBN or a credit card number.
+A quality structure is the value space for qualities of a given type. OntoUML represents it with a datatype or an enumeration. An object's color may be projected into an HSV space, an RGB space, or an enumeration such as red, green, and blue. A body's temperature may be projected into Celsius, Fahrenheit, or Kelvin. The color of a particular rose remains the same quality when its value changes from red to brown. See :ref:`endurants`.
 
-Notice some examples of qualities in the next figure:
+.. figure:: /specification-figures/quality.svg
+   :alt: Weight and color as qualities of a bearer
+   :width: 75%
+   :align: center
 
-.. container:: figure
+   A class categorized as «quality».
 
-   |Quality examples|
+The inherence in the bearer is a :ref:`characterization`. Comparisons such as *heavier than* and *taller than* are :ref:`comparative` associations derived from these qualities. The earlier «structuration» stereotype is not part of the current profile. Structure the quality by typing it, or by typing the value it projects into, with a datatype or enumeration.
 
-You can define different types of geometrical structures for a quality
-value using dimensions and domains. Here is an example:
+Modelers often group qualities by how the value is obtained:
 
-.. container:: figure
+- **Perceivable** qualities can be measured with an instrument, such as weight, height, color, and speed.
+- **Non-perceivable** qualities are still projected into a value space, such as an amount of currency assigned as a price.
+- **Nominal** qualities pick out a value used as a label, such as a name, an ISBN, or a card number.
 
-   |Quality application 2|
+A quality may specialize a :ref:`category` or a :ref:`mixin`. It may be specialized by a :ref:`subkind`, :ref:`role`, :ref:`historicalRole`, or :ref:`phase`.
 
-.. |Quality examples| image:: _images/ontouml_quality-examples.png
-.. |Quality application 2| image:: _images/ontouml_quality-application-2.png
+``restrictedTo`` is exactly ``{quality}`` and ``order`` is 1.

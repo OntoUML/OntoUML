@@ -1,6 +1,23 @@
 Definition
 ----------
 
+«:ref:`subQuantity <subQuantityOf>`» is a :ref:`parthood` relation between a quantity and a larger quantity. It is transitive.
+
+A water portion is a sub-quantity of a wine portion. A cement portion and a sand portion are sub-quantities of a concrete batch.
+
+Quantities are maximal, so a quantity has no part of the same quantity kind. A portion of wine is not composed of other portions of wine. Every sub-quantity is a maximal individual of a different quantity kind: there is one portion of alcohol that composes a given portion of wine.
+
+.. figure:: /specification-figures/subquantity.svg
+   :alt: Alcohol as a sub-quantity of wine
+   :width: 75%
+   :align: center
+
+   Associations categorized as «subQuantity».
+
+Both ends are classes restricted exactly to ``{quantity}``.
+
+The discussion below uses the earlier name «subQuantityOf». It also records shareability and essentiality, which the current profile does not yet expose as stereotype properties.
+
 «:ref:`subQuantityOf`» is a parthood relation between two quantities, e.g.:
 
 A. alcohol is part of wine;

@@ -9,8 +9,9 @@ aggregation_stereotype:
     readOnly: undefined
   target_end:
     allowed:
+    - Kind
     - Collective
-    - Functional complex
+    - Quantity
     min: 1
     max: "*"
     readOnly: undefined

@@ -16,14 +16,14 @@ Constraints
    |Relator application 2|
 
 .. _relator-constraints-c3:
-**C3:** A «:ref:`relator`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
+**C3:** A «:ref:`relator`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`quality`», «:ref:`intrinsicMode`», «:ref:`extrinsicMode`», «:ref:`event`», «:ref:`situation`», and «:ref:`type`») as its direct or indirect super-type.
 
 .. container:: figure
 
    |Relator forbidden 2|
 
 .. _relator-constraints-c4:
-**C4:** A «:ref:`relator`» cannot have types that inherit :ref:`identity <identity>` («:ref:`subkind`», «:ref:`role`» and «:ref:`phase`») as its direct or indirect super-type.
+**C4:** A «:ref:`relator`» cannot have types that inherit :ref:`identity <identity>` («:ref:`subkind`», «:ref:`role`», «:ref:`historicalRole`», and «:ref:`phase`») as its direct or indirect super-type.
 
 .. container:: figure
 
@@ -37,7 +37,7 @@ Constraints
    |Relator forbidden 5|
 
 .. _relator-constraints-c6:
-**C6:** As a :ref:`rigid <rigidity>` type, a «:ref:`relator`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`» and «:ref:`phasemixin`») as its direct or indirect super-type.
+**C6:** As a :ref:`rigid <rigidity>` type, a «:ref:`relator`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`historicalRole`», «:ref:`phase`», «:ref:`rolemixin`», «:ref:`historicalRoleMixin`», and «:ref:`phasemixin`») as its direct or indirect super-type.
 
 .. container:: figure
 

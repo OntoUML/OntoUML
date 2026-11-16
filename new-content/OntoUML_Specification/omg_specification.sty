@@ -1,0 +1,180 @@
+\ProvidesPackage{omg_specification}
+%% Template for Object Management Group (OMG) specification documents
+
+\usepackage{omg}
+
+%%% Page layout
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\medskipamount}
+
+%%% Headers/Footers
+% Top right header has section title
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+\fancyhf{}
+\fancyhead[LO,LE]{\sf\footnotesize{\leftmark}}
+\fancyhead[RO,RE]{\sf\footnotesize{\rightmark}}
+\fancyfoot[LO,LE]{\sf\footnotesize{\title}}
+\fancyfoot[CE,CO]{\thepage}
+\fancyfoot[RE,RO]{\sf\footnotesize{OMG Document \docnum}}
+\renewcommand{\headrulewidth}{0pt}
+
+% Is this done redundantly just to be sure?
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[LO,LE]{\sf\footnotesize{\leftmark}}
+  \fancyhead[RO,RE]{\sf\footnotesize{\rightmark}}
+  \fancyfoot[LO,LE]{\sf\footnotesize{\title}}
+  \fancyfoot[CE,CO]{\thepage}
+  \fancyfoot[RE,RO]{\sf\footnotesize{OMG Document \docnum}}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% If set to true, this is an initial subsmission in response to an RFP, and Section 0 is included. If it is false, Section 0 is omitted.
+\newboolean{initialsubmission}
+
+
+% TITLE PAGE DEF
+\makeatletter
+\renewcommand\maketitle{%
+    \begin{titlepage}
+        \vspace{-2cm}
+        {\hbox to \textwidth{ \hfill\sffamily \subdate}}
+        \vspace{7cm}
+        {\Huge\sffamily \title}\\[2cm]
+        {\large\sffamily \subtitle}\\[1cm]
+        {\large\sffamily Version \version}\\[\bigskipamount]
+        \hrule height 1.5pt
+        %\smallskip
+        \sffamily\begin{tabbing}
+        OMG Document Number:\quad \= \docnum\quad \= (this document, errata applied)\\[\bigskipamount]
+        \end{tabbing}
+        \hrule height 1.5pt
+        \vspace{15mm}
+        \large\sffamily{\begin{tabbing}
+        %\hbox to 0.22\textwidth{ } &{\bf\,}&\hbox to 0.72\textwidth{ }\\
+        {\normalsize Submitted by:\qquad} \={\normalsize\docnum}\kill
+        Submitted by:\qquad \titlesubmitters
+        \end{tabbing}}
+        \vfill
+    \end{titlepage}
+}
+\makeatother
+\titlecontents{requirement}[0pt]{}{}{}{}
+
+
+%%% Chapter, Section, subsubsection style alterations
+% Remove new page for chapters
+\makeatletter
+\patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
+% Add a space to the subsubsection header??
+\makeatletter
+\renewcommand\thesubsubsection{\thesubsection .\@arabic\c@subsubsection}
+\makeatother
+
+%%% Title page 'Submitted by:'' block
+% Do not remove the explicit newline here, \\, \newline, and \linebreak all
+% cause a 'No line here to end' error.
+\newcommand{\titlesubhelper}[1]{\>#1\\\\}
+\newcommand{\titlesubmitters}{\forlistloop{\titlesubhelper}{\authornames}}
+
+%%% Copyright block tools
+\newcommand{\Copyright}{Copyright\ \ \copyright\,\the\year,}
+\newcommand{\copyrightomg}{\Copyright\ \ Object Management Group, Inc.}
+
+% Do not remove the explicit newline here, \\, \newline, and \linebreak all
+% cause a 'No line here to end' error.
+\newcommand{\copyrighthelper}[1]{\Copyright\ \ #1\\}
+\newcommand{\copyrights}{\forlistloop{\copyrighthelper}{\authornames}\copyrightomg}
+
+%%% Submitting organizations block
+% \providecommand{\submitterscontactinfo}{}
+\newcommand{\suborgshelper}[1]{\item#1}
+\newcommand{\suborgs}{\begin{itemize}\forlistloop{\suborgshelper}{\submitterscontactinfo}\end{itemize}}
+
+
+
+
+% %%% Submitted by: block tools
+% \newcommand{\submitternames}{\forlistloop{\submissionhelper}{\submitters}}
+% \newcommand{\submissionhelper}[1]{\> \extractcompany{#1}\\[\medskipamount]}
+
+\providecommand{\authornames}{}
+\renewcommand{\authornames}{}
+\newcommand{\addtoauthornames}[1]{\listadd{\authornames}{\extractcompany{#1}}}
+\newcommand{\buildauthornames}{%
+    \forlistloop{\addtoauthornames}{\submitters}%
+    \forlistloop{\addtoauthornames}{\contributors}%
+}
+
+\newcommand{\addtocontactinfo}[1]{
+    \providecommand{\contactinfowrapper}{}
+    \renewcommand{\contactinfowrapper}{}
+    \providecommand{\contactpieces}{}
+    \renewcommand{\contactpieces}{}
+    % \providecommand{\contactpiecesB}{}
+    % \renewcommand{\contactpiecesB}{}
+    \printCSVList{#1}\\%
+    Adding: \printCSVList{\extractcontacts{#1}}\\%
+    \forlistloop{\listadd{\contactinfowrapper}}{\expandafter\extractcontacts{#1}}
+    Wrapper: \printETBList{\contactinfowrapper}\\%
+    % \getnthETBelement{1}{\contactinfowrapper}
+    \forlistloop{\listadd{\contactpieces}}{\contactinfowrapper}
+    Pieces: \printETBList{\contactpieces}\\%
+    \forlistloop{\listadd{\contactpiecesB}}{\contactpieces}
+    PiecesB: \printETBList{\contactpiecesB}\\%
+    ----------\\
+}
+
+\newcommand{\buildcontactinfo}[1]{%
+    \forlistloop{\addtocontactinfo}{#1}%
+}
+
+\newcommand{\extractcompany}[1]{\getnthelement{1}{#1}}
+
+\newcommand{\extractcontacts}[1]{%
+    % \printCSVList{#1}%
+    \getnthelement{2}{#1}%
+}
+
+
+%%% hyperref setup
+\hypersetup{bookmarksnumbered=true}
+
+%%% Counter initialization
+\setcounter{chapter}{1}
+\addtocounter{chapter}{-1}
+\setcounter{part}{1}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{3}
+
+%%% Appendix -> Annex
+\renewcommand\appendixname{Annex}
+
+%%% Bibliographies
+\usepackage[style=alphabetic]{biblatex}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\DeclareBibliographyCategory{normative}
+\renewcommand*{\bibfont}{\fontfamily{ptm}\selectfont}
+% \bibliographystyle{abbrv}
+
+\addbibresource{omg.bib}
+\addbibresource{w3.bib}
+\addbibresource{iso.bib}
+
+\DeclareLabelalphaTemplate{
+   \labelelement{
+     \field[final]{shorthand}
+   }
+   \labelelement{
+     \field[final]{author}
+   }
+   \labelelement{
+     \field{version}
+   }
+}
+
+\usepackage{omg_modelgen}

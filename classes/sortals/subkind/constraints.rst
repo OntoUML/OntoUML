@@ -3,7 +3,7 @@ Constraints
 
 .. _subkind-constraints-c1:
 **C1:** A «:ref:`subkind`» must **always** have exactly one :ref:`identity provider <identity>`
-(«:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`», «:ref:`quantity`») as an ancestor (a direct or indirect super-type). Therefore, our examples in
+(«:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`quality`», «:ref:`intrinsicMode`», «:ref:`extrinsicMode`», «:ref:`event`», «:ref:`situation`», and «:ref:`type`») as an ancestor (a direct or indirect super-type). Therefore, our examples in
 the first figure should be modelled as:
 
 .. container:: figure
@@ -12,7 +12,7 @@ the first figure should be modelled as:
 
 .. _subkind-constraints-c2:
 **C2:** Because it is a :ref:`rigid <rigidity>` type, a «:ref:`subkind`» cannot have an
-:ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`phase`», «:ref:`rolemixin`» and «:ref:`phasemixin`») as an ancestor.
+:ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`historicalRole`», «:ref:`phase`», «:ref:`rolemixin`», «:ref:`historicalRoleMixin`», or «:ref:`phasemixin`») as an ancestor.
 Therefore, the following fragments would not be allowed:
 
 .. container:: figure

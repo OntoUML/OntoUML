@@ -1,17 +1,21 @@
 Definition
 ----------
 
-The «:ref:`phase`» stereotype is used to represent :ref:`anti-rigid <rigidity>` subtypes of :ref:`identity providers <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») that are instantiated by changes in intrinsic properties (e.g. the age of a person, the color of an object, the condition of a car). All instances of a particular «:ref:`phase`» must follow the same :ref:`identity principle <identity>`. Phases always come in :ref:`partitions <phase-partition-pattern>`.
+A «:ref:`phase`» is an anti-rigid sortal that specializes a unique :ref:`ultimate sortal <ultimate-sortal>` and classifies entities contingently, in virtue of an intrinsic condition. Every instance of a given phase follows the same identity principle.
 
+Phases are defined in partitions. The members of a partition are alternative intrinsic conditions for individuals of the same ultimate sortal. Child, Teenager, and Adult partition Person by age. Draft Contract, Active Contract, and Expired Contract partition Contract by lifecycle status. Endangered Species and Least Concern Species partition Species by conservation status.
+
+.. figure:: /specification-figures/phase.svg
+   :alt: Child, Adult, and Elder as phases of Person
+   :width: 80%
+   :align: center
+
+   Classes categorized as «phase».
 
 .. note::
 
-   *Tip*: When defining a phase :ref:`partition <phase-partition-pattern>`, think about which property (or properties) variation is causing the instantiation of the phases and include it in your model. For instance, when defining the phases Child, Adult and Elder for Person, you should include an age property for the type Person.
+   When you define a :ref:`phase partition <phase-partition-pattern>`, include the property whose variation moves instances between the phases. For Child, Adult, and Elder, that property is the age of Person.
 
-Here are some examples of phases:
+A phase may specialize a kind, collective, quantity, relator, intrinsic mode, extrinsic mode, quality, situation, type, subkind, phase, category, mixin, or phase mixin. It may be specialized by a phase or a role.
 
-.. container:: figure
-
-   |Phase examples|
-
-.. |Phase examples| image:: _images/ontouml_phase-examples.png
+A phase is declared in a partition: a disjoint and complete generalization set that contains at least two phases and no specializing class of another OntoUML stereotype.

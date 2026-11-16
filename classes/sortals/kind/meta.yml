@@ -1,10 +1,12 @@
 class_stereotype:
-  name: Kind
-  parent: UltimateSortal
+  name: "Kind"
+  parent: "First-order ultimate sortal"
   provides_identity: true
-  identity_principle: simple
-  rigidity: rigid
-  dependency: optional
+  identity_principle: "provided"
+  rigidity: "rigid"
+  dependency: "optional"
+  ontological_nature: "exactly {functional complex}"
+  order: "1"
   supertypes:
   - Category
   - Mixin
@@ -12,9 +14,6 @@ class_stereotype:
   - Subkind
   - Phase
   - Role
-  forbidden_associations:
-  - Derivation
-  - Structuration
-  - SubCollectionOf
-  - SubQuantityOf
-  abstract: undefined
+  - HistoricalRole
+  forbidden_associations: []
+  abstract: "no"

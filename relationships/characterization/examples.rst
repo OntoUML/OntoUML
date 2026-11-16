@@ -1,7 +1,7 @@
 Examples
 --------
 
-For examples see «:ref:`quality`» and «:ref:`mode`».
+For examples see «:ref:`quality`», «:ref:`intrinsicMode`», and «:ref:`extrinsicMode`». The earlier «:ref:`mode`» page collects examples from before that split.
 
 **Source:**
 

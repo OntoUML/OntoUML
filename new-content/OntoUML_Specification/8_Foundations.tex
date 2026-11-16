@@ -1,0 +1,222 @@
+\chapter{Ontological Foundations}
+
+\section{Introduction}
+
+This chapter provides the ontological grounding of OntoUML by introducing the main distinctions of the Unified Foundational Ontology \cite{ufo_unified_foundational_ontology_2021}.It is not meant as a complete description of the theory, but a collection and summary of the work published over two decades by the team behind it.
+
+\section{Individuals and Types}
+
+The most fundamental distinction in UFO is the one between individuals and types. \textbf{Individuals} are particular entities, such as Ada Lovelace, the United Nations, Paris, or the marriage between John Lennon and Yoko Ono. \textbf{Types}, in contrast, are general entities: patterns of features that can be repeated across many entities, whether individuals or other types. Examples of types include Person, Organization, Marriage, Weight, Presidential Election, and Species. Individuals and types are disjoint ontological categories. A type is an entity that may have instances; an individual is an entity that cannot \cite{types_and_taxonomic_structures_in_conceptual_modeling_2021}.
+
+A type has an \textbf{extension}, i.e., the collection of entities that instantiate it in a given circumstance. The extension of a type may vary over time because entities may come into existence, cease to exist, start instantiating the type, or cease to instantiate it.
+
+The same individual may instantiate multiple types at one point in time and across time. For example, in 1895 Marie Curie was a Person, a Scientist, and a Wife; in 1911 she was still a Person and a Scientist, but no longer a Wife, having become a Widow, and she was by then also a Nobel Laureate.
+
+Types are organized in a taxonomy by means of \textbf{specialization} relations: a type specializes another when every instance of the former is necessarily an instance of the latter, so that the specializing type inherits the characteristics and constraints of the specialized one. A type may specialize more than one supertype. For example, Scientist specializes Person, and Nobel Laureate specializes both Person and Award Winner, inheriting from each of them. Specializations of a type may also be organized along orthogonal classifications, each capturing an independent criterion. For example, Person may be specialized by Child, Adult, and Elderly according to age, and by Student, Employee, and Retiree according to occupation, so that the same person may be an Adult and an Employee at the same time.
+
+\section{Theory of Individuals}
+
+Individuals are either concrete or abstract. A \textbf{concrete individual} is an individual that exists in space-time. This category includes ordinary objects, such as the Eiffel Tower and the University of Twente; reified aspects, such as the Eiffel Tower's height, or Ana's employment contract; events, such as Ana's signing of an employment contract or the launch of the James Webb Space Telescope; and situations, such as the situation in which David's passport is valid or the situation in which Maria is hospitalized. In this sense, concrete individuals are the domain entities that exist, occur, or obtain in the domain of interest being modeled \cite{ontological_foundations_for_structural_conceptual_models_2005}.
+
+\textbf{Abstract individuals}, by contrast, do not exist in space-time. They include entities such as sets, numbers, and logical expressions. For example, the set composed of Brazil, Argentina, and Uruguay is an abstract individual, while Brazil, Argentina, and Uruguay themselves are concrete individuals; similarly, the value 37.8 may be used to quantify Maria's body temperature, but Maria and Maria's body temperature are concrete individuals.
+
+Concrete individuals are further partitioned into individual endurants, events, and situations \cite{ufo_unified_foundational_ontology_2021,representing_a_reference_foundational_ontology_of_events_in_sroiq_2019}. These three categories differ in how their instances relate to time: endurants exist in time, events occur in time, and situations obtain at a given time.
+
+\subsection{Individual Endurants}
+
+An \textbf{individual endurant} is a concrete individual that exists in time with all its parts, i.e., it is wholly present at every instant in which it exists. Endurants bear both essential and accidental properties and, for this reason, they can qualitatively change while remaining the same individual. Frida Kahlo remains the same person when her weight or her address changes; the marriage between John and Mary remains the same marriage when it changes from a marriage with full separation of assets to one with partial separation of assets. The kinds of change an endurant can undergo while remaining the same individual are determined by the kind it instantiates \cite{ufo_unified_foundational_ontology_2021}.
+
+Individual endurants are partitioned into substantials and aspects, according to whether or not they existentially depend on other entities \cite{ontological_foundations_for_structural_conceptual_models_2005}.
+
+\subsubsection{Substantials}
+
+A \textbf{substantial} is an endurant that does not depend on any other entity in order to exist. Examples of substantials include Mick Jagger, the Moon, the University of Twente, a deck of cards, and a puddle of water.
+
+Substantials may or may not have proper parts. Those that do, called \textbf{wholes}, are distinguished by the unity conditions that bind their parts together, which give rise to three categories: functional complexes, collectives, and quantities.
+
+A \textbf{functional complex} is a substantial whose parts play differentiated functional roles with respect to it \cite{guizzardi2009transitivity}. Examples of functional complexes include a human body, an organization, a computer, and John's car: a car's engine generates power, its wheels enable movement, and its brakes support controlled deceleration, each part contributing to the whole in a distinct way.
+
+A \textbf{collective} is a substantial whose parts play the same role with respect to it \cite{guizzardi2011collectives}. A forest, for example, is unified by the co-location of its trees: every tree in the relevant region is one more member, on a par with all the others, and nothing else is a member. Other examples include a deck of cards, a pile of bricks, and a group of visitors.
+
+The same natural language term may denote individuals of different substantial categories depending on how it is conceptualized. A band, for instance, is a collective if its parts are understood uniformly as band members, but a functional complex if it is understood as an organized system whose parts perform distinct functions, such as singer, guitarist, and drummer. The unity condition that is intended determines the category \cite{sales2017fleet}.
+
+A \textbf{quantity} is a maximally topologically self-connected portion of matter. Examples of quantities include a lump of clay, a pile of sand, and a portion of water. Quantities are homogeneous: their parts are themselves portions of the same kind of matter. If you split a lump of clay, you get two smaller lumps of clay. Being maximal, a quantity cannot have another quantity of the same kind of matter as a part: the alcohol in a portion of wine is a quantity of a different kind, and a portion of water separated from a puddle is a new quantity rather than a part of the original one \cite{guizzardi2010fois}.
+
+\subsubsection{Aspects}
+
+An \textbf{aspect} is an endurant that existentially depends on another entity, its \textbf{bearer}, in which it is said to \textbf{inhere}. Aspects include the Moon's mass, Mick Jagger's ability to sing, John's love for Mary, and the marriage between John and Mary: none of them could exist without the entities they are about. An aspect inheres in exactly one bearer and cannot migrate from one bearer to another, so Maria's body temperature cannot become Ana's body temperature.
+
+In the philosophical literature, aspects are also referred to as moments, tropes, abstract particulars, individual accidents, or particularized properties. The term ``moment'' is used in earlier publications on the UFO theory \cite{ontological_foundations_for_structural_conceptual_models_2005,guizzardi2006tropes,ufo_unified_foundational_ontology_2021}.
+
+Both substantials and aspects can bear aspects. There are, therefore, aspects of aspects, such as the intensity of Paul's headache, the hue of a color, or the duration of Ana's employment. Every chain of inherence is nonetheless grounded in an entity that is not itself an aspect, called the ultimate bearer of the aspects in that chain \cite{ontological_foundations_for_structural_conceptual_models_2005}.
+
+Aspects are first classified according to whether they depend solely on their bearer or also on other entities.
+
+An \textbf{intrinsic aspect} existentially depends on a single individual, its bearer. Intrinsic aspects are either qualities or intrinsic modes.
+
+A \textbf{quality} is an intrinsic aspect that can be directly projected into a value space, called a \textbf{quality structure}, which is an abstract individual. Qualities are reifications of categorical properties such as color, height, weight, temperature, and electrical charge. For example, the color of a particular rose is a quality inhering in that rose, whose value in a color space may change from red to brown while the quality itself remains the same individual, inhering in the same rose \cite{guizzardi2006tropes}.
+
+An \textbf{intrinsic mode} is an intrinsic aspect that cannot be directly projected into a quality structure. Examples of intrinsic modes include the fragility of a glass, the magnetic attraction disposition of a magnet, Matteo's capacity to program in Scratch, John's courage, Paul's headache, and Mary's belief that it will rain.
+
+An \textbf{extrinsic aspect} inheres in a bearer but, in addition, existentially depends on at least one entity that is independent of that bearer, i.e., an entity that shares no parts with it. John's commitment towards Mary depends not only on John, in whom it inheres, but also on Mary. Extrinsic aspects are either extrinsic modes or relators.
+
+An \textbf{extrinsic mode} (also called an externally dependent mode) is an extrinsic aspect that inheres in a single bearer and is externally dependent on another entity. Examples include John's love for Mary, Paul's commitment to Clara to meet for lunch next Friday, and Maria's insurance claim towards her insurer. Extrinsic modes are what make true relational statements such as ``John loves Mary'', in which one of the related entities bears a property directed at the other \cite{guarino2015we}.
+
+A \textbf{relator} is an extrinsic aspect that existentially depends on two or more endurants, which it is said to \textbf{mediate}. A relator often consists of an aggregate of extrinsic modes borne by the individuals it mediates: the marriage between John and Mary is composed of John-qua-husband-of-Mary (the sum of John's conjugal commitments and claims towards Mary) and of Mary-qua-wife-of-John. Other examples of relators include enrollments, employments, and presidential mandates. Relators are what make true relational statements involving two or more independent entities, such as ``John is married to Mary'' or ``Ana is employed by the University of Twente'' \cite{relations_in_ontology_driven_conceptual_modeling_2019}.
+
+\subsection{Events}
+
+An \textbf{event} is a concrete individual that unfolds in time by accumulating temporal parts: at any instant during which an event occurs, only a part of it is present, and the event as a whole exists only once all of its parts have occurred. Examples of events include the Second World War, the FIFA 2002 World Cup final, Ana's signing of her employment contract, and Marie Curie's birth. In the philosophical literature, events are also referred to as perdurants or occurrents \cite{towards_ontological_foundations_for_the_conceptual_modeling_of_events_2013,events_as_entities_in_ontology_driven_conceptual_modeling_2019}.
+
+Events are manifestations of dispositions, a type of aspect, inhering in endurants. The flow of electric current in a conductor is the manifestation of the conductivity of that conductor; Paul's jog is the manifestation of his intention and capacities as a jogger. Consequently, events existentially depend on the endurants that participate in them.
+
+Events can have parts, as in the case of a soccer match, which is composed of two halves, or a software testing process, which consists of several testing activities. The part of an event that depends exclusively on a given endurant is called that endurant's \textbf{participation} in the event: Brutus' stabbing of Caesar comprises the participations of Brutus, of Caesar, and of the dagger.
+
+Events can be instantaneous or extended in time. Caesar's death is instantaneous, taking place at a single instant, whereas the Second World War extended over six years. From the way events are located in time, temporal relations between them are derived, such as one event preceding another, overlapping with it, or occurring during it \cite{representing_a_reference_foundational_ontology_of_events_in_sroiq_2019}.
+
+In contrast to endurants, events cannot genuinely change because they are past entities: they only exist after they have occurred \cite{guizzardi2016ontological}. This makes them modally fragile: an event has all of its parts, participants, and properties necessarily, and it could not have been in any way different from what it is. Any apparent change in an event is thus either a variation across its temporal parts, as when Paul's jog starts at walking pace and ends at running pace, or a change in the endurant of which the event is a manifestation, as when David's change of intention results in a walk towards a different destination.
+
+\subsection{Situations}
+
+A \textbf{situation} is a particular configuration of a part of reality that can be understood as a whole, i.e., a snapshot of how certain endurants, their aspects, and the values of their qualities stand at a given time. Examples of situations include the situation in which David's passport is valid, the situation in which a king stands in checkmate, the situation in which the concentration of a flammable gas in an enclosed space exceeds a safety threshold, and the situation in which the number of members present in an assembly meets the quorum. Situations obtain at a time; they do not unfold as events do, nor do they persist through change as endurants do \cite{representing_a_reference_foundational_ontology_of_events_in_sroiq_2019}.
+
+Situations connect endurants to events. A situation \textbf{triggers} an event when it activates the dispositions whose manifestation is that event: a hazardous gas concentration triggers an explosion, and a checkmate triggers the end of the game. Conversely, the occurrence of an event \textbf{brings about} a new situation: the explosion brings about a situation in which the enclosed space is damaged. Events thus map the world from the situations that trigger them to the situations they bring about. When an event brings about a situation that triggers another event, the former event is said to cause the latter, which is the basis for the historical dependence between events \cite{events_as_entities_in_ontology_driven_conceptual_modeling_2019}.
+
+\section{Theory of Types}
+
+\subsection{Identity and Sortality}
+\label{sec:identity-sortality}
+
+Identity concerns the sameness of an entity across possible situations and through change. This notion is central to the treatment of endurants, which may undergo qualitative changes while remaining numerically the same individual. For example, John and Mary's marriage may change from a marriage with full separation of assets to one with partial separation of assets while remaining the same marriage. However, it cannot remain that same marriage if one of the people involved is replaced: a marriage between John and Alice would be a different marriage, not a later state of John and Mary's marriage.
+
+Different categories of individuals may require different criteria for determining sameness and difference. This can be seen clearly in the case of sets: two sets are the same set if and only if they have exactly the same members. The same criterion, however, is not suitable for ordinary objects. For example, a car may be repainted and still be the same car, whereas another car of the same model and color is thereby not the same car. The formal criterion that governs such judgments is called an \textbf{identity principle}. It may be understood by analogy with a function: given an individual and a range of possible situations, the principle determines how that individual is to be tracked as the same entity rather than as another one. It does not merely assign a label to an entity; it establishes the criterion according to which sameness and difference are evaluated for the instances of a type \cite{ontological_foundations_for_structural_conceptual_models_2005}.
+
+Identity principles are associated with types under the \textbf{sortality} meta-property. Types are thus distinguished into those that classify their instances under a single identity principle and those that do not. A \textbf{sortal type} is an endurant type whose instances conform to a single identity principle. A sortal may either provide this principle directly or inherit it from another sortal. The sortals that directly provide identity principles are called \textbf{identity providers} or ultimate sortals. The sortals that inherit an identity principle from an identity provider are \textbf{subordinate sortals}. Thus, Student and Employee classify persons by inheriting the identity principle supplied by Person; likewise, Electric Car and Diesel Car classify cars by inheriting the identity principle supplied by the ultimate sortal Car \cite{types_and_taxonomic_structures_in_conceptual_modeling_2021}.
+
+By contrast, a \textbf{non-sortal type} does not provide or carry a uniform identity principle for all its instances. It captures properties shared by individuals that may fall under different ultimate sortals and, therefore, obey different identity principles. For example, Insurable Item may classify cars, houses, artworks, and body parts without giving a single criterion for identifying all of them as instances of one ultimate sortal.
+
+\subsection{Rigidity}
+\label{sec:rigidity}
+
+\textbf{Rigidity} is a modal meta-property of types. It concerns how a type applies to its instances across possible situations: whether its instances must instantiate it whenever they exist, whether they instantiate it only contingently, or whether this varies among different instances. Thus, rigidity is not about how long a classification happens to last, but about whether that classification is essential or accidental for the individuals it classifies \cite{types_and_taxonomic_structures_in_conceptual_modeling_2021}.
+
+A \textbf{rigid type} necessarily classifies all its instances. If an individual instantiates a rigid type, that classification is part of what the individual is. Person, for instance, is rigid because there is no way in which any person can change such that they would no longer be a person. Other examples of rigid types include Marriage, Physical Object, and Species.
+
+An \textbf{anti-rigid type} classifies its instances only contingently. Its instances may enter or leave its extension while preserving their identity. Examples of anti-rigid types are Teenager and Employee. Teenager is anti-rigid because it applies to a person in virtue of an age value: when that value falls within the relevant age interval, the person is a teenager; when it no longer does, the same person ceases to be a teenager. Employee is anti-rigid for a different reason: it applies in virtue of an employment relationship. When that relationship starts, the person becomes an employee; when it ends, the person ceases to be an employee while remaining the same person.
+
+A \textbf{semi-rigid type} necessarily classifies some of its instances, but classifies other instances only contingently. That is, it behaves as a rigid type for some of its instances and as an anti-rigid for others. An example of a semi-rigid type is Music Artist: being a music artist is essential to a band, while being accidental to a person who may abandon a musical career. Another example is an Insurable Item, the type of entities that can be insured: every car and every house can be insured, so being an insurable item is essential to them, whereas a personal item can be insured only while it is worth over a certain amount \cite{types_and_taxonomic_structures_in_conceptual_modeling_2021}.
+
+\subsection{Types as Endurants}
+
+Although types are not individuals, they are endurants \cite{incorporating_types_of_types_in_ontology_driven_conceptual_modeling_2022}. Like individual endurants, types exist in time, can bear aspects and qualities of their own, and can qualitatively change while maintaining their identity. The species Giant Panda, for example, changed its conservation status from endangered to vulnerable in 2016 while remaining the same species, and an aircraft model may have its maximum take-off weight revised while remaining the same model. The category of endurants thus comprises both individual endurants and types.
+
+Treating types as endurants has an important consequence: the meta-properties introduced in this section apply to all endurant types, including those whose instances are themselves types. A type of types may be rigid or anti-rigid, sortal or non-sortal, and may stand in dependence relations, just like a type of individual endurants.
+
+\section{Theory of Relations}
+
+Relations hold between two or more entities, called their \textbf{relata}. The central question for their classification is that of truthmaking: what is there in the world that makes a relational statement, such as ``John is married to Mary'' or ``John is taller than Mary'', true? The entity responsible for the truth of such a statement is called its \textbf{truthmaker} \cite{guarino2015we}.
+
+\subsection{Material and Comparative Relations}
+
+\textbf{Material relations} hold in virtue of a relator that mediates the relata or, when only one of the relata bears the connecting aspect, of an extrinsic mode. ``John is married to Mary'' is made true by their marriage, ``Ana is employed by the University of Twente'' by her employment, and ``John loves Mary'' by John's love. A material relation is thus derived from its truthmakers: the relata instantiate the relation exactly when a suitable relator or extrinsic mode connecting them exists \cite{guizzardi2008relationship,guarino2015we}.
+
+\textbf{Comparative relations} hold in virtue of intrinsic qualities of the relata, with no mediating entity. ``John is taller than Mary'' is made true by John's height and Mary's height, whose values stand in a greater-than relation. Unlike the relata of a material relation, the relata of a comparative relation are not genuinely connected: each of them can enter indefinitely many comparisons simply in virtue of how it intrinsically is \cite{relations_in_ontology_driven_conceptual_modeling_2019}. The greater-than relation between the two heights themselves holds directly, with no further truthmaker.
+
+\subsection{Dependence Relations}
+
+An entity \textbf{existentially depends} on another when it cannot exist unless the other exists: necessarily, if the dependent entity exists, the entity it depends on exists as well. The inherence of an aspect in its bearer is a case of existential dependence: Maria's body temperature cannot exist without Maria. So is the dependence of a relator on the endurants it mediates, of an extrinsic mode on the entity it is directed at, and of an event on its participants: the marriage between John and Mary cannot exist without John and Mary, and Brutus' stabbing of Caesar could not have occurred without Brutus, Caesar, and the dagger \cite{ontological_foundations_for_structural_conceptual_models_2005}.
+
+Existential dependence comes in two forms. \textbf{Specific dependence} holds towards one particular individual: Maria's body temperature depends on Maria herself, not on any person whatsoever, and John's love for Mary depends on Mary in particular. \textbf{Generic dependence} holds towards some instance of a type, whichever it may be: a car depends on having an engine, but not on any particular engine, which is why an engine can be replaced while the car remains the same car. Likewise, a legal person generically depends on some legal system, and a wooden table generically depends on wooden components that may be exchanged over time.
+
+An entity \textbf{historically depends} on another when its existence requires the other to exist or to have existed at some earlier time. Unlike existential dependence, historical dependence does not require the depended-on entity to exist whenever the dependent one does. Marie Curie the Widow historically depends on her marriage to Pierre Curie, which no longer exists; David historically depends on his birth; and a glass of wine historically depends on the grapes it was made from. Historical dependence also holds between events along chains of triggering and bringing about: a goal scored from a penalty kick historically depends on that kick, and the kick, in turn, on the foul that led to it \cite{events_as_entities_in_ontology_driven_conceptual_modeling_2019}.
+
+These forms of dependence give rise to relations of their own. Those derived from existential dependence hold directly between their relata, with no further truthmaker \cite{relations_in_ontology_driven_conceptual_modeling_2019}. Three of them were already encountered: inherence, which connects an aspect to its bearer; external dependence, which connects an extrinsic mode to the entity it is directed at; and mediation, which connects a relator to each of the endurants it binds. The relations derived from historical dependence, in contrast, have truthmakers, namely events: ``Marie Curie was born in Warsaw'' is made true by the event of her birth, an entity external to both relata that is neither a quality, a mode, nor a relator.
+
+\subsection{Part-Whole Relations}
+\label{sec:parthood}
+
+Parthood is not a single relation but a family of relations, which share a common core of formal properties, namely irreflexivity, asymmetry, and weak supplementation \cite{ontological_foundations_for_structural_conceptual_models_2005}. A \textbf{proper part} of a whole, i.e., a part distinct from the whole itself, cannot have that whole as one of its parts. A whole that has a proper part always has at least one other part disjoint from the first, i.e., sharing no part with it, a principle known as \textbf{weak supplementation}.
+
+Beyond this common core, the members of the family differ in their further formal properties, and which of them holds between two entities depends on the categories these entities instantiate. Some part-whole relations are transitive, so that a part of a part of a whole is itself a part of that whole, while others are not \cite{guizzardi2009transitivity}. Parts can be essential to their wholes or exchangeable over time, as the engine of a car is. Events, too, can stand in part-whole relations, as when a match is composed of its halves; since events are immutable, their parts are always essential to them \cite{representing_a_reference_foundational_ontology_of_events_in_sroiq_2019}.
+
+\section{Multi-Level Theory}
+\label{s:mlt}
+
+Multi-level theory supports the conceptualization of domains in which types classify other types, such as \emph{Species}, \emph{Dog Breed}, and \emph{Car Model}, also known as high-order types. High-order types, like regular first-order ones (e.g., \emph{Organization}, \emph{Lion}, \emph{Wedding}), capture properties exhibited by their instances. For example, \emph{Lion} can be an instance of \emph{Species} that bears the properties \emph{binomial name} \emph{Panthera leo} and \emph{estimated population} of 25,000. These are genuine properties of the type \emph{Lion} and do not apply to any particular lion (e.g., it is not possible to state that the lion \emph{Cecil} has an estimated population of 25,000). In the literature, entities that present characteristics of both types and instances (or objects) are also referred to as \emph{clabjects} \cite{incorporating_types_of_types_in_ontology_driven_conceptual_modeling_2022}.
+
+Chains of instantiation stratify types into orders. \textbf{First-order types}, such as \emph{Lion} and \emph{Wedding}, classify individuals; \textbf{second-order types}, such as \emph{Species} and \emph{Event Type}, classify first-order types; third-order types, such as \emph{Taxonomic Rank}, classify second-order types; and so on, with no upper boundary.
+
+Not every type is confined to a particular order, however: an \textbf{orderless type} classifies entities across orders, such as \emph{Discovered Item}, whose instances include the planet \emph{Mars}, an individual, and the owl species \emph{Strix butleri}, a first-order type \cite{incorporating_types_of_types_in_ontology_driven_conceptual_modeling_2022}. Orders also constrain taxonomies: a type can only specialize a type of its own order or an orderless type.
+
+A high-order type is related to the type whose instances it ultimately classifies, its \textbf{base type}, by two structural relations, \textbf{categorizes} and \textbf{powertype of} \cite{incorporating_types_of_types_in_ontology_driven_conceptual_modeling_2022}.
+
+A high-order type \textbf{categorizes} a base type when every instance of the former is a proper specialization of the latter: every instance of \emph{Tree Species}, such as \emph{Giant Sequoia}, \emph{Apricot}, and \emph{Sugar Maple}, properly specializes \emph{Tree}, so \emph{Tree Species} categorizes \emph{Tree}. A categorization \textbf{partitions} its base type when every instance of the base type instantiates exactly one instance of the categorizer: \emph{Tree Species} partitions \emph{Tree}, since every tree belongs to exactly one species \cite{carvalho2018mlt}.
+
+A high-order type is the \textbf{powertype of} a base type when its instances are exactly the specializations of the base type, the base type itself included: \emph{Vehicle Type} is the powertype of \emph{Vehicle}, classifying \emph{Vehicle} itself together with its specializations, such as \emph{Car} and \emph{Truck}.
+
+Since types are endurants, high-order types are subject to the meta-properties of sortality and rigidity like any other endurant type: \emph{Species}, for instance, is rigid, since \emph{Lion} could not cease to instantiate it while remaining the same species.
+
+
+
+% \chapter{Ontological Foundations}
+
+% \section{Introduction} 
+
+% This chapter provides the ontological grounding of OntoUML by introducing the main distinctions of the Unified Foundational Ontology \cite{ufo_unified_foundational_ontology_2021}. It is a collection and summary of the work published over the years by the team behind it. 
+
+% \section{Individuals and Types}
+
+% OntoUML adopts the ontological distinction, provided by UFO, between individuals and types. \textbf{Individuals} are particular entities that exist or may exist in a domain of discourse, such as Ada Lovelace, the United Nations, Paris, or the marriage between John Lennon and Yoko Ono. \textbf{Types}, in contrast, are general entities that classify individuals (or other types) according to shared characteristics. Thus, Person, Organization, City, and Marriage are types, while the aforementioned entities are individuals that may instantiate those types.
+% In UFO, individuals and types are disjoint ontological categories. A type is an entity that may have instances; an individual is an entity that is not itself instantiated. This distinction allows OntoUML models to represent the general structure of a domain without conflating that structure with the particular entities that populate it. Consequently, OntoUML classes are interpreted as types, not as individuals.
+
+% A type has an \textbf{extension}, i.e., the collection of entities that instantiate it in a given circumstance. For example, the extension of Person may include Ada Lovelace, Alan Turing, Marie Curie, and Nelson Mandela. Since individuals may come into existence, cease to exist, or acquire and lose some classifications, the extension of a type may vary over time.
+
+% The same individual may instantiate multiple types simultaneously. For example, Marie Curie may be classified as Person, Scientist, and Nobel Laureate. This possibility does not imply that all such types have the same ontological nature or play the same modeling role. OntoUML distinguishes different categories of types, whose foundations and corresponding modeling constructs are introduced in subsequent sections of this specification.
+% Accordingly, multiple inheritance is allowed in OntoUML. A type may specialize more than one supertype, thereby inheriting constraints and characteristics from each of them. The admissibility of a particular multiple-inheritance structure, however, depends on the ontological constraints associated with the categories of the involved types.
+
+% Not all types are instantiated by individuals. While first-order types classify individuals, some types classify other types instead. In such cases, the entities being classified are themselves types, not particular individuals. This provides the basis for representing higher-order types, which are further discussed in Section \ref{s:mlt}.
+
+% \section{Taxonomy of Individuals}
+
+% UFO first distinguishes concrete individuals from abstract individuals. A \textbf{concrete individual} is an individual that exists in space-time. This category includes ordinary objects, such as the Eiffel Tower and the University of Twente; reified aspects, such as the Eiffel Tower's height, or Ana's employment contract; events, such as Ana’s signing of an employment contract or the launch of the James Webb Space Telescope; and situations, such as the situation in which David’s passport is valid or the situation in which Maria is hospitalized. In this sense, concrete individuals are the domain entities that exist, occur, or obtain in the domain of interest being modeled.
+
+% \textbf{Abstract individuals}, by contrast, do not exist in space-time. They include entities such as sets and numbers, which may be used to characterize concrete individuals but are not themselves concrete. For example, the set composed of Brazil, Argentina, and Uruguay is an abstract individual, while Brazil, Argentina, and Uruguay themselves are concrete individuals; similarly, the value 37.8 °C may characterize Maria’s body temperature, but Maria and Maria’s particular body temperature are concrete individuals.
+
+% \section{Identity and Sortality}
+% \label{sec:identity-sortality}
+
+% In UFO, identity concerns the sameness of an entity across possible situations and through change. This notion is central to the treatment of endurants, which may undergo qualitative changes while remaining numerically the same individual. For example, John and Mary’s marriage may change from a marriage with full separation of assets to one with partial separation of assets while remaining the same marriage. However, it cannot remain that same marriage if one of the people involved is replaced: a marriage between John and Alice would be a different marriage, not a later state of John and Mary’s marriage. Even a second marriage between John and Mary would not be identical to the first one.
+
+% Different categories of individuals may require different principles for determining sameness and difference. This can be seen clearly in the case of sets: two sets are the same set if and only if they have exactly the same members. The same principle, however, is not suitable for ordinary objects. For example, a car may be repainted and still be the same car, whereas another car of the same model and color is thereby not the same car. In UFO, the formal principle that governs such judgments is called an \textbf{identity principle}. It may be understood by analogy with a function: given an individual and a range of possible situations, the principle determines how that individual is to be tracked as the same entity rather than as another one. It does not merely assign a label to an entity; it establishes the principle according to which sameness and difference are evaluated for the instances of a type.
+
+% Identity principles are associated with types under the \textbf{sortality} meta-property. UFO distinguishes, therefore, the types that classify individuals under a single uniform identity principle from those that do not. A \textbf{sortal type} is an endurant type whose instances conform to a uniform identity principle. A sortal may either provide this principle directly or inherit it from another sortal. The sortals that directly provide identity principles are called \textbf{identity providers} or ultimate sortals. The sortals that inherit an identity principle from an identity provider are \textbf{base sortals}. Thus, Student and Employee classify persons by inheriting the identity principle supplied by Person; likewise, Electric Car and Diesel Car classify cars by inheriting the identity principle supplied by the ultimate sortal Car.
+
+% By contrast, a \textbf{non-sortal type} does not provide or carry a uniform identity principle for all its instances. It captures properties shared by individuals that may fall under different ultimate sortals and, therefore, obey different identity principles. For example, Insurable Item may classify cars, houses, artworks, and body parts without giving a single uniform principle for identifying all of them as instances of one ultimate sortal.
+
+% \section{Rigidity}
+% \label{sec:rigidity}
+
+% \textbf{Rigidity} is a modal meta-property of types. It concerns how a type applies to its instances across possible situations: whether its instances must instantiate it whenever they exist, whether they instantiate it only contingently, or whether this varies among different instances. Thus, rigidity is not about how long a classification happens to last, but about whether that classification is essential or accidental for the individuals it classifies.
+
+% A \textbf{rigid type} necessarily classifies all its instances. If an individual instantiates a rigid type, that classification is part of what the individual is. Examples of rigid types are Person, Marriage, and Physical Object. Person, for instance, is rigid because there is no way in which people can change such that they would no longer be people. In other words, there is no way they can exist as the same individual without instantiating that type.
+
+% An \textbf{anti-rigid type} classifies its instances only contingently. Its instances may enter or leave its extension while preserving their identity. Examples of anti-rigid types are Teenager and Employee. Teenager is anti-rigid because it applies to a person in virtue of an age value: when that value falls within the relevant age interval, the person is a teenager; when it no longer does, the same person ceases to be a teenager. Employee is anti-rigid for a different reason: it applies in virtue of employment relationships. When bearing those relationships to an employer, a person becomes an employee; when those relationships are terminated, the person ceases to be an employee while remaining the same person.
+
+% A \textbf{semi-rigid type} necessarily classifies some of its instances, but classifies other instances only contingently. It is therefore neither rigid (i.e., necessary to all its instances) nor anti-rigid (i.e., contingent to all its instances). Examples of semi-rigid types are Music Artist, Insured Item, and Vehicle. Music Artist is semi-rigid because being a music artist is essential to a band, while being accidental to a person who exists prior to their music career and survives abandoning it.
+
+% \section{Taxonomy of Types}
+
+
+
+% \section{Types of Types}
+% \label{s:mlt}
+
+% Multi-level modeling refers to the development of conceptual models where the represented classes include those that classify other classes (e.g., \textit{Organization Type}, \textit{Species}, \textit{Event Type}), also known as high-order classes or high-order types.
+% % Admitting such domain entities allows for the representation of classes that bear properties collected by their classifiers with specific assignments.
+% These high-order classes, like regular first-order ones (e.g., \textit{Organization}, \textit{Lion}, \textit{Wedding}) capture properties exhibited by their instances.
+% For example, \textit{Lion} can be an instance of \textit{Species} that bears the properties \textit{binomial name} \textit{Panthera leo} and \textit{estimated population} of $25.000$. These are genuine properties of the type \textit{Lion} and do not apply to any particular lion (e.g., it is not possible to state that the lion \textit{Cecil} has an estimated population of $25.000$). In the literature, these entities that present characteristics of both classes and instances (or objects) are also referred to as \textit{clabjects}.
+
+% This chapter is dedicated to detailing the representation of multi-level phenomena in accordance with the capabilities of UML class diagrams, including considerations on the representation of mutable and immutable characteristics.
+
+% \section{Parthood}
+% \label{sec:parthood}

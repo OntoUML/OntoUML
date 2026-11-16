@@ -2,14 +2,14 @@ Constraints
 -----------
 
 .. _collective-constraints-c1:
-**C1:** A «:ref:`collective`» cannot have an :ref:`identity <identity>` provider («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
+**C1:** A «:ref:`collective`» cannot have an :ref:`identity <identity>` provider («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`quality`», «:ref:`intrinsicMode`», «:ref:`extrinsicMode`», «:ref:`event`», «:ref:`situation`», and «:ref:`type`») as its direct or indirect super-type.
 
 .. container:: figure
 
    |Collective forbidden 1|
 
 .. _collective-constraints-c2:
-**C2:** A «:ref:`collective`» cannot have types that inherit :ref:`identity <identity>`  («:ref:`subkind`», «:ref:`role`» and «:ref:`phase`») as its direct or indirect super-types.
+**C2:** A «:ref:`collective`» cannot have types that inherit :ref:`identity <identity>`  («:ref:`subkind`», «:ref:`role`», «:ref:`historicalRole`», and «:ref:`phase`») as its direct or indirect super-types.
 
 .. container:: figure
 

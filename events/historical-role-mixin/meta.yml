@@ -1,0 +1,22 @@
+class_stereotype:
+  name: "HistoricalRoleMixin"
+  parent: "Anti-rigid non-sortal"
+  provides_identity: false
+  identity_principle: "none"
+  rigidity: "anti-rigid"
+  dependency: "mandatory"
+  ontological_nature: "one or more natures"
+  order: "any"
+  supertypes:
+  - Category
+  - Mixin
+  - RoleMixin
+  - HistoricalRoleMixin
+  - PhaseMixin
+  subtypes:
+  - Role
+  - HistoricalRole
+  - RoleMixin
+  - HistoricalRoleMixin
+  forbidden_associations: []
+  abstract: "yes"

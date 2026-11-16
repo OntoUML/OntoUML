@@ -10,6 +10,14 @@ subconcerns:
     location: relationship
   - name: Patterns
     location: patterns
+  - name: Events
+    location: events
+  - name: Situations
+    location: situations
+  - name: Multi-level modeling
+    location: multilevel
+  - name: Tooling
+    location: intro/tooling.rst
 cross-cutting:
   - name: Definition
     location: definition.rst

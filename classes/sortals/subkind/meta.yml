@@ -1,24 +1,30 @@
 class_stereotype:
-  name: Subkind
-  parent: RigidSortal
+  name: "Subkind"
+  parent: "Rigid sortal"
   provides_identity: false
-  identity_principle: simple
-  rigidity: rigid
-  dependency: optional
+  identity_principle: "inherited"
+  rigidity: "rigid"
+  dependency: "optional"
+  ontological_nature: "derived from its parents; a single nature"
+  order: "any"
   supertypes:
   - Kind
-  - Subkind
   - Collective
   - Quantity
   - Relator
+  - IntrinsicMode
+  - ExtrinsicMode
+  - Quality
+  - Event
+  - Situation
+  - Type
+  - Subkind
   - Category
   - Mixin
-  - Mode
-  - Quality
   subtypes:
   - Subkind
-  - Phase
   - Role
-  forbidden_associations:
-  - Structuration
-  abstract: undefined
+  - HistoricalRole
+  - Phase
+  forbidden_associations: []
+  abstract: "not required"

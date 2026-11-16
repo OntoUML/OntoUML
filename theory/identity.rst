@@ -19,19 +19,23 @@ Would you say that these marble debris are still the statue? Somehow our intuiti
 
 Let's start with a Person's name. Did you ever meet two folks with the very same name? I have. If you don't believe, just go on Facebook and experiment search for common names of your country. I just searched for "João Carlos da Silva", a fairly common Brazilian name, and I found at least 5 guys with that exact name. If name was our identity function, we would not be able to distinguish between them. Another problem with using name as identity is that often, people change their names. Our function needs to be not only able to distinguish two individuals in the same moment in time, but also through time. How else would we be able to meet someone today and recognize that same person tomorrow? So, our function needs to always return the same individual for a given input. Now, let's analyze the reason why the social security number (SSN), the codice fiscale and the CPF are not very good identity principles for people. The answer is quite simple, our function needs to apply to everybody. If you are not American or never worked in the USA, you probably don't have a SSN, right? Even young children born in the USA might not have. The last important fact about identity principle is that every individual must have *exactly one*. So, what is the identity principle for a person? One's fingerprint, iris pattern, DNA? Well, it is really hard to define it, even though we know it is there.
 
-What we can "touch" are what's called the **identity conditions**. These are "parts" of the identity function, necessary conditions for identity but not sufficient by themselves. In order for me to consider A and B as the same Person they need to have the same birth date. And the statue need to be made of the same material. Why identity principles and conditions are important for us? Because by thinking about them we are guided in the construction of our types hierarchy. They impose constraints on how we can combine the different OntoUML constructs to design our conceptual models. Will talk about these constraints when we present the stereotypes usage. For now, just keep in mind that: Some types have the characteristic of providing identity principles for their instances. They are stereotype as: «:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`». Here are some examples:
+What we can "touch" are what's called the **identity conditions**. These are "parts" of the identity function, necessary conditions for identity but not sufficient by themselves. In order for me to consider A and B as the same Person they need to have the same birth date. And the statue need to be made of the same material. Why identity principles and conditions are important for us? Because by thinking about them we are guided in the construction of our types hierarchy. They impose constraints on how we can combine the different OntoUML constructs to design our conceptual models. We talk about these constraints when we present the stereotypes. For now, keep the following classification in mind.
+
+Identity principles are attached to types by the **sortality** meta-property. A **sortal** classifies its instances under a single identity principle. A sortal either supplies that principle, in which case it is an **ultimate sortal** (an identity provider), or it inherits the principle from exactly one ultimate sortal, in which case it is a **subordinate sortal**.
+
+The ultimate sortals in the current profile are «:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`intrinsicMode`», «:ref:`extrinsicMode`», «:ref:`quality`», «:ref:`event`», «:ref:`situation`», and «:ref:`type`». Here are some endurant examples:
 
 .. container:: figure
 
    |Identity providers|
 
-Some other types don't provide identity principle for their instances, but they all share a common one. They are stereotyped as: «:ref:`subkind`», «:ref:`role`» and «:ref:`phase`». Here are some examples:
+Some other types do not supply an identity principle. Every instance still follows one and the same principle, inherited from an ultimate sortal. They are stereotyped as «:ref:`subkind`», «:ref:`role`», «:ref:`phase`», and «:ref:`historicalRole`». Here are some examples:
 
 .. container:: figure
 
    |Inherited identity|
 
-Some other types don't provide identity and their instances follow different identity principles. They are stereotyped as: «:ref:`rolemixin`», «:ref:`mixin`» and «:ref:`category`». Here are some examples:
+A **non-sortal** does not carry one identity principle for all of its instances. It groups individuals that may fall under different ultimate sortals. Insurable Item may classify cars, houses, artworks, and body parts. Non-sortals are stereotyped as «:ref:`category`», «:ref:`mixin`», «:ref:`rolemixin`», «:ref:`phasemixin`», and «:ref:`historicalRoleMixin`», and they are abstract classes. Here are some examples:
 
 .. container:: figure
 

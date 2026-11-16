@@ -2,7 +2,7 @@ Constraints
 -----------
 
 .. _phase-constraints-c1:
-**C1:** A «:ref:`phase`» must always have **exactly one identity provider** («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`», «:ref:`quantity`») as an ancestor (a direct or indirect super-type). Our examples above should be modelled as:
+**C1:** A «:ref:`phase`» must always have **exactly one identity provider** («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`quality`», «:ref:`intrinsicMode`», «:ref:`extrinsicMode`», «:ref:`situation`», or «:ref:`type`») as an ancestor (a direct or indirect super-type). A phase cannot specialize an :ref:`event`. Our examples above should be modelled as:
 
 .. container:: figure
 
@@ -23,7 +23,7 @@ Constraints
    |Phase forbidden 3|
 
 .. _phase-constraints-c4:
-**C4:** A «:ref:`phase`» cannot be a super-type of a :ref:`rigid <rigidity>` type («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`», «:ref:`quantity`», «:ref:`subkind`», «:ref:`category`»).
+**C4:** A «:ref:`phase`» cannot be a super-type of a :ref:`rigid <rigidity>` type («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`quality`», «:ref:`intrinsicMode`», «:ref:`extrinsicMode`», «:ref:`event`», «:ref:`situation`», «:ref:`type`», «:ref:`subkind`», or «:ref:`category`»).
 
 .. container:: figure
 

@@ -1,0 +1,85 @@
+%%%
+%%% All author customizations should go in this file
+%%%
+
+%%%---------------------------------
+%%% DRAFT watermark and commentary control
+%%%
+%%% These two lines, if uncommented, will remove the watermark and margin comments
+%%% to prepare your document for final formatting
+\SetWatermarkText{}
+\setboolean{hidecomments}{true}
+
+%%%---------------------------------
+%%% Customize location of Model-Generated content, if using MDSA tools
+%%%
+%%% Uncomment this and provide the path to *model-generated* .tex and .svg content
+%%% if you are placing somewhere other than the standard locations entered here...
+%  \renewcommand{\genfiles}{GeneratedContent/}
+%  \graphicspath{{../GeneratedContent/Images/}}
+
+
+%%%---------------------------------
+%%% Bibliography References
+%%% See https://www.overleaf.com/learn/latex/Bibliography_management_in_LaTeX
+%%% for guidance
+%%%
+%%% Location of the .bib file to provide your own bibliography entries
+%%% If you have additional .bib files you may add them by copying the line and
+%%% updating the filename. Note that you must include ".bib" at the end of the
+%%% filename.
+\addbibresource{specification.bib}
+
+%%% OMG publication guidelines strongly suggest that references be broken out into
+%%% normative, and non-normative lists.  By default, cited references will appear
+%%% in the NON-normative bibliography. Add bibliographic citation references to 
+%%% this list to have them appear in the normative bibliography instead.
+\addtocategory{normative}{UML251, OCL}
+
+%%% LaTeX will build your bibliography section from the references you cite in your
+%%% document. If you wish to include certain 'default' references without needing to 
+%%% explicitly find a place to add a \cite command, you may add them to the following
+%%% list instead.
+\nocite{UML251, OCL}
+
+
+%%%---------------------------------
+%%% Useful but completely optional packages
+%%% Feel free to comment out the following sections if you are not using them.
+
+%%% Source code listings, with useful defaults
+%%% https://www.overleaf.com/learn/latex/Code_listing#Using_listings_to_highlight_code
+\usepackage{listings}
+\lstset{breaklines=true, tabsize=4, captionpos=b, basicstyle=\ttfamily}
+
+%%% Support for tables that span across multiple pages
+%%% https://www.overleaf.com/learn/latex/Tables#Multi-page_tables
+\usepackage{longtable}
+
+\renewcommand{\arraystretch}{1.4}
+
+%%%---------------------------------
+%%% User added packages
+%%%
+%%% You may add any additional changes you like below this line
+\usepackage{placeins}
+
+\newcommand{\stereotype}[1]{«#1»}
+
+\usepackage{amsthm}
+
+\newtheoremstyle{constraintstyle}
+  {\topsep}{\topsep}
+  {\rmfamily}           % body font: Times, as the running text
+  {}
+  {\sffamily\bfseries}  % head font: Helvetica bold, as OMG requirement labels
+  {:}{ }
+  {\thmname{#1}\thmnumber{ #2}}
+\theoremstyle{constraintstyle}
+\newtheorem{constraint}{C.}[chapter]
+
+\usepackage{tabularx}
+\usepackage{multirow}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}

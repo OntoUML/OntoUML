@@ -1,17 +1,17 @@
 Definition
 ----------
 
-A «:ref:`mixin`» is a semi-rigid type, i.e., it "behaves" as a :ref:`rigid <rigidity>` type for some individuals and as an :ref:`anti-rigid <rigidity>` one for others (it's the only stereotype with such feature in OntoUML). As the «:ref:`category`», «:ref:`rolemixin`» and the «:ref:`phasemixin`», the «:ref:`mixin`» meta-class characterizes individuals that follow :ref:`different identity principles <identity>`. Here are some examples of types that could be classified as «:ref:`mixin`»:
+A «:ref:`mixin`» is a semi-rigid non-sortal. It captures properties that are essential to some of its instances and accidental to others. It is the only stereotype with that modal profile. Like a :ref:`category`, a :ref:`rolemixin`, and a :ref:`phasemixin`, a mixin classifies individuals that may follow different identity principles.
 
-.. container:: figure
+Musical Artist may classify bands essentially, and classify persons contingently while they are musicians. Legal Instrument may classify contracts essentially, and classify letters, declarations, or records contingently when they acquire legal force.
 
-   |Mixin examples|
+The same pattern appears in refactoring. Suppose the model already has Car and Jewellery. Luxury Good is essential to every jewel and accidental to a car, because a car is a luxury good only while its value stays above a threshold. Luxury Good is a mixin.
 
-As :ref:`categories <category>`, mixins are commonly applied during a refactoring process, in particular when we want to state that some properties are applied to both :ref:`rigid <rigidity>` and :ref:`anti-rigid <rigidity>` types. For instance, let's consider that we defined the following types in our model, Car and Jewellery, a general concept for Ring, Necklace, etc. Now we want to define the type Luxury Good. In our worldview, every jewellery is luxurious, but only cars that are worth more than 30k dollars are. Since the value of a car changes through the years, being a luxurious car is a temporary classification, whilst being a jewellery is a permanent one. The type Luxury Good, therefore, is :ref:`semi-rigid <rigidity>` or a «:ref:`mixin`».
+.. figure:: /specification-figures/mixin-example.svg
+   :alt: Musical Artist as a mixin over bands and persons
+   :width: 85%
+   :align: center
 
-.. container:: figure
+   A class categorized as «mixin».
 
-   |Mixin application 1|
-
-.. |Mixin examples| image:: _images/ontouml_mixin-examples.png
-.. |Mixin application 1| image:: _images/ontouml_mixin-application-1.png
+A mixin may specialize a category or a mixin. It may be specialized by the same range of stereotypes as a category. It cannot specialize an anti-rigid type, and its ontological natures include endurant natures. See :ref:`rigidity` and :ref:`class-taxonomy`.

@@ -1,7 +1,10 @@
 .. _formal:
+.. _comparative:
 
-Formal
-======
+Comparative
+===========
+
+Previously documented as «formal». The current stereotype is «comparative».
 
 .. _formal-stereotype:
 .. stereotype:: meta.yml

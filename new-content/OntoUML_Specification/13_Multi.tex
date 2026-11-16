@@ -1,0 +1,525 @@
+\chapter{Profile Elements for Multi-Level Modeling}
+\label{ch:mlt}
+
+\section{Multi-Level Modeling in UML Class Diagrams}
+\label{sec:mlt-profile-intro}
+
+% Multi-level modeling refers to the development of conceptual models where the represented classes include those that classify other classes (e.g., \textit{Organization Type}, \textit{Species}, \textit{Event Type}), also known are high-order classes or high-order types.
+% % Admitting such domain entities allows for the representation of classes that bear properties collected by their classifiers with specific assignments.
+% These high-order classes, like regular first-order ones (e.g., \textit{Organization}, \textit{Lion}, \textit{Wedding}) capture properties exhibited by their instances.
+% For example, \textit{Lion} can be an instance of \textit{Species} that bears the properties \textit{binomial name} \textit{Panthera leo}, and \textit{estimated population} of $25.000$. These are genuine properties the type \textit{Lion} and do not apply to any particular lion (e.g., it is not possible to state that the lion \textit{Cecil} has an estimated population of $25.000$). In the literature, these entities that present characteristics of both classes and instances (or objects) are also referred to as \textit{clabjects}.
+
+% This chapter is dedicated to detailing the representation of multi-level phenomena in accordance with the capabilities of UML class diagrams, including considerations on the representation of mutable and immutable characteristics.
+
+\section{Class Stereotypes}
+\label{sec:mlt-profile-classes}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{img/Multilevel Classes.svg}
+    \caption{Fragment of the OntoUML Profile that defines class stereotypes for modeling higher-order types.}
+    \label{fig:multi-level-class-stereotypes}
+\end{figure}
+
+\FloatBarrier
+\subsection{OntoUMLClass}
+\label{stereotype:ontoumlClass-mlt}
+
+This subsection complements \autoref{stereotype:ontoumlClass} by providing details on the representation of higher-order classes, i.e., OntoUML classes that include types among their instances. This subsection presents constraints specific to the representation of higher-order classes, but all preceding constraints applicable to OntoUML classes remain valid for higher-order ones.
+
+\subsubsection{\texttt{order}}
+
+An unlimited natural number that determines the classification level of the decorated class in a multi-level classification scheme.
+
+A value of \texttt{1} indicates a first-order class, i.e., a class whose instances are exclusively individuals (e.g., \textit{Person} whose instances include \textit{Bob} and \textit{Eva}); A value of \texttt{2} indicates a second-order class, i.e., a class whose instances are exclusively first-order classes (e.g., \textit{Organization Type} whose instances include \textit{Non-Profit Organization} and \textit{Governmental Organization}); and so forth. A value of \texttt{*} indicates an \textit{orderless class}, i.e., a class whose instances are not confined to a single classification level (e.g., \textit{Discovered Item} whose instances include the planet \textit{Pluto} and the owl species \textit{Strix butleri}).
+    
+\subsubsection{\texttt{isPowertype}}
+
+A boolean that identifies a class whose extension is composed of its base type and every specialization of it\footnote{This definition follows Cardelli's definition of powertypes, inspired by the mathematical notion of \textit{power sets}.}, including both direct and indirect specializations of the base type.
+
+Examples include \textit{Hazardous Situation Type} whose instances include the first-order type \textit{Hazardous Situation} and specializations of it (e.g., \textit{Chemical Exposure Situation}, \textit{Radiation Exposure Situation}, \textit{Vehicle Operation Under the Influence Situation}).
+
+The representation of base types in models is discussed in \autoref{stereotype:instantiation}.
+
+% A «type» marks a higher-order type in a multi-level classification scheme and is connected to the base type it classifies through an \hyperref[stereotype:instantiation]{«instantiation»} association, so that each instance of the base type instantiates an instance of the «type». When the meta-property \texttt{isPowertype} is \texttt{true}, the «type» is a Cardelli powertype of that base type. Examples of «type» include the classes \textit{Ship Type}, \textit{Dog Breed}, \textit{Tree Species}, \textit{Product Model}, and \textit{Employee Category}. % For an in-depth treatment, refer to \autoref{ch:mlt}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:exclusiveTypeNatureImpliesHighOrderOrOrderless}
+An OntoUML class restricted solely to types must have an order greater than one (to represent an ordered type) or unbound (to represent an orderless type).
+
+% TESTED by CMF on MagicDraw
+\begin{lstlisting}[language=OCL]
+context OntoUMLClass
+inv exclusiveTypeNatureImpliesHighOrderOrOrderless:
+    self.restrictedTo->forAll(n | n = OntologicalNature::TYPE)
+    implies
+    (self.order > 1 or self.order = *)
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:mixedTypeNatureOrderConstraint}
+An OntoUML class restricted solely to some combination of type and some other nature must have an unbound order value (to represent an orderless type).
+
+% TESTED by CMF on MagicDraw
+\begin{lstlisting}[language=OCL]
+context OntoUMLClass
+inv mixedTypeNatureImpliesOrderless:
+    (
+        self.restrictedTo->size() > 1
+        and
+        self.restrictedTo->exists(n | n.oclAsType(NamedElement).name = 'TYPE')
+    )
+    implies
+    self.order = *
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:mixedTypeNatureImpliesIsPowertypeFalse}
+An OntoUML class restricted solely to some combination of type and some other nature cannot be a Cardelli powertype.
+
+% TESTED by CMF on MagicDraw
+\begin{lstlisting}[language=OCL]
+context OntoUMLClass
+inv mixedTypeNatureImpliesIsPowertypeFalse:
+    (
+        self.restrictedTo->size() > 1
+        and
+        self.restrictedTo->exists(n | n.oclAsType(NamedElement).name = 'TYPE')
+    )
+    implies
+    self.isPowertype = false
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:orderCompatibleSpecialization}
+An OntoUML class can only specialize another of the same order or of an unbound order.
+
+\begin{lstlisting}[language=OCL]
+context Generalization
+inv orderCompatibleSpecialization:
+  (
+    self.general.oclIsKindOf(OntoUMLClass)
+    and
+    self.specific.oclIsKindOf(OntoUMLClass)
+  )
+  implies
+  (
+    self.general.oclAsType(OntoUMLClass).order = self.specific.oclAsType(OntoUMLClass).order
+    or
+    self.general.oclAsType(OntoUMLClass).order = *
+  )
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:firstOrderRestrictions}
+An OntoUML class representing a first-order class must not include types among its restrictions.
+
+\begin{lstlisting}[language=OCL]
+context OntoUMLClass
+inv firstOrderRestrictions:
+    self.order = 1
+    implies
+    not self.restrictedTo->exists(n | n.oclAsType(NamedElement).name = 'TYPE')
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:secondOrderOrGreaterRestrictions}
+An OntoUML class representing an ordered class of second-order or higher must be restricted to types.
+
+\begin{lstlisting}[language=OCL]
+context OntoUMLClass
+inv secondOrderOrGreaterRestrictions:
+    self.order > 1
+    implies
+    self.restrictedTo->forAll(n | n.oclAsType(NamedElement).name = 'TYPE')
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:powertypeOrderConstraint}
+An OntoUML class representing a Cardelli powertype must have an order greater than first-order or be an orderless class.
+
+\begin{lstlisting}[language=OCL]
+context OntoUMLClass
+inv powertypeOrderConstraint:
+    self.isPowertype = true
+    implies
+    (self.order > 1 or self.order = -1)
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«type»}
+\label{stereotype:type}
+
+A class stereotyped as «type» is an ordered \hyperref[stereotype:ultimateSortal]{\textit{Ultimate Sortal}} whose instances are types.
+
+Examples include \textit{Car Model}, \textit{Species}, \textit{Contract Type}, \textit{Hazardous Situation Type}, and \textit{Meteorological Event Type}.
+
+\subsubsection{Allowed Supertypes}
+
+A «type» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «type» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:typeOrderedAndRestrictedToType}
+A class decorated as «type» must have its ontological nature restricted to types and a specific order (i.e., orderless sortals are not admitted).
+
+% TESTED by CMF on MagicDraw
+\begin{lstlisting}[language=OCL]
+context type 
+inv typeOrderedAndRestrictedToType:
+    self.order <> *
+    and
+    self.restrictedTo->forAll(n | n.oclAsType(NamedElement).name = 'TYPE')
+\end{lstlisting}
+\end{constraint}
+
+
+
+
+\section{Association Stereotypes}
+\label{sec:mlt-profile-associations}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=0.25\linewidth]{img/Multilevel Associations.svg}
+    \caption{Fragment of the OntoUML Profile that defines association stereotypes for modeling higher-order types.}
+    \label{fig:multi-level-association-stereotypes}
+\end{figure}
+
+\subsection{«instantiation»}
+\label{stereotype:instantiation}
+
+An association stereotyped as «instantiation» is one whose instances connect instances of a base type to a instance of a high-order type representing the instantiation of the former to the latter.
+
+% An association stereotyped as «instantiation» connects a \textit{base type} to a higher-order class (i.e., a class whose order is greater than the base type's, or an orderless higher-order class) capturing constraints over instantiation links between instances of the base type and the higher-order class.
+
+Examples include the instantiation between an individual tree and an instance of \textit{Tree Species} (e.g., \textit{Apricot} or \textit{American Elm}), and the instantiation between an individual hazardous situation and an instance of \textit{Hazardous Situation Type}  (e.g., \textit{Chemical Exposure Situation} or \textit{Radiation Exposure Situation}), as shown in \autoref{fig:multi-level-association-stereotypes-instantiation-example}. In these examples, every individual tree must be connected to exactly one instance of \textit{Tree Species} through an instance of the «instantiation» association, while every individual hazardous situation must be connected to at least one instance of \textit{Hazardous Situation Type}, which includes \textit{Hazardous Situation} itself.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=\linewidth]{img/Instantiation Stereotype Example.svg}
+    \caption{Example of an OntoUML diagram depicting two cases of the «instantiation» stereotype in use.}
+    \label{fig:multi-level-association-stereotypes-instantiation-example}
+\end{figure}
+
+% Examples include the «instantiation» association between \textit{Tree} and \textit{Tree Species}, and the association between \textit{Hazardous Situation} and \textit{Hazardous Situation Type} (see \autoref{fig:multi-level-association-stereotypes-instantiation-example}). In the first case, the diagram captures a conceptualization where every instance of \textit{Tree} must instantiate a unique instance of \textit{Tree Species}, as \textit{General Sherman}, an instance of \textit{Giant Sequoia} that is located in Sequoia National Park, California. In the second case, an instance of \textit{Hazardous Situation} must instantiate at least one instance of \textit{Hazardous Situation Type}, as in the situation \textit{``Bob being exposed to radiation''} which is an instance of both \textit{Radiation Exposure Situation} and \textit{Hazardous Situation} itself.
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    % \item \textbf{Base Type End:} the source end of the association (member end at position \texttt{1}) connected to an OntoUML class representing the base type in the instantiation association.
+    
+    % \item \textbf{Higher-Order Class End:} the target end of the association (member end at position \texttt{2}) connected to an OntoUML class whose instances are exclusively restricted to types (i.e., \texttt{restrictedTo= \{On\-to\-lo\-gi\-cal\-Na\-tu\-re::TYPE\}}).
+    
+    \item \textbf{Base Type End:} the type of the base type end must be an OntoUML class.
+    
+    \item \textbf{Higher-Order Type End:} the type of the higher-order type end must be a class whose instances are types themselves, i.e., whose \texttt{restrictedTo} is equal to \texttt{\{On\-to\-lo\-gi\-cal\-Na\-tu\-re::TYPE\}}) and whose \texttt{order} is equal to or greater than 2.
+\end{itemize}
+
+
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:instantiationHigherOrderEndRestrictedToType}
+An association stereotyped as «instantiation» must have the higher-order type end connected to an OntoUML class that has \texttt{restrictedTo} set to \texttt{\{TYPE\}}.
+
+% TODO: generated, not tested
+\begin{lstlisting}[language=OCL]
+context instantiation
+inv instantiationHigherOrderEndRestrictedToType:
+    let t : Type = self.memberEnd->at(2).type in
+    self.memberEnd->size() = 2
+    and t.oclIsKindOf(OntoUMLClass)
+    and t.oclAsType(OntoUMLClass).restrictedTo->asSet() = Set{OntologicalNature::TYPE}
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:instantiationOrderConstraint}
+An association stereotyped as «instantiation» must have the higher-order type end connected to an OntoUML class that has \texttt{order} greater than the order of the OntoUML class connected to the base type end by exactly one, or set to \texttt{*}.
+
+% TODO: generated, not tested
+\begin{lstlisting}[language=OCL]
+context instantiation
+inv instantiationOrderConstraint:
+    let b : Type = self.memberEnd->at(1).type in
+    let h : Type = self.memberEnd->at(2).type in
+    self.memberEnd->size() = 2
+    and b.oclIsKindOf(OntoUMLClass)
+    and h.oclIsKindOf(OntoUMLClass)
+    and
+    (
+        if b.oclAsType(OntoUMLClass).order = * then
+            h.oclAsType(OntoUMLClass).order = *
+        else
+            h.oclAsType(OntoUMLClass).order = *
+            or h.oclAsType(OntoUMLClass).order = b.oclAsType(OntoUMLClass).order + 1
+        endif
+    )
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:instantiationBaseTypeEndMultiplicity}
+An association stereotyped as «instantiation» must have the base type end multiplicity set to \texttt{0..*}.
+
+% TODO: generated, not tested
+\begin{lstlisting}[language=OCL]
+context instantiation
+inv instantiationBaseTypeEndMultiplicity:
+    let b : Property = self.memberEnd->at(1) in
+    self.memberEnd->size() = 2
+    and b.lower = 0
+    and b.upper = *
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:instantiationPowertypeEndMultiplicity}
+An association stereotyped as «instantiation» with the higher-order type end connected to an OntoUML class that has \texttt{isPowertype} set to \texttt{TRUE} must have that end's multiplicity set to \texttt{1..*}.
+
+% TODO: generated, not tested
+\begin{lstlisting}[language=OCL]
+context instantiation
+inv instantiationPowertypeEndMultiplicity:
+    let h : Property = self.memberEnd->at(2) in
+    self.memberEnd->size() = 2
+    and h.type.oclIsKindOf(OntoUMLClass)
+    and
+    (
+        h.type.oclAsType(OntoUMLClass).isPowertype = true
+        implies
+        (h.lower = 1 and h.upper = *)
+    )
+\end{lstlisting}
+\end{constraint}
+
+\section{Semantic Variation Points}
+\label{sec:mlt-profile-semantic-variation}
+
+\subsection{Generalization Sets}
+\label{uml:generalization-sets}
+
+This profile introduces additional constraints to the usage of the powertype meta-property in generalization sets.
+
+The powertype meta-property identifies the classifier instantiated by the specific classifier of every generalization in the generation set. Examples include the \textit{Tree Species} whose extension includes \textit{Sugar Maple}, \textit{Apricot}, \textit{American Elm}, and \textit{Saguaro} (see~\autoref{fig:mlt-generelization-set-tree-species-example}).
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=0.9\linewidth]{img/Generalization Set Powertype Example.svg}
+    \caption{Revisiting UML's powertype example with OntoUML.}
+    \label{fig:mlt-generelization-set-tree-species-example}
+\end{figure}
+
+
+In OntoUML, this meta property type is restricted to high-order types that have tagged values \texttt{restrictedTo} set to \texttt{\{TYPE\}},  \texttt{isPowertype} set to \texttt{false}, and an association stereotyped as «instantiation» connected to the general classifier in the generalization set. This constraint is exemplified in~\autoref{fig:mlt-generelization-set-tree-species-example} through the type \textit{Tree Species} and the «instantiation» association connected to \textit{Tree}. Additional constraints govern the semantical interaction between the multiplicity on the higher-order type end, and the \texttt{\{complete\}}\/\texttt{\{disjoint\}} constraints in the generalization set, constraints that are summarized in~\autoref{tab:mlt-generalization-set-contraints}. The semantics for each combination are as follows:
+
+\begin{table}[hbt]
+\caption{Summary of the interaction between \texttt{\{complete\}}\/\texttt{\{disjoint\}} constraints and the multiplicity on the higher-order type end of association stereotyped as «instantiation».}
+\label{tab:mlt-generalization-set-contraints}
+\begin{tabularx}{\linewidth}{|X|l|l|l|l|}
+\hline
+\multirow{3}{*}{%
+  \parbox{\linewidth}{%
+    \textbf{Multiplicity on the higher-order type side of the «instantiation» association.}%
+  }%
+}
+& \multicolumn{4}{c|}{\textbf{Generalization set constraints}} \\ \cline{2-5}
+& \multicolumn{2}{c|}{\texttt{\{overlapping\}}}
+& \multicolumn{2}{c|}{\texttt{\{disjoint\}}} \\ \cline{2-5}
+& \texttt{\{incomplete\}}
+& \texttt{\{complete\}}
+& \texttt{\{incomplete\}}
+& \texttt{\{complete\}} \\ \hline
+\texttt{0..*} & 
+    \textit{silent} &
+    \textit{invalid} &
+    \textit{non enumerated} &
+    \textit{invalid} \\
+    \hline
+\texttt{0..1} & 
+    \textit{invalid} &
+    \textit{invalid} &
+    \textit{silent} &
+    \textit{invalid} \\
+    \hline
+\texttt{1..*} & 
+    \textit{non enumerated} &
+    \textit{silent} &
+    \textit{non enumerated} &
+    \textit{non enumerated} \\
+    \hline
+\texttt{1..1} & 
+    \textit{invalid} &
+    \textit{invalid} &
+    \textit{non enumerated} &
+    \textit{enumerated} \\
+    \hline
+\end{tabularx}
+\end{table}
+
+\begin{itemize}
+    \item \textit{invalid}: the combination of multiplicity and generalization set constraints is forbidden.
+    \item \textit{enumerated}: according to the combination of multiplicity and generalization set constraints, every instance of the higher-order type is included in the generalization set.
+    \item \textit{non enumerated}: according to the combination of multiplicity and generalization set constraints, some instance of the higher-order type is not included in the generalization set.
+    \item \textit{silent}: according to the combination of multiplicity and generalization set constraints, it is not possible to infer whether every instance of the higher-order type is included in the generalization set.
+\end{itemize}
+
+% \subsubsection{Powertypes and Categorizers}
+
+% The higher-order class connected to the association can be referred to as the \textit{powertype} or the \textit{categorizer}. The powertype, identified by the meta-property \texttt{isPowertype = true}, classifies all classes instantiated by subsets of the base type's instances. For example, \textit{Hazardous Situation Type} classifies all classes whose instances are exclusively hazardous situations, including the class \textit{Hazardous Situation} itself. Whenever the higher-order class is a powertype, the association's multiplicity on its side must be \texttt{1..*}. The multiplicity on the base type's side is always \texttt{0..*}, preserving the model's consistency in the occasional absence of instances of the base type.
+
+% The categorizer, identified by the meta-property \texttt{isPowertype = false}, classifies classes instantiated by subsets of the base type's instances. For example, only those classes that selects trees according to their species (e.g., \textit{Giant Sequoia}, \textit{Apricot}, \textit{Sugar Maple}) are instances of the categorizer \textit{Tree Species}. This concept of categorizer is based on Odell's proposal and closely relates to the powertype pattern exemplified in the UML specification. The multiplicity on the base type's side is always \texttt{0..*}, preserving the model's consistency in the occasional absence of instances of the base type.
+
+% The «instantiation» association between the categorizer and its base type is also referred to as a \textit{categorization}. Categorization associations are classified by how they constrain the base type, which is determined by the multiplicity on the categorizer's side, as detailed in~\autoref{tab:mlt-categorization-types}. The type of categorization does not influence the representation of «instantiation» associations, but is referred to in further constraints.
+
+% \begin{table}[h]
+% \caption{Categorization types in OntoUML based on the multiplicity on the categorizer's end.}
+% \label{tab:mlt-categorization-types}
+% \begin{tabular}{|l|l|p{7cm}|}
+% \hline
+% \textbf{Categorizer Side Multiplicity} & \textbf{Categorization Type} & \textbf{Description} \\
+% \hline
+% \texttt{0..*} & Categorization & Instances of the base type may instantiate some instance of the categorizer. \\
+% \hline
+% \texttt{0..1} & Disjoint categorization & Instances of the base type may instantiate at most one instance of the categorizer. The instances of the categorizer classify non-overlapping subsets of the base type's instances. \\
+% \hline
+% \texttt{1..*} & Complete categorization & Every instance of the base type must instantiate at least one instance of the categorizer. The instances of the categorizer completely classify the base type's instances. \\
+% \hline
+% \texttt{1..1} & Partitions & Every instance of the base type must instantiate exactly one instance of the categorizer. The instances of the categorizer completely partition the base type's instances. \\
+% \hline
+% \end{tabular}
+% \end{table}
+
+% An association stereotyped as «instantiation» is one whose instances connect a base type to a higher-order type such that each instance of the base type instantiates an instance of the higher-order type.
+
+% The order of the higher-order type is exactly one greater than that of the base type, or both are orderless. When the higher-order type is a Cardelli powertype of the base type (\texttt{isPowertype = true}), its instances are exactly the specializations of the base type, including the base type itself; otherwise it acts as an Odell categorizer, whose instances are proper specializations of the base type, possibly further qualified by additional conditions.
+
+% Examples include \textit{Ship Type} instantiated by \textit{Ship}, \textit{Dog Breed} instantiated by \textit{Dog}, and \textit{Taxonomic Rank} instantiated by \textit{Tree Species}.
+
+% \subsubsection{Generalizations Sets and UML Powertypes}
+
+% In UML, generalization sets contain an optional attribute called \textit{powertype} which can be used to identify a classifier that is instantiated by the specializations in the generalization set. However, the most recent UML specification does not provide details on how a generalization set's powertype classifies the specializations in the generalization set. In this subsection, we present details on how this feature is employed in OntoUML models to capture instantiation relations between classes in the model. 
+
+% In OntoUML, generalization sets are used to group specializations of a general class whose definitions share a common criterion. When the generalization set identifies a powertype (in the UML sense), that class represents this common criterion as an element in the model that can govern the definition of these specializations.
+% % For example, a generalization set can be used to group \textit{Infant}, \textit{Adult}, and \textit{Elder} as a \textit{disjoint} and \textit{complete} generalization set of the general class \textit{Person} that uses the property \textit{age} shared criteria for their definitions.
+% In~\autoref{fig:mlt-generelization-set-tree-species-example}, we expand the earlier example on tree species, mapping an example present in the UML specification to OntoUML. As previously discussed, the «instantiation» association captures the notion that every instance of \textit{Tree} instantiates exactly one instance of \textit{Tree Species}. By setting \textit{Tree Species} as the generalization set's powertype (with the class name after a colon next to the generalization set's constraints), we identify \textit{Sugar Maple}, \textit{Apricot}, \textit{American Elm}, and \textit{Saguaro} as actual instances of it. In other words, the criteria of inclusion for specialization of \textit{Tree} into this generalization set is that each represents an instance of \textit{Tree Species}. The UML example also includes an example of a domain property specific to tree species (i.e., leaf pattern), and an example of a property have distinct meanings for trees and tree species (i.e., geographic location). Note that only OntoUML \textit{categorizers} can be used in generalization sets, since Cardelli powertypes are instantiated by their base type and every specialization of it, which not only makes the explicit classification unnecessary, but also prevents their usage as an orthogonal specialization criterion on some specific generalization set.
+
+% This ability to represent actual instantiation in class diagrams is a seeming deviation from the intended usage of class diagrams, one that raises the need for specific considerations in the development of conceptual models.
+% In UML, class diagrams are used to represent type-level features (e.g., classes, associations, and attributes) of a domain of a certain domain or system. These are repeatable features exhibited by the elements classified by them. However, the classification of specific instances and the assignment of values to attributes are representations executed in object diagrams. To conciliate these distinct applications, we must (i) acknowledge that the features represented in class diagrams (as well as in OntoUML models) are immutable. Therefore, a class diagram does not capture a snapshot of an evolving domain, as object diagrams do, but captures a set of invariants that are either repeatable (e.g., every tree instantiates one tree species) or immutable (e.g., the class \textit{Sugar Maple} is an instance of \textit{Tree Species}).
+
+% While the type of categorization represented by an «instantiation» association captures how the instances of a categorizer classify the base type's instances, the constraints of a generalization set play a similar role between the general class and its specializations. When combined, these two representations can also indicate whether all instances of the categorizer are present in the model. \autoref{tab:mlt-categorization-and-generalization-set-contraints} summarizes the implications of all combinations of generalization set constraints and types of categorization, which we demonstrate with concrete examples right after.
+
+% -- DISCUSSION: talk about how every non-powertype specialization of a Cardelli powertype categorizes the base type of said powertype.
+
+% -- CONSTRAINT: a base type can have at most one «instantiation» association with a Cardelli powertype.
+
+% -- CONSTRAINT: if two generalizations share the same powertype (i.e., a categorizer), they must not share the same general class.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:generalizationSetPowertypeRestrictedToType}
+The powertype of a generalization set must be an OntoUML class that has \texttt{restrictedTo} set to \texttt{\{TYPE\}}.
+
+% TODO: generated, not tested
+\begin{lstlisting}[language=OCL]
+context GeneralizationSet
+inv generalizationSetPowertypeRestrictedToType:
+    self.powertype->notEmpty()
+    implies
+    (
+        self.powertype.oclIsKindOf(OntoUMLClass)
+        and self.powertype.oclAsType(OntoUMLClass).restrictedTo->asSet() = Set{OntologicalNature::TYPE}
+    )
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:generalizationSetPowertypeHasIsPowertypeFalse}
+The powertype of a generalization set must be an OntoUML class that has \texttt{isPowertype} set to \texttt{FALSE}.
+
+% TODO: generated, not tested
+\begin{lstlisting}[language=OCL]
+context GeneralizationSet
+inv generalizationSetPowertypeHasIsPowertypeFalse:
+    self.powertype->notEmpty()
+    implies
+    (
+        self.powertype.oclIsKindOf(OntoUMLClass)
+        and self.powertype.oclAsType(OntoUMLClass).isPowertype = false
+    )
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:generalizationSetPowertypeConnectedByInstantiation}
+The powertype of a generalization set must be connected to the general classifier of the set through an association stereotyped as «instantiation», with the general classifier at the base type end and the powertype at the higher-order type end.
+
+% TODO: generated, not tested
+\begin{lstlisting}[language=OCL]
+context GeneralizationSet
+inv generalizationSetPowertypeConnectedByInstantiation:
+    self.powertype->notEmpty()
+    implies
+    self.generalization->forAll(g |
+        instantiation.allInstances()->exists(a |
+            a.memberEnd->size() = 2
+            and a.memberEnd->at(1).type = g.general
+            and a.memberEnd->at(2).type = self.powertype
+        )
+    )
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:completeGeneralizationSetRequiresMandatoryInstantiation}
+A generalization set marked as \texttt{\{complete\}} whose powertype is connected by an association stereotyped as «instantiation» to the general classifier of the set must have the multiplicity on the higher-order type end of that association with a lower bound of at least \texttt{1}. % This forbids the combinations of \texttt{0..*} or \texttt{0..1} with \texttt{\{complete\}} in~\autoref{tab:mlt-generalization-set-contraints}.
+
+% TODO: generated, not tested
+% \begin{lstlisting}[language=OCL]
+% context instantiation
+% inv completeGeneralizationSetRequiresMandatoryInstantiation:
+%     let b : Property = self.memberEnd->at(1) in
+%     let h : Property = self.memberEnd->at(2) in
+%     self.memberEnd->size() = 2
+%     and h.type.oclIsKindOf(Classifier)
+%     and h.type.oclAsType(Classifier).powertypeExtent
+%         ->select(gs | gs.generalization->exists(g | g.general = b.type))
+%         ->forAll(gs | gs.isCovering implies h.lower >= 1)
+% \end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:overlappingGeneralizationSetForbidsSingleInstantiation}
+A generalization set marked as \texttt{\{overlapping\}} whose powertype is connected by an association stereotyped as «instantiation» to the general classifier of the set must not have the multiplicity on the higher-order type end of that association with an upper bound of \texttt{1}. % This forbids the combinations of \texttt{0..1} or \texttt{1..1} with \texttt{\{overlapping\}} in~\autoref{tab:mlt-generalization-set-contraints}.
+
+% TODO: generated, not tested
+% \begin{lstlisting}[language=OCL]
+% context instantiation
+% inv overlappingGeneralizationSetForbidsSingleInstantiation:
+%     let b : Property = self.memberEnd->at(1) in
+%     let h : Property = self.memberEnd->at(2) in
+%     self.memberEnd->size() = 2
+%     and h.type.oclIsKindOf(Classifier)
+%     and h.type.oclAsType(Classifier).powertypeExtent
+%         ->select(gs | gs.generalization->exists(g | g.general = b.type))
+%         ->forAll(gs | not gs.isDisjoint implies h.upper <> 1)
+% \end{lstlisting}
+\end{constraint}

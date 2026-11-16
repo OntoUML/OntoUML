@@ -1,0 +1,1616 @@
+\chapter{Profile Elements for Modeling Endurants}
+
+\section{Class Stereotypes}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{img/Endurant Classes.svg}
+    \caption{Fragment of the OntoUML Profile that defines class stereotypes for modeling endurants}
+    \label{fig:endurant-classes-profile}
+\end{figure}
+
+
+\begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{|l|l|l|l|l|l|}
+        \hline
+        \textbf{Stereotype} &
+        \textbf{Rigidity} &
+        \textbf{Sortality} &
+        \textbf{\texttt{restrictedTo}} &
+        \textbf{\texttt{order}} &
+        \textbf{\texttt{isAbstract}} \\
+        \hline
+
+        «kind» &
+        Rigid &
+        Ultimate Sortal &
+        exactly \{\texttt{FUNCTIONAL\_COMPLEX}\} &
+        \texttt{1} &
+        -- \\
+        \hline
+
+        «collective» &
+        Rigid &
+        Ultimate Sortal &
+        exactly \{\texttt{COLLECTIVE}\} &
+        \texttt{1} &
+        -- \\
+        \hline
+
+        «quantity» &
+        Rigid &
+        Ultimate Sortal &
+        exactly \{\texttt{QUANTITY}\} &
+        \texttt{1} &
+        -- \\
+        \hline
+
+        «relator» &
+        Rigid &
+        Ultimate Sortal &
+        exactly \{\texttt{RELATOR}\} &
+        \texttt{1} &
+        -- \\
+        \hline
+
+        % TODO: update MODE stereotype
+        «intrinsicMode» &
+        Rigid &
+        Ultimate Sortal &
+        \begin{tabular}[t]{@{}l@{}}
+            non-empty subset of \\
+            \{\texttt{INTRINSIC\_MODE}, \\
+            \texttt{EXTRINSIC\_MODE}\}
+        \end{tabular} &
+        \texttt{1} &
+        -- \\
+        \hline
+
+        «extrinsicMode» &
+        Rigid &
+        Ultimate Sortal &
+        \begin{tabular}[t]{@{}l@{}}
+            non-empty subset of \\
+            \{\texttt{INTRINSIC\_MODE}, \\
+            \texttt{EXTRINSIC\_MODE}\}
+        \end{tabular} &
+        \texttt{1} &
+        -- \\
+        \hline
+
+        «quality» &
+        Rigid &
+        Ultimate Sortal &
+        exactly \{\texttt{QUALITY}\} &
+        \texttt{1} &
+        -- \\
+        \hline
+
+        «subkind» &
+        Rigid &
+        Subordinate Sortal &
+        \begin{tabular}[t]{@{}l@{}}
+            any single \texttt{OntologicalNature} \\
+        \end{tabular} &
+        any order &
+        -- \\
+        \hline
+
+        «role» &
+        Anti-rigid &
+        Subordinate Sortal &
+        \begin{tabular}[t]{@{}l@{}}
+            any single \texttt{OntologicalNature} \\
+            except \{\texttt{EVENT}, \texttt{ABSTRACT}\}
+        \end{tabular} &
+        any order &
+        -- \\
+        \hline
+
+        «phase» &
+        Anti-rigid &
+        Subordinate Sortal &
+        \begin{tabular}[t]{@{}l@{}}
+            any single \texttt{OntologicalNature} \\
+            except \{\texttt{EVENT}, \texttt{ABSTRACT}\}
+        \end{tabular} &
+        any order &
+        -- \\
+        \hline
+
+        «category» &
+        Rigid &
+        Non-Sortal &
+        \begin{tabular}[t]{@{}l@{}}
+            non-empty subset of \\
+            \texttt{OntologicalNature}
+        \end{tabular} &
+        any order &
+        \texttt{true} \\
+        \hline
+
+        «roleMixin» &
+        Anti-rigid &
+        Non-Sortal &
+        \begin{tabular}[t]{@{}l@{}}
+            non-empty subset of \\
+            \texttt{OntologicalNature}
+        \end{tabular} &
+        any order &
+        \texttt{true} \\
+        \hline
+
+        «phaseMixin» &
+        Anti-rigid &
+        Non-Sortal &
+        \begin{tabular}[t]{@{}l@{}}
+            non-empty subset of \\
+            \texttt{OntologicalNature}
+        \end{tabular} &
+        any order &
+        \texttt{true} \\
+        \hline
+
+        «mixin» &
+        Semi-rigid &
+        Non-Sortal &
+        \begin{tabular}[t]{@{}l@{}}
+            non-empty subset of \\
+            \texttt{OntologicalNature}
+        \end{tabular} &
+        any order &
+        \texttt{true} \\
+        \hline
+    \end{tabular}
+    \caption{Stereotype meta-properties and property restrictions.}
+    \label{tab:stereotype-properties}
+\end{table}
+
+
+\FloatBarrier
+\subsection{OntoUMLClass}
+\label{stereotype:ontoumlClass}
+
+The supertype of all OntoUML stereotypes defined in this profile. It defines three meta-properties, namely restrictedTo, order, and isPowertype.
+
+Most stereotypes restrict the possible values one can assign to these meta-properties.
+
+\subsubsection{\texttt{restrictedTo}}
+
+Determines the possible ontological natures of the entities in the extension of the decorated class, namely whether they are functional complexes, relators, modes, etc. It is used particularly for NonSortal classes, whose instances may belong to different ontological categories. Its possible values are enumerated in the \texttt{Ontological Nature} enum, which includes: 
+    \begin{itemize}
+        \item \texttt{FUNCTIONAL\_COMPLEX}
+        \item \texttt{COLLECTIVE}
+        \item \texttt{QUANTITY}
+        \item \texttt{RELATOR}
+        \item \texttt{INTRINSIC\_MODE}
+        \item \texttt{EXTRINSIC\_MODE}
+        \item \texttt{QUALITY}
+        \item \texttt{EVENT}
+        \item \texttt{SITUATION}
+        \item \texttt{TYPE}
+        \item \texttt{ABSTRACT}
+    \end{itemize}
+
+
+This specification makes named references to certain subsets of these ontological natures, namely: 
+
+\begin{itemize}
+
+    \item \phantomsection\label{par:substantial-nature} The \textbf{substantial nature} set refers to \texttt{\{FUNCTIONAL\_COMPLEX, COLLECTIVE, QUANTITY\}}
+    
+    \item \phantomsection\label{par:endurant-nature} The \textbf{endurant nature} set refers to the union of the substantial nature set and \texttt{\{RELATOR, INTRINSIC\_MODE, EXTRINSIC\_MODE, QUALITY, TYPE\}}
+    
+    \item \phantomsection\label{par:concrete-individual-nature} The \textbf{concrete individual nature} set refers to union of the endurant nature set and \texttt{\{EVENT, SITUATION\}}.
+\end{itemize}
+
+\subsubsection{\texttt{order}}
+
+An unlimited natural number that determines the classification level (i.e., the order) of the decorated class in a multi-level classification scheme. OntoUML classes that do not include the value \texttt{OntologicalNature::TYPE} in the assignment of \texttt{restrictedTo} are first-order classes, i.e., classes that exclusively classify individuals (e.g., \textit{Person} as a classifier for \textit{Bob} and \textit{Eva}, or \textit{Meeting} as the classifier for \textit{the meeting that occurred yesterday}). These classes must have meta-property \texttt{order} set to \texttt{1}. The other classes, referred to as higher-order classes, have their representation and constraints detailed in \autoref{ch:mlt}.
+    
+\subsubsection{\texttt{isPowertype}}
+
+A boolean that determines how a higher-order type applies to its instances. OntoUML classes that do not include the value \texttt{OntologicalNature::TYPE} in the assignment of \texttt{restrictedTo} are first-order classes, i.e., classes that exclusively classify individuals (e.g., \textit{Person} as a classifier for \textit{Bob} and \textit{Eva}, or \textit{Meeting} as the classifier for \textit{the meeting that occurred yesterday}). These classes must have meta-property \texttt{isPowertype} set to \texttt{false}. The other classes, referred to as higher-order classes, have their representation and constraints detailed in \autoref{ch:mlt}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:classesMustHaveExactlyOneStereotype}
+Every class in an OntoUML model must be decorated with at least one stereotype defined in this profile.
+
+% TESTED by CMF on MagicDraw
+\begin{lstlisting}[language=OCL]
+context Class
+inv classesMustHaveExactlyOneStereotype:
+    Sequence{
+        self.oclIsKindOf(kind),
+        self.oclIsKindOf(collective),
+        self.oclIsKindOf(quantity),
+        self.oclIsKindOf(relator),
+        self.oclIsKindOf(quality),
+        self.oclIsKindOf(mode),
+        self.oclIsKindOf(subkind),
+        self.oclIsKindOf(role),
+        self.oclIsKindOf(phase),
+        self.oclIsKindOf(historicalRole),
+        self.oclIsKindOf(category),
+        self.oclIsKindOf(mixin),
+        self.oclIsKindOf(roleMixin),
+        self.oclIsKindOf(phaseMixin),
+        self.oclIsKindOf(historicalRoleMixin),
+        self.oclIsKindOf(event),
+        self.oclIsKindOf(situation),
+        self.oclIsKindOf(type),
+        self.oclIsKindOf(abstract)
+    }->select(x | x = true)->size() = 1
+\end{lstlisting}
+\end{constraint}
+
+% TESTED by CMF on MagicDraw
+\begin{constraint}
+\label{restrictionCompatibleSpecialization}
+No OntoUML class can be restricted to a set of ontological natures not included in the set of natures restricted by one of its parents.
+
+\begin{lstlisting}[language=OCL]
+context Generalization
+inv restrictionCompatibleSpecialization:
+  (
+    self.general.oclIsKindOf(OntoUMLClass)
+    and
+    self.specific.oclIsKindOf(OntoUMLClass)
+  )
+  implies
+  (
+    let superclassRestrictions : Collection(String) = 
+        self.general.oclAsType(OntoUMLClass).restrictedTo->collect(toString()) in
+    let subclassRestrictions : Collection(String) = 
+        self.specific.oclAsType(OntoUMLClass).restrictedTo->collect(toString()) in 
+    superclassRestrictions->includesAll(subclassRestrictions)
+  )
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{nonTypeClassesHaveOrderOneAndPowertypeFalse}
+Every class that does not include types among its instances (i.e., \texttt{restrictedTo} does not include the value \texttt{OntologicalNature::TYPE}) must have \texttt{order} set to \texttt{1} and \texttt{isPowertype} set to \texttt{false}.
+
+% TESTED by CMF on MagicDraw
+\begin{lstlisting}[language=OCL]
+context OntoUMLClass
+inv nonTypeClassesHaveOrderOneAndPowertypeFalse:
+    not self.restrictedTo->exists(n | n = OntologicalNature::TYPE)
+    implies
+    (self.order = 1 and self.isPowertype = false)
+\end{lstlisting}
+\end{constraint}
+
+\subsection{Sortal}
+\label{stereotype:sortal}
+
+An \hyperref[stereotype:ontoumlClass]{\textit{OntoUML Class}} whose instances carry or supply a uniform principle of identity.
+
+Typical examples include the classes \textit{Person}, \textit{Child}, and \textit{Student}.
+
+Sortals can be split into \hyperref[stereotype:ultimateSortal]{\textit{ultimate sortals}}, when they supply a principle of identity to their instances, and \textbf{subordinate sortals}, when they do not. Subordinate sortal stereotypes include: \hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:phase]{«phase»}, \hyperref[stereotype:role]{«role»}, and \hyperref[stereotype:historicalRole]{«historicalRole»} 
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:restrictedToSingleNature}
+Every class decorated with a sortal stereotype must be restricted to a single ontological nature.
+
+% \begin{lstlisting}[language=OCL]
+% context Sortal 
+% inv restrictedToSingleNature:
+%     -- placeholder
+% \end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:sortalMustSpecializeUltimateSortal}
+% \label{constraint:subordinateSortalsMustSpecializeUltimateSortal}
+Every class decorated with a subordinate sortal stereotype must specialize a unique class decorated with an ultimate sortal stereotype.
+
+% TESTED by CMF on MagicDraw
+\begin{lstlisting}[language=OCL]
+context Sortal 
+inv sortalMustSpecializeUltimateSortal:
+    not self.oclIsKindOf(UltimateSortal)
+    implies (
+        let ancestors : Set(Classifier) =
+            self.general->union(self.general->collect(general))->asSet() in
+        ancestors->select(a | a.oclIsKindOf(UltimateSortal))->size() = 1
+    )
+\end{lstlisting}
+\end{constraint}
+
+\subsection{NonSortal}
+\label{stereotype:nonSortal}
+
+An \hyperref[stereotype:ontoumlClass]{\textit{OntoUML Class}} whose instances do not carry a uniform principle of identity.
+
+An instance of NonSortal classifies entities that follow principles of identity provided by different sortals. 
+
+Examples include the classes \textit{PhysicalObject}, \textit{Agent}, \textit{FemaleAnimal}, \textit{LivingAnimal}, \textit{MusicalArtist}, and \textit{Customer}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{nonSortalMustBeAbstract}
+Classes decorated with non-sortal stereotypes must be abstract.
+
+\begin{lstlisting}[language=OCL]
+context NonSortal 
+inv nonSortalMustBeAbstract:
+    self.base_Class.isAbstract
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{nonSortalCantSpecializeSortal}
+Classes decorated with non-sortal stereotypes cannot specialize classes decorated with sortal stereotypes.
+
+\begin{lstlisting}[language=OCL]
+context NonSortal 
+inv nonSortalCantSpecializeSortal:
+    not base_Class.allParents()->exists(
+        not oclAsType(Class).extension_OntoUMLClass
+                            .oclAsType(Sortal)
+                            .oclIsInvalid()
+)
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{nonSortalMustHaveSortalSpecialization}
+Given a class N decorated with a non-sortal stereotype, there must be a class S decorated with a sortal stereotype that specializes N, or specializes a non-sortal supertype common to both N and S.
+
+\begin{lstlisting}[language=OCL]
+context NonSortal 
+inv nonSortalMustHaveSortalSpecialization:
+    -- there is a sortal that has the non-sortal as parent
+    Sortal.allInstances()
+          ->exists(base_Class.allParents()
+                             ->includes(self.base_Class))
+    or
+    -- there is a sortal with a parent x that is also parent of the non-sortal
+    Sortal.allInstances()
+          ->exists(base_Class.allParents()
+                             ->exists(x | self.base_Class
+                                              .allParents()
+                                              ->includes(x)))
+\end{lstlisting}
+\end{constraint}
+
+\subsection{Rigid Sortal}
+\label{stereotype:rigidSortal}
+
+A \hyperref[stereotype:sortal]{\textit{Sortal}} that classifies its instances necessarily, i.e., in all possible circumstances in which those instances exist.
+
+Examples of rigid sortals include the classes \textit{Person}, \textit{Car}, \textit{Station Wagon}, \textit{Tree}, \textit{Oak}, and \textit{Rental Contract}.
+
+See the rigid definition in \autoref{sec:rigidity}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:rigidSortalCantSpecializeAntiRigid}
+A class decorated with a RigidSortal stereotype cannot specialize a class decorated with an \hyperref[stereotype:antiRigidSortal]{\textit{AntiRigidSortal}} or \hyperref[stereotype:antiRigidNonSortal]{\textit{AntiRigidNonSortal}} stereotype. 
+
+% TESTED by CMF on MagicDraw
+\begin{lstlisting}[language=OCL]
+context RigidSortal 
+inv rigidSortalCantSpecializeAntiRigid:
+    not self.general->exists(c | 
+        c.oclIsKindOf(AntiRigidSortal) or c.oclIsKindOf(AntiRigidNonSortal)
+    )
+\end{lstlisting}
+
+\autoref{fig:rigid-sortal-violation} presents counterexamples that violate the constraint \texttt{rigidSortalCantSpecializeAntiRigid} by \textit{Person} specializing
+\textit{Child}, and \textit{Marriage} specializing \textit{LegalMarriage}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/rigidSortalCantSpecializeAntiRigid}
+    \caption{Examples of violations of the rigid sortal constraint.}
+    \label{fig:rigid-sortal-violation}
+\end{figure}
+\end{constraint}
+
+\FloatBarrier
+
+\subsection{UltimateSortal}
+\label{stereotype:ultimateSortal}
+
+A \hyperref[stereotype:rigidSortal]{\textit{RigidSortal}} that supplies a principle of identity to its instances.
+
+Examples include the classes \textit{Person}, \textit{House}, \textit{Car}, \textit{Marriage}, \textit{Weight}, and \textit{Headache}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:ultimateSortalUniqueNatureRestriction}
+A class decorated with an UltimateSortal stereotype must be restricted to a unique ontological nature. 
+
+% \begin{lstlisting}[language=OCL]
+% context UltimateSortal 
+% inv ultimateSortalUniqueNatureRestriction:
+%     -- placeholder
+% \end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:ultimateSortalCantSpecializeAnotherSortal}
+A class decorated with an UltimateSortal stereotype cannot specialize another class decorated with a Sortal stereotype. 
+
+% TESTED by CMF on MagicDraw
+\begin{lstlisting}[language=OCL]
+context UltimateSortal 
+inv ultimateSortalCantSpecializeAnotherSortal:
+    not self.general->exists(c | c.oclIsKindOf(Sortal))
+\end{lstlisting}
+\end{constraint}
+
+\autoref{fig:ultimate-sortal-violation} presents counterexamples that violate the constraint \texttt{ultimateSortalCantSpecializeAnotherSortal} by \textit{Person} specializing
+\textit{Organization}, and \textit{Intention} specializing \textit{Agreement} and \textit{Status}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/ultimateSortalCantSpecializeAnother}
+    \caption{Examples of violations of the UltimateSortal constraint.}
+    \label{fig:ultimate-sortal-violation}
+\end{figure}
+
+
+\FloatBarrier
+
+\subsection{FirstOrderUltimateSortal}
+\label{stereotype:firstOrderUltimateSortal}
+
+An \hyperref[stereotype:ultimateSortal]{\textit{UltimateSortal}} whose instances are individuals.
+
+Examples include the classes \textit{Person}, \textit{House}, \textit{Car}, \textit{Marriage}, \textit{Weight}, and \textit{Headache}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{kindIsFirstOrder}
+A class decorated as «kind» must have order 1.
+
+\begin{lstlisting}[language=OCL]
+context FirstOrderUltimateSortal 
+inv isFirstOrder: 
+    self.base_Class.order = 1
+\end{lstlisting}
+\end{constraint}
+
+\subsection{AntiRigidSortal}
+\label{stereotype:antiRigidSortal}
+
+A \hyperref[stereotype:sortal]{\textit{Sortal}} that classifies its instances contingently, i.e., in some circumstances but not in others.
+
+Typical examples are the classes \textit{Child}, \textit{Employee}, \textit{Healthy Dog}, and \textit{Endangered Species}.
+
+See the anti-rigid definition in \autoref{sec:rigidity}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:antiRigidSortalCannotSpecializeAbstractOrEvent}
+
+An anti-rigid sortal class cannot specialize a class whose extension can include events or abstract individuals.
+
+% TESTED by CMF on MagicDraw; innitiatelly generated with Fable
+\begin{lstlisting}[language=OCL]
+context AntiRigidSortal
+inv antiRigidSortalCannotSpecializeAbstractOrEvent:
+    not self.general->exists(g |
+        g.oclIsKindOf(OntoUMLClass) and
+        g.oclAsType(OntoUMLClass).restrictedTo->exists(n | n = OntologicalNature::ABSTRACT or n = OntologicalNature::EVENT)
+    )
+\end{lstlisting}
+\end{constraint}
+
+\subsubsection{Derivations}
+
+\begin{constraint}
+\label{antiRigidSortalCannotSpecializeEvent}
+The \texttt{restrictedTo} value of an anti-rigid sortal class is derived from the \texttt{restrictedTo} values of its parents.
+
+% TODO: investigate how to test OCL derivations
+\begin{lstlisting}[language=OCL]
+context AntiRigidSortal 
+derive deriveAntiRigidSortalRestrictedTo:
+    self.base_Class
+        .parents()
+        ->collect(p | p.restrictedTo)
+        ->asSet()
+\end{lstlisting}
+\end{constraint}
+
+\subsection{AntiRigidNonSortal}
+\label{stereotype:antiRigidNonSortal}
+
+A \hyperref[stereotype:nonSortal]{\textit{NonSortal}} whose instances instantiate it contingently, i.e., in some circumstances but not in others.
+
+Typical examples include the classes \textit{LivingAnimal}, \textit{InfantAnimal}, and \textit{Customer}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:antiRigidNonSortalCannotSpecializeAbstractOrEvent}
+An anti-rigid non-sortal class cannot specialize a class whose extension can include events or abstract individuals.
+
+% TESTED by CMF on MagicDraw; innitiatelly generated with Fable
+\begin{lstlisting}[language=OCL]
+context AntiRigidNonSortal
+inv antiRigidNonSortalCannotSpecializeAbstractOrEvent:
+    not self.general->exists(g |
+        g.oclIsKindOf(OntoUMLClass) and
+        g.oclAsType(OntoUMLClass).restrictedTo->exists(n | n = OntologicalNature::ABSTRACT)
+    )
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«kind»}
+\label{stereotype:kind}
+
+A class stereotyped as «kind» is a \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} type whose instances are mereologically simple substantials or functional complexes (integral wholes whose parts play differentiated functional roles with respect to the whole).
+
+Examples of kinds include the classes \textit{Person}, \textit{Car}, and \textit{Organization}. \textit{Car} is included among these examples because it is composed of parts that make distinct contributions to the functioning of the whole. Its engine or motor generates power, its wheels enable movement, its brakes support controlled deceleration, and its steering system allows direction control.
+
+To increase the legibility of OntoUML models, the names of some stereotypes abbreviate their corresponding UFO categories. The stereotype «kind» is used as a shorthand for «functionalComplexKind», reflecting that functional complex kinds are the most common and widely used kinds in OntoUML models. A similar abbreviation is adopted for the sibling stereotypes «collective», «quantity», «relator», «intrinsicMode», «extrinsicMode», and «quality», which omit the suffix “Kind” and stand for «collectiveKind», «quantityKind», «relatorKind», «modeKind», and «qualityKind», respectively. These stereotypes should not be confused with first-order UFO categories such as «category» Functional Complex, «category» Collective, «category» Quantity, «category» Relator, «category» Mode, and «category» Quality. For example, while «category» Relator is a first-order type whose instances are particular relators, the «relator» stereotype denotes a second-order type whose instances are rigid first-order types that provide identity conditions for their own instances.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/class__Endurants__kind.svg}
+    \caption{Examples of classes categorized as «kind».}
+    \label{fig:kind-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «kind» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «kind» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{kindRestrictedToFunctionalComplex}
+
+A class decorated as «kind» must have its ontological nature restricted to functional complex.
+
+\begin{lstlisting}[language=OCL]
+context kind 
+inv kindRestrictedToFunctionalComplex:
+    self.base_Class.restrictedTo = Set{OntologicalNature::FUNCTIONAL_COMPLEX}
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«collective»}
+\label{stereotype:collective}
+
+A class stereotyped as «collective» is a \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} whose instances are collectives (integral wholes whose parts play the same role with respect to the whole).
+
+Examples include the classes \textit{Deck of Cards}, \textit{Brick Pile}, and \textit{Visitor Group}. 
+
+Sometimes, people use the same natural language term to denote either a collective or a functional complex. For example, \texttt{Band} should be modeled as a «collective» if its parts are understood uniformly as band members or musicians. However, it should be modeled as a «kind» if it is understood as an organized system whose parts perform distinct functions, such as singer, guitarist, drummer, and bassist. Thus, the choice depends on whether the parts are treated as role-uniform members or as functionally differentiated components. See an in-depth discussion in \cite{sales2017fleet}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/class__Endurants__collective.svg}
+    \caption{Example of a class categorized as «collective».}
+    \label{fig:collective-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «collective» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «collective» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{collectiveRestrictedTo}
+A class decorated as «collective» must have its ontological nature restricted to \texttt{OntologicalNature::COLLECTIVE}.
+
+\begin{lstlisting}[language=OCL]
+context collective 
+inv collectiveRestrictedTo:
+    self.base_Class.restrictedTo = Set{OntologicalNature::COLLECTIVE}
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«quantity»}
+\label{stereotype:quantity}
+
+A class stereotyped as «quantity» is a \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} whose instances are maximal portions of matter or stuff unified by topological connectedness.
+
+Examples include the classes \textit{Amount of Water}, \textit{Lump of Clay}, and \textit{Pile of Sand}.
+
+Quantities exhibit homeomerity: their parts are portions of the same kind of matter or stuff as the whole. Thus, when an amount of sand is divided, the resulting parts are themselves amounts of sand; when a portion of water is taken from a larger portion of water, it is still a portion of water. This does not mean that the parts are identical to the original whole, but that they fall under the same matter-kind.
+
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/class__Endurants__quantity.svg}
+    \caption{Examples of «quantity» classes.}
+    \label{fig:quantity-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «quantity» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «quantity» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{quantityRestrictedTo}
+A class decorated as «quantity» must have its ontological nature restricted to \texttt{OntologicalNature::QUANTITY}.
+
+\begin{lstlisting}[language=OCL]
+context quantity 
+inv quantityRestrictedTo:
+    self.base_Class.restrictedTo = Set{OntologicalNature::QUANTITY}
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«relator»}
+\label{stereotype:relator}
+
+A class stereotyped as «relator» is a \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} type whose instances are extrinsic aspects that are existentially dependent on two or more endurants. %connect
+
+% Examples of «relator» include \textit{Marriage}, \textit{Employment}, and \textit{Presidential Mandate}.
+
+Examples include \textit{Marriage}, \textit{Employment}, and \textit{Presidential Mandate}: a marriage existentially depends on two \textit{Spouses}, an employment on an \textit{Employee} and an \textit{Employer}, and a presidential mandate on a \textit{President} and a \textit{Country}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/class__Endurants__relator.svg}
+    \caption{An example of a «relator» class.}
+    \label{fig:relator-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «relator» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «relator» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{relatorRestrictedToRelator}
+A class decorated as «relator» must have its ontological nature restricted to \texttt{OntologicalNature::RELATOR}.
+
+\begin{lstlisting}[language=OCL]
+context Relator 
+inv relatorRestrictedToRelator:
+    self.base_Class.restrictedTo = Set{OntologicalNature::RELATOR}
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«intrinsicMode»}
+\label{stereotype:intrinsicMode}
+
+A class stereotyped as «intrinsicMode» is a \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} whose instances are aspects that inhere in a bearer, are not directly measurable in a quality structure, and do not existentially depend on any entity independent of that bearer.
+
+Examples include \textit{Courage}, whose instances each inhere in a \textit{Person}; \textit{Fragility}, whose instances each inhere in a \textit{Glass}; and \textit{Magnetic Attraction Disposition}, whose instances each inhere in a \textit{Magnet}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/class__Endurants__intrinsicMode.svg}
+    \caption{Example of a class categorized as «intrinsicMode».}
+    \label{fig:intrinsicMode-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+An «intrinsicMode» class can specialize classes decorated with any of:
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+An «intrinsicMode» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{intrinsicModeRestrictedTo}
+The ontological nature of an «intrinsicMode» class must be \texttt{OntologicalNature::INTRINSIC\_MODE}.
+
+\begin{lstlisting}[language=OCL]
+context IntrinsicMode
+inv intrinsicModeRestrictedTo:
+    self.base_Class.restrictedTo->asSet() =
+        Set{OntologicalNature::INTRINSIC_MODE}
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«extrinsicMode»}
+\label{stereotype:extrinsicMode}
+
+A class stereotyped as «extrinsicMode» is a \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} whose instances are aspects that inhere in a bearer, are not directly measurable in a quality structure, and existentially depend on at least one entity independent of that bearer.
+
+Examples include \textit{Love}, whose instances each inhere in a \textit{Person} and externally depend on another; \textit{Employment Commitment}, whose instances each inhere in an \textit{Employee} and externally depend on an \textit{Employer}; and \textit{Insurance Claim}, whose instances each inhere in a \textit{Policy Holder} and externally depend on an \textit{Insurer}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/class__Endurants__extrinsicMode.svg}
+    \caption{Example of a class categorized as «extrinsicMode».}
+    \label{fig:extrinsicMode-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+An «extrinsicMode» class can specialize classes decorated with any of:
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+An «extrinsicMode» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{extrinsicModeRestrictedTo}
+The ontological nature of an «extrinsicMode» class must be \texttt{OntologicalNature::EXTRINSIC\_MODE}.
+
+\begin{lstlisting}[language=OCL]
+context ExtrinsicMode
+inv extrinsicModeRestrictedTo:
+    self.base_Class.restrictedTo->asSet() =
+        Set{OntologicalNature::EXTRINSIC_MODE}
+\end{lstlisting}
+\end{constraint}
+
+
+% \subsection{«mode»}
+% \label{stereotype:mode}
+
+% A class stereotyped as «mode» is a \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} whose instances are aspects that inhere in a bearer, may externally depend on another entity, and are not directly measurable in a quality structure. 
+% %conceptualized through
+
+% Modes may be intrinsic or extrinsic. Intrinsic modes depend only on the bearer in which they inhere, as in the case of a person’s intention, symptom, or ability to program. Extrinsic modes, also called externally dependent modes, inhere in a bearer while also depending on another entity, as in the case of a person’s commitment to an organization, a customer’s claim against an insurer, or John’s love for Mary.
+
+% \subsubsection{Allowed Supertypes}
+
+% A «mode» class can specialize classes decorated with any of: 
+% \hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+% \subsubsection{Allowed Subtypes}
+
+% A «mode» class can be specialized by classes decorated with any of: 
+% \hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+% \subsubsection{Constraints}
+
+% \begin{constraint}
+% \label{modeRestrictedTo}
+% The ontological nature of a «mode» class must either be a non-empty subset of\\ (\texttt{OntologicalNature::INTRINSIC\_MODE},  \texttt{OntologicalNature::EXTRINSIC\_MODE}).
+
+% \begin{lstlisting}[language=OCL]
+% context Mode
+% inv modeRestrictedTo:
+%     self.base_Class.restrictedTo->notEmpty() and
+%     Set{
+%         OntologicalNature::INTRINSIC_MODE,
+%         OntologicalNature::EXTRINSIC_MODE
+%     }->includesAll(self.restrictedTo)
+% \end{lstlisting}
+% \end{constraint}
+
+% \begin{constraint}
+% \label{modeOrder}
+% A «mode» class must be a first-order type.
+
+% \begin{lstlisting}[language=OCL]
+% context Mode 
+% inv modeOrder:
+%     self.base_Class.order = 1
+% \end{lstlisting}
+% \end{constraint}
+
+\subsection{«quality»}
+\label{stereotype:quality}
+
+A class stereotyped as «quality» is a \hyperref[stereotype:firstOrderUltimateSortal]{\textit{FirstOrderUltimateSortal}} whose instances are aspects that inhere in a bearer and are measurable through their projection into quality structures.
+
+A quality structure delimits the possible values that qualities of a given type may take. In OntoUML, these structures are represented by datatypes or enumerations. For example, an object’s \textit{Color} may be projected into an HSV color structure, an RGB color structure, or a simple enumeration such as \textit{Red}, \textit{Green}, and \textit{Blue}. Similarly, a body’s \textit{Temperature} may be projected into data types representing Celsius, Fahrenheit, or Kelvin scales.
+
+% explain that any attribute 
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/class__Endurants__quality.svg}
+    \caption{Example of a class categorized as «quality».}
+    \label{fig:quality-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «quality» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «quality» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{modeRestrictedTo}
+The ontological nature of a «quality» class must be \texttt{OntologicalNature::QUALITY}.
+
+\begin{lstlisting}[language=OCL]
+context quality 
+inv qualityRestrictedToQuality:
+    self.base_Class.restrictedTo = Set{OntologicalNature::QUALITY}
+\end{lstlisting}
+\end{constraint}
+
+% \subsection{«abstract»}
+% \label{stereotype:abstract}
+
+% A class stereotyped as «abstract» is an \hyperref[stereotype:ultimateSortal]{\textit{UltimateSortal}} whose instances are individuals that do not exist in space-time and do not bear spatiotemporal qualities in their own right.
+
+% Examples of abstract types include \textit{Number}, \textit{Set}, \textit{Proposition}, \textit{Truth Value}, and \textit{Geometric Shape}.
+
+% \subsubsection{Allowed Supertypes}
+
+% An «abstract» class can specialize classes decorated with any of: 
+% \hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+% \subsubsection{Allowed Subtypes}
+
+% An «abstract» class can be specialized by classes decorated with any of:
+% \hyperref[stereotype:subkind]{«subkind»}.
+
+
+\subsection{«subkind»}
+\label{stereotype:subkind}
+
+A class stereotyped as «subkind» is a \hyperref[stereotype:rigidSortal]{\textit{RigidSortal}} type that specializes a unique \hyperref[stereotype:ultimateSortal]{\textit{UltimateSortal}} from which it inherits its identity principle.
+
+Examples of subkinds include:
+\begin{itemize}
+    \item \textit{Nonprofit Organization}, which inherits its identity principle from the \hyperref[stereotype:kind]{«kind»} \textit{Organization};
+    \item \textit{Insurance Contract}, which inherits from the \hyperref[stereotype:relator]{«relator»} \textit{Contract};
+    \item \textit{Teroldego Wine}, which inherits from the \hyperref[stereotype:quantity]{«quantity»} \textit{Wine};
+    \item \textit{Chamber Choir}, which inherits from the \hyperref[stereotype:collective]{«collective»} \textit{Choir};
+    \item \textit{Cognitive Ability}, which inherits from the \hyperref[stereotype:intrinsicMode]{«intrinsicMode»} \textit{Ability};
+    \item \textit{Football Match}, which inherits from the \hyperref[stereotype:event]{«event»} \textit{Match}; and
+    \item \textit{Animal Species}, which inherits from the \hyperref[stereotype:type]{«type»} \textit{Species}.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{img/class__Endurants__subkind.svg}
+    \caption{Example of a class categorized as «subkind».}
+    \label{fig:subkind-example}
+\end{figure}
+
+
+\subsubsection{Allowed Supertypes}
+
+A «subkind» class can specialize classes decorated with any of: 
+\hyperref[stereotype:kind]{«kind»}, \hyperref[stereotype:collective]{«collective»}, \hyperref[stereotype:quantity]{«quantity»}, \hyperref[stereotype:relator]{«relator»}, \hyperref[stereotype:intrinsicMode]{«instrinsicMode»},
+\hyperref[stereotype:extrinsicMode]{«exstrinsicMode»}, \hyperref[stereotype:quality]{«quality»}, \hyperref[stereotype:abstract]{«abstract»}, \hyperref[stereotype:event]{«event»}, \hyperref[stereotype:situation]{«situation»}, \hyperref[stereotype:type]{«type»}, \hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «subkind» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{modeRestrictedTo}
+The \texttt{restrictedTo} value of a class decorated with «subkind» is derived from the \texttt{restrictedTo} values of its parents.
+
+\begin{lstlisting}[language=OCL]
+context subkind 
+derive deriveSubkindRestrictedTo:
+    self.base_Class
+        .parents()
+        ->collect(p | p.restrictedTo)
+        ->asSet()
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«role»}
+\label{stereotype:role}
+
+A class stereotyped as «role» is an \hyperref[stereotype:antiRigidSortal]{\textit{AntiRigidSortal}} type that specializes a unique \hyperref[stereotype:ultimateSortal]{\textit{UltimateSortal}} and classifies entities contingently in virtue of relational conditions.
+
+A role applies to an individual only while the relevant relational condition holds. For example, a person may be classified as an \textit{Employee} while participating in an employment relationship and may later cease to be so while preserving their identity as a person. Other examples include \textit{Visa-Supporting Contract}, which classifies contracts in the scope of visa applications, and \textit{Protected Species}, which classifies species in the scope of conservation agreements.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/class__Endurants__role.svg}
+    \caption{Example of «role» classes.}
+    \label{fig:role-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «role» class can specialize classes decorated with any of: 
+\hyperref[stereotype:kind]{«kind»}, \hyperref[stereotype:collective]{«collective»}, \hyperref[stereotype:quantity]{«quantity»}, \hyperref[stereotype:relator]{«relator»}, \hyperref[stereotype:intrinsicMode]{«instrinsicMode»},
+\hyperref[stereotype:extrinsicMode]{«exstrinsicMode»}, \hyperref[stereotype:quality]{«quality»}, \hyperref[stereotype:situation]{«situation»}, \hyperref[stereotype:type]{«type»}, \hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:role]{«phase»}, \hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}, \hyperref[stereotype:roleMixin]{«roleMixin»}, \hyperref[stereotype:historicalRoleMixin]{«historicalRoleMixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «role» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}.
+
+\subsection{«phase»}
+\label{stereotype:phase}
+
+A class stereotyped as «phase» is an \hyperref[stereotype:antiRigidSortal]{\textit{AntiRigidSortal}} type that specializes a unique \hyperref[stereotype:ultimateSortal]{\textit{UltimateSortal}} and classifies entities contingently in virtue of intrinsic conditions.
+
+Phases are always defined in partitions, whose members capture alternative intrinsic conditions for individuals of the same \hyperref[stereotype:ultimateSortal]{\textit{UltimateSortal}}. Examples include \textit{Child}, \textit{Teenager}, and \textit{Adult}, which form an age-based partition of \textit{Person}; \textit{Draft Contract}, \textit{Active Contract}, and \textit{Expired Contract}, which form a lifecycle-status partition of \textit{Contract}; and \textit{Endangered Species} and \textit{Least Concern Species}, which form a conservation-status partition of \textit{Species}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{img/endurants/phase.svg}
+    \caption{Example of a class categorized as «phase».}
+    \label{fig:phase-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+
+A «phase» class can specialize classes decorated with any of: 
+\hyperref[stereotype:kind]{«kind»}, \hyperref[stereotype:collective]{«collective»}, \hyperref[stereotype:quantity]{«quantity»}, \hyperref[stereotype:relator]{«relator»}, \hyperref[stereotype:intrinsicMode]{«instrinsicMode»},
+\hyperref[stereotype:extrinsicMode]{«exstrinsicMode»}, \hyperref[stereotype:quality]{«quality»}, \hyperref[stereotype:situation]{«situation»}, \hyperref[stereotype:type]{«type»}, \hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:phase]{«phase»}, \hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}, \hyperref[stereotype:phaseMixin]{«phaseMixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «phase» class can be specialized by classes decorated with any of: 
+\hyperref[stereotype:phase]{«phase»}, \hyperref[stereotype:role]{«role»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{phaseMustBeDefinedInPartition}    
+A «phase» class must be defined in a partition, i.e., a disjoint and complete generalization set containing at least two specializing classes decorated as «phase» and no specializing class decorated with another OntoUML class stereotype.
+
+\begin{lstlisting}[language=OCL]
+context phase
+inv phaseMustBeDefinedInPartition:
+    self.base_Class.generalization->exists(g |
+        g.generalizationSet->exists(gs |
+            gs.isPartition() and
+            gs.generalization->select(gp |
+                not gp.specific.isPhase()
+            )->size() >= 2 and
+            gs.generalization->forAll(gp |
+                not gp.specific.isPhase()
+            )
+        )
+    )
+
+context GeneralizationSet
+def: isPartition() : Boolean =
+    self.isDisjoint and self.isCovering
+
+context Classifier
+def: isPhase() : Boolean =
+    self.oclIsKindOf(Class) and
+    not self.oclAsType(Class)
+            .extension_OntoUMLClass
+            .oclAsType(phase)
+            .oclIsInvalid()
+
+\end{lstlisting}
+\end{constraint}
+
+\subsection{«category»}
+\label{stereotype:category}
+
+A class stereotyped as «category» is a \hyperref[stereotype:nonSortal]{\textit{NonSortal}} that is rigid.
+
+Categories capture essential properties shared by entities that follow different identity principles. For example, \textit{Physical Object} may classify persons, cars, and buildings; \textit{Legal Relationship} may classify marriages, employments, and contracts; and \textit{Economic Event} may classify purchases, payments, and deliveries.
+
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{img/endurants/category.svg}
+    \caption{Example of a class categorized as «category».}
+    \label{fig:category-example}
+\end{figure}
+
+
+\subsubsection{Allowed Supertypes}
+
+A «category» class can specialize classes decorated with any of: \hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «category» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:kind]{«kind»}, \hyperref[stereotype:collective]{«collective»}, \hyperref[stereotype:quantity]{«quantity»}, \hyperref[stereotype:relator]{«relator»}, \hyperref[stereotype:intrinsicMode]{«intrinsicMode»}, \hyperref[stereotype:extrinsicMode]{«extrinsicMode»}, \hyperref[stereotype:quality]{«quality»}, \hyperref[stereotype:abstract]{«abstract»}, \hyperref[stereotype:event]{«event»}, \hyperref[stereotype:situation]{«situation»}, \hyperref[stereotype:type]{«type»}, \hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}, \hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}, \hyperref[stereotype:roleMixin]{«roleMixin»}, \hyperref[stereotype:historicalRoleMixin]{«historicalRoleMixin»}, \hyperref[stereotype:phaseMixin]{«phaseMixin»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{categoryCantSpecializeAntiRigid}
+
+A class decorated with «category» cannot specialize a class decorated with an AntiRigidSortal or AntiRigidNonSortal stereotype.
+
+\begin{lstlisting}[language=OCL]
+context Category 
+inv categoryCantSpecializeAntiRigid:
+    not base_Class.allParents()->exists(
+        not oclAsType(Class).extension_OntoUMLClass
+                            .oclAsType(AntiRigidSortal)
+                            .oclIsInvalid()
+        or
+        not oclAsType(Class).extension_OntoUMLClass
+                            .oclAsType(AntiRigidNonSortal)
+                            .oclIsInvalid()
+    )
+\end{lstlisting}
+\end{constraint}
+
+
+
+\subsection{«roleMixin»}
+\label{stereotype:roleMixin}
+
+A class stereotyped as «roleMixin» is an \hyperref[stereotype:antiRigidNonSortal]{\textit{AntiRigidNonSortal}} that classifies entities contingently in virtue of relational conditions.
+
+A roleMixin applies only while the relevant relational condition holds. Examples include \textit{Customer}, which may classify persons and organizations in the scope of purchases or service relations; \textit{Insured Item}, which may classify cars, houses, and artworks in the scope of insurance contracts; and \textit{Competitor}, which may classify persons, teams, horses, or dogs in the scope of competitions.
+
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/roleMixin.svg}
+    \caption{Example of a class categorized as «roleMixin».}
+    \label{fig:roleMixin-example}
+\end{figure}
+
+
+\subsubsection{Allowed Supertypes}
+
+A «roleMixin» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}, \hyperref[stereotype:roleMixin]{«roleMixin»}, \hyperref[stereotype:historicalRoleMixin]{«historicalRoleMixin»}, \hyperref[stereotype:phaseMixin]{«phaseMixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «roleMixin» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:roleMixin]{«roleMixin»}, \hyperref[stereotype:historicalRoleMixin]{«historicalRoleMixin»}.
+
+\subsection{«phaseMixin»}
+\label{stereotype:phaseMixin}
+
+A class stereotyped as «phaseMixin» is an \hyperref[stereotype:antiRigidNonSortal]{\textit{AntiRigidNonSortal}} that classifies entities contingently in virtue of intrinsic conditions.
+
+PhaseMixins are always defined in partitions, whose members capture alternative intrinsic conditions for entities that may follow different identity principles. Examples include \textit{Living Animal} and \textit{Deceased Animal}, which form a life-status partition of \textit{Animal}; \textit{Functional Device} and \textit{Broken Device}, which form an operational-status partition of \textit{Device}; and \textit{Available Resource} and \textit{Unavailable Resource}, which form an availability-status partition of \textit{Resource}.
+
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/phaseMixin.svg}
+    \caption{Example of a class categorized as «phaseMixin».}
+    \label{fig:phaseMixin-example}
+\end{figure}
+
+
+\subsubsection{Allowed Supertypes}
+
+A «phaseMixin» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}, \hyperref[stereotype:phaseMixin]{«phaseMixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «phaseMixin» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:phase]{«phase»}, \hyperref[stereotype:phaseMixin]{«phaseMixin»}.
+
+\subsection{«mixin»}
+\label{stereotype:mixin}
+
+A class stereotyped as «mixin» is a \hyperref[stereotype:nonSortal]{\textit{NonSortal}} that is semi-rigid.
+
+Mixins capture properties that are essential to some of their instances and accidental to others. For example, \textit{Musical Artist} may classify bands essentially, while classifying persons contingently when they are musicians; and \textit{Legal Instrument} may classify contracts essentially, while classifying letters, declarations, or records contingently when they acquire legal force in a given institutional context.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/mixin.svg}
+    \caption{Example of a class categorized as «mixin».}
+    \label{fig:mixin-example}
+\end{figure}
+
+\subsubsection{Allowed Supertypes}
+A «mixin» class can specialize classes decorated with any of: 
+\hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}.
+
+\subsubsection{Allowed Subtypes}
+
+A «mixin» class can be specialized by classes decorated with any of:
+\hyperref[stereotype:kind]{«kind»}, \hyperref[stereotype:collective]{«collective»}, \hyperref[stereotype:quantity]{«quantity»}, \hyperref[stereotype:relator]{«relator»}, \hyperref[stereotype:intrinsicMode]{«intrinsicMode»}, \hyperref[stereotype:extrinsicMode]{«extrinsicMode»}, \hyperref[stereotype:quality]{«quality»}, \hyperref[stereotype:abstract]{«abstract»}, \hyperref[stereotype:event]{«event»}, \hyperref[stereotype:situation]{«situation»}, \hyperref[stereotype:type]{«type»}, \hyperref[stereotype:subkind]{«subkind»}, \hyperref[stereotype:role]{«role»}, \hyperref[stereotype:historicalRole]{«historicalRole»}, \hyperref[stereotype:phase]{«phase»}, \hyperref[stereotype:category]{«category»}, \hyperref[stereotype:mixin]{«mixin»}, \hyperref[stereotype:roleMixin]{«roleMixin»}, \hyperref[stereotype:historicalRoleMixin]{«historicalRoleMixin»}, \hyperref[stereotype:phaseMixin]{«phaseMixin»}.
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{mixinCantSpecializeAntiRigid}
+A «mixin» class cannot specialize a class decorated with an \hyperref[stereotype:antiRigidSortal]{\textit{AntiRigidSortal}} or \hyperref[stereotype:antiRigidNonSortal]{\textit{AntiRigidNonSortal}} stereotype.
+
+\begin{lstlisting}[language=OCL]
+context Mixin 
+inv mixinCantSpecializeAntiRigid:
+    not base_Class.allParents()
+        ->exists(
+            not oclAsType(Class).extension_OntoUMLClass
+                                .oclAsType(AntiRigidSortal)
+                                .oclIsInvalid() 
+            or
+            not oclAsType(Class).extension_OntoUMLClass
+                                .oclAsType(AntiRigidNonSortal)
+                                .oclIsInvalid()
+        )
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{mixinHasToIncludeEndurantNatures}
+A «mixin» class must include ontological natures of endurant types (e.g., \texttt{OntologicalNature::\-FUNCTIONAL\-\_COMPLEX} or \texttt{OntologicalNature::RELATOR}).
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder
+% \end{lstlisting}
+\end{constraint}
+
+
+
+
+\FloatBarrier
+\newpage
+\section{Association Stereotypes}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=1\linewidth]{img/Endurant Associations.svg}
+    \caption{Fragment of the OntoUML Profile that defines association stereotypes for modeling endurants}
+    \label{fig:endurant-associations-profile}
+\end{figure}
+
+\subsection{ExistentialDependence}
+\label{stereotype:existential-dependence}
+
+An association whose instances are links between a dependent entity and an entity on which it depends. An entity \textit{x} depends existentially on \textit{y} if and only if, as a matter of necessity, \textit{y} must exist whenever \textit{x} exists.
+
+Examples include a \textit{Marriage} existentially depending on the spouses it unites, a \textit{Headache} existentially depending on the person in whom it inheres, and a \textit{Trust} existentially depending on the trusted entity.
+
+
+\subsection{Parthood}
+\label{stereotype:parthood}
+
+An association whose instances hold between a part and a whole and that satisfy irreflexivity, asymmetry, and weak supplementation. 
+
+See a more detailed explanation of parthood in \autoref{sec:parthood}.
+
+Examples include an \textit{Engine} as a part of a \textit{Car}, a \textit{Tree} as a part of a \textit{Forest}, an \textit{English-Speaking Segment} as a part of a \textit{Group of Visitors}, and a \textit{Wine Portion} as a part of a larger \textit{Wine Portion}.
+
+% TODO: Add essential, inseparable, immutableWhole, immutablePart
+
+\subsection{«material»}
+\label{stereotype:material}
+
+An association stereotyped as «material» is one whose instances connect two or more entities in virtue of an extrinsic aspect (a relator or an externally dependent).
+
+Examples include \textit{rents}, \textit{isFriendOf}, \textit{trusts}, and \textit{loves}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/material.svg}
+    \caption{Examples of associations categorized as «material».}
+    \label{fig:material-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+The type of every end of a «material» association must be a class that can only be instantiated by endurants, i.e., each end's \texttt{restrictedTo} is either a non-empty subset of the \hyperref[par:endurant-nature]{endurant natures}.
+
+\subsubsection{Derivation Pattern}
+
+A «material» association must be derived from the modeled truthmaker that grounds the relation. 
+
+For a multi-sided material relation, this truthmaker is typically a \hyperref[stereotype:relator]{«relator»} class connected to the relata by \hyperref[stereotype:mediation]{«mediation»} associations. For example, the «material» \textit{rents} association can be derived from the \hyperref[stereotype:relator]{«relator»} class \textit{Rental Agreement}, which mediates the renter and the rented object. 
+
+For a one-sided material relation, this truthmaker is typically an extrinsic mode class connected to one relatum by  \hyperref[stereotype:characterization]{«characterization»} and to the other by \hyperref[stereotype:externalDependence]{«externalDependence»}. For example, the «material» \textit{trusts} association can be derived from the externally dependent \hyperref[stereotype:mode]{«extrinsicMode»} class \textit{Trust}, which inheres in the trusting agent and externally depends on the trusted entity.
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+
+\subsection{«characterization»}
+\label{stereotype:characterization}
+
+An association stereotyped as «characterization» is an \hyperref[stereotype:existential-dependence]{existential dependence} whose instances connect a mode or quality to the endurant in which it inheres as its bearer (and thus existentially depends on it).
+
+The instances of a characterization are inherence relations, i.e., non-reflexive, asymmetric, anti-transitive, and functional existential dependence relations.
+
+Examples include \textit{Weight} characterizing \textit{Person}, \textit{Color} characterizing \textit{Car}, \textit{Headache} characterizing \textit{Person}, and \textit{Commitment} characterizing \textit{Agent}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/characterization.svg}
+    \caption{Examples of associations categorized as «characterization».}
+    \label{fig:characterization-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Characterising End:} The type of the characterising end of a «characterisation» must be a class that can only be instantiated by modes or qualities, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of \texttt{\{INTRINSIC\_MODE, EXTRINSIC\_MODE, QUALITY\}}.
+    \item \textbf{Bearer End:} The type of the bearer end of a «characterisation» must be a class that can only be instantiated by concrete individuals, i.e. a class whose  \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:concrete-individual-nature]{concrete individual natures}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+
+\subsection{«mediation»}
+\label{stereotype:mediation}
+
+An association stereotyped as «mediation» is an \hyperref[stereotype:existential-dependence]{existential dependence} whose instances connect a relator to an endurant on which the relator existentially depends.
+
+The instances of a mediation are non-functional inherence relations, i.e., non-reflexive, asymmetric, anti-transitive, and existential dependence relations.
+
+Examples include the association between \textit{Employment} and \textit{Employee}, and between \textit{Employment} and \textit{Employer}, as well as the association between \textit{Marriage} and \textit{Spouse}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/mediation.svg}
+    \caption{Examples of associations categorized as «mediation».}
+    \label{fig:mediation-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Relator End:} The type of the relator end of a «mediation» must be a class that can only be instantiated by relators, i.e. a class whose  \texttt{restrictedTo} is exactly \texttt{{RELATOR}} — whether derived (a «relator» class or a sortal specializing one) or set explicitly (a non-sortal so restricted).
+    \item \textbf{Mediated End:} The type of the mediated end of a «mediation» must be a class that can only be instantiated by endurants, i.e. a class whose  \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:endurant-nature]{endurant natures}.
+\end{itemize}
+
+
+
+% Allowed ends here
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+\subsection{«externalDependence»}
+\label{stereotype:externalDependence}
+
+An association stereotyped as «externalDependence» is an \hyperref[stereotype:existential-dependence]{existential dependence} whose instances connect an extrinsic mode to an endurant on which it externally depends, i.e., an endurant that is mereologically disjoint from the bearer of this relation.
+
+Examples include \textit{Trust} externally depending on the trusted entity, \textit{Love} externally depending on the loved entity, \textit{Commitment} externally depending on the entity to which the commitment is directed, and \textit{Admiration} externally depending on the admired entity.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/externalDependence.svg}
+    \caption{Examples of associations categorized as «externalDependence».}
+    \label{fig:externalDependence-example}
+\end{figure}
+
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Dependent End:} The type of the dependent end of an «externalDependence» must be a class that can only be instantiated by modes, i.e. a class whose \texttt{restrictedTo} is exactly \texttt{\{EXTRINSIC\_MODE\}}.
+    \item \textbf{Dependee End:} The type of the dependee end of an «externalDependence» must be a class that can only be instantiated by concrete individuals, i.e. a class whose  \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:concrete-individual-nature]{concrete individual natures}.
+
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+\subsection{«comparative»}
+\label{stereotype:comparative}
+
+An association stereotyped as «comparative» is one whose instances hold between entities compared in terms of their qualities.
+
+Examples include \textit{heavierThan}, compared in terms of their \textit{Weight} qualities; \textit{tallerThan}, compared in terms of their \textit{Height} qualities; \textit{olderThan}, compared in terms of their age; and \textit{moreValuableThan}, compared in terms of their value ascriptions.
+
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/comparative.svg}
+    \caption{Examples of associations categorized as «comparative».}
+    \label{fig:comparative-example}
+\end{figure}
+
+
+\subsubsection{Allowed Ends}
+
+The type of each end of a «comparative» must be a class whose instances are concrete individuals, i.e., each end's type's \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:concrete-individual-nature]{concrete individual nature} set.
+
+\subsubsection{Derivation Pattern}
+
+A «comparative» association must be derived from the intrinsic qualities of its relata that ground the comparison.
+
+This truthmaker is a type of quality borne by each relatum, whose individual qualities are related by an internal, non-descriptive relation over their values. The «comparative» association is connected by dependency to that quality type, and a derivation rule expresses the comparison as a condition relating the values of the qualities that inhere in the relata. For example, the «comparative» \textit{heavierThan} association can be derived from the \textit{Weight} quality borne by each \textit{Person}, holding between two persons whenever the weight value of the first is greater than that of the second.
+
+The relation holding between the qualities need not be an ordering; any internal, non-descriptive relation may serve. For example, the «comparative» \textit{sameAgeAs} association can be derived from the \textit{Age} quality borne by each relatum, holding whenever the two age values coincide.
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+\subsection{«componenthood»}
+\label{stereotype:componenthood}
+
+An association stereotyped as «componenthood» is a \hyperref[stereotype:parthood]{parthood} whose instances connect two objects, a part and a whole, the part playing a functional role with respect to the whole.
+
+In addition to the formal properties defined for parthood, componenthood associations are also non-transitive, i.e., transitive in some cases and anti-transitive in others \cite{guizzardi2009transitivity}. 
+
+Examples include \textit{Engine} as a component of \textit{Car}, \textit{Heart} as a component of \textit{Circulatory System}, \textit{Keyboard} as a component of \textit{Computer}, and \textit{Department} as a component of \textit{Organization}.
+
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/componenthood.svg}
+    \caption{Examples of associations categorized as «componenthood».}
+    \label{fig:componenthood-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Component End:} The type of the component end of a «componenthood» must be a class that can only be instantiated by functional complexes, i.e. a class whose  \texttt{restrictedTo} is exactly \texttt{\{FUNCTIONAL\_COMPLEX\}}.
+    \item \textbf{Whole End:} The type of the whole end of a «componenthood» must be a class that can only be instantiated by functional complexes, i.e. a class whose  \texttt{restrictedTo} is exactly \texttt{\{FUNCTIONAL\_COMPLEX\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+\subsection{«membership»}
+\label{stereotype:membership}
+
+An association stereotyped as «membership» is a \hyperref[stereotype:parthood]{parthood association} whose instances connect two objects, a part and whole, the part playing a uniform role with respect to the whole, indistinguishable from that of every other part.
+
+In addition to the formal properties defined for parthood, membership associations are also anti-transitive.
+
+Examples include \textit{Tree} as a member of \textit{Forest}, \textit{Card} as a member of \textit{Deck of Cards}, \textit{Lion} as a member of \textit{Pack}, and \textit{Visitor} as a member of \textit{Group of Visitors}.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/membership.svg}
+    \caption{Examples of associations categorized as «membership».}
+    \label{fig:membership-example}
+\end{figure}
+
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Member End:} The type of the member end of a «membership» must be a class that can only be instantiated by substantials, i.e. a class whose  \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:substantial-nature]{substantial nature} set.
+    
+    \item \textbf{Collection End:} The type of the collection end of a «membership» must be a class that can only be instantiated by collectives, i.e. a class whose  \texttt{restrictedTo} is exactly \texttt{\{COLLECTIVE\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+\subsection{«subCollection»}
+\label{stereotype:subCollection}
+
+An association stereotyped as «subCollection» is a \hyperref[stereotype:parthood]{parthood} that holds between two collectives, further structuring the whole. 
+
+In addition to the formal properties defined for parthood, membership associations are also transitive.
+
+Examples include \textit{English-Speaking Segment} as a subcollective of \textit{Group of Visitors}, \textit{Dutch-Speaking Segment} as a subcollective of \textit{Group of Visitors}, \textit{Northern Part of the Black Forest} as a subcollective of \textit{Black Forest}, and \textit{Underage Children of John} as a subcollective of \textit{Children of John}.
+
+Moreover, a member of a collective is also a member of any of its super-collectives, i.e., the collectives of which that collective is a part. For instance, if John is a member of the English-speaking segment of a group of visitors, then John is also a member of that group of visitors.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=\linewidth]{img/endurants/subCollection.svg}
+    \caption{Examples of associations categorized as «subCollection».}
+    \label{fig:subCollection-example}
+\end{figure}
+
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Subcollection End:} The type of the subcollection end of a «subCollection» must be a class that can only be instantiated by collectives, i.e. a class whose  \texttt{restrictedTo} is exactly \texttt{\{COLLECTIVE\}}.
+    \item \textbf{Whole End:} The type of the whole end of a «subCollection» must be a class that can only be instantiated by collectives, i.e. a class whose  \texttt{restrictedTo} is exactly \texttt{\{COLLECTIVE\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+\subsection{«subQuantity»}
+\label{stereotype:subQuantity}
+
+An association stereotyped as «subQuantity» is a \hyperref[stereotype:parthood]{parthood} whose instances connect a quantity (the part) to a larger quantity (the whole).
+
+In addition to the formal properties defined for parthood, subQuantity associations are also transitive.
+
+Examples include a \textit{Water Portion} as a subquantity of a \textit{Wine Portion}, and a \textit{Cement Portion} and a \textit{Sand Portion} as subquantities of a \textit{Concrete Batch}.
+
+Quantities are maximal entities; therefore, they cannot have parts of the same quantity kind (e.g., a portion of wine cannot be composed of other portions of wine) \cite{guizzardi2010fois}. So, every sub-quantity of a given quantity is a maximal individual of a different quantity kind (e.g., there is only one portion of alcohol that composes a portion of wine). 
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/subQuantity.svg}
+    \caption{Examples of associations categorized as «subQuantity».}
+    \label{fig:subQuantity-example}
+\end{figure}
+
+
+\subsubsection{Allowed Ends}
+
+\begin{itemize}
+    \item \textbf{Subquantity End:} The type of the subquantity end of a «subQuantity» must be a class that can only be instantiated by quantities, i.e. a class whose  \texttt{restrictedTo} is exactly \texttt{\{QUANTITY\}}.
+    \item \textbf{Whole End:} The type of the whole end of a «subQuantity» must be a class that can only be instantiated by quantities, i.e. a class whose  \texttt{restrictedTo} is exactly \texttt{\{QUANTITY\}}.
+\end{itemize}
+
+% \subsubsection{Constraints}
+
+% Placeholder text
+
+% \begin{lstlisting}[language=OCL]
+% -- placeholder rule
+% \end{lstlisting}
+
+\subsection{«constitution»}
+\label{stereotype:constitution}
+
+An association stereotyped as «constitution» is one whose instances connect a concrete individual to another concrete individual, of the same broad ontological category but of a different ultimate sortal, from which it derives its basic properties.
+
+Constitution relations are irreflexive and asymmetric. 
+
+Examples include a \textit{Lump of Clay} constituting a \textit{Statue}, a \textit{Group of Musicians} constituting a \textit{Band}, the sum of the reciprocal \textit{Commitments} and \textit{Claims} between two spouses constituting their \textit{Marriage}, and the act of \textit{Raising One's Hand} constituting an act of \textit{Voting}.
+
+Constitution should not be confused with parthood: it does not satisfy weak supplementation and is, therefore, not a part-whole relation. Consider a \textit{Statue} constituted by a single \textit{Lump of Clay}. If constitution were a case of parthood, the lump would be a proper part of the statue, and weak supplementation would require the statue to have at least one further part disjoint from the lump. But no such part exists: the statue is only made out of clay. Constitution thus admits a ``whole'' with a single proper ``part'', which no genuine part-whole relation allows.
+
+Constitution should also not be confused with identity: although a constituent and the individual it constitutes spatiotemporally overlap, they obey different identity principles. For example, a lump of clay survives being reshaped, while the statue it constitutes does not; conversely, a statue survives the loss of a minor piece, in which case it simply becomes constituted by a different lump of clay. Likewise, a band may be constituted by different groups of musicians over time: replacing the drummer yields a different group, whose membership is fixed, but the same band.
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/endurants/constitution.svg}
+    \caption{Examples of associations categorized as «constitution».}
+    \label{fig:constitution-example}
+\end{figure}
+
+\subsubsection{Allowed Ends}
+\begin{itemize}
+    \item \textbf{Constituent End:} The type of the constituent end of a «constitution» must be a class that can only be instantiated by concrete individuals, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:concrete-individual-nature]{concrete individual natures}.
+    \item \textbf{Constituted End:} The type of the constituted end of a «constitution» must be a class that can only be instantiated by concrete individuals, i.e. a class whose \texttt{restrictedTo} is a non-empty subset of the \hyperref[par:concrete-individual-nature]{concrete individual natures}.
+\end{itemize}
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:constitutionEndsOfSameCategory}
+
+The types of the ends of a «constitution» association must admit ontological natures within the same broad category of concrete individuals: substantials are constituted by substantials, aspects by aspects, and events by events. 
+
+% \begin{lstlisting}[language=OCL]
+% context constitution
+% inv constitutionEndsOfSameCategory: ...
+% \end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:constitutionEndsOfDifferentKinds}
+
+The types of the ends of a «constitution» association cannot inherit their identity principle from the same ultimate sortal, since constituent and constituted must be of different kinds.
+
+% \begin{lstlisting}[language=OCL]
+% context Constitution
+% inv constitutionEndsOfDifferentKinds: ...
+% \end{lstlisting}
+\end{constraint}
+
+
+\section{Property Stereotypes}
+
+\begin{figure}[h]
+    \centering
+    \includesvg[]{img/Endurant Properties.svg}
+    % \includesvg[width=1\linewidth]{img/Situation Classes.svg}
+    \caption{Fragment of the OntoUML Profile that defines property stereotypes for modeling endurants.}
+    \label{fig:endurant-properties-profile}
+\end{figure}
+
+\subsection{«addOnly»}
+\label{stereotype:addOnly}
+
+A property stereotyped as «addOnly» is one whose values may be added at any time but, once added, may not be removed or altered for as long as the owning object exists.
+
+Typical uses are properties that record history, such as the diagnoses received by a patient or the purchases made by a customer. For instance, if the association end \texttt{purchases} of \texttt{Customer} is stereotyped as «addOnly», new purchases may be linked to Maria at any time, but none of them can later be unlinked or substituted.
+
+The stereotype is only meaningful for multivalued or optional properties; and it is incompatible with read-only properties, which admit no additions at all.
+
+The stereotype restores the \texttt{addOnly} changeability of UML 1.x, which UML 2 dropped.
+
+
+\subsubsection{Constraints}
+
+\begin{constraint}
+\label{constraint:addOnlyMultiplicity}
+A property decorated as «addOnly» must be multivalued or single-valued and optional \texttt{[0..1]}.
+
+\begin{lstlisting}[language=OCL]
+context addOnly
+inv addOnlyMultiplicity:
+  self.base_Property.upper > 1
+\end{lstlisting}
+\end{constraint}
+
+\begin{constraint}
+\label{constraint:addOnlyNotReadOnly}
+A property decorated as «addOnly» must not be read-only.
+
+\begin{lstlisting}[language=OCL]
+context addOnly
+inv addOnlyNotReadOnly:
+  not self.base_Property.isReadOnly
+\end{lstlisting}
+\end{constraint}

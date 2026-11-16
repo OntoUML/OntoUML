@@ -73,10 +73,16 @@ class StereotypeDirective(Directive):
         add_df_item(x, 'Identity principle', self.make_ref('identity', data['identity_principle']))
         add_df_item(x, 'Rigidity', self.make_ref('rigidity', data['rigidity']))
         add_df_item(x, 'Dependency', self.make_ref('dependency', data['dependency']))
-        add_df_item(x, 'Allowed supertypes', self.parse(', '.join(self.ref(x) for x in data['supertypes'])))
-        add_df_item(x, 'Allowed subtypes', self.parse(', '.join(self.ref(x) for x in data['subtypes'])))
-        add_df_item(x, 'Forbidden associations', self.parse(', '.join(self.ref(x) for x in data['forbidden_associations'])))
-        add_df_item(x, 'Abstract', nodes.paragraph(text=data['abstract']))
+        if data.get('ontological_nature'):
+            add_df_item(x, 'Ontological nature', nodes.paragraph(text=str(data['ontological_nature'])))
+        if data.get('order'):
+            add_df_item(x, 'Order', nodes.paragraph(text=str(data['order'])))
+        add_df_item(x, 'Allowed supertypes', self.parse(', '.join(self.ref(item) for item in data['supertypes'])))
+        add_df_item(x, 'Allowed subtypes', self.parse(', '.join(self.ref(item) for item in data['subtypes'])))
+        forbidden = data.get('forbidden_associations') or []
+        if forbidden:
+            add_df_item(x, 'Forbidden associations', self.parse(', '.join(self.ref(item) for item in forbidden)))
+        add_df_item(x, 'Abstract', nodes.paragraph(text=str(data['abstract'])))
         return x
 
     def make_relationship_end(self, data):

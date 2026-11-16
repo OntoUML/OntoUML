@@ -16,14 +16,14 @@ Constraints
    |Quality forbidden 1|
 
 .. _quality-constraints-c3:
-**C3:** A «:ref:`quality`» cannot have an :ref:`identity <identity>` provider («:ref:`kind`», «:ref:`collective`», «:ref:`quality`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
+**C3:** A «:ref:`quality`» cannot have an :ref:`identity <identity>` provider («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`quality`», «:ref:`intrinsicMode`», «:ref:`extrinsicMode`», «:ref:`event`», «:ref:`situation`», and «:ref:`type`») as its direct or indirect super-type.
 
 .. container:: figure
 
    |Quality forbidden 2|
 
 .. _quality-constraints-c4:
-**C4:** A «:ref:`quality`» cannot have types that inherit :ref:`identity <identity>` («:ref:`subkind`», «:ref:`role`» and «:ref:`phase`») as its direct or indirect super-type.
+**C4:** A «:ref:`quality`» cannot have types that inherit :ref:`identity <identity>` («:ref:`subkind`», «:ref:`role`», «:ref:`historicalRole`», and «:ref:`phase`») as its direct or indirect super-type.
 
 .. container:: figure
 
@@ -33,7 +33,7 @@ Constraints
 **C5:** A «:ref:`quality`» cannot have types that aggregate individuals with :ref:`different identity principles <identity>` («:ref:`category`», «:ref:`rolemixin`», «:ref:`phasemixin`» and «:ref:`mixin`») as its direct or indirect subtypes.
 
 .. _quality-constraints-c6:
-**C6:** As a :ref:`rigid <rigidity>` type, a «:ref:`quality`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`rolemixin`», «:ref:`phase`» and «:ref:`phasemixin`») as its direct or indirect super-type.
+**C6:** As a :ref:`rigid <rigidity>` type, a «:ref:`quality`» cannot have any :ref:`anti-rigid <rigidity>` type («:ref:`role`», «:ref:`historicalRole`», «:ref:`phase`», «:ref:`rolemixin`», «:ref:`historicalRoleMixin`», and «:ref:`phasemixin`») as its direct or indirect super-type.
 
 
 

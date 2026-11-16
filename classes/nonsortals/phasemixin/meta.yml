@@ -1,19 +1,18 @@
 class_stereotype:
-  name: PhaseMixin
-  parent: AntiRigidNonSortal
+  name: "PhaseMixin"
+  parent: "Anti-rigid non-sortal"
   provides_identity: false
-  identity_principle: multiple
-  rigidity: antirigid
-  dependency: mandatory
+  identity_principle: "none"
+  rigidity: "anti-rigid"
+  dependency: "optional"
+  ontological_nature: "one or more natures"
+  order: "any"
   supertypes:
+  - Category
   - Mixin
   - PhaseMixin
-  - Category
   subtypes:
   - Phase
   - PhaseMixin
-  - Role
-  - RoleMixin
-  forbidden_associations:
-  - Structuration
-  abstract: true
+  forbidden_associations: []
+  abstract: "yes"

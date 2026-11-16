@@ -1,19 +1,29 @@
 Definition
 ----------
 
-The name «:ref:`formal`» is short for :ref:`Domain Comparative Formal Relation <relations>`. This construct is used to represent relations that can be reduced to the comparison of the quality values that characterize the related individuals, like heavier-then, younger-then or cheaper-then. Here are some examples in OntoUML:
+«:ref:`comparative`» holds between entities compared through their qualities. There is no mediating relator. *heavierThan* compares weights. *tallerThan* compares heights. *olderThan* compares ages. *moreValuableThan* compares value ascriptions. *sameAgeAs* holds when two age values coincide. The relation between the quality values themselves can be any internal comparison, not only an ordering.
 
-.. container:: figure
+.. figure:: /specification-figures/comparative.svg
+   :alt: heavierThan derived from the weight qualities of two persons
+   :width: 85%
+   :align: center
 
-   |Formal examples|
+   Associations categorized as «comparative».
 
-To specify how the relation can be reduced, use an OCL derivation rule:
+Each end is a class of concrete individuals. ``restrictedTo`` is a non-empty subset of the concrete individual natures.
 
-::
+A comparative association is derived from the intrinsic qualities that ground the comparison. The association is connected by a dependency to that quality type, and a derivation rule states the condition on the values. For example, *heavierThan* is derived from Weight, and it holds between two persons whenever the weight value of the first is greater than the weight value of the second.
 
-   context Person::lighter : Set(Person)
+An OCL sketch of that rule::
+
+   context Person::heavierThan : Set(Person)
    derive : Person.allInstances()->select(x | self.weight > x.weight)
 
-*Tip*: Due to its ontological, the «:ref:`formal`» relations have no constraints in OntoUML. Nonetheless, make sure the relation you are modeling is indeed a comparative one. Think about how to reduce the relation to a comparison between values and represent the necessary properties.
+Make sure the relation really is a comparison of quality values. A relation made true by a relator or an extrinsic mode is :ref:`material`.
 
-.. |Formal examples| image:: _images/ontouml_formal-examples.png
+.. figure:: _images/ontouml_formal-examples.png
+   :alt: Earlier examples of comparative relations drawn as formal
+   :width: 80%
+   :align: center
+
+   Earlier examples, drawn when this stereotype was called «formal».

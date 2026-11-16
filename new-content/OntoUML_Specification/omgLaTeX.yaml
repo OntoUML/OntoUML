@@ -1,0 +1,7 @@
+to: latex
+table-caption-position: below
+figure-caption-position: below
+top-level-division: section
+number-sections: true
+listings: true
+

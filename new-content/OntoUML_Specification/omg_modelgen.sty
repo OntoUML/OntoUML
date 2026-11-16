@@ -1,0 +1,35 @@
+\ProvidesPackage{omg_modelgen}
+\usepackage{enumitem}
+
+%%% Specification support
+\newcommand{\omgclass}[1]{\subsection{#1}}
+\newcommand{\listtitle}[1]{{\textbf{\textsf{ #1}}}}
+\newenvironment{omggeneralizations}
+{\listtitle{Generalizations}
+\begin{description}[labelindent=5mm, style=nextline, leftmargin=17mm, topsep=0mm, noitemsep]}
+{\end{description}}
+
+\newenvironment{omgattrreq}
+{\listtitle{Attributes (Required)}
+\begin{description}[labelindent=5mm, style=nextline, leftmargin=17mm, topsep=0mm, noitemsep]}
+{\end{description}}
+
+\newenvironment{omgattropt}
+{\listtitle{Attributes (Optional)}
+\begin{description}[labelindent=5mm, style=nextline, leftmargin=17mm, topsep=0mm, noitemsep]}
+{\end{description}}
+
+\newenvironment{omgassocreq}
+{\listtitle{Associations (Required)}
+\begin{description}[labelindent=5mm, style=nextline, leftmargin=17mm, topsep=0mm, noitemsep]}
+{\end{description}}
+
+\newenvironment{omgassocopt}
+{\listtitle{Associations (Optional)}
+\begin{description}[labelindent=5mm, style=nextline, leftmargin=17mm, topsep=0mm, noitemsep]}
+{\end{description}}
+
+\newenvironment{omgconstraints}
+{\listtitle{Constraints}
+\begin{description}[labelindent=5mm, style=nextline, leftmargin=17mm, topsep=0mm, noitemsep]}
+{\end{description}}

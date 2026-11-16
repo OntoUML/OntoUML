@@ -1,28 +1,20 @@
 Definition
 ----------
 
-A «:ref:`rolemixin`» is the equivalent of «:ref:`role`» for types that aggregate instances with :ref:`different identity principles <identity>`. A class stereotyped as «:ref:`rolemixin`» is also an :ref:`anti-rigid <rigidity>` type whose instantiation :ref:`depends on a relational property <dependency>`. Here are some examples:
+A «:ref:`rolemixin`» is an anti-rigid non-sortal that classifies entities contingently, in virtue of a relational condition. It is the non-sortal counterpart of :ref:`role`: the classification is relational and temporary, and the instances need not share an identity principle.
 
-.. container:: figure
+Customer may classify persons and organizations in the scope of a purchase or a service. Insured Item may classify cars, houses, and artworks in the scope of an insurance contract. Competitor may classify persons, teams, horses, or dogs in the scope of a competition.
 
-   |RoleMixin examples|
+.. figure:: /specification-figures/role-mixin.svg
+   :alt: Customer as a role mixin over persons and organizations
+   :width: 80%
+   :align: center
 
-RoleMixins usually occur in one of the two patterns:
+   A class categorized as «roleMixin».
 
-- **Pattern 1:** «:ref:`rolemixin`» defined by roles
+Two familiar shapes remain useful:
 
-.. container:: figure
+- Define the role mixin by the sortal roles that specialize it, such as Personal Customer and Corporate Customer.
+- Or let the role mixin specialize a category, such as Customer specializing Agent. The two shapes are semantically aligned. The second is the more compact one.
 
-   |RoleMixin application 1|
-
-- **Pattern 2:** «:ref:`rolemixin`» as a role of a «:ref:`category`»
-
-.. container:: figure
-
-   |RoleMixin application 2|
-
-The second pattern is a more concise form of the first. They are semantically equivalent.
-
-.. |RoleMixin examples| image:: _images/ontouml_rolemixin-examples.png
-.. |RoleMixin application 1| image:: _images/ontouml_rolemixin-application-1.png
-.. |RoleMixin application 2| image:: _images/ontouml_rolemixin-application-2.png
+A role mixin may specialize a category, mixin, role mixin, historical role mixin, or phase mixin. It may be specialized by a role, historical role, role mixin, or historical role mixin. It is an abstract class.

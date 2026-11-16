@@ -1,7 +1,9 @@
 OntoUML specification
 =====================
 
-Welcome to the documentation of :ref:`ontouml` ontology-driven conceptual modelling language based on upper ontology :ref:`ufo`. We welcome any form of :ref:`contribution <contributing>` and questions that will make this documentation better as it is community-driven hosted on `github.com`_. For more information about OntoUML, tooling, references, and the community, visit `OntoUML Community Portal`_.
+Welcome to the documentation of :ref:`ontouml`, an ontology-driven conceptual modeling language. OntoUML is a UML profile grounded in the :ref:`Unified Foundational Ontology (UFO) <ufo>`. It gives class diagrams explicit stereotypes and constraints for endurants, events, situations, and multi-level types.
+
+The language can be used from a UML tool that applies the profile, or written directly in :ref:`Tonto <tooling>`, a textual syntax with editor support, a diagram view, and a browser playground. This documentation is community-driven and hosted on `github.com`_. Questions and improvements are welcome; see :ref:`contributing`. For the wider community, visit the `OntoUML Community Portal`_.
 
 .. toctree::
    :maxdepth: 2
@@ -11,8 +13,11 @@ Welcome to the documentation of :ref:`ontouml` ontology-driven conceptual modell
    theory/index
    classes/index
    relationships/index
-   anti-patterns/index
+   events/index
+   situations/index
+   multilevel/index
    patterns/index
+   anti-patterns/index
 
 .. toctree::
    :maxdepth: 2

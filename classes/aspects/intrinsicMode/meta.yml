@@ -1,0 +1,19 @@
+class_stereotype:
+  name: "IntrinsicMode"
+  parent: "First-order ultimate sortal"
+  provides_identity: true
+  identity_principle: "provided"
+  rigidity: "rigid"
+  dependency: "mandatory"
+  ontological_nature: "exactly {intrinsic mode}"
+  order: "1"
+  supertypes:
+  - Category
+  - Mixin
+  subtypes:
+  - Subkind
+  - Phase
+  - Role
+  - HistoricalRole
+  forbidden_associations: []
+  abstract: "no"

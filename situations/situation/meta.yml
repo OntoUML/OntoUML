@@ -1,0 +1,17 @@
+class_stereotype:
+  name: "Situation"
+  parent: "First-order ultimate sortal"
+  provides_identity: true
+  identity_principle: "provided"
+  rigidity: "rigid"
+  dependency: "optional"
+  ontological_nature: "exactly {situation}"
+  order: "1"
+  supertypes:
+  - Category
+  - Mixin
+  subtypes:
+  - Subkind
+  - Phase
+  forbidden_associations: []
+  abstract: "no"

@@ -1,0 +1,412 @@
+\ProvidesPackage{omg}
+%% Basic formatting for Object Management Group documents
+% BOOYAH2
+\usepackage{geometry}
+%%% Adjust geometry
+%% Fine tuning of margins
+\newlength{\myparindent}
+\setlength{\myparindent}{0in}
+% start with equal margins
+\newlength{\margins}
+\setlength{\margins}{1in}
+% left = \margins + \myparindent
+\newlength{\newleft}
+\setlength{\newleft}{\margins}
+\addtolength{\newleft}{1\myparindent}
+\geometry{left=1\newleft, right=\margins, marginpar=1in}
+
+\geometry{letterpaper,twoside}
+\geometry{tmargin=1in,bmargin=1in}
+\geometry{lmargin=1in,rmargin=1in}
+
+%% Control indenting of paragraphs and headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=cyan,linkcolor=blue,linktoc=page}
+
+%% Draft watermark
+\usepackage{everypage}
+\usepackage{draftwatermark}
+% See RFP_UserPreamble.tex to turn off
+
+%% Use the graphicx package by default
+\usepackage{graphicx}
+
+%% Images are SVG by OMG convention
+\usepackage{svg}
+
+%% Control fonts
+%% Use Helvetica font for titles
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+
+%% Use Times font for body
+\usepackage{times}
+
+%% IPR handling
+\usepackage{xifthen}
+
+%% Make appendix have same numbering as other sections
+\usepackage[title]{appendix}
+
+%% The following items are *ONLY* for the red italic notes in stub text
+\usepackage{textcomp}
+\usepackage{color}
+
+% For future use with Jira and auto changebar doc production
+\usepackage[pdftex]{changebar}
+\usepackage{marginnote}
+
+% \adjustwidth
+\usepackage{changepage}
+
+%% Set header offsets and styles
+\usepackage[raggedright]{titlesec}
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+\titlespacing\section{-1\myparindent}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{-1\myparindent}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{-1\myparindent}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\paragraph{-1\myparindent}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+% show paragraph numbering
+\setcounter{secnumdepth}{8}
+
+% command to mark *sections as informative
+\newcommand{\markasinformative}{\vspace{-.35cm}\hspace{1.1cm}{\large\bfseries\itshape (informative)}}
+
+% Paragraph titles are italicized
+\titleformat{\chapter}{\sffamily\huge\bfseries}{\thechapter}{1.0em}{\bigskip}{\par\nobreak\bigskip}
+\titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}{\itshape}{\theparagraph}{0.75em}{}
+
+\titleformat{name=\chapter,numberless}{\sffamily\huge\bfseries}{}{0.0em}{\bigskip}{\par\nobreak\bigskip}
+\titleformat{name=\section,numberless}{\sffamily\Large\bfseries}{}{0.0em}{}
+\titleformat{name=\subsection,numberless}{\sffamily\large\bfseries}{}{0.0em}{}
+\titleformat{name=\subsubsection,numberless}{\sffamily\normalsize\bfseries}{}{0.0em}{}
+\titleformat{name=\paragraph,numberless}{\itshape}{}{0.0em}{}
+
+\usepackage{xspace}
+\newcommand{\setvalue}[2]{
+    \ifdefined #1
+        \renewcommand{#1}{#2\xspace}
+    \else
+        \newcommand{#1}{#2\xspace}
+    \fi
+}
+\usepackage{xstring}
+\usepackage{etoolbox}   % forcsvlist, forlistloop
+% Returns the nth element of a CSV list
+% Works with inline and macro defined CSV lists
+\newcommand*{\getnthelement}[2]{%
+    \edef\dotheloop{%
+    \noexpand\foreach \noexpand\a [count=\noexpand\i] in {#2} {%
+        \noexpand\IfEq{\noexpand\i}{#1}{\noexpand\a\noexpand\breakforeach}{}%
+    }}%
+    \dotheloop
+    \par%
+}%
+
+% \newcommand*{\getnthETBelement}[2]{%
+%     \newcounter{listcounter}%
+%     \setcounter{listcounter}{0}%
+%     \forlistloop{%
+%         \stepcounter{listcounter}%
+%         \ifnumequal\value(listcounter}{#1}%
+%             {\noexpand\a\noexpand\listbreak}%
+%         \fi%
+%     }}%
+%     \dotheloop
+%     \par%
+% }%
+
+% \getnth{2}{\alist}
+\newcounter{listcounter}%
+\providecommand{\getnthhelper}[1]{%
+    \ifnumequal{\value{listcounter}}{1}%
+    {#1\listbreak}%
+    {\addtocounter{listcounter}{-1}}%
+}
+\newcommand{\getnthETBelement}[2]{%
+    \setcounter{listcounter}{#1}%
+    % \thelistcounter %
+    \forlistloop{\getnthhelper}{#2}%
+}
+
+% Count elements in a CSV list
+\makeatletter
+\newcounter{itemcounter}%
+\newcommand{\lengthCSV}[1]{%
+    \setcounter{itemcounter}{0}%
+    \renewcommand*{\do}[1]{\stepcounter{itemcounter}\@gobble{##1}}%
+    \docsvlist{#1}%
+    \theitemcounter%
+}
+% \usepackage{xparse}
+% \ExplSyntaxOn
+% \NewDocumentCommand{\countlist}{m}
+%  {
+%   \clist_count:n { #1 }
+%  }
+% \ExplSyntaxOff
+
+\newcommand{\lengthETB}[1]{%
+    \setcounter{itemcounter}{0}%
+    \renewcommand*{\do}[1]{\stepcounter{itemcounter}\@gobble{##1}}%
+    \dolistloop{#1}%
+    \value{itemcounter}%
+}
+\makeatother
+
+% Pandoc Markdown -> LaTeX support
+% \newcommand{\passthrough}[1]{#1}
+\newcommand{\passthrough}[1]{\lstset{mathescape=false}#1\lstset{mathescape=true}} 
+
+
+\usepackage{expl3}
+\usepackage{xparse}
+% \ExplSyntaxOn
+% \NewDocumentCommand{\new3list}{ m }
+%  {
+%   \seq_new:c { g_list_#1_seq }
+%  }
+
+% \new3list{defaultlist}
+
+% \NewDocumentCommand{\addto3list}{ O{defaultlist} m }
+%  {
+%   \seq_gput_right:cn { g_list_#1_seq } { #2 }
+%  }
+
+% \NewDocumentCommand{\set3list}{ O{defaultlist} m }
+%  {
+%   \clist_clear_new:c { g_list_#1_clist }
+%   \clist_set:cn { g_list_#1_clist } { #2 }
+%  }
+
+% \NewDocumentCommand{\append3list}{ O{defaultlist} m }
+%  {% the list must already exist!
+%   \clist_put_right:cn { g_list_#1_clist } { #2 }
+%  }
+
+% \NewDocumentCommand{\process3list}{ O{defaultlist} m }
+%  {
+%   \clist_map_inline:cn { g_list_#1_clist } { #2 }
+%  }
+
+% \NewExpandableDocumentCommand{\getnth3element}{ O{defaultlist} m }
+%  {
+%   \seq_item:cn { g_list_#1_seq } { #2 }
+%  }
+
+% \NewDocumentCommand{\storenth3element}{ O{defaultlist} m m }
+%  {
+%   \cs_set:Npx #3 { \seq_item:cn { g_list_#1_seq } { #2 } }
+%  }
+
+% \NewDocumentCommand{\clear3list}{ O{defaultlist} }
+%  {
+%   \seq_gclear:c { g_list_#1_seq }
+%  }
+ 
+% \NewDocumentCommand \showList { m } {
+%     \clist_show:N #1
+% }
+
+% \NewDocumentCommand \countItems { m } {
+%     \clist_count:N #1
+% }
+
+% \NewDocumentCommand \countInlineItems { m } {
+%     \clist_count:n {#1}
+% }
+% \ExplSyntaxOff
+
+\usepackage{expl3}
+\ExplSyntaxOn
+\prop_new:N \l_test_res_prop
+
+\NewDocumentCommand \propget { m }
+ {
+  \clist_map_inline:nn { #1 }
+   {
+    \prop_item:Nn \l_test_res_prop { ##1 }
+   }
+ }
+\NewDocumentCommand \propset { +m }
+ {
+  \prop_set_from_keyval:Nn \l_test_res_prop { #1 }
+ }
+\ExplSyntaxOff
+
+% Print an etoolbox list
+\NewDocumentCommand \printETBList { m } {%
+    \lengthETB{#1}:\ (etb)[%
+    \renewcommand{\do}[1]{\{##1\},\ }%
+    \dolistloop{#1}%
+    ]
+}
+
+% Print a CSV list
+\NewDocumentCommand \printCSVList { m } {%
+    \lengthCSV{#1}:\ (csv)[%
+    \renewcommand{\do}[1]{\{##1\},\ }%
+    \docsvlist{#1}%
+    ]
+}
+
+% Takes a CSV list and converts it to etoolbox list
+\newcommand{\setvaluelist}[2]{%
+    \providecommand#1{}%
+    \forcsvlist{\listadd#1}{#2}%
+}
+
+% Requirement and subrequirement sections for RFPs and Submissions
+\usepackage{titletoc}
+\titleclass{\requirement}{straight}[\subsection]
+\newcounter{requirement}[subsection]
+\setvalue{\reqlabel}{REQ}
+\titleformat{\requirement}
+  {\sffamily\normalsize\bfseries}{}{0em}{\reqlabel \therequirement:~}
+\titlespacing*{\requirement}{-1\myparindent}{0pt}{0pt}
+\newcommand{\requirementautorefname}{requirement}
+\titlecontents{requirement}[0pt]{}{}{}{}
+
+\titleclass{\subrequirement}{straight}[\requirement]
+\newcounter{subrequirement}[requirement]
+\setvalue{\subreqlabel}{REQ}
+\titleformat{\subrequirement}
+  {\sffamily\normalsize\bfseries\itshape}{}{0em}{\subreqlabel \therequirement.\thesubrequirement:~}
+\titlespacing*{\subrequirement}{0pt}{0pt}{0pt}
+\newcommand{\subrequirementautorefname}{subrequirement}
+\titlecontents{subrequirement}[0pt]{}{}{}{}
+
+%%%% Set and add to the \input search path
+%%\providecommand*{\setinputpath}[1]{
+%%\makeatletter
+%%\def\input@path{{#1}}
+%%\makeatother
+%%}
+%%
+%%\providecommand*{\appendtoinputpath}[1]{
+%%\makeatletter
+%%\providecommand*{\input@path}{}
+%%\g@addto@macro\input@path{{#1}}% append
+%%\makeatother
+%%}
+%%
+%%\providecommand*{\prependtoinputpath}[1]{
+%%\makeatletter
+%%\providecommand*{\input@path}{}
+%%\edef\input@path{{#1}\input@path}% prepend
+%%\makeatother
+%%}
+
+
+%% New parameters to fill in by automated tooling
+\newcommand{\REPLACEME}[1]{{\itshape \color{red} #1 }}
+\setvalue{\specname}{\REPLACEME{Specification Name Placeholder}}
+\setvalue{\specacro}{\REPLACEME{Placeholder}}
+\setvalue{\docnum}{\REPLACEME{\tfacro/YY-MM-NN}}
+\setvalue{\loidue}{\REPLACEME{<day><month><year>}}
+\setvalue{\subdue}{\REPLACEME{<day><month><year>}}
+\setvalue{\votereg}{\REPLACEME{<day><month><year>}}
+\setvalue{\subpres}{\REPLACEME{<day><month><year>}}
+\setvalue{\rsubdue}{\REPLACEME{<day><month><year>}}
+\setvalue{\rsubpres}{\REPLACEME{<day><month><year>}}
+
+%% for IPR mode
+\setvalue{\iprmode}{}
+
+\title{\REPLACEME{<Title>}}
+
+%% No indent on paragraphs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7em}
+
+%% Header and footer
+\renewcommand{\headrulewidth}{0pt}
+\lhead{\hspace*{-\myparindent}\small\docnum}
+\rhead{}
+\setvalue{\leftfooter}{}% set in enclosing document or style (i.e. omg_rfp.sty)
+\lfoot{\hspace*{-\myparindent}\footnotesize {\leftfooter}}
+\cfoot{\hspace*{-0.5\myparindent}\footnotesize\today}
+\rfoot{\footnotesize\thepage}
+
+\setcounter{tocdepth}{2}
+
+%% Margin comments
+\usepackage{soul}  % highlighting
+\usepackage[backgroundcolor=lightgray,textwidth=\marginparwidth,textsize=scriptsize]{todonotes}  % margin comment
+\newcounter{mycomment}
+\newboolean{hidecomments}
+\setboolean{hidecomments}{false}
+\makeatletter
+\newcommand{\mycomment}[3][]{%
+    \ifthenelse{\boolean{hidecomments} \or \boolean{@todonotes@disabled} }%
+    {#2}% margin notes off, just emit the raw text
+    {\refstepcounter{mycomment}% increment comment counter
+        \hl{#2}% highlight the target text
+        \todo[fancyline]% insert the margin note so it points to the END of the target text
+        {%
+            \protect\renewcommand{\baselinestretch}{0.75}% tighter line spacing
+            \selectfont\textbf{[\uppercase{#1}\themycomment]:}% insert option text, counter
+            ~#3 \par% insert comment body
+        }%
+    }%
+}
+\makeatother
+
+% VERY odd bug in soul, and while this works around it, it means that the specname *will not be highlighted* when pointed to by a \mycomment
+\soulregister{\specname}{0}
+
+% Macros for checking the existence or emptiness of a file.
+% They follow the \ifthenelse idiom
+\long\def\firstoftwo#1#2{\expandafter#1}
+\long\def\secondoftwo#1#2{\expandafter#2}
+
+\long\def\iffileexistelse#1{%
+  \expandafter\ifx\expandafter&\pdffilesize{#1}&%
+    \expandafter\secondoftwo
+  \else
+    \expandafter\firstoftwo
+  \fi
+}
+
+%\def\iffileemptyelse#1{%
+%  \ifnum0\pdffilesize{#1}>0
+%    \expandafter\secondoftwo
+%  \else
+%    \expandafter\firstoftwo
+%  \fi
+%}
+\newcommand{\iffileemptyelse}[1]{%
+%  \expandafter\typeout{#1}
+%  \show#1
+  \ifnum0\pdffilesize{#1}>0
+    \expandafter\secondoftwo
+  \else
+    \expandafter\firstoftwo
+  \fi
+}
+
+
+\def\test#1{%
+  \iffileexistelse{#1}{File #1 exists}{File #1 doesn't exist}
+  \iffileemptyelse{#1}{File #1 is empty}{File #1 isn't empty}\par
+}
+
+
+\newcommand{\ifnotemptyfileinputwithpre}[2]{
+    \iffileexistelse{#1}{
+        \iffileemptyelse{#1}{}{
+            #2
+            \input{#1}
+        }
+    }
+}

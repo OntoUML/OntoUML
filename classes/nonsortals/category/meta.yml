@@ -1,27 +1,34 @@
 class_stereotype:
-  name: Category
-  parent: RigidNonSortal
+  name: "Category"
+  parent: "Rigid non-sortal"
   provides_identity: false
-  identity_principle: multiple
-  rigidity: rigid
-  dependency: optional
+  identity_principle: "none"
+  rigidity: "rigid"
+  dependency: "optional"
+  ontological_nature: "one or more natures"
+  order: "any"
   supertypes:
   - Category
   - Mixin
   subtypes:
   - Kind
-  - Subkind
   - Collective
   - Quantity
   - Relator
-  - Category
-  - Mode
+  - IntrinsicMode
+  - ExtrinsicMode
   - Quality
+  - Event
+  - Situation
+  - Type
+  - Subkind
   - Role
+  - HistoricalRole
   - Phase
-  - RoleMixin
-  - PhaseMixin
+  - Category
   - Mixin
-  forbidden_associations:
-  - Structuration
-  abstract: true
+  - RoleMixin
+  - HistoricalRoleMixin
+  - PhaseMixin
+  forbidden_associations: []
+  abstract: "yes"

@@ -1,0 +1,397 @@
+% \documentclass[10pt,english,twoside]{report}
+\usepackage{omg_specification}
+
+%% User added packages
+\usepackage{import}
+
+% Directories to find user files in, and generated content.  The latter is automatically generated from tools such as modeling tools.
+% \userfiles is relative to the directory that this file is in, or an absolute path
+% \genfiles is relative to \userfiles, or an absolute path
+\newcommand{\userfiles}{./}
+\newcommand{\genfiles}{GeneratedContent/}
+
+\subimport{\userfiles}{_Specification_Setup}
+\subimport{\userfiles}{_Specification_AuthorSettings}
+\setvalue{\title}{\specname (\specacro) \version}
+
+\graphicspath{{../Images/}{Images/}{./\genfiles/Images/}}
+
+
+\hypersetup{
+    pdfauthor ={\pdfauthor},
+    pdftitle ={\title},
+    pdfsubject ={\title},
+    pdfcreator ={\copyrightomg},
+    pdfproducer ={LaTeX}
+}
+
+\buildauthornames
+
+%% Start of content
+\begin{document}
+ 
+\maketitle
+\thispagestyle{fancy}
+
+\fontfamily{ptm}\selectfont
+
+\pagenumbering{roman}
+
+\clearpage
+
+%%%%% OMG header starts here %%%%%%
+\copyrights
+
+% \printETBList{\authornames}
+%\printETBList{\submitters}
+
+% \getnthETBelement{2}{\submitters}
+
+% \buildcontactinfo{\submitters}
+
+% \setvaluelist{\foo}{
+%     { {A}, {B} },
+%     { {X}, {Y, Y2}, {Z} }
+% }
+% \lengthETB{\foo}\\
+% \printETBList{\foo}\\
+
+% \setvaluelist{\fooB}{\getnthETBelement{2}{\foo}}
+
+% \lengthETB{\fooB}\\
+% \printETBList{\fooB}\\
+% \def\fooX{\getnthETBelement{1}{\fooB}}
+% \setvaluelist{\fooC}{\getnthCSVelement{1}{\fooX}}
+
+% \lengthETB{\fooC}\\
+% \printETBList{\fooC}\\
+
+% \lengthCSV{a, b, c}\\
+% \lengthETB{\submitters}\\
+% \printETBList{\contributors}
+% \lengthETB{\contributors}\\
+% \printETBList{\supporters}
+% \lengthETB{\supporters}
+
+\begin{center}USE OF SPECIFICATION - TERMS, CONDITIONS \& NOTICES\end{center}\vspace{-3mm}
+The material in this document details an Object Management Group specification in accordance with the terms, conditions and notices set forth below. This document does not represent a commitment to implement any portion of this specification in any company's products. The information contained in this document is subject to change without notice.
+
+\begin{center}LICENSES\end{center}\vspace{-3mm}
+The companies listed above have granted to the Object Management Group, Inc. (OMG) a nonexclusive, royalty-free, paid up, worldwide license to copy and distribute this document and to modify this document and distribute copies of the modified version. Each of the copyright holders listed above has agreed that no person shall be deemed to have infringed the copyright in the included material of any such copyright holder by reason of having used the specification set forth herein or having conformed any computer software to the specification.
+Subject to all of the terms and conditions below, the owners of the copyright in this specification hereby grant you a fully-paid up, non-exclusive, nontransferable, perpetual, worldwide license (without the right to sublicense), to use this specification to create and distribute software and special purpose specifications that are based upon this specification, and to use, copy, and distribute this specification as provided under the Copyright Act; provided that: (1) both the copyright notice identified above and this permission notice appear on any copies of this specification; (2) the use of the specifications is for informational purposes and will not be copied or posted on any network computer or broadcast in any media and will not be otherwise resold or transferred for commercial purposes; and (3) no modifications are made to this specification. This limited permission automatically terminates without notice if you breach any of these terms or conditions. Upon termination, you will destroy immediately any copies of the specifications in your possession or control. 
+
+\begin{center}PATENTS\end{center}\vspace{-3mm}
+The attention of adopters is directed to the possibility that compliance with or adoption of OMG specifications may require use of an invention covered by patent rights. OMG shall not be responsible for identifying patents for which a license may be required by any OMG specification, or for conducting legal inquiries into the legal validity or scope of those patents that are brought to its attention. OMG specifications are prospective and advisory only. Prospective users are responsible for protecting themselves against liability for infringement of patents.
+
+\begin{center}GENERAL USE RESTRICTIONS\end{center}\vspace{-3mm}
+Any unauthorized use of this specification may violate copyright laws, trademark laws, and communications regulations and statutes. This document contains information which is protected by copyright. All Rights Reserved. No part of this work covered by copyright herein may be reproduced or used in any form or by any means--graphic, electronic, or mechanical, including photocopying, recording, taping, or information storage and retrieval systems--without permission of the copyright owner.
+\vfill\eject
+\begin{center}DISCLAIMER OF WARRANTY\end{center}\vspace{-3mm}
+WHILE THIS PUBLICATION IS BELIEVED TO BE ACCURATE, IT IS PROVIDED "AS IS" AND MAY CONTAIN ERRORS OR MISPRINTS. THE OBJECT MANAGEMENT GROUP AND THE COMPANIES LISTED ABOVE MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS PUBLICATION, INCLUDING BUT NOT LIMITED TO ANY WARRANTY OF TITLE OR OWNERSHIP, IMPLIED WARRANTY OF MERCHANTABILITY OR WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE OR USE.  IN NO EVENT SHALL THE OBJECT MANAGEMENT GROUP OR ANY OF THE COMPANIES LISTED ABOVE BE LIABLE FOR ERRORS CONTAINED HEREIN OR FOR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, RELIANCE OR COVER DAMAGES, INCLUDING LOSS OF PROFITS, REVENUE, DATA OR USE, INCURRED BY ANY USER OR ANY THIRD PARTY IN CONNECTION WITH THE FURNISHING, PERFORMANCE, OR USE OF THIS MATERIAL, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. 
+The entire risk as to the quality and performance of software developed using this specification is borne by you. This disclaimer of warranty constitutes an essential part of the license granted to you to use this specification.
+
+\begin{center}RESTRICTED RIGHTS LEGEND\end{center}\vspace{-3mm}
+Use, duplication or disclosure by the U.S. Government  is subject to the restrictions set forth in subparagraph (c) (1) (ii) of The Rights in Technical Data and Computer Software Clause at DFARS 252.227-7013 or in subparagraph (c)(1) and (2) of the Commercial Computer Software - Restricted Rights clauses at 48 C.F.R. 52.227-19 or as specified in 48 C.F.R. 227-7202-2 of the DoD F.A.R. Supplement and its successors, or as specified in 48 C.F.R. 12.212 of the Federal Acquisition Regulations and its successors, as applicable. The specification copyright owners are as indicated above and may be contacted through the Object Management Group, 9C Medway Road, PMB 274, Milford, MA 01757, U.S.A.
+
+\begin{center}TRADEMARKS\end{center}\vspace{-3mm}
+IMM\textregistered , MDA\textregistered , Model Driven Architecture\textregistered , UML\textregistered , UML Cube logo\textregistered , OMG Logo\textregistered , CORBA\textregistered\ and XMI\textregistered\ are registered trademarks of the Object Management Group, Inc., and Object Management Group\texttrademark , OMG\texttrademark , Unified Modeling Language\texttrademark , Model Driven Architecture Logo\texttrademark , Model Driven Architecture Diagram\texttrademark , CORBA logos\texttrademark , XMI Logo\texttrademark , CWM\texttrademark , CWM Logo\texttrademark , IIOP\texttrademark  , MOF\texttrademark  , OMG Interface Definition Language (IDL)\texttrademark  , and OMG SysML\texttrademark\ are trademarks of the Object Management Group. All other products or company names mentioned are used for identification purposes only, and may be trademarks of their respective owners.
+
+\begin{center}COMPLIANCE\end{center}\vspace{-3mm}
+The copyright holders listed above acknowledge that the Object Management Group (acting itself or through its designees) is and shall at all times be the sole entity that may authorize developers, suppliers and sellers of computer software to use certification marks, trademarks or other special designations to indicate compliance with these materials.
+Software developed under the terms of this license may claim compliance or conformance with this specification if and only if the software compliance is of a nature fully matching the applicable compliance points as stated in the specification. Software developed only partially matching the applicable compliance points may claim only that the software was based on this specification, but may not claim compliance or conformance with this specification. In the event that testing suites are implemented or approved by Object Management Group, Inc., software developed using this specification may claim compliance or conformance with the specification only if the software satisfactorily completes the testing suites.
+
+\begin{center}OMG's Issue Reporting Procedure\end{center}\vspace{-3mm}
+
+All OMG specifications are subject to continuous review and improvement. As part of this process we encourage readers to report any ambiguities, inconsistencies, or inaccuracies they may find by completing the Issue Reporting Form listed on the main web page, under Documents, Report a Bug/Issue ({\url{https://www.omg.org/report\_issue}}.)
+
+
+%%%%% OMG header ends here %%%%%%
+
+\tableofcontents{}
+\cleardoublepage
+
+%%%%% OMG Preface starts here %%%%%
+\chapter*{Preface}
+\markboth{PREFACE}{}\addcontentsline{toc}{chapter}{Preface}
+\section*{OMG}
+Founded in 1989, the Object Management Group, Inc. (OMG) is an open membership, not-for-profit computer industry standards consortium that produces and maintains computer industry specifications for interoperable, portable, and reusable enterprise applications in distributed, heterogeneous environments. Membership includes Information Technology vendors, end users, government agencies, and academia. OMG member companies write, adopt, and maintain its specifications following a mature, open process. OMG's specifications implement the Model Driven Architecture\textregistered\ (MDA\textregistered ), maximizing ROI through a full-lifecycle approach to enterprise integration that covers multiple operating systems, programming languages, middleware and networking infrastructures, and software development environments. OMG's specifications include: UML\textregistered (Unified Modeling Language\texttrademark ); CORBA\textregistered\ (Common Object Request Broker Architecture); CWM\texttrademark\ (Common Warehouse Metamodel); and industry-specific standards for dozens of vertical markets. More information on the OMG is available at \url{https://www.omg.org/}.
+
+\section*{OMG Specifications}
+As noted, OMG specifications address middleware, modeling and vertical domain frameworks. All OMG Specifications are available from the OMG website at: \url{https://www.omg.org/spec}
+
+Specifications are organized by the following categories:
+
+{\bfseries{Business Modeling Specifications}}\\[\medskipamount]
+{\bfseries{Middleware Specifications}}
+\begin{itemize}
+\item CORBA/IIOP
+\item Data Distribution Services
+\item Specialized CORBA
+\end{itemize} 
+{\bfseries{IDL/Language Mapping Specifications}}\\[\medskipamount]
+{\bfseries{Modeling and Metadata Specifications}}
+\begin{itemize}
+\item UML, MOF, CWM, XMI
+\item UML Profile
+\end{itemize} 
+{\bfseries{Modernization Specifications}}\\[\medskipamount]
+{\bfseries{Platform Independent Model (PIM), Platform Specific Model (PSM), Interface Specifications}}
+\begin{itemize}
+\item CORBAServices
+\item CORBAFacilities
+\end{itemize}
+{\bfseries{OMG Domain Specifications}}\\[\medskipamount]
+{\bfseries{CORBA Embedded Intelligence Specifications}}\\[\medskipamount]
+{\bfseries{Signal and Image Processing Specifications}}\\[\medskipamount]
+{\bfseries{CORBA Security Specifications}}
+ 
+All of OMG's formal specifications may be downloaded without charge from our website. (Products implementing OMG specifications are available from individual suppliers.) Copies of specifications, available in PostScript and PDF format, may be obtained from the Specifications Catalog cited above or by contacting the Object Management Group, Inc. at:
+
+\begin{tabbing}
+\quad\quad \= Email: \= \kill
+\> OMG Headquarters\\
+\> 9C Medway Road, PMB 274\\
+\> Milford, MA 01757\\
+\> USA\\
+\> Tel: \> +1-781-444-0404\\
+\> Fax: \> +1-781-444-0320\\
+\> Email: \> \href{mailto:pubs@omg.org}{pubs@omg.org}
+\end{tabbing}
+
+Certain OMG specifications are also available as ISO standards. Please consult \url{http://www.iso.org} 
+
+\section*{Typographical Conventions}
+The type styles shown below are used in this document to distinguish programming statements from ordinary English. However, these conventions are not used in tables or section headings where no distinction is necessary.
+
+Times/Times New Roman - 10 pt.:  Standard body text\\[\medskipamount]
+{\small\sffamily\bfseries{Helvetica/Arial - 10 pt. Bold:}} OMG Interface Definition Language (OMG IDL) and syntax 
+elements.\\[\medskipamount]
+{\ttfamily\bfseries{Courier - 10 pt. Bold:}}  Programming language elements.\\[\medskipamount]
+{\small\sffamily{Helvetica/Arial - 10 pt}}: Exceptions\\[\medskipamount]
+
+{\bfseries{NOTE:}} Terms that appear in italics are defined in the glossary. Italic text also represents the name of a document, specification, or other publication.
+
+\section*{Issues}
+
+The reader is encouraged to report any technical or editing issues/problems with this specification to: {\url{https://www.omg.org/report\_issue.htm}}.
+\vfill\eject
+
+%%%%% OMG Preface ends here %%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Authored content begins here
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+%%%%%%%%% ---- Section 0
+%%%       The entirety of Section 0 is turned on and off by the initialsubmission flag in Specification_Setup.tex
+\ifthenelse{\boolean{initialsubmission}}
+{
+\setcounter{chapter}{-1}
+
+\chapter{Submission-Related Information}
+\section{Submission Introduction}
+%\expandafter
+\iffileemptyelse{\userfiles0_Introduction}{
+    \REPLACEME{Fill in file 0\_Introduction.tex to provide an introduction to this submission, providing scope, history, etc.}%
+}{
+%    \subimport{\userfiles}{0_Introduction}
+    \subimport{\userfiles}{0_Introduction}
+}
+
+\subsection{Copyright Waiver}
+Each of the entities listed above: (i) grants to the Object Management Group, Inc. (OMG) a nonexclusive, royalty-free, paid up, worldwide license to copy and distribute this document and to modify this document and distribute copies of the modified version, and (ii) grants to each member of the OMG a nonexclusive, royalty-free, paid up, worldwide license to make up to fifty (50) copies of this document for internal review purposes only and not for distribution, and (iii) has agreed that no person shall be deemed to have infringed the copyright in the included material of any such copyright holder by reason of having used any OMG specification that may be based hereon or having conformed any computer software to such specification.
+
+\subsection{IPR Mode}\label{iprmode}
+\ifthenelse{\equal{\iprmode}{\xspace}}{
+\REPLACEME{<Note to Submission Editors: This Section \ref{iprmode} of your completed Submission shall specify EXACTLY ONE of the three possible IPR modes specified in the OMG IPR Policy [IPR].  Select the IPR mode using \_Specification\_Setup.tex.}
+
+\REPLACEME{<Option 1 - RAND mode>}}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace} \OR \equal{\iprmode}{rand\xspace}}{
+
+Every OMG Member listed as a Submitter to this written Submission covenants that it will grant to an unrestricted number of applicants a nonexclusive, worldwide, non-sublicensable, perpetual patent license to its Essential Claims on fair, reasonable, and non-discriminatory terms to make, have made, use, import, offer to sell, sell, and otherwise directly or indirectly distribute Covered Implementations of the resulting OMG Formal Specification.}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace}}{
+\REPLACEME{<Option 2 - RF on Limited Terms>}
+}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace} \OR \equal{\iprmode}{rflimited\xspace}}{
+Every OMG Member listed as a Submitter to this written Submission covenants that it will grant to an unrestricted number of applicants a royalty and fee free, nonexclusive, worldwide, non-sublicensable, perpetual patent license to its Essential Claims on fair, reasonable, and non-discriminatory terms to make, have made, use, import, offer to sell, sell, and otherwise directly or indirectly distribute Covered Implementations of the resulting OMG Formal Specification, provided that it may not impose any further conditions or restrictions beyond those specifically mentioned below on the use of any technology or intellectual property rights or the behavior of the Licensee, but may include reasonable, customary terms relating to operation or maintenance of the license relationship, including choice of law and dispute resolution.
+
+At the election of the Obligated Party, the granted license may include a term requiring the Licensee to grant a reciprocal license to its Essential Claims (if any) covering the same OMG Formal Specification. Such term may require the Licensee to grant licenses to all Implementers of such deliverable. The Obligated Party may also include a term providing that such license may be suspended with respect to the Licensee if that Licensee first sues the Obligated Party for infringement by the Obligated Party of any of the Licensee's Essential Claims covering the same OMG Formal Specification.}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace}}{
+\REPLACEME{<Option 3 - Non-Assert Covenant>}}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace} \OR \equal{\iprmode}{nonassert\xspace}}{
+Every OMG Member listed as a Submitter to this written Submission provides the Non-Assertion Covenant found in Appendix A of the OMG IPR Policy [IPR].}{}
+
+\subsection{Proposed Identification}
+The proposed acronym for this specification is: \specacro
+\begin{tabbing}
+The proposed specification IRIs\=and:\= \kill 
+The proposed specification IRIs are:\>\>\ {\small\sffamily{https://www.omg.org/spec/\specacro/\version/}}\\
+\> and:\>\ {\small\sffamily{https://www.omg.org/spec/\specacro/YYYYMMNN/}}
+\end{tabbing}
+\ifthenelse{\equal{\iprmode}{\xspace}}
+{\REPLACEME{You will have to coordinate with OMG Staff on deciding what the IRIs will be.}}
+{}
+\section{Submission Team}
+The following organizations contributed to the development of this submission. Submission lead was \leadsubmitter, so general questions regarding this submission shall be directed to \leadsubmitter.
+
+\subsection{Submitting Organizations}
+\newcommand{\submittersexample}{
+\begin{itemize}
+\item Company X\\ 
+John Smith\\
+john@companyx.com
+\item Company Y, Inc.\\
+Dr. Jane Doe\\
+jdoe@companyy.com
+\end{itemize}
+}
+% \setvaluelist{\testlength}{{1}, {2}, {3}}
+% \lengthETB{\testlength}
+\iffileemptyelse{\userfiles0_Submitters}
+{\REPLACEME{REQUIRED: List all organizations officially submitting this document, with contact information - name and email at a minimum - for personnel of note.  Do this by setting a value for the submitterscontactinfo macro in Specification\_Setup.tex.\suborgs}}
+{
+    % \subimport{\userfiles}{0_Submitters}
+    \suborgs
+}
+
+
+\iffileemptyelse{\userfiles0_Acknowledgements}{}{
+    \subsection{Acknowledgements}
+    \subimport{\userfiles}{0_Acknowledgements}
+}
+
+\section{Resolution of Mandatory Requirements} 
+\iffileemptyelse{\userfiles0_Resolutions_Mandatory}{
+    \REPLACEME{Fill in file 0\_Resolutions\_Mandatory.tex to discuss how this submission addresses each mandatory requirement from the RFP.}%
+}{
+    \subimport{\userfiles}{0_Resolutions_Mandatory}
+}
+
+\iffileemptyelse{\userfiles0_Resolutions_Optional}{}{
+    \section{Resolution of Optional Requirements}
+    \subimport{\userfiles}{0_Resolutions_Optional}
+}
+
+
+\iffileemptyelse{\userfiles0_Issues}{}{
+    \section{Issues to be Discussed}
+    \subimport{\userfiles}{0_Issues}
+}
+
+\iffileemptyelse{\userfiles0_Proof_Of_Concept}{}{
+    \section{Proof of Concept}
+    \subimport{\userfiles}{0_Proof_Of_Concept}
+}
+
+\section{Changes to Existing OMG Specifications}
+\iffileemptyelse{\userfiles0_Changes_To_Existing}{No changes are suggested or required.}{
+    \subimport{\userfiles}{0_Changes_To_Existing}
+}
+
+\iffileemptyelse{\userfiles0_Relation_To_Existing}{}{
+    \section{Relation to Existing Specifications}
+    \subimport{\userfiles}{0_Relation_To_Existing}
+}
+
+\iffileemptyelse{\userfiles0_Additional}{}{
+    \subimport{\userfiles}{0_Additional}
+}
+} % end of then block for ifthenelse for initialsubmission
+{} % else block for ifthenelse for initialsubmission
+
+%%%%%%%%% ---- 1. SCOPE
+\chapter{Scope}
+\subimport{\userfiles}{1_Scope}
+
+%%%%%%%%% ---- 2. CONFORMANCE
+\chapter{Conformance}
+\section{Basic Conformance}
+\subimport{\userfiles}{2_Basic_Conformance}
+
+\iffileemptyelse{\userfiles2_Extended_Conformance}{}{
+    \section{Extended Conformance}
+    \subimport{\userfiles}{2_Extended_Conformance}
+}
+
+\iffileemptyelse{\userfiles2_Profile_Conformance}{}{
+    \section{Profile Conformance}
+    \subimport{\userfiles}{2_Profile_Conformance}
+}
+
+%%%%%%%%% ---- 3. REFERENCES
+\chapter{References}
+
+% \ifthenelse{\equal{\iprmode}{\xspace}}{\REPLACEME{A bibliography will be automatically generated for you by LaTeX and placed here.  The provided standard bibliography files (omg.bib, iso.bib, w3.bib) give you entries, you only need to cite them in your text. (See \url{https://www.overleaf.com/learn/latex/Bibliography_management_in_LaTeX\#Introduction} for extremely detailed instructions.  You only need to use the \textbf{cite} command, our templates take care of the rest.)  The labels and the bibliography will be created from what is cited, and only what is cited.  The bibliography file is a database, the citations are what pull data from it to create the References.}
+
+% \REPLACEME{If you have additional bibliographic entries to add, you can place them in the specification.bib file at the top level of this project.  That is yours to fill in as you like.  See \url{https://www.overleaf.com/learn/latex/Bibliography_management_in_LaTeX\#The_bibliography_file} for instructions on how to format the information.}
+
+% \addtocategory{normative}{MOF25, MOF251, UML251}
+% % \nocite{MOF25, MOF251, UML251}
+% \REPLACEME{If you find that you need to reference standards, documents, or publications by a standards body that OMG is providing a bibliography file, please let us know, we will add them to the core default set as appropriate for everyone to use.}}
+
+\defbibheading{normative}{\section{Normative References}}
+\defbibnote{normative}{The following normative documents contain provisions which, through reference in this text, constitute provisions of this specification. For dated references, subsequent amendments to, or revisions of, any of these publications do not apply.}
+
+\printbibliography[title={Normative References}, prenote={normative}, heading={normative}, category={normative}]
+% \ifthenelse{\equal{\iprmode}{\xspace}}{\REPLACEME{See the file Specification\_AuthorSettings.tex for instructions on how to add your citations to the Normative References bibliography.}}{}
+
+\defbibheading{non-normative}{\section{Non-normative References}}
+\defbibnote{non-normative}{The following normative documents contain non-normative provisions which, through reference in this text, constitute recommendations of this specification. For dated references, subsequent amendments, or revisions, any of these publications do not apply.}
+\printbibliography[title={Non-normative References}, prenote={non-normative}, heading={non-normative}, notcategory={normative}]
+% \ifthenelse{\equal{\iprmode}{\xspace}}{\REPLACEME{All citations not added to the normative category by following the directions above will end up here.}}{}
+
+
+%%%%%%%%% ---- 4. TERMS AND DEFINITIONS
+\chapter{Terms and Definitions}
+For this specification, the following terms and definitions apply.
+
+\iffileemptyelse{\userfiles4_Terms}{
+    \ifthenelse{\equal{\iprmode}{\xspace}}
+    {\REPLACEME{SET YOUR IPR MODE}}
+    {None.}
+}{
+    \subimport{\userfiles}{4_Terms}
+}
+
+
+%%%%%%%%% ---- 5. SYMBOLS
+\chapter{Symbols}
+The following symbols and/or abbreviations are used throughout this specification.
+
+\iffileemptyelse{\userfiles5_Symbols}{
+    \ifthenelse{\equal{\iprmode}{\xspace}}
+    {
+        \REPLACEME{Fill in the file 5\_Symbols.tex with a table or images as you see fit.  If you have no symbols to define, you may leave the file empty, or delete it.}
+    }
+    {None.}
+}{
+    \subimport{\userfiles}{5_Symbols}
+}
+
+%%%%%%%%% ---- 6. ADDITIONAL INFORMATION
+\iffileemptyelse{\userfiles6_Additional}{}{
+    \chapter{Additional Information (informative)}
+    \subimport{\userfiles}{6_Additional}
+}
+
+
+%%%%%%%%% ---- 7+. Specification Content starts here
+\iffileemptyelse{\userfiles7+_Technical_Content}{}{
+    \subimport{\userfiles}{7+_Technical_Content}
+}
+
+%%%%%%%%% ---- A+. Optional Annexes
+\iffileemptyelse{\userfiles A_Annexes}{}{
+    % \appendix
+    % \subimport{\userfiles}{A_Annexes}
+}
+
+\end{document}

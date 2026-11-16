@@ -1,7 +1,10 @@
 .. _subCollectionOf:
+.. _subCollection:
 
-SubCollectionOf
-===============
+Sub-collection
+==============
+
+Previously documented as «subCollectionOf». The current stereotype is «subCollection».
 
 .. _subCollectionOf-stereotype:
 .. stereotype:: meta.yml

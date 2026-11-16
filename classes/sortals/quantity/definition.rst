@@ -1,27 +1,26 @@
 Definition
 ----------
 
-The «:ref:`quantity`» construct is used to represent :ref:`rigid <rigidity>` concepts that provide an :ref:`identity principle <identity>` for their instances. A «:ref:`quantity`» represent uncountable things, like Water, Clay, or Beer. It represents a maximally topologically connected amount of matter. Quantities only have other quantities as parts (see the «:ref:`subQuantityOf`» relation for more details about members of collections). Here are some examples:
+A «:ref:`quantity`» is a :ref:`first-order ultimate sortal <ultimate-sortal>` whose instances are maximal portions of matter or stuff, unified by topological connectedness. Amount of Water, Lump of Clay, and Pile of Sand are quantities.
 
-.. container:: figure
+Quantities are homeomerous: their parts are portions of the same kind of matter as the whole. Dividing an amount of sand yields amounts of sand. Dividing a portion of water yields portions of water. The parts are not identical to the original whole. They fall under the same matter-kind. Because a quantity is maximal, it cannot have a quantity of the same kind as a part. A portion of wine is not composed of other portions of wine. The alcohol in the wine is a quantity of a different kind. See :ref:`subQuantity <subQuantityOf>`.
 
-   |Quantity examples|
+A practical test: if you physically divide an instance of *x* in two, and each result is a new instance of *x*, and the same remains true after further divisions, then *x* is a quantity.
 
-An easy way to decide whether a concept is a quantity or not, as yourself this: if you physically divide an instance of 'x' in two parts, are the resulting individuals two new instances of x? What if you divide another 5 or 10 times? If the answer is always yes, 'x' is a Quantity. To exemplify, let's think about an pile of sand. If you divide the pile in two, you now have to new piles of sand, right? What if you do that again for each remaining part? We would have 4 piles of sand.
+.. figure:: /specification-figures/quantity.svg
+   :alt: Amount of water, lump of clay, and pile of sand as quantities
+   :width: 80%
+   :align: center
 
-.. container:: figure
+   Classes categorized as «quantity».
 
-   |Tannin heap|
+A quantity may specialize a :ref:`category` or a :ref:`mixin`. It may be specialized by a :ref:`subkind`, :ref:`role`, :ref:`historicalRole`, or :ref:`phase`. Keep quantity apart from :ref:`quality`: a quantity is a portion of matter, and a quality is a measurable aspect of some bearer.
 
-As the other identity provider stereotypes («:ref:`kind`», «:ref:`collective`», «:ref:`relator`», «:ref:`quality`» and «:ref:`mode`»), a Quantity can be specialized by :ref:`subkinds <subkind>`, :ref:`phases <phase>` and :ref:`roles <role>`, as well as generalized by :ref:`mixins <mixin>` and :ref:`categories <category>`.
+``restrictedTo`` is exactly ``{quantity}`` and ``order`` is 1.
 
-.. container:: figure
+.. figure:: _images/Tannin_heap.jpeg
+   :alt: A heap of tannin
+   :width: 40%
+   :align: center
 
-   |Quantity application 1|
-
-Be careful not to confuse «:ref:`quantity`» and «:ref:`quality`».
-
-
-.. |Quantity examples| image:: _images/ontouml_quantity-examples.png
-.. |Tannin heap| image:: _images/Tannin_heap.jpeg
-.. |Quantity application 1| image:: _images/ontouml_quantity-application-1.png
+   A heap of matter is a quantity when every division of it is more of the same matter.

@@ -1,7 +1,24 @@
 Definition
 ----------
 
-«:ref:`memberOf`» is a parthood relation between a **functional complex** or a «:ref:`collective`» (as a part) and a «:ref:`collective`» (as a whole).
+«:ref:`membership <memberOf>`» is a :ref:`parthood` relation between a member and a collective. The member plays a uniform role with respect to the whole, indistinguishable from that of every other member. Membership is anti-transitive.
+
+A tree is a member of a forest. A card is a member of a deck of cards. A lion is a member of a pack. A visitor is a member of a group of visitors.
+
+.. figure:: /specification-figures/membership.svg
+   :alt: Trees as members of a forest
+   :width: 75%
+   :align: center
+
+   Associations categorized as «membership».
+
+The member end is a class of substantials: ``restrictedTo`` is a non-empty subset of ``{functional complex, collective, quantity}``. The collection end is restricted exactly to ``{collective}``.
+
+A member of a collective is also a member of any collective of which that collective is a :ref:`subCollection <subCollectionOf>`. Membership itself does not chain: members of a club that is a member of an association are not thereby members of the association.
+
+The discussion below uses the earlier name «memberOf».
+
+«:ref:`memberOf`» is a parthood relation between a substantial (as a part) and a «:ref:`collective`» (as a whole).
 
 Examples include:
 

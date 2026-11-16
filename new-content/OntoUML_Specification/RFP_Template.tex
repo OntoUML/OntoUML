@@ -1,0 +1,635 @@
+% \documentclass[12pt]{article}
+\usepackage{omg_rfp}
+
+%% User added packages
+\usepackage{import}
+
+% Directories to find user files in, and generated content.  The latter is automatically generated from tools such as modeling tools.
+% \userfiles is relative to the directory that this file is in, or an absolute path
+% \genfiles is relative to \userfiles, or an absolute path
+\newcommand{\userfiles}{./}
+\newcommand{\genfiles}{GeneratedContent/}
+
+\subimport{\userfiles}{_RFP_Setup}
+\subimport{\userfiles}{_RFP_AuthorSettings}
+
+\graphicspath{{../Images/}{Images/}{./\genfiles/Images/}}
+
+\setvalue{\title}{\specname (\specacro)}
+
+\hypersetup{
+    pdfauthor ={\pdfauthor},
+    pdftitle ={\title},
+    pdfsubject ={\title},
+    pdfcreator ={\copyrightomg},
+    pdfproducer ={LaTeX}
+}
+
+%% Start of content
+\begin{document}
+
+
+\maketitle
+\thispagestyle{fancy}
+
+\fontfamily{ptm}\selectfont
+
+\ifthenelse{\equal{\iprmode}{\xspace}}{\vspace{-10mm}
+\begin{center}
+    \large{\REPLACEME{<Note to RFP Editors: spell out month name; e.g., January>}}
+\end{center}}{}
+\subsubsection*{Objective of This RFP}
+\ifthenelse{\equal{\iprmode}{\xspace}}
+{\REPLACEME{<Note to RFP Editors: Provide a brief statement of the problem>}}{}
+
+\input{0-Objective}
+For further details see Section \ref{specreqs} of this document.
+
+\ifthenelse{\equal{\iprmode}{\xspace}}
+{\REPLACEME{<Notes to RFP Editors. (1) Instructions to RFP authors are included in this red text, with character style "Instructions". Delete or hide all red notes in your finished RFP. THERE SHOULD BE NO RED TEXT REMAINING IN YOUR COMPLETED RFP. (2) When the actual RFP is in draft form, a truncated document comprising this cover page, Section \ref{specreqs} and Appendix A suffice for review purposes. However, all sections and appendices shall be present in the published version. (3) Replace the running header and footer with the name, document number and date of the RFP. (3) If additional sections beyond Section \ref{specreqs} and appendices beyond Appendix B are added to the RFP, make sure to include them for the truncated review document, and make sure to insert a brief description of each additional section and appendix in Section \ref{docorg}. (4) Do not change the contents of any sections other than those mentioned in item (2) above.>}}
+{}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\subsection{Goals of OMG}
+The Object Management Group (OMG) is a software consortium with an international membership of vendors, developers, and end users. Established in 1989, its mission is to help computer users solve enterprise integration problems by supplying open, vendor-neutral portability, interoperability and reusability specifications based on Model Driven Architecture (MDA). MDA defines an approach to IT system specification that separates the specification of system functionality from the specification of the implementation of that functionality on a specific technology platform, and provides a set of guidelines for structuring specifications expressed as models. OMG has published many widely-used specifications such as UML [UML], BPMN [BPMN], MOF [MOF], XMI [XMI], DDS [DDS] and CORBA [CORBA], to name but a few significant ones.
+
+\subsection{Organization of This Document}\label{docorg}
+The remainder of this document is organized as follows:
+
+Section 2 - Architectural Context. Background information on OMG's Model Driven Architecture. 
+
+Section 3 - Adoption Process. Background information on the OMG specification adoption process.
+
+Section 4 - Instructions for Submitters. Explanation of how to make a submission to this RFP.
+
+Section \ref{genreq} - General Requirements on Proposals. Requirements and evaluation criteria that apply to all proposals submitted to OMG.
+
+Section \ref{specreqs} - Specific Requirements on Proposals. Problem statement, scope of proposals sought, mandatory requirements, non-mandatory features, issues to be discussed, evaluation criteria, and timetable that apply specifically to this RFP. 
+
+Appendix A - References and Glossary Specific to this RFP
+
+Appendix B - General References and Glossary
+
+\subsection{Conventions}
+
+The key words \textbf{"shall"}, \textbf{"shall not"}, \textbf{"should"}, \textbf{"should not"}, \textbf{"may"} and \textbf{"need not"} in this document should be interpreted as described in Part 2 of the ISO/IEC Directives [ISO2]. These ISO terms are compatible with the same terms in IETF RFC 2119 [RFC2119].
+
+\subsection{Contact Information}
+
+Questions related to OMG's technology adoption process and any questions about this RFP should be directed to \href{mailto:rfp@omg.org}{rfp@omg.org}.
+OMG documents and information about the OMG in general can be obtained from the OMG's web site:\\ \url{https://www.omg.org}. Templates for RFPs (like this document) and other standard OMG documents can be found on the Template Downloads Page:\\ \url{https://www.omg.org/technology/template\_download.htm}
+
+
+
+\section{Architectural Context}
+
+MDA provides a set of guidelines for structuring specifications expressed as models and the mappings between those models. The MDA initiative and the standards that support it allow the same model, specifying business system or application functionality and behavior, to be realized on multiple platforms. MDA enables different applications to be integrated by explicitly relating their models; this facilitates integration and interoperability, and supports system evolution (deployment choices) as platform technologies change. The three primary goals of MDA are portability, interoperability and reusability.
+
+Portability of any subsystem is relative to the subsystems on which it depends. The collection of subsystems that a given subsystem depends upon is often loosely called the \textit{platform}, which supports that subsystem. Portability - and reusability - of such a subsystem is enabled if all the subsystems that it depends upon use standardized interfaces (APIs) and usage patterns.
+
+MDA provides a pattern comprising a portable subsystem that is able to use any one of multiple specific implementations of a platform. This pattern is repeatedly usable in the specification of systems. The five important concepts related to this pattern are:
+
+\begin{enumerate}
+\item \textit{Model} -- A model is a representation of a part of the function, structure and/or behavior of an application or system. A representation is said to be formal when it is based on a language that has a well-defined form ("syntax"), meaning ("semantics"), and possibly rules of analysis, inference, or proof for its constructs. The syntax may be graphical or textual. The semantics might be defined, more or less formally, in terms of things observed in the world being described (e.g. message sends and replies, object states and state changes, etc.), or by translating higher-level language constructs into other constructs that have a well-defined meaning. The (non-mandatory) rules of inference define what unstated properties can be deduced from explicit statements in the model. In MDA, a representation that is not formal in this sense is not a model. Thus, a diagram with boxes and lines and arrows that is not supported by a definition of the meaning of a box, and the meaning of a line and of an arrow is not a model - it is just an informal diagram.
+\item \textit{Platform} -- A set of subsystems/technologies that provide a coherent set of functionality through interfaces and specified usage patterns that any subsystem that depends on the platform can use without concern for the details of how the functionality provided by the platform is implemented.
+\item \textit{Platform Independent Model (PIM)} -- A model of a subsystem that contains no information specific to the platform, or the technology that is used to realize it.
+\item \textit{Platform Specific Model (PSM)} -- A model of a subsystem that includes information about the specific technology that is used in the realization of that subsystem on a specific platform, and hence possibly contains elements that are specific to the platform.
+\item \textit{Mapping} -- Specification of a mechanism for transforming the elements of a model conforming to a particular metamodel into elements of another model that conforms to another (possibly the same) metamodel. A mapping may be expressed as associations, constraints, rules or templates with parameters that to be assigned during the mapping, or other forms yet to be determined.
+\end{enumerate}
+
+OMG adopts standard specifications of models that exploit the MDA pattern to facilitate portability, interoperability and reusability, either through ab initio development of standards or by reference to existing standards. Some examples of OMG adopted specifications are:
+
+\begin{enumerate}
+\item \textit{Languages} -- e.g. IDL for interface specification [IDL], UML for model specification [UML], BPMN for Business Process specification [BPMN], etc.
+\item \textit{Mappings} -- e.g. Mapping of OMG IDL to specific implementation languages (CORBA PIM to Implementation Language PSMs), UML Profile for EDOC (PIM) to CCM (CORBA PSM) and EJB (Java PSM), CORBA (PSM) to COM (PSM) etc.
+\item \textit{Services} -- e.g. Naming Service [NS], Transaction Service [OTS], Security Service [SEC], Trading Object Service [TOS] etc.
+\item \textit{Platforms} -- e.g. CORBA [CORBA], DDS [DDS]
+\item \textit{Protocols} -- e.g. GIOP/IIOP [CORBA] (both structure and exchange protocol), DDS Interoperability Protocol [DDSI].
+\item \textit{Domain Specific Standards} -- e.g. Model for Performance-Driven Government [MPG], Single Nucleotide Polymorphisms specification [SNP], TACSIT Controller Interface specification [TACSIT].
+\end{enumerate}
+
+For an introduction to MDA, see [MDAa]. For a discourse on the details of MDA please refer to [MDAc]. To see an example of the application of MDA see [MDAb]. For general information on MDA, see [MDAd].
+
+Object Management Architecture (OMA) is a distributed object computing platform architecture within MDA that is related to ISO's Reference Model of Open Distributed Processing RM-ODP [RM-ODP]. CORBA and any extensions to it are based on OMA. For information on OMA see [OMA].
+
+
+\section{Adoption Process}\label{adoption}
+\subsection{Introduction}
+
+OMG decides which specifications to adopt via votes of its Membership. The specifications selected should satisfy the architectural vision of MDA. OMG bases its decisions on both business and technical considerations. Once a specification is adopted by OMG, it is made available for use by both OMG members and non-members alike, at no charge.
+
+This Section \ref{adoption} provides an extended summary of the RFP process. For more detailed information, see the \textit{Policies and Procedures of the OMG Technical Process} [P\&P], specifically Section 4.2, and the \textit{OMG Hitchhiker's Guide} [Guide]. In case of any inconsistency between this document or the Hitchhiker's Guide and the Policies and Procedures, the P\&P is always authoritative. All IPR-related matters are governed by \textit{OMG's Intellectual Property Rights Policy} [IPR].
+
+\subsection{The Adoption Process In Detail}
+\subsubsection{Development and Issuance of RFP}
+
+RFPs, such as this one, are drafted by OMG Members who are interested in the adoption of an OMG specification in a particular area. The draft RFP is presented to the appropriate TF, discussed and refined, and when ready is recommended for issuance. If endorsed by the Architecture Board, the RFP may then be issued as an OMG RFP by a TC vote.
+Under the terms of OMG's Intellectual Property Rights Policy [IPR], every RFP shall include a statement of the IPR Mode under which any resulting specification will be published. To achieve this, RFP authors choose one of the three allowable IPR modes specified in [IPR] and include it in the RFP - see Section \ref{iprmode}.
+
+
+\subsubsection{Letter of Intent (LOI)}
+
+Each OMG Member organisation that intends to make a Submission in response to any RFP (including this one) shall submit a Letter of Intent (LOI) signed by an officer on or before the deadline specified in the RFP's timetable (see Section \ref{timetable}). The LOI provides public notice that the organisation may make a submission, but does not oblige it to do so.
+
+
+\subsubsection{Voter Registration}
+
+Any interested OMG Members, other than Trial, Press and Analyst members, may participate in Task Force voting related to this RFP. If the RFP timetable includes a date for closing the voting list (see Section \ref{timetable}), or if the Task Force separately decides to close the voting list, then only OMG Member that have registered by the given date and those that have made an Initial Submission may vote on Task Force motions related to this RFP.
+
+Member organizations that have submitted an LOI are automatically registered to vote in the Task Force. Technical Committee votes are not affected by the Task Force voting list - all Contributing and Domain Members are eligible to vote in DTC polls relating to DTC RFPs, and all Contributing and Platform Members are eligible to vote in PTC polls on PTC RFPs.
+
+
+
+\subsubsection{Initial Submissions}
+
+Initial Submissions shall be made electronically on or before the Initial Submission deadline, which is specified in the RFP timetable (see Section \ref{timetable}), or may later be adjusted by the Task Force. Submissions shall use the OMG specification template [TMPL], with the structure set out in Section \ref{subformat}. Initial Submissions shall be written specifications capable of full evaluation, and not just a summary or outline. Submitters normally present their proposals to the Task Force at the first TF meeting after the submission deadline. Making a submission incurs obligations under OMG's IPR policy - see [IPR] for details.
+
+An Initial Submission shall not be altered once the Initial Submission deadline has passed. The Task Force may choose to recommend an Initial Submission, unchanged, for adoption by OMG; however, instead Task Force members usually offer comments and feedback on the Initial Submissions, which submitters can address (if they choose) by making a later Revised Submission.
+
+The goals of the Task Force's Submission evaluation are:
+
+\begin{itemize}
+\item    Provide a fair and open process
+\item    Facilitate critical review of the submissions by OMG Members
+\item    Provide feedback to submitters enabling them to address concerns in their revised submissions
+\item    Build consensus on acceptable solutions
+\item    Enable voting members to make an informed selection decision
+
+\end{itemize}
+Submitters are expected to actively contribute to the evaluation process.
+
+
+\subsubsection{Revised Submissions}
+
+Revised Submissions are due by the specified deadline. Revised Submissions cannot be altered once their submission deadline has passed. Submitters again normally present their proposals at the next meeting of the TF after the deadline. If necessary, the Task Force may set a succession of Revised Submission deadlines. Submitters choose whether or not to make Revised Submissions - if they decide not to, their most recent Submission is carried forward, unless the Submitter explicitly withdraws from the RFP process.
+
+The evaluation of Revised Submissions has the same goals listed above.
+
+
+\subsubsection{Selection Votes}
+
+When the Task Force's voters believe that they sufficiently understand the relative merits of the available Submissions, a vote is taken to recommend a submission to the Task Force's parent Technical Committee. The Architecture Board reviews the recommended Submission for MDA compliance and technical merit. Once the AB has endorsed it, members of the relevant TC vote on the recommended Submission by email. Successful completion of this vote moves the recommendation to OMG's Board of Directors (BoD).
+
+
+\subsubsection{Business Committee Questionnaire}
+
+Before the BoD makes its final decision on turning a Technical Committee recommendation into an OMG published specification, it asks its Business Committee to evaluate whether implementations of the specification will be publicly available. To do this, the Business Committee will send a Questionnaire [BCQ] to every OMG Member listed as a Submitter on the recommended Submission. Members that are not Submitters can also complete a Business Committee Questionnaire for the Submission if they choose.
+
+If no organization commits to make use of the specification, then the BoD will typically not act on the recommendation to adopt it - so it is very important that submitters respond to the BCQ.
+
+Once the Business Committee has received satisfactory BCQ responses, the Board takes the final publication vote. A Submission that has been adopted by the Board is termed an \textit{Alpha Specification}.
+
+At this point the RFP process is complete.
+
+
+\subsubsection{Finalization \& Revision}
+
+Any specification adopted by OMG by any mechanism, whether RFP or otherwise, is subject to Finalisation. A Finalization Task Force (FTF) is chartered by the TC that recommended the Specification; its task is to correct any problems reported by early users of the published specification. The FTF first collaborates with OMG's Technical Editor to prepare a cleaned-up version of the Alpha Specification with submission-specific material removed. This is the Beta1 specification, and is made publicly available via OMG's web site. The FTF then works through the list of bug reports ("issues") reported by users of the Beta1 specification, to produce a Finalisation Report and another Beta specification (usually Beta2), which is a candidate for Formal publication. Once endorsed by the AB and adopted by the relevant TC and BoD, this is published as the final, Formal Specification.
+
+Long-term maintenance of OMG specifications is handled by a sequence of Revision Task Forces (RTFs), each one chartered to rectify any residual problems in the most-recently published specification version. For full details, see P\&P Section 4.4 [P\&P].
+
+
+\section{Instructions for Submitters}
+\subsection{OMG Membership}
+
+To submit to an RFP issued by the Platform Technology Committee an organisation shall maintain either Platform or Contributing OMG Membership from the date of the initial submission deadline, while to submit to a Domain RFP an organisation shall maintain either a Contributing or Domain membership.
+
+\subsection{Intellectual Property Rights}
+\label{ipr}
+By making a Submission, an organisation is deemed to have granted to OMG a perpetual, nonexclusive, irrevocable, royalty-free, paid up, worldwide license to copy and distribute the document and to modify the document and distribute copies of the modified version, and to allow others to do the same. Submitter(s) shall be the copyright owners of the text they submit, or have sufficient copyright and patent rights from the copyright owners to make the Submission under the terms of OMG's IPR Policy. Each Submitter shall disclose the identities of all copyright owners in its Submission.
+
+Each OMG Member that makes a written Submission in response to this RFP shall identify patents containing Essential Claims that it believes will be infringed if that Submission is included in an OMG Formal Specification and implemented.
+
+By making a written Submission to this RFP, an OMG Member also agrees to comply with the Patent Licensing terms set out in Section \ref{iprmode}.
+
+This Section \ref{ipr} is neither a complete nor an authoritative statement of a submitter's IPR obligations - see [IPR] for the governing document for all OMG's IPR policies. 
+
+
+\subsection{Submission Effort}
+
+An RFP submission may require significant effort in terms of document preparation, presentations to the issuing TF, and participation in the TF evaluation process. OMG is unable to reimburse submitters for any costs in conjunction with their submissions to this RFP.
+
+
+\subsection{Letter of Intent}
+
+Every organisation intending to make a Submission against this RFP shall submit a Letter of Intent (LOI) signed by an officer on or before the deadline listed in Section \ref{timetable}, or as later varied by the issuing Task Force.
+
+The LOI should designate a single contact point within the submitting organization for receipt of all subsequent information regarding this RFP and the submission. The name of this contact will be made available to all OMG members. LOIs shall be sent by email, fax or paper mail to the "RFP Submissions Desk" at the OMG address shown on the first page of this RFP.
+
+A suggested template for the Letter of Intent is available at \url{https://doc.omg.org/loi} [LOI].
+
+
+\subsection{Business Committee terms}
+
+This Section contains the text of the Business Committee RFP attachment concerning commercial availability requirements placed on submissions. This attachment is available separately as OMG document omg/12-12-03.
+
+
+\subsubsection{Introduction}
+
+OMG wishes to encourage rapid commercial adoption of the specifications it publishes. To this end, there must be neither technical, legal nor commercial obstacles to their implementation. Freedom from the first is largely judged through technical review by the relevant OMG Technology Committees; the second two are the responsibility of the OMG Business Committee. The BC also looks for evidence of a commitment by a submitter to the commercial success of products based on the submission.
+
+
+\subsubsection{Business Committee Evaluation Criteria}
+\paragraph{Viable to implement across platforms}
+
+While it is understood that final candidate OMG submissions often combine technologies before they have all been implemented in one system, the Business Committee nevertheless wishes to see evidence that each major feature has been implemented, preferably more than once, and by separate organisations. Pre-product implementations are acceptable. Since use of OMG specifications should not be dependent on any one platform, cross-platform availability and interoperability of implementations should be also be demonstrated.
+
+
+\paragraph{Commercial availability}
+
+In addition to demonstrating the existence of implementations of the specification, the submitter must also show that products based on the specification are commercially available, or will be within 12 months of the date when the specification was recommended for adoption by the appropriate Task Force. Proof of intent to ship product within 12 months might include:
+
+\begin{itemize}
+\item 	A public product announcement with a shipping date within the time limit.
+\item     Demonstration of a prototype implementation and accompanying draft user documentation.
+\end{itemize}
+
+Alternatively, and at the Business Committee's discretion, submissions may be adopted where the submitter is not a commercial software provider, and therefore will not make implementations commercially available. However, in this case the BC will require concrete evidence of two or more independent implementations of the specification being used by end-user organisations as part of their businesses.
+
+Regardless of which requirement is in use, the submitter must inform the OMG of completion of the implementations when commercially available.
+
+
+\paragraph{Access to Intellectual Property Rights}
+
+OMG will not adopt a specification if OMG is aware of any submitter, member or third party which holds a patent, copyright or other intellectual property right (collectively referred to in this policy statement as "IPR") which might be infringed by implementation or recommendation of such specification, unless OMG believes that such IPR owner will grant an appropriate license to organizations (whether OMG members or not) which wish to make use of the specification. It is the goal of the OMG to make all of its technology available with as few impediments and disincentives to adoption as possible, and therefore OMG strongly encourages the submission of technology as to which royalty-free licenses will be available.
+
+The governing document for all intellectual property rights ("IPR") policies of Object Management Group is the Intellectual Property Rights statement, available at: \url{https://doc.omg.org/ipr}. It should be consulted for the authoritative statement of the submitter's patent disclosure and licensing obligations.
+
+
+\paragraph{Publication of the specification}
+
+Should the submission be adopted, the submitter must grant OMG (and its sublicensees) a worldwide, royalty-free licence to edit, store, duplicate and distribute both the specification and works derived from it (such as revisions and teaching materials). This requirement applies only to the written specification, not to any implementation of it. Please consult the Intellectual Property Rights statement (\url{https://doc.omg.org/ipr}) for the authoritative statement of the submitter's copyright licensing obligations.
+
+
+\paragraph{Continuing support}
+
+The submitter must show a commitment to continue supporting the technology underlying the specification after OMG adoption, for instance by showing the BC development plans for future revisions, enhancement or maintenance.
+
+
+\subsection{Responding to RFP items}
+\subsubsection{Complete Proposals}
+
+Submissions should propose full specifications for all of the relevant requirements detailed in Section \ref{specreqs} of this RFP. Submissions that do not present complete proposals may be at a disadvantage.
+
+Submitters are encouraged to include any non-mandatory features listed in Section \ref{specreqs}.
+
+
+\subsubsection{Additional Specifications}
+
+Submissions may include additional specifications for items not covered by the RFP and which they believe to be necessary. Information on these additional items should be clearly distinguished. Submitters shall give a detailed rationale for why any such additional specifications should also be considered for adoption. Submitters should note that a TF is unlikely to consider additional items that are already on the roadmap of an OMG TF, since this would pre-empt the normal adoption process.
+
+
+\subsubsection{Alternative Approaches}
+
+Submitters may provide alternative RFP item definitions, categorizations, and groupings so long as the rationale for doing so is clearly stated. Equally, submitters may provide alternative models for how items are provided if there are compelling technological reasons for a different approach.
+
+
+\subsection{Confidential and Proprietary Information}
+
+The OMG specification adoption process is an open process. Responses to this RFP become public documents of the OMG and are available to members and non-members alike for perusal. No confidential or proprietary information of any kind will be accepted in a submission to this RFP.
+
+
+\subsection{Proof of Concept}
+
+Submissions shall include a "proof of concept" statement, explaining how the submitted specifications have been demonstrated to be technically viable. The technical viability has to do with the state of development and maturity of the technology on which a submission is based. This is not the same as commercial availability. Proof of concept statements can contain any information deemed relevant by the submitter; for example:
+\begin{adjustwidth}{2em}{}
+"This specification has completed the design phase and is in the process of being prototyped."
+	
+	"An implementation of this specification has been in beta-test for 4 months."
+	
+	"A named product (with a specified customer base) is a realization of this specification."
+\end{adjustwidth}		
+It is incumbent upon submitters to demonstrate the technical viability of their proposal to the satisfaction of the TF managing the evaluation process. OMG will favor proposals based on technology for which sufficient relevant experience has been gained.
+
+
+\subsection{Submission Format}\label{subformat}
+\subsubsection{General}
+
+\begin{itemize}
+\item    Submissions that are concise and easy to read will inevitably receive more consideration.
+\item    Submitted documentation should be confined to that directly relevant to the items requested in the RFP.
+\item    To the greatest extent possible, the submission should follow the document structure set out in "ISO/IEC Directives, Part 2 - Rules for the structure and drafting of International Standards" [ISO2]. An OMG specification template is available to make it easier to follow these guidelines.
+\item    The key words \textbf{"shall"}, \textbf{"shall not"}, \textbf{"should"}, \textbf{"should not"}, \textbf{"may"} and \textbf{"need not"} shall be used as described in Part 2 of the ISO/IEC Directives [ISO2]. These ISO terms are compatible with the same terms in IETF RFC 2119 [RFC2119]. However, the RFC 2119 terms \textbf{"must"}, \textbf{"must not"}, \textbf{"optional"}, \textbf{"required"}, \textbf{"recommended"} and \textbf{"not recommended"} shall not be used (even though they are permitted under RFC2119).
+\end{itemize}
+
+
+\subsubsection{Mandatory Outline}
+
+\textit{All submissions} shall use the following structure, based on the OMG Specification template [TEMPL]:
+Section 0 of the submission shall be used to provide all non-normative supporting material relevant to the evaluation of the proposed specification, including:
+
+\begin{itemize}
+\renewcommand\labelitemi{-}
+\item The full name of the submission
+\item A complete list of all OMG Member(s) making the submission, with a named contact individual for each
+\item The acronym proposed for the specification (e.g. UML, CORBA)
+\item The name and OMG document number of the RFP to which this is a response
+\item The OMG document number of the main submission document
+\item Overview or guide to the material in the submission
+\item Statement of proof of concept (see 4.8)
+\item If the proposal does not satisfy any of the general requirements stated in Section \ref{genreq}, a detailed rationale explaining why
+\item Discussion of each of the "Issues To Be Discussed" identified in Section \ref{specreqs}.
+\item An explanation of how the proposal satisfies the specific requirements and (if applicable) requests stated in Section \ref{specreqs}.
+\item If adopting the submission requires making changes to already-adopted OMG specifications, include a list of those changes in a clearly-labelled subsection in Section 0. Identify exactly which version(s) of which OMG specification(s) shall be amended, and include the list of precise wording changes that shall be made to that specification.
+\end{itemize}
+Section 1 and subsequent sections of the submission shall contain the normative specification that the Submitter(s) is/are proposing for adoption by OMG, including:
+
+\begin{itemize}
+\item Scope of the proposed specification
+\item Overall design rationale
+\item Conformance criteria for implementations of the proposed specification, clearly stating the features that all conformant implementations shall support, and any features that implementations may support, but which are not mandatory.
+\item A list of the normative references that are used by the proposed specification
+\item A list of terms that are used in the proposed specification, with their definitions
+\item A list of any special symbols that are used in the proposed specification, together with their significance
+\item The proposed specification itself
+\end{itemize}
+Section 0 will be deleted from any specification that OMG adopts and publishes. Therefore Section 0 of the submission shall contain no normative material (other than any instructions to change existing specifications; ensuring that these are implemented is the responsibility of the FTF that finalises the specification, before it deletes Section 0). Any non-normative material outside Section 0 shall be explicitly identified.
+
+The main submission document and any models or other machine-interpretable files accompanying it shall be listed in an inventory file conforming to the inventory template [INVENT].
+
+The submission shall include a copyright waiver in a form acceptable to OMG. One acceptable form is:
+\begin{adjustwidth}{1em}{}"Each of the entities listed above: (i) grants to the Object Management Group, Inc. (OMG) a nonexclusive, royalty-free, paid up, worldwide license to copy and distribute this document and to modify this document and distribute copies of the modified version, and (ii) grants to each member of the OMG a nonexclusive, royalty-free, paid up, worldwide license to make up to fifty (50) copies of this document for internal review purposes only and not for distribution, and (iii) has agreed that no person shall be deemed to have infringed the copyright in the included material of any such copyright holder by reason of having used any OMG specification that may be based hereon or having conformed any computer software to such specification."
+\end{adjustwidth}
+Other forms of copyright waiver may only be used if approved by OMG legal counsel beforehand.
+
+
+\subsection{How to Submit}
+
+Submitters should send an electronic version of their submission to the \textit{RFP Submissions Desk (\href{mailto:rfp@omg.org}{rfp@omg.org}) }at OMG Headquarters by 5:00 PM U.S. Eastern Standard Time (22:00 GMT) on the day of the Initial and Revised Submission deadlines. Acceptable formats are Adobe FrameMaker source, ISO/IEC 26300:2006 (OpenDoc 1.1), OASIS DocBook 4.x (or later) and ISO/IEC 29500:2008 (OOXML, .docx).
+
+Submitters should ensure that they receive confirmation of receipt of their submission.
+
+
+\section{General Requirements on Proposals}\label{genreq}
+\subsection{Requirements}
+\subsubsection{Use of Modelling Languages}
+Submitters are encouraged to express models using OMG modelling languages such as UML, MOF, CWM and SPEM (subject to any further constraints on the types of the models and modeling technologies specified in Section \ref{specreqs} of this RFP). Submissions containing models expressed using OMG modeling languages shall be accompanied by an OMG XMI [XMI] representation of the models (including a machine-readable copy). A best effort should be made to provide an OMG XMI representation even in those cases where models are expressed via non-OMG modeling languages.
+\subsubsection{PIMs \& PSMs}
+Section \ref{specreqs} of this RFP specifies whether PIM(s), PSM(s), or both are being solicited. If proposals specify a PIM and corresponding PSM(s), then the rules specifying the mapping(s) between the PIM and PSM(s) shall either be identified by reference to a standard mapping or specified in the proposal. In order to allow possible inconsistencies in a proposal to be resolved later, proposals shall identify whether it's the mapping technique or the resulting PSM(s) that shall be considered normative.
+\subsubsection{Complete Submissions}
+Proposals shall be \textit{precise} and \textit{functionally complete}. Any relevant assumptions and context necessary to implement the specification shall be provided.
+\subsubsection{Reuse}
+Proposals shall \textit{reuse} existing OMG and other standard specifications in preference to defining new models to specify similar functionality.
+\subsubsection{Changes to Existing Specifications}
+Each proposal shall justify and fully specify any \textit{changes or extensions to} existing OMG specifications necessitated by adopting that proposal. In general, OMG favors proposals that are \textit{upwards compatible} with existing standards and that minimize changes and extensions to existing specifications.
+\subsubsection{Minimalism}
+Proposals shall factor out functionality that could be used in different contexts and specify their models, interfaces, etc.\ separately. Such \textit{minimalism} fosters re-use and avoids functional duplication.
+\subsubsection{Independence}
+Proposals shall use or depend on other specifications only where it is actually necessary. While re-use of existing specifications to avoid duplication will be encouraged, proposals should avoid gratuitous use.
+\subsubsection{Compatibility}
+Proposals shall be \textit{compatible} with and \textit{usable} with existing specifications from OMG and other standards bodies, as appropriate. Separate specifications offering distinct functionality should be usable together where it makes sense to do so.
+\subsubsection{Implementation Flexibility}
+Proposals shall preserve maximum \textit{implementation flexibility}. Implementation descriptions should not be included and proposals shall not constrain implementations any more than is necessary to promote interoperability.
+\subsubsection{Encapsulation}
+Proposals shall allow \textit{independent implementations} that are \textit{substitutable} and \textit{interoperable}. An implementation should be replaceable by an alternative implementation without requiring changes to any client.
+\subsubsection{Security}\label{security}
+In order to demonstrate that the specification proposed in response to this RFP can be made secure in environments that require security, answers to the following questions shall be provided:
+\begin{itemize}
+\item    What, if any, security-sensitive elements are introduced by the proposal? 
+\item    Which accesses to security-sensitive elements should be subject to security policy control?
+\item    Does the proposed service or facility need to be security aware?
+\item    What default policies (e.g., for authentication, audit, authorization, message protection etc.) should be applied to the security sensitive elements introduced by the proposal? Of what security considerations should the implementers of your proposal be aware? 
+\end{itemize}
+The OMG has adopted several specifications, which cover different aspects of security and provide useful resources in formulating responses. [SEC] [RAD].
+\subsubsection{Internationalization}
+Proposals shall specify the degree of internationalization support that they provide. The degrees of support are as follows: 
+\begin{enumerate}[label=\alph*)]
+\item Uncategorized: Internationalization has not been considered. 
+\item Specific to <region name>: The proposal supports the customs of the specified region only, and is not guaranteed to support the customs of any other region. Any fault or error caused by requesting the services outside of a context in which the customs of the specified region are being consistently followed is the responsibility of the requester.
+\item Specific to <multiple region names>: The proposal supports the customs of the specified regions only, and is not guaranteed to support the customs of any other regions. Any fault or error caused by requesting the services outside of a context in which the customs of at least one of the specified regions are being consistently followed is the responsibility of the requester.
+\item Explicitly not specific to <region(s) name>: The proposal does not support the customs of the specified region(s). Any fault or error caused by requesting the services in a context in which the customs of the specified region(s) are being followed is the responsibility of the requester.
+\end{enumerate}
+\subsection{Evaluation Criteria}
+Although the OMG adopts model-based specifications and not implementations of those specifications, the technical viability of implementations will be taken into account during the evaluation process. The following criteria will be used:
+\subsubsection{Performance}
+Potential implementation trade-offs for performance will be considered. 
+\subsubsection{Portability}
+The ease of implementation on a variety of systems and software platforms will be considered.
+\subsubsection{Securability}
+The answer to questions in Section \ref{security} shall be taken into consideration to ascertain that an implementation of the proposal is securable in an environment requiring security.
+\subsection{Conformance: Inspectability and Testability}
+The adequacy of proposed specifications for the purposes of conformance inspection and testing will be considered. Specifications should provide sufficient constraints on interfaces and implementation characteristics to ensure that conformance can be unambiguously assessed through both manual inspection and automated testing.
+\subsection{Standardized Metadata}
+Where proposals incorporate metadata specifications, OMG standard XMI metadata [XMI] representations should be provided.
+
+
+\section{Specific Requirements on Proposals}\label{specreqs}
+\input{6-SpecReqs}
+
+\subsection{Problem Statement}\label{problemstmt}
+\input{6.1-ProblemStmt}
+
+\subsection{Scope of Proposals Sought}\label{scope}
+\input{6.2-Scope}
+
+\subsection{Relationship to Other OMG Specifications and Activities}
+\subsubsection{Relationship to OMG specifications}
+\input{6.3.1-RelationshipOMGSpecs}
+\iffileemptyelse{6.3.2-RelationshipOMGOther}{}{\subsubsection{Relationship to other OMG Documents and work in progress}
+\input{6.3.2-RelationshipOMGOther}}
+
+\subsection{Related non-OMG Activities, Documents and Standards}
+\input{6.4-RelationshipNonOMG}
+
+\subsection{Mandatory Requirements}\label{mandatoryreqs}
+\input{6.5-Mandatory}
+\subsection{Non-mandatory features}\label{nonmandatoryfeatures}
+\setvalue{\reqlabel}{OPT}
+\setvalue{\subreqlabel}{OPT}
+\input{6.6-NonMandatory}
+\subsection{Issues to be discussed}
+\input{6.7-Issues}
+
+These issues will be considered during submission evaluation. They should not be part of the proposed normative specification. Place your responses to these Issues in Section 0 of your submission. 
+
+\subsection{Evaluation Criteria}
+\input{6.8-Evaluation}
+\iffileemptyelse{6.9-Other}{}{%
+\subsection{Other information unique to this RFP}
+\input{6.9-Other}%
+}
+
+\subsection{IPR Mode}\label{iprmode}
+
+\ifthenelse{\equal{\iprmode}{\xspace}}{
+\REPLACEME{<Note to RFP Editors: This Section \ref{iprmode} of your completed RFP shall specify EXACTLY ONE of the three possible IPR modes specified in the OMG IPR Policy [IPR]. Delete the two IPR modes below that do not apply to this RFP.}  %% Select the IPR mode using _RFP_Setup.tex.}
+
+\REPLACEME{<Option 1 - RAND mode>}}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace} \OR \equal{\iprmode}{rand\xspace}}{
+
+Every OMG Member that makes any written Submission in response to this RFP covenants that it will grant to an unrestricted number of applicants a nonexclusive, worldwide, non-sublicensable, perpetual patent license to its Essential Claims on fair, reasonable, and non-discriminatory terms to make, have made, use, import, offer to sell, sell, and otherwise directly or indirectly distribute Covered Implementations of the resulting OMG Formal Specification.}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace}}{
+\REPLACEME{<Option 2 - RF on Limited Terms>}
+}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace} \OR \equal{\iprmode}{rflimited\xspace}}{
+Every OMG Member that makes any written Submission in response to this RFP covenants that it will grant to an unrestricted number of applicants a royalty and fee free, nonexclusive, worldwide, non-sublicensable, perpetual patent license to its Essential Claims on fair, reasonable, and non-discriminatory terms to make, have made, use, import, offer to sell, sell, and otherwise directly or indirectly distribute Covered Implementations of the resulting OMG Formal Specification, provided that it may not impose any further conditions or restrictions beyond those specifically mentioned below on the use of any technology or intellectual property rights or the behavior of the Licensee, but may include reasonable, customary terms relating to operation or maintenance of the license relationship, including choice of law and dispute resolution.
+
+At the election of the Obligated Party, the granted license may include a term requiring the Licensee to grant a reciprocal license to its Essential Claims (if any) covering the same OMG Formal Specification. Such term may require the Licensee to grant licenses to all Implementers of such deliverable. The Obligated Party may also include a term providing that such license may be suspended with respect to the Licensee if that Licensee first sues the Obligated Party for infringement by the Obligated Party of any of the Licensee's Essential Claims covering the same OMG Formal Specification.}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace}}{
+\REPLACEME{<Option 3 - Non-Assert Covenant>}}{}
+
+\ifthenelse{\equal{\iprmode}{\xspace} \OR \equal{\iprmode}{nonassert\xspace}}{
+Every OMG Member that makes any written Submission in response to this RFP shall provide the Non-Assertion Covenant found in Appendix A of the OMG IPR Policy [IPR].}{}
+
+\subsection{RFP Timetable}\label{timetable}
+The timetable for this RFP is given below. Note that the TF or its parent TC may, in certain circumstances, extend deadlines while the RFP is running, or may elect to have more than one Revised Submission step. The latest timetable can always be found at the OMG \textit{Work In Progress} page at \url{https://www.omg.org/schedules} under the item identified by the name of this RFP.
+
+\ifthenelse{\equal{\loidue}{\color{red}<day><month><year>}}{\begin{itshape}
+\color{red}<Instructions to authors - "<month>" and "<approximate month>" means the name of the month spelled out; e.g., January.>\end{itshape}}{}
+
+\begin{tabular}{|l|l|}
+\hline
+     \multicolumn{1}{|c}{\textbf{Event or Activity}} &  \multicolumn{1}{|c|}{\textbf{Date}} \\\hline
+     \textit{Letter of Intent (LOI) deadline} & \loidue \\\hline
+     \textit{Initial Submission deadline} & \subdue \\\hline
+     \textit{Voter registration closes} & \votereg \\\hline
+     \textit{Initial Submission presentations} & \subpres \\\hline
+     \textit{Revised Submission deadline} & \rsubdue \\\hline
+     \textit{Revised Submission presentations} & \rsubpres \\\hline
+\end{tabular}
+
+\iffileemptyelse{7-AdditionalSections}{}{%
+\section{Additional Sections}
+\input{7-AdditionalSections}%
+}
+
+\begin{appendices}
+\section{References \& Glossary Specific to this RFP}
+\subsection{References Specific to this RFP}
+\input{A.1-References}
+\subsection{Glossary Specific to this RFP}
+\input{A.2-Glossary}
+
+\section{General Reference and Glossary}
+\subsection{General References}
+The following documents are referenced in this document:
+\raggedright
+\begin{adjustwidth}{0.25in}{}
+[BCQ] OMG Board of Directors Business Committee Questionnaire \\
+\url{https://doc.omg.org/bcq}
+
+[CCM] CORBA Core Components Specification\\
+\url{https://www.omg.org/spec/CCM/}
+
+[CORBA] Common Object Request Broker Architecture (CORBA)\\
+\url{https://www.omg.org/spec/CORBA/}
+
+[CORP] UML Profile for CORBA\\
+\url{https://www.omg.org/spec/CORP}
+
+[CWM] Common Warehouse Metamodel Specification\\
+\url{https://www.omg.org/spec/CWM}
+
+[EDOC] UML Profile for EDOC Specification\\
+\url{https://www.omg.org/spec/EDOC/}
+
+[Guide] The OMG Hitchhiker's Guide\\
+\url{https://doc.omg.org/hh}
+
+[IDL] Interface Definition Language Specification\\
+\url{https://www.omg.org/spec/IDL}
+
+[INVENT] Inventory of Files for a Submission/Revision/Finalization\\
+\url{https://doc.omg.org/inventory}
+
+[IPR] IPR Policy\\
+\url{https://doc.omg.org/ipr}
+
+[ISO2] ISO/IEC Directives, Part 2 - Rules for the structure and drafting of International Standards\\ \url{http://isotc.iso.org/livelink/livelink?func=ll\&objId=4230456}
+
+[LOI] OMG RFP Letter of Intent template\\
+\url{https://doc.omg.org/loi}
+
+[MDAa] OMG Architecture Board, "Model Driven Architecture - A Technical Perspective"\\
+\url{https://www.omg.org/mda/papers.htm}
+
+[MDAb] Developing in OMG's Model Driven Architecture (MDA)\\
+\url{https://www.omg.org/mda/papers.htm}
+
+[MDAc] MDA Guide\\
+\url{https://www.omg.org/docs/omg/03-06-01.pdf}
+
+[MDAd] MDA "The Architecture of Choice for a Changing World\\
+\url{https://www.omg.org/mda}
+
+[MOF] Meta Object Facility Specification\\
+\url{https://www.omg.org/spec/MOF/}
+
+[NS] Naming Service\\
+\url{https://www.omg.org/spec/NAM}
+
+[OMA] Object Management Architecture\\
+\url{https://www.omg.org/oma/}
+
+[OTS] Transaction Service\\
+\url{https://www.omg.org/spec/OTS}
+
+[P\&P] Policies and Procedures of the OMG Technical Process\\
+\url{https://doc.omg.org/pp}
+
+[RAD] Resource Access Decision Facility \\
+\url{https://www.omg.org/spec/RAD}
+
+[RM-ODP] ISO/IEC 10746
+
+[SEC] CORBA Security Service \\ \url{https://www.omg.org/spec/SEC}
+
+[TEMPL] Specification Template \\
+\url{https://doc.omg.org/submission-template}
+
+[TOS] Trading Object Service\\
+\url{https://www.omg.org/spec/TRADE}
+
+[UML] Unified Modeling Language Specification\\ \url{https://www.omg.org/spec/UML}
+
+[XMI] XML Metadata Interchange Specification\\ \url{https://www.omg.org/spec/XMI}
+\end{adjustwidth}
+
+
+\justify
+\subsection{General Glossary}
+\begin{description}[font=\itshape\fontfamily{ptm}\selectfont]
+\item[Architecture Board (AB)]  - The OMG plenary that is responsible for ensuring the technical merit and MDA-compliance of RFPs and their submissions.
+\item[Board of Directors (BoD)] - The OMG body that is responsible for adopting technology.
+\item[Common Object Request Broker Architecture (CORBA)] - An OMG distributed \\computing platform specification that is independent of implementation languages.
+\item[Common Warehouse Metamodel (CWM)] - An OMG specification for data repository integration.
+\item[CORBA Component Model (CCM)] - An OMG specification for an implementation language independent distributed component model.
+\item[Interface Definition Language (IDL)] - An OMG and ISO standard language for specifying interfaces and associated data structures.
+\item[Letter of Intent (LOI)] - A letter submitted to the OMG BoD's Business Committee signed by an officer of an organization signifying its intent to respond to the RFP and confirming the organization's willingness to comply with OMG's terms and conditions, and commercial availability requirements.
+\item[Mapping] - Specification of a mechanism for transforming the elements of a model conforming to a particular metamodel into elements of another model that conforms to another (possibly the same) metamodel. 
+\item[Metadata] - Data that represents models.  For example, a UML model; a CORBA object model expressed in IDL; and a relational database schema expressed using CWM.
+\item[Metamodel]  - A model of models.
+\item[Meta Object Facility (MOF)] - An OMG standard, closely related to UML, that enables metadata management and language definition.
+\item[Model] - A formal specification of the function, structure and/or behavior of an application or system.
+\item[Model Driven Architecture (MDA)] - An approach to IT system specification that separates the specification of functionality from the specification of the implementation of that functionality on a specific technology platform.
+\item[Normative] - Provisions to which an implementation shall conform to in order to claim compliance with the standard (as opposed to non-normative or informative material, included only to assist in understanding the standard).
+\item[Normative Reference] - References to documents that contain provisions to which an implementation shall conform to in order to claim compliance with the standard.
+\item[Platform] - A set of subsystems/technologies that provide a coherent set of functionality through interfaces and specified usage patterns that any subsystem that depends on the platform can use without concern for the details of how the functionality provided by the platform is implemented. 
+\item[Platform Independent Model (PIM)] - A model of a subsystem that contains no information specific to the platform, or the technology that is used to realize it.  
+\item[Platform Specific Model (PSM)] - A model of a subsystem that includes information about the specific technology that is used in the realization of it on a specific platform, and hence possibly contains elements that are specific to the platform.
+\item[Request for Information (RFI)] - A general request to industry, academia, and any other interested parties to submit information about a particular technology area to one of the OMG's Technology Committee subgroups.
+\item[Request for Proposal (RFP)] - A document requesting OMG members to submit proposals to an OMG Technology Committee.
+\item[Task Force (TF)] - The OMG Technology Committee subgroup responsible for issuing a RFP and evaluating submission(s).
+\item[Technology Committee (TC)] - The body responsible for recommending technologies for adoption to the BoD. There are two TCs in OMG - the Platform TC (PTC) focuses on IT and modeling infrastructure related standards; while the Domain TC (DTC) focuses on domain specific standards.
+\item[Unified Modeling Language (UML)] - An OMG standard language for specifying the structure and behavior of systems.  The standard defines an abstract syntax and a graphical concrete syntax.
+\item[UML Profile] - A standardized set of extensions and constraints that tailors UML to particular use.
+\item[XML Metadata Interchange (XMI)] - An OMG standard that facilitates interchange of models via XML documents.
+\end{description}
+
+
+
+\iffileemptyelse{C-AdditionalAppendices}{}{%
+\section{Additional Appendices}
+\input{C-AdditionalAppendices}
+}
+
+\end{appendices}
+\end{document}

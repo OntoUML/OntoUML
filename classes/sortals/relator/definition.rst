@@ -1,17 +1,19 @@
 Definition
 ----------
 
-The «:ref:`relator`» construct is used to represent **truth-makers** of :ref:`material relations <material>`, i.e., the "things" that must exist in order for two or more individuals to be connected by :ref:`material relations <material>`. Because of this nature, relators are always :ref:`dependent <dependency>` on other individuals to exist. Here are some examples of concepts classified as relators:
+A «:ref:`relator`» is a :ref:`first-order ultimate sortal <ultimate-sortal>` whose instances are extrinsic aspects that existentially depend on two or more endurants. A relator is the truthmaker of a :ref:`material` relation between those endurants.
 
-.. container:: figure
+A marriage existentially depends on two spouses. An employment depends on an employee and an employer. A presidential mandate depends on a president and a country. Enrollments are relators of the same kind. A relator is often a sum of extrinsic modes, one borne by each relatum: the marriage is composed of each spouse's conjugal commitments and claims toward the other. See :ref:`endurants` and :ref:`relations-theory`.
 
-   |Relator examples|
+.. figure:: /specification-figures/relator.svg
+   :alt: Marriage as a relator mediating two spouses
+   :width: 70%
+   :align: center
 
-Note that the «:ref:`relator`» meta-class is analogous to the «:ref:`kind`», «:ref:`collective`» and «:ref:`quantity`» meta-classes, in the sense that it is :ref:`rigid <rigidity>` and provides an :ref:`identity principle <identity>` for its instances. The difference is that, instead of representing functional complexes, quantities or collections, a «:ref:`relator`» represents the objectification of relational properties. The direct consequence is that relators can also be specialised by :ref:`subkinds <subkind>`, :ref:`phases <phase>` and :ref:`roles <role>`, and generalised by :ref:`categories <category>` and :ref:`mixins <mixin>`.
+   A class categorized as «relator».
 
-.. container:: figure
+Each dependence is a :ref:`mediation`. A relator mediates at least two distinct individuals. The material association between the relata is :ref:`derived <derivation>` from the relator and those mediations. A one-sided relational aspect, such as love or trust, is an :ref:`extrinsicMode` rather than a relator.
 
-   |Relator application 1|
+Like the other ultimate sortals, a relator may specialize a :ref:`category` or a :ref:`mixin`, and it may be specialized by a :ref:`subkind`, :ref:`role`, :ref:`historicalRole`, or :ref:`phase`.
 
-.. |Relator examples| image:: _images/ontouml_relator-examples.png
-.. |Relator application 1| image:: _images/ontouml_relator-application-1.png
+``restrictedTo`` is exactly ``{relator}`` and ``order`` is 1.

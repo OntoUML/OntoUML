@@ -1,7 +1,10 @@
 .. _subQuantityOf:
+.. _subQuantity:
 
-SubQuantityOf
-=============
+Sub-quantity
+============
+
+Previously documented as «subQuantityOf». The current stereotype is «subQuantity».
 
 .. _subQuantityOf-stereotype:
 .. stereotype:: meta.yml

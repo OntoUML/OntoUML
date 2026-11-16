@@ -1,7 +1,10 @@
 .. _memberOf:
+.. _membership:
 
-MemberOf
-========
+Membership
+==========
+
+Previously documented as «memberOf». The current stereotype is «membership».
 
 .. _memberOf-stereotype:
 .. stereotype:: meta.yml

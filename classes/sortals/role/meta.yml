@@ -1,26 +1,32 @@
 class_stereotype:
-  name: Role
-  parent: AntiRigidSortal
+  name: "Role"
+  parent: "Anti-rigid sortal"
   provides_identity: false
-  identity_principle: simple
-  rigidity: antirigid
-  dependency: mandatory
+  identity_principle: "inherited"
+  rigidity: "anti-rigid"
+  dependency: "mandatory"
+  ontological_nature: "a single nature, except event and abstract"
+  order: "any"
   supertypes:
   - Kind
-  - Subkind
   - Collective
-  - Phase
   - Quantity
   - Relator
-  - Role
-  - RoleMixin
-  - Mixin
-  - Mode
+  - IntrinsicMode
+  - ExtrinsicMode
   - Quality
+  - Situation
+  - Type
+  - Subkind
+  - Role
+  - HistoricalRole
+  - Phase
   - Category
-  - PhaseMixin
+  - Mixin
+  - RoleMixin
+  - HistoricalRoleMixin
   subtypes:
   - Role
-  forbidden_associations:
-  - Structuration
-  abstract: undefined
+  - HistoricalRole
+  forbidden_associations: []
+  abstract: "not required"

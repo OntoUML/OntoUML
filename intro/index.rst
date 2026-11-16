@@ -7,3 +7,5 @@ Introduction
 
    ontouml
    ufo
+   profile
+   tooling

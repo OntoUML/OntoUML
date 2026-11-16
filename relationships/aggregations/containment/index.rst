@@ -3,6 +3,10 @@
 Containment
 ===========
 
+.. warning::
+
+   «containment» is not a stereotype of the current OntoUML profile. Quantities are related by :ref:`subQuantity <subQuantityOf>`. The text below is the earlier account, kept so existing references remain readable.
+
 .. _containment-stereotype:
 .. stereotype:: meta.yml
 
