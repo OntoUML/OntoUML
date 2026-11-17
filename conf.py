@@ -20,8 +20,12 @@ sys.path.insert(0, os.path.abspath('.'))
 # -- Project information -----------------------------------------------------
 
 project = 'OntoUML specification'
-copyright = '2018, Marek Suchánek'
-author = 'Marek Suchánek'
+# The content is dedicated to the public domain under CC0 (see LICENSE).
+# The HTML footer shows a CC0 note instead of a copyright line
+# (see html_show_copyright below and _templates/footer.html);
+# this value is still used as metadata for the ePub/PDF builds.
+copyright = 'OntoUML contributors, CC0 1.0 Universal (public domain)'
+author = 'OntoUML contributors'
 
 # The short X.Y version
 version = ''
@@ -79,6 +83,9 @@ pygments_style = 'sphinx'
 #
 html_theme = 'sphinx_rtd_theme'
 html_logo ='_static/ontouml.png'
+
+# Content is CC0, so no copyright line; the CC0 note lives in _templates/footer.html.
+html_show_copyright = False
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
