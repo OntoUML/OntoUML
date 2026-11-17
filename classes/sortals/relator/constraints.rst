@@ -16,7 +16,7 @@ Constraints
    |Relator application 2|
 
 .. _relator-constraints-c3:
-**C3:** A «:ref:`relator`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
+**C3:** A «:ref:`relator`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quality`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
 
 .. container:: figure
 

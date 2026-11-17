@@ -2,7 +2,7 @@ Common questions
 ----------------
 
 .. _role-faq-q1:
-**Q1:** Can I define multiples :ref:`dependencies <dependency>` for a «:ref:`role`»?
+**Q1:** Can I define multiple :ref:`dependencies <dependency>` for a «:ref:`role`»?
 
 .. _role-faq-a1:
 **A1:** Yes,
@@ -19,6 +19,6 @@ Anti-Pattern, called Multiple Dependency (read more about it
 .. _role-faq-a2:
 **A2:** Yes,
 there is no restriction regarding it. Again, take care when doing so.
-Since the language only require at least one :ref:`indirect dependency <dependency>` for a
+Since the language only requires at least one :ref:`indirect dependency <dependency>` for a
 «:ref:`role`», you might forget to define additional :ref:`dependencies <dependency>` for the
 sub-types.

@@ -18,7 +18,7 @@ Description
 Justification
 	Although OntoUML imposes no syntactical constraints on formal relations, it does not mean that modelers can use them at will, what is a very common practice.
 	
-Contraints
+Constraints
 	1.
 		Let qualities(c) be the function that return all qualities defined for a class c (through attributes or relations) and ancestor(c) be the function that return all direct and indirect super types of a class c, then:
 		

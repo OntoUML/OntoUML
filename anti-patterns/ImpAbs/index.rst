@@ -16,9 +16,9 @@ Description
 	A given association R characterizes an ImpAbs occurrence if at least one of the following holds: (i) R’s source end upper bound multiplicity is equal or greater than 2 and the Class connected to it has 2 or more subtypes; (ii) R’s target end upper bound multiplicity is equal or greater than 2 and the Class connected to it has 2 or more subtypes.
 	
 Justification
-	Representing a general relation occasionally causes the model to be too permissive because one “loses control” on how many instances of a particular subtype an instance of the opposite type may be connected to. Furthermore, is precludes the specification of other particular meta-property values, like isDerived and isReadOnly for all associations, and isEssential and isInseparable for meronymics.
+	Representing a general relation occasionally causes the model to be too permissive because one “loses control” on how many instances of a particular subtype an instance of the opposite type may be connected to. Furthermore, it precludes the specification of other particular meta-property values, like isDerived and isReadOnly for all associations, and isEssential and isInseparable for meronymics.
 	
-Contraints
+Constraints
 	1.
 		Let allSubtypes(c) be the function that return all direct and indirect subtypes of a class c, sourceEnd(a) and targetEnd(a) the functions that return the source and target ends of an association a, and upper(p) be the function that return the upper bound cardinality of a property p, then:
 		

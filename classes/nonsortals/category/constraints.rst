@@ -9,7 +9,7 @@ Constraints
    |Category application 1|
 
 .. _category-constraints-c2:
-**C2:** A «:ref:`category`» aggregate individuals that follow :ref:`different identity principles <identity>`, therefore it may not have a sortal type as ancestor. «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`subkind`», «:ref:`role`», «:ref:`phase`», «:ref:`relator`», «:ref:`mode`», «:ref:`quality`» are all forbidden. 
+**C2:** A «:ref:`category`» aggregates individuals that follow :ref:`different identity principles <identity>`, therefore it may not have a sortal type as ancestor. «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`subkind`», «:ref:`role`», «:ref:`phase`», «:ref:`relator`», «:ref:`mode`», «:ref:`quality`» are all forbidden. 
 
 .. container:: figure
 

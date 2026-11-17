@@ -18,7 +18,7 @@ Description
 Justification
 	If a whole is composed by a unique type of part, it is most likely that all of the part’s instances play the same role w.r.t. their whole. That homogeneous structure is not a characteristic of a functional complex.
 	
-Contraints
+Constraints
 	1.
 		Only functional complexes may instantiate the Whole.
 		

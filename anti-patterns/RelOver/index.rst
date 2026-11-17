@@ -18,7 +18,7 @@ Description
 Justification
 	Although OntoUML imposes no syntactical constraints on formal relations, it does not mean that modelers can use them at will, what is a very common practice.
 	
-Contraints
+Constraints
 	1.
 		Let M be the set of identified mediations, mediatedEnd(m) the function that returns the association end opposed to relator of a mediation m, and upper(p) the function that return the upper bound cardinality of a property p, then:
 		

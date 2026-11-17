@@ -16,9 +16,9 @@ Description
 	A «:ref:`relator`» connected to two or more «:ref:`mediation`» associations, whose upper bound cardinalities at the :ref:`relator<relator>` end are greater than one.
 	
 Justification
-	Inspired in ORM’s uniqueness constraint (HALPIN; MORGAN, 2008), this anti-pattern aids the modeler in specifying the number of different :ref:`relators<relator>` instances that can mediated the exact same set of individuals.
+	Inspired in ORM’s uniqueness constraint (HALPIN; MORGAN, 2008), this anti-pattern aids the modeler in specifying the number of different :ref:`relators<relator>` instances that can mediate the exact same set of individuals.
 	
-Contraints
+Constraints
 	1.
 		Let M be the set of the mediations that characterize RepRel, relatorEnd(m) the function that return the association end whose type is the :ref:`relator<relator>` of a mediation m, and upper(p) the function that return the upper bound cardinality of a property p, then: 
 		
@@ -38,7 +38,7 @@ Refactoring Plans
 	1.
 		**[Mod]** Fix upper cardinality: this plan is individually to the mediations. It consists in changing the maximum cardinality on the :ref:`relator<relator>` to a usually lower value.
 	2.
-		**[OCL]** Define uniqueness constraint (Current Relator): this plan is applied to a combination of the mediations. Although it can be applied more than once, for different combinations, it cannot be applied simultaneously with the historical :ref:`relator<relator>` plan. This should be taken if there is a limit of the number of coexistent :ref:`relator<relator>` instances that mediated the same combination of the mediated types. The following OCL invariant should be created (where <n> is the limit of “cloned” :ref:`relators<relator>`):
+		**[OCL]** Define uniqueness constraint (Current Relator): this plan is applied to a combination of the mediations. Although it can be applied more than once, for different combinations, it cannot be applied simultaneously with the historical :ref:`relator<relator>` plan. This should be taken if there is a limit of the number of coexistent :ref:`relator<relator>` instances that mediate the same combination of the mediated types. The following OCL invariant should be created (where <n> is the limit of “cloned” :ref:`relators<relator>`):
 	
 			| *context Relator*
 			| *inv: Relator.allInstances()->select( r | r <> self and*

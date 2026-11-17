@@ -18,7 +18,7 @@ Description
 Justification
 	The common characteristic of all different types of mixin classes is the aggregation of individuals that follow different identity principles. The reason to analyze this anti-pattern is that a non-sortal should not be specified as a sortal or it may convey the wrong meaning.
 	
-Contraints
+Constraints
 	1.
 		For every Subtype-n, either one of the following holds: (i) Sortal-n = Identity Provider; or (ii) Identity Provider is an ancestor of Sortal-n
 			

@@ -21,7 +21,7 @@ Therefore, the following fragments would not be allowed:
 
 .. _subkind-constraints-c3:
 **C3:** Since every instance of a «:ref:`subkind`» follows the same :ref:`identity
-principle <identity>`, a «:ref:`subkind`» cannot have an :ref:`non-sortal type <identity>` («:ref:`category`», «:ref:`mixin`», «:ref:`rolemixin`» and «:ref:`phasemixin`») as a descendant, i.e., a direct or indirect subtype.
+principle <identity>`, a «:ref:`subkind`» cannot have a :ref:`non-sortal type <identity>` («:ref:`category`», «:ref:`mixin`», «:ref:`rolemixin`» and «:ref:`phasemixin`») as a descendant, i.e., a direct or indirect subtype.
 Fragments like the ones below are not allowed:
 
 .. container:: figure

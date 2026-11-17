@@ -18,7 +18,7 @@ Description
 Justification
 	This structure is usually too permissive. It is often the case that some of the part types should be disjoint or set as exclusive in the context of a single whole instance.
 	
-Contraints
+Constraints
 	1.
 		Let M be the set of identified meronymic relations, partEnd(m) the function that returns the association end connected to the part of a meronymic relation m, and upper(p) the function that return the upper bound cardinality of a property p, then:
 		

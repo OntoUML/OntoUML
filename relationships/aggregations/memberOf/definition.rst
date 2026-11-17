@@ -5,9 +5,9 @@ Definition
 
 Examples include:
 
-A. a tree is part of forest;
+A. a tree is part of a forest;
 B. a card is part of a deck of cards;
-C. a fork is part of cutlery set;
+C. a fork is part of a cutlery set;
 D. a club member is part of a club.
 
 «:ref:`memberOf`» relation obeys *weak supplementation principle* (at least 2 parts are required, may be of different types). The memberOf relation is **intransitive.**

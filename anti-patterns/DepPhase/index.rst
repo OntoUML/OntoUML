@@ -18,7 +18,7 @@ Description
 Justification
 	:ref:`Phases<phase>` are instantiated when there is a change in an intrinsic property. :ref:`Roles<role>` are instantiated when there is a change in a relational property. Selecting the «:ref:`phase`» stereotype for a class but connecting it to a :ref:`mediation<mediation>` is “mixing up” the two meta-categories.
 	
-Contraints
+Constraints
 	No additional constraints.
 	
 Examples
@@ -26,7 +26,7 @@ Examples
 
 Refactoring Plans
 	1.
-		**[New/Mod] Make the role explicit:** Create a «:ref:`role`» as a parent type of the «:ref:`phase`» and move the mediation it.
+		**[New/Mod] Make the role explicit:** Create a «:ref:`role`» as a parent type of the «:ref:`phase`» and move the mediation to it.
 		
 	|RefactoringPlans|
 

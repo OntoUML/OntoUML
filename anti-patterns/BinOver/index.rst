@@ -19,7 +19,7 @@ Justification
 	Modelers often do not perceive by themselves that two or more types overlap. This anti-pattern makes them aware of that and confronts modelers with the possibility to specify binary relation properties, like reflexivity, transitivity and symmetry.
 
 Constraints
-	The Binary Relation Between Overlapping Types (BinOver) corresponds to an association, of any stereotype, that connected two types that compose an overlapping set. It means that the same individual may instantiate both ends of the relationship. A given relation <R> between types *<Source>* and *<Target>* characterize a BinOver occurrence when: 
+	The Binary Relation Between Overlapping Types (BinOver) corresponds to an association, of any stereotype, that connects two types that compose an overlapping set. It means that the same individual may instantiate both ends of the relationship. A given relation <R> between types *<Source>* and *<Target>* characterize a BinOver occurrence when: 
 
 	1.
 		*<Source>* equals *<Target>* 

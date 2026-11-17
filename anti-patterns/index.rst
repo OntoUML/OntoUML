@@ -1,5 +1,5 @@
-OntoUML Anti-Patern Catalogue
-=============================
+OntoUML Anti-Pattern Catalogue
+==============================
 
 This list of anti-patterns was created to help modellers to avoid creating models with unintended and often illogical results.
 

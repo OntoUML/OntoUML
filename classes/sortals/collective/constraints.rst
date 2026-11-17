@@ -2,7 +2,7 @@ Constraints
 -----------
 
 .. _collective-constraints-c1:
-**C1:** A «:ref:`collective`» cannot have an :ref:`identity <identity>` provider («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
+**C1:** A «:ref:`collective`» cannot have an :ref:`identity <identity>` provider («:ref:`kind`», «:ref:`collective`», «:ref:`quality`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
 
 .. container:: figure
 

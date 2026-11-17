@@ -9,7 +9,7 @@ RoleMixin
 .. _rolemixin-definition:
 .. include:: definition.rst
 
-.. _rolemixin-contraints:
+.. _rolemixin-constraints:
 .. include:: constraints.rst
 
 .. _rolemixin-faq:

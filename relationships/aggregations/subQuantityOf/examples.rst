@@ -12,7 +12,7 @@ Examples
 
 See also
 
--  :ref:`part-whole
+-  :ref:`part-whole`
 -  «:ref:`containment`»
 
 **References:**

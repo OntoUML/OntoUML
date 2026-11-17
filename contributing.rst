@@ -3,7 +3,7 @@
 Contributing
 ============
 
-This project is community-driven. Are you OntoUML enthusiast? We would like to invite you to cooperate on this documentation.
+This project is community-driven. Are you an OntoUML enthusiast? We would like to invite you to cooperate on this documentation.
 
 Reporting issues
 ----------------
@@ -19,6 +19,6 @@ Documentation guidelines
 ------------------------
 
 - Keep the file structure, if you want to propose some big changes, please create an issue where we can discuss such big change.
-- Do not use line breaks unless ending paragraph. In 21st century all human-usable editors and IDEs have functionality called "word wrap" that is configurable per user. Why should someone with wide screen see only 80 characters per line if want more?
+- Do not use line breaks unless ending paragraph. In 21st century all human-usable editors and IDEs have functionality called "word wrap" that is configurable per user. Why should someone with wide screen see only 80 characters per line if they want more?
 - Try to be consistent, maximize readers understanding (do not expect any IT or Ontology expertise), interlink with other related pages and also label your pages.
 - Take a look at `Sphinx docs <http://www.sphinx-doc.org/en/master/contents.html>`__ and `reStructuredText Markup Specification <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`__.

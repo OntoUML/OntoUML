@@ -18,7 +18,7 @@ Description
 Justification
 	Investigate if the subtype with multiple generalizations is intentional or derived by the intersection (main) and if its extension is not empty.
 	
-Contraints
+Constraints
 	1.
 		The specialization of the parents into Type must be syntactically valid, e.g. if type is a relator, all its parents must also be relators.
 	2.
@@ -37,7 +37,7 @@ Refactoring Plans
 	1.
 		**[conditional] [Mod] Fix Generalization Set:** can only be adopted if two or more parent types are made disjoint by a generalization set. The possible solutions are to remove the existing generalization set or set its isCovering property to true.
 	2.
-		**[conditional] [Mod] Fix Identity Principle:** can only be applied if Type is sortal («:ref:`Subkind`», «:ref:`Role`» or «:ref:`Phase`») and they do not follow the same identity principle. The action consists on defining the single identity provider.
+		**[conditional] [Mod] Fix Identity Principle:** can only be applied if Type is sortal («:ref:`Subkind`», «:ref:`Role`» or «:ref:`Phase`») and they do not follow the same identity principle. The action consists of defining the single identity provider.
 	3.
 		**[Mod/Del] Invert/Delete Generalization:** consists of deleting and/or inverting one or more generalizations from Type to one of the identified parents.
 	4.

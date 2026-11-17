@@ -2,7 +2,7 @@ Examples
 --------
 
 .. _collective-examples-ex1:
-**EX1:** Fragment from the a conceptual model about the human genome (`see more <http://web.archive.org/web/20171008151924/http://www.menthor.net/cshg.html>`__):
+**EX1:** Fragment from a conceptual model about the human genome (`see more <http://web.archive.org/web/20171008151924/http://www.menthor.net/cshg.html>`__):
 
 .. container:: figure
 

@@ -63,11 +63,11 @@ Inseparable part of the rigid whole. The part must belong to the same whole, ins
 
 **EX10:** |Immutable Part|
 
-Immutable part of the antirigid whole. Whenever the whole exists in the particular role or phase, its parts must be still the same instances -- they cannot not mute. Compare to *{essential}*.
+Immutable part of the antirigid whole. Whenever the whole exists in the particular role or phase, its parts must be still the same instances -- they cannot mute. Compare to *{essential}*.
 
 **EX11:** |Immutable Whole|
 
-Immutable whole w.r.t. the antirigid part. Whenever the part exists in the particular role or phase, its wholes must be still the same instances -- they cannot not mute. Instances of the whole may mute only as the part changes it´s role or phase.  
+Immutable whole w.r.t. the antirigid part. Whenever the part exists in the particular role or phase, its wholes must be still the same instances -- they cannot mute. Instances of the whole may mute only as the part changes its role or phase.  
 
 .. container:: figure
 

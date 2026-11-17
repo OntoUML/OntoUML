@@ -4,7 +4,7 @@ Constraints
 .. _role-constraints-c1:
 **C1:** A «:ref:`role`» must always have **exactly one** :ref:`identity provider <identity>`
 («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`», «:ref:`quantity`») as an ancestor (a direct or indirect super-type). To model our list of roles
-presented above, we should given them :ref:`identity providers <identity>`:
+presented above, we should give them :ref:`identity providers <identity>`:
 
 .. container:: figure
 
@@ -19,7 +19,7 @@ Continuing our example above, we should do the following:
 
    |Role application 2|
 
-Remember that you can't defined a :ref:`relational dependency <dependency>` with a minimum
+Remember that you can't define a :ref:`relational dependency <dependency>` with a minimum
 cardinality of zero. Therefore, the fragment below is wrong!
 
 .. container:: figure
@@ -35,7 +35,7 @@ cardinality of zero. Therefore, the fragment below is wrong!
    |Role forbidden 2|
 
 .. _role-constraints-c4:
-**C4:** A «:ref:`role`» cannot be a supertype of a mixin types («:ref:`category`»,
+**C4:** A «:ref:`role`» cannot be a supertype of mixin types («:ref:`category`»,
 «:ref:`rolemixin`», «:ref:`mixin`»).
 
 .. container:: figure

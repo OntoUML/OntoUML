@@ -2,7 +2,7 @@ Constraints
 -----------
 
 .. _quantity-constraints-c1:
-**C1:** A «:ref:`quantity`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quantity`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
+**C1:** A «:ref:`quantity`» cannot have an :ref:`identity provider <identity>` («:ref:`kind`», «:ref:`collective`», «:ref:`quality`», «:ref:`relator`», «:ref:`mode`» and «:ref:`quantity`») as its direct or indirect super-type.
 
 .. container:: figure
 

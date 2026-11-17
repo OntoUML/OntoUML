@@ -22,4 +22,4 @@ You are free to contribute in a standard way for GitHub - via discussions in [is
 
 ## Acknowledgements
 
-Making OntoUML documentation evolvable via Sphinx and custom extensions was support by FIT CTU in Prague.
+Making OntoUML documentation evolvable via Sphinx and custom extensions was supported by FIT CTU in Prague.

@@ -16,9 +16,9 @@ Description
 	A class stereotyped as «:ref:`mixin`» specialized only by other classes that have the same rigidity property, i.e., are all rigid or all anti-rigid.
 	
 Justification
-	As all non-sortals, mixins aggregated individuals that follow different identity principles. Its distinguishing characteristic, though, is that is semi-rigid, i.e., it behaves as a rigid type for some individuals as an anti-rigid for others. This anti-pattern analyzes mixins that, despite their capabilities, only generalize types with the same rigidity.
+	As all non-sortals, mixins aggregate individuals that follow different identity principles. Its distinguishing characteristic, though, is that is semi-rigid, i.e., it behaves as a rigid type for some individuals as an anti-rigid for others. This anti-pattern analyzes mixins that, despite their capabilities, only generalize types with the same rigidity.
 	
-Contraints
+Constraints
 	1.
 		All sortals are rigid («:ref:`subkind`», «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`» and «:ref:`category`») or all sortals are anti-rigid («:ref:`role`», «:ref:`phase`» or «:ref:`roleMixin`»)
 	

@@ -11,4 +11,4 @@ Constraints
 **C3:** The cardinality in the part-end must be exactly one.
 
 .. _subQuantityOf-constraints-c4:
-**C4:** The «:ref:`subQuantityOf`» **quantities** at its both ends. Quantities are types as defined in the overview table above.
+**C4:** The «:ref:`subQuantityOf`» must connect **quantities** at both its ends. Quantities are types as defined in the overview table above.

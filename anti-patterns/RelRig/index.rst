@@ -18,7 +18,7 @@ Description
 Justification
 	When a type is connected to a mediation association, it means that it is externally dependent, i.e. for an individual to instantiate it, it must be related to another type. Usually, mediations define :ref:`roles<role>` and :ref:`roleMixins<roleMixin>` – anti-rigid types.
 	
-Contraints
+Constraints
 	1.
 		Let relator(m) and mediated(m) be the functions that return, respectively, the :ref:`relator<relator>` and the mediated types connected to a mediation. Also, let M be the set of mediation-n and R the set of RigidType-n, then: 
 		

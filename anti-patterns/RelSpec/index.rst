@@ -20,7 +20,7 @@ Description
 Justification
 	The identified structure suggests the existence of a specialization between the relations or the need for including a subsetting, redefinition or disjoint constraint.
 	
-Contraints
+Constraints
 	1.
 		A and B are different associations
 	2.

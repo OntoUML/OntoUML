@@ -18,7 +18,7 @@ Description
 Justification
 	The multiple part types, the main characteristic of this anti-pattern, indicate that the modeler might have confused the concepts of collection and functional complex or the different relations of membership and sub-collection.
 	
-Contraints
+Constraints
 	1.
 		Only collections may instantiate the Whole.
 	2.
@@ -26,7 +26,7 @@ Contraints
 	3.
 		Let M be the set of memberOf relations identified in an HetColl occurrence, w the class identified as the Whole, wholeType(r) the function that return the class connected to the whole end of a meronymic relation r, and ancestorSet(c) the function that returns all direct and indirect super types of a class c:
 		
-			.. math :: \forall m \in M, wholeType(m) = w \lor wholeType(m) \in ancestorsSet(w)
+			.. math :: \forall m \in M, wholeType(m) = w \lor wholeType(m) \in ancestorSet(w)
 			
 Examples
 	|Examples|
@@ -41,7 +41,7 @@ Refactoring Plans
 	
 			| *context NewRigid::allInstances() : Set(NewRigid)*
 			| *derive : RigidParent.allInstances()->select( x | not(x.oclIsTypeOf(Rigid*:subscript:`1` *) or*
-			| *x.oclsIsTypeOf(Rigid*:subscript:`2` *) or … or x.oclIsTypeOf(Rigid*:subscript:`n` *))*
+			| *x.oclIsTypeOf(Rigid*:subscript:`2` *) or … or x.oclIsTypeOf(Rigid*:subscript:`n` *))*
 
 **References:**
 

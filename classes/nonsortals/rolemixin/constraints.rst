@@ -1,7 +1,7 @@
 Constraints
 -----------
 
-.. _rolemixin-contraints-c1:
+.. _rolemixin-constraints-c1:
 **C1:** A «:ref:`rolemixin`» is always abstract. Notice that abstract classes
 are represented with an *italic* label.
 
@@ -9,11 +9,11 @@ are represented with an *italic* label.
 
    |RoleMixin application 3|
 
-.. _rolemixin-contraints-c2:
-**C2:** A «:ref:`rolemixin`» aggregate individuals that follow :ref:`different identity principles <identity>`, therefore it may not have a sortal type as ancestor. «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`subkind`», «:ref:`role`», «:ref:`phase`», «:ref:`relator`», «:ref:`mode`», «:ref:`quality`» are all forbidden. 
+.. _rolemixin-constraints-c2:
+**C2:** A «:ref:`rolemixin`» aggregates individuals that follow :ref:`different identity principles <identity>`, therefore it may not have a sortal type as ancestor. «:ref:`kind`», «:ref:`quantity`», «:ref:`collective`», «:ref:`subkind`», «:ref:`role`», «:ref:`phase`», «:ref:`relator`», «:ref:`mode`», «:ref:`quality`» are all forbidden. 
 
-.. _rolemixin-contraints-c3:
-**C3:** A «:ref:`rolemixin`» is a :ref:`anti-rigid <rigidity>` construct, therefore it cannot have as descendent any :ref:`rigid <rigidity>` or :ref:`semi-rigid <rigidity>` type, as: «:ref:`Kind`», «:ref:`Quantity`», «:ref:`Collective`», «:ref:`Subkind`», «:ref:`Category`», «:ref:`Mixin`», «:ref:`Relator`», «:ref:`Mode`», «:ref:`Quality`».
+.. _rolemixin-constraints-c3:
+**C3:** A «:ref:`rolemixin`» is an :ref:`anti-rigid <rigidity>` construct, therefore it cannot have as descendent any :ref:`rigid <rigidity>` or :ref:`semi-rigid <rigidity>` type, as: «:ref:`Kind`», «:ref:`Quantity`», «:ref:`Collective`», «:ref:`Subkind`», «:ref:`Category`», «:ref:`Mixin`», «:ref:`Relator`», «:ref:`Mode`», «:ref:`Quality`».
 
 .. container:: figure
 

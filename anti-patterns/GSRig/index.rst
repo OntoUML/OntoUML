@@ -18,8 +18,8 @@ Description
 Justification
 	Generalization sets groups generalizations leading to a common super-type, all defined using the same specialization criterion. If the super type is not a mixin and the subtypes have different rigidity properties, they probably do not belong in the same generalization set.
 	
-Contraints
-	No additional constrains.
+Constraints
+	No additional constraints.
 	
 Examples
 	|Examples|

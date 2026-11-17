@@ -23,7 +23,7 @@ Description
 Justification
 	The instantiation of the two relations identified in this anti-pattern may restrict one another.
 	
-Contraints
+Constraints
 	1.
 		A and B are different associations.
 		

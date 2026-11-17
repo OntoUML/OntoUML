@@ -18,7 +18,7 @@ Description
 Justification
 	Phases are anti-rigid types that are instantiated due to an alteration in an intrinsic property (a quality or a mode). For that reason, if the parent type of a partition does not have any intrinsic properties, how does one expect to define a partition?
 	
-Contraints
+Constraints
 	1.
 		Let qualities(c) be the function that return all qualities defined for a class c (through attributes or relations) and ancestor(c) be the function that return all direct and indirect super types of a class c, then:
 		
