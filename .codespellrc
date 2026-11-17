@@ -1,0 +1,8 @@
+[codespell]
+# Checked file types; images and build output are never scanned.
+skip = ./.git,./_build,./_static,./__pycache__,*.png,*.jpg,*.jpeg,*.gif,*.svg,*.ico,*.pdf
+# OntoUML/UFO jargon, proper names and other valid words live in this file (one per line, lowercase).
+ignore-words = .codespell-ignore.txt
+# Ignore acronyms (UFO, OCL, SRRO, DCFR, ...), URLs and image/figure paths.
+ignore-regex = \b[A-Z]{2,}s?\b|https?://\S+|(image|figure)::\s*\S+
+check-hidden = true

@@ -21,4 +21,5 @@ Documentation guidelines
 - Keep the file structure, if you want to propose some big changes, please create an issue where we can discuss such big change.
 - Do not use line breaks unless ending paragraph. In 21st century all human-usable editors and IDEs have functionality called "word wrap" that is configurable per user. Why should someone with wide screen see only 80 characters per line if they want more?
 - Try to be consistent, maximize readers understanding (do not expect any IT or Ontology expertise), interlink with other related pages and also label your pages.
+- Spelling is checked automatically by `codespell <https://github.com/codespell-project/codespell>`__ on every pull request. Run ``pip install codespell`` and then ``codespell`` in the repository root to check locally. Acronyms in capitals (e.g. UFO, OCL) are ignored automatically; if a valid term or name is flagged, add it in lowercase to ``.codespell-ignore.txt``.
 - Take a look at `Sphinx docs <http://www.sphinx-doc.org/en/master/contents.html>`__ and `reStructuredText Markup Specification <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`__.

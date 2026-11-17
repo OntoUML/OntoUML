@@ -24,5 +24,5 @@ Now, let's focus solely on the type Puppy. By looking at the pictures, we can se
 
 .. |Dog phases| image:: _images/dog-phases.jpg
 .. |Rigid examples| image:: _images/ontouml_rigid-examples.png
-.. |AntiRigid examples| image:: _images/ontouml_antirigid-exampels.png
+.. |AntiRigid examples| image:: _images/ontouml_antirigid-examples.png
 

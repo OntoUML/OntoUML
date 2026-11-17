@@ -1,7 +1,7 @@
 Definition
 ----------
 
-The «:ref:`collective`» construct is used to represent :ref:`rigid <rigidity>` concepts that provide an :ref:`identity principle <identity>` for their instances. The main characteristic of a «:ref:`collective`» is that it has an homogenous internal structure, i.e., all parts are perceived in the same way by the whole (see the «:ref:`memberOf`» relation for more details about members of collections).
+The «:ref:`collective`» construct is used to represent :ref:`rigid <rigidity>` concepts that provide an :ref:`identity principle <identity>` for their instances. The main characteristic of a «:ref:`collective`» is that it has an homogeneous internal structure, i.e., all parts are perceived in the same way by the whole (see the «:ref:`memberOf`» relation for more details about members of collections).
 
 .. container:: figure
 

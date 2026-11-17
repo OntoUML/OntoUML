@@ -1,0 +1,21 @@
+name: Spelling
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  codespell:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install codespell==2.4.1
+      # Settings come from .codespellrc; valid jargon goes to .codespell-ignore.txt.
+      - run: codespell
